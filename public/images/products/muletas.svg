@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150">
+  <rect width="150" height="150" rx="12" fill="#eef2ff"/>
+  <path d="M55 35l10 10-20 60-10-10 20-60z" fill="#4338ca"/>
+  <path d="M95 35l10 10-20 60-10-10 20-60z" fill="#3730a3"/>
+  <text x="75" y="140" text-anchor="middle" font-size="12" fill="#312e81" font-family="Arial, sans-serif">Muletas</text>
+</svg>
+
+

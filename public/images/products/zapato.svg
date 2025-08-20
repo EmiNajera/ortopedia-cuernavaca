@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150">
+  <rect width="150" height="150" rx="12" fill="#fff4e6"/>
+  <path d="M20 95c20-5 35-10 52-28 8 10 20 15 38 18 10 2 10 20-2 20H32c-10 0-14-6-12-10z" fill="#c2410c"/>
+  <circle cx="100" cy="100" r="5" fill="#7c2d12"/>
+  <text x="75" y="140" text-anchor="middle" font-size="12" fill="#7c2d12" font-family="Arial, sans-serif">Calzado</text>
+</svg>
+
+

@@ -1,0 +1,21 @@
+{
+  "name": "Ortopedia Cuernavaca",
+  "short_name": "Ortopedia Cuernavaca",
+  "description": "Soluciones integrales en rehabilitación física y ortopedia. Te acompañamos desde el diagnóstico hasta la recuperación.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "icons": [
+    {
+      "src": "/images/banners/Ortopedia Cuernavaca Logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/banners/Ortopedia Cuernavaca Logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

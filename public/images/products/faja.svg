@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150">
+  <rect width="150" height="150" rx="12" fill="#ffe4e6"/>
+  <rect x="30" y="55" width="90" height="40" rx="10" fill="#be123c"/>
+  <rect x="40" y="60" width="70" height="30" rx="6" fill="#fda4af"/>
+  <text x="75" y="140" text-anchor="middle" font-size="12" fill="#9f1239" font-family="Arial, sans-serif">Faja</text>
+</svg>
+
+

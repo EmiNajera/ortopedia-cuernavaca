@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150">
+  <rect width="150" height="150" rx="12" fill="#e6f0ff"/>
+  <path d="M45 110c0-30 25-70 45-70 10 0 15 8 15 18 0 27-25 62-45 62-8 0-15-4-15-10z" fill="#1e40af"/>
+  <text x="75" y="140" text-anchor="middle" font-size="12" fill="#1e3a8a" font-family="Arial, sans-serif">Plantilla</text>
+</svg>
+
+
