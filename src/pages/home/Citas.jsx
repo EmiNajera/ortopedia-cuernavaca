@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Layout from '../../components/layout/Layout';
+import MarketingLayout from '../../components/layout/MarketingLayout';
 
 export default function Citas() {
   const [selectedService, setSelectedService] = useState('');
@@ -151,7 +151,7 @@ export default function Citas() {
   };
 
   return (
-    <Layout>
+    <MarketingLayout>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
@@ -579,6 +579,6 @@ export default function Citas() {
           </div>
         </section>
       </div>
-    </Layout>
+    </MarketingLayout>
   );
 } 

@@ -4,6 +4,8 @@ node_modules/
 # Builds
 dist/
 build/
+.next/
+.swc/
 
 # Archivos de logs
 npm-debug.log*
@@ -20,7 +22,6 @@ pnpm-debug.log*
 
 # Configs temporales
 .cache/
-.next/
 .vscode/
 .idea/
 *.swp

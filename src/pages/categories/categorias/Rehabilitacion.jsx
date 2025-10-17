@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import Layout from '../../../components/layout/Layout';
 import { motion } from 'framer-motion';
+import { openWhatsApp } from '../../../utils/whatsapp';
 
 const ProductCard = ({ imgSrc, description, price, action = "Agregar al Carrito", productId = "1", onWishlistToggle, isInWishlist }) => (
   <div className="flex-shrink-0 w-48 bg-white border border-gray-200 rounded-lg shadow-md text-center p-4 m-2 transform hover:scale-105 transition-transform duration-200 relative">
@@ -32,7 +33,7 @@ const ProductCard = ({ imgSrc, description, price, action = "Agregar al Carrito"
         if (action === "Agregar al Carrito") {
           alert(`Producto "${description}" agregado al carrito`);
         } else if (action === "Agendar Cita") {
-          window.location.href = '/citas';
+          openWhatsApp();
         } else {
           alert(`Función ${action} en desarrollo`);
         }
@@ -108,7 +109,7 @@ export default function Rehabilitacion() {
               </div>
             </div>
             <Link 
-              to="/tienda" 
+              href="/tienda" 
               className="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg transition-colors flex items-center"
             >
               <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -227,32 +228,32 @@ export default function Rehabilitacion() {
         <div className="mt-12">
           <h3 className="text-xl font-bold mb-6 text-gray-900">Otras categorías</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            <Link to="/categoria/plantillas" className="bg-blue-500 text-white p-4 rounded-lg text-center hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+            <Link href="/categoria/plantillas" className="bg-blue-500 text-white p-4 rounded-lg text-center hover:shadow-lg transition-all duration-300 transform hover:scale-105">
               <div className="text-2xl mb-2">👣</div>
               <h3 className="font-medium text-sm mb-1">Plantillas</h3>
               <p className="text-xs opacity-80">8 productos</p>
             </Link>
-            <Link to="/categoria/fajas" className="bg-green-500 text-white p-4 rounded-lg text-center hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+            <Link href="/categoria/fajas" className="bg-green-500 text-white p-4 rounded-lg text-center hover:shadow-lg transition-all duration-300 transform hover:scale-105">
               <div className="text-2xl mb-2">🩹</div>
               <h3 className="font-medium text-sm mb-1">Fajas</h3>
               <p className="text-xs opacity-80">8 productos</p>
             </Link>
-            <Link to="/categoria/ortesis" className="bg-purple-500 text-white p-4 rounded-lg text-center hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+            <Link href="/categoria/ortesis" className="bg-purple-500 text-white p-4 rounded-lg text-center hover:shadow-lg transition-all duration-300 transform hover:scale-105">
               <div className="text-2xl mb-2">🦴</div>
               <h3 className="font-medium text-sm mb-1">Ortesis</h3>
               <p className="text-xs opacity-80">8 productos</p>
             </Link>
-            <Link to="/categoria/calzado" className="bg-orange-500 text-white p-4 rounded-lg text-center hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+            <Link href="/categoria/calzado" className="bg-orange-500 text-white p-4 rounded-lg text-center hover:shadow-lg transition-all duration-300 transform hover:scale-105">
               <div className="text-2xl mb-2">👟</div>
               <h3 className="font-medium text-sm mb-1">Calzado</h3>
               <p className="text-xs opacity-80">8 productos</p>
             </Link>
-            <Link to="/categoria/pediatria" className="bg-pink-500 text-white p-4 rounded-lg text-center hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+            <Link href="/categoria/pediatria" className="bg-pink-500 text-white p-4 rounded-lg text-center hover:shadow-lg transition-all duration-300 transform hover:scale-105">
               <div className="text-2xl mb-2">👶</div>
               <h3 className="font-medium text-sm mb-1">Pediatría</h3>
               <p className="text-xs opacity-80">5 productos</p>
             </Link>
-            <Link to="/tienda" className="bg-gray-500 text-white p-4 rounded-lg text-center hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+            <Link href="/tienda" className="bg-gray-500 text-white p-4 rounded-lg text-center hover:shadow-lg transition-all duration-300 transform hover:scale-105">
               <div className="text-2xl mb-2">🏪</div>
               <h3 className="font-medium text-sm mb-1">Ver todo</h3>
               <p className="text-xs opacity-80">Tienda completa</p>

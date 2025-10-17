@@ -1,50 +1,67 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 import Layout from '../../components/layout/Layout';
+import { openWhatsApp } from '../../utils/whatsapp';
+import Image from 'next/image';
 
 // ProductCard component (reutilizado de TiendaCompleta)
 const ProductCard = ({ imgSrc, description, price, action = "Agregar al Carrito", productId = "1", onWishlistToggle, isInWishlist }) => (
-  <div className="flex-shrink-0 w-48 bg-white border border-gray-200 rounded-lg shadow-md text-center p-4 m-2 transform hover:scale-105 transition-transform duration-200 relative">
-    {/* Wishlist Button */}
-    <button 
-      className="absolute top-2 right-2 p-1 bg-white/80 rounded-full hover:bg-white transition-colors"
-      onClick={(e) => {
-        e.stopPropagation();
-        onWishlistToggle(productId);
-      }}
-    >
-      <svg 
-        className={`w-4 h-4 ${isInWishlist ? 'text-red-500 fill-current' : 'text-gray-600'}`} 
-        fill="none" 
-        stroke="currentColor" 
-        viewBox="0 0 24 24"
+  <div className="group relative w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300">
+    <Link href={`/producto/${productId}`}>
+      <div className="relative h-64 w-full overflow-hidden">
+        <Image
+          src={imgSrc}
+          alt={description}
+          layout="fill"
+          objectFit="cover"
+          className="transition-transform duration-300 group-hover:scale-110"
+        />
+      </div>
+    </Link>
+    <div className="p-6">
+      <p className="text-lg font-semibold text-gray-800 h-16 leading-tight mb-4">
+        {description}
+      </p>
+      <div className="flex items-center justify-between">
+        <p className="text-2xl font-bold text-blue-600">{price}</p>
+        <button
+          className="p-3 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors"
+          onClick={() => onWishlistToggle(productId)}
+        >
+          <svg
+            className={`w-6 h-6 ${isInWishlist ? "text-red-500 fill-current" : "text-gray-600"}`}
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeWidth={2}
+              d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+            />
+          </svg>
+        </button>
+      </div>
+      <button
+        className="w-full mt-6 bg-blue-600 text-white py-3 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors"
+        onClick={() => {
+          if (action === "Agregar al Carrito") {
+            alert(`Producto "${description}" agregado al carrito`);
+          } else {
+            openWhatsApp();
+          }
+        }}
       >
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-      </svg>
-    </button>
-    
-    <img src={imgSrc} alt={description} className="h-32 mx-auto mb-2 object-contain cursor-pointer" onClick={() => window.location.href = `/producto/${productId}`} />
-    <p className="text-sm text-gray-700 h-16 font-medium cursor-pointer hover:text-blue-600" onClick={() => window.location.href = `/producto/${productId}`}>{description}</p>
-    {price && <p className="text-lg font-bold text-blue-900">{price}</p>}
-    <button 
-      className="w-full mt-2 bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-      onClick={() => {
-        if (action === "Agregar al Carrito") {
-          alert(`Producto "${description}" agregado al carrito`);
-        } else if (action === "Agendar Cita") {
-          window.location.href = '/citas';
-        } else {
-          alert(`Función ${action} en desarrollo`);
-        }
-      }}
-    >
-      {action}
-    </button>
+        {action}
+      </button>
+    </div>
   </div>
 );
 
 export default function CategoriaPage() {
-  const { categorySlug } = useParams();
+  const router = useRouter();
+  const { categorySlug } = router.query;
   const [searchTerm, setSearchTerm] = useState('');
   const [wishlist, setWishlist] = useState([]);
   const [sortBy, setSortBy] = useState('default');
@@ -176,6 +193,16 @@ export default function CategoriaPage() {
 
   const productosMostrados = getFilteredAndSortedProducts();
 
+  // This should be outside the component or memoized
+  const categoryImages = {
+    plantillas: "/images/banners/Plantillas categoria.png",
+    fajas: "/images/banners/Fajas Categoria.png",
+    ortesis: "/images/banners/Rodillera categorias.png",
+    calzado: "/images/banners/Calzado categoria.png",
+    rehabilitacion: "/images/banners/Movilidad categoria.png",
+    pediatria: "/images/banners/Pediatria categoria.png",
+  };
+
   if (!currentCategory) {
     return (
       <Layout>
@@ -183,7 +210,7 @@ export default function CategoriaPage() {
           <div className="text-center py-12">
             <h1 className="text-2xl font-bold text-gray-900 mb-4">Categoría no encontrada</h1>
             <p className="text-gray-600 mb-6">La categoría que buscas no existe.</p>
-            <Link to="/tienda" className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+            <Link href="/tienda" className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
               Volver a la tienda
             </Link>
           </div>
@@ -194,128 +221,168 @@ export default function CategoriaPage() {
 
   return (
     <Layout>
-      <div className="container mx-auto py-8 px-4">
-        {/* Header de la categoría */}
-        <div className={`${currentCategory.bgColor} text-white p-8 rounded-lg mb-8`}>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <div className="text-6xl">{currentCategory.icon}</div>
-              <div>
-                <h1 className="text-3xl font-bold mb-2">{currentCategory.name}</h1>
-                <p className="text-lg opacity-90">{currentCategory.description}</p>
-                <p className="text-sm opacity-80 mt-2">{currentCategory.products.length} productos disponibles</p>
+      <div className="bg-gray-50">
+        {/* Encabezado de la Categoría */}
+        <div
+          className="relative bg-cover bg-center py-24 px-4 sm:px-6 lg:px-8"
+          style={{ backgroundImage: `url(${categoryImages[categorySlug]})` }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/20" />
+          <div className="relative z-10 text-center text-white">
+            <h1 className="text-5xl font-extrabold tracking-tight">
+              {currentCategory.name}
+            </h1>
+            <p className="mt-4 max-w-2xl mx-auto text-xl">
+              {currentCategory.description}
+            </p>
+          </div>
+        </div>
+
+        <div className="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
+          {/* Breadcrumbs */}
+          <nav className="text-sm text-gray-300 mb-6">
+            <Link href="/tienda" className="hover:text-white/90">Tienda</Link>
+            <span className="mx-2">/</span>
+            <span className="text-white/90">{currentCategory.name}</span>
+          </nav>
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
+            {/* Sidebar de Filtros */}
+            <aside className="lg:col-span-1">
+              <div className="sticky top-24">
+                <h2 className="text-2xl font-bold mb-6">Filtros</h2>
+                {/* Search */}
+                <div className="relative mb-6">
+                  <input
+                    type="text"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    placeholder="Buscar productos..."
+                    className="w-full border-2 border-gray-300 rounded-lg py-3 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                  <svg
+                    className="absolute left-4 top-1/2 transform -translate-y-1/2 w-6 h-6 text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeWidth={2}
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    />
+                  </svg>
+                </div>
+
+                {/* Sorting */}
+                <div className="mb-6">
+                  <label
+                    htmlFor="sort-by"
+                    className="block text-lg font-semibold mb-2"
+                  >
+                    Ordenar por
+                  </label>
+                  <select
+                    id="sort-by"
+                    value={sortBy}
+                    onChange={(e) => setSortBy(e.target.value)}
+                    className="w-full border border-gray-300 rounded-lg px-4 py-3 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  >
+                    <option value="default">Recomendados</option>
+                    <option value="price-low">Precio: Menor a Mayor</option>
+                    <option value="price-high">Precio: Mayor a Menor</option>
+                    <option value="name">Nombre A-Z</option>
+                  </select>
+                </div>
+
+                {/* Wishlist */}
+                <button
+                  onClick={() => setShowWishlistOnly(!showWishlistOnly)}
+                  className={`w-full flex items-center justify-center gap-3 px-4 py-3 rounded-lg font-semibold text-lg transition-colors ${
+                    showWishlistOnly
+                      ? "bg-red-500 text-white"
+                      : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                  }`}
+                >
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeWidth={2}
+                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                    />
+                  </svg>
+                  Favoritos ({wishlist.length})
+                </button>
               </div>
+            </aside>
+
+            {/* Grilla de Productos */}
+            <main className="lg:col-span-3">
+              {searchTerm && (
+                <div className="mb-6 text-lg text-gray-600">
+                  Resultados para «{searchTerm}»
+                </div>
+              )}
+              {productosMostrados.length > 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                  {productosMostrados.map((producto, index) => (
+                    <ProductCard
+                      key={index}
+                      imgSrc={producto.imgSrc}
+                      description={producto.description}
+                      price={producto.price}
+                      action="Agregar al Carrito"
+                      productId={producto.id}
+                      onWishlistToggle={handleAddToWishlist}
+                      isInWishlist={wishlist.includes(producto.id)}
+                    />
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-24">
+                  <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+                    No se encontraron productos
+                  </h3>
+                  <p className="text-lg text-gray-600 mb-6">
+                    Intenta con otros términos de búsqueda
+                  </p>
+                  <button
+                    onClick={() => setSearchTerm("")}
+                    className="bg-blue-600 text-white px-8 py-3 rounded-lg text-lg hover:bg-blue-700 transition-colors"
+                  >
+                    Limpiar búsqueda
+                  </button>
+                </div>
+              )}
+            </main>
+          </div>
+          {/* Otras categorías */}
+          <div className="mt-16">
+            <h3 className="text-xl font-semibold mb-6 text-gray-900">Explora otras categorías</h3>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+              {Object.entries(categories).map(([slug, category]) => (
+                <Link
+                  key={slug}
+                  href={`/categoria/${slug}`}
+                  className={`group bg-white border border-gray-200 rounded-lg p-3 flex items-center gap-3 hover:shadow-md transition-all ${slug === categorySlug ? 'ring-2 ring-blue-500' : ''}`}
+                >
+                  <div
+                    className="w-10 h-10 rounded-md bg-gray-100 bg-cover bg-center flex-shrink-0"
+                    style={{ backgroundImage: `url(${categoryImages[slug]})` }}
+                  />
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-medium text-gray-900 truncate">{category.name}</p>
+                  </div>
+                  <svg className="w-4 h-4 text-gray-400 group-hover:text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              ))}
             </div>
-            <Link to="/tienda" className="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg transition-colors">
-              ← Volver a tienda
-            </Link>
-          </div>
-        </div>
-
-        {/* Controles de búsqueda y filtros */}
-        <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-            {/* Búsqueda */}
-            <div className="relative flex-1 max-w-md">
-              <input
-                type="text"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                placeholder={`Buscar en ${currentCategory.name.toLowerCase()}...`}
-                className="w-full border-2 border-gray-300 rounded-full py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-blue-600"
-              />
-              <svg className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </div>
-
-            {/* Ordenamiento */}
-            <div className="flex items-center gap-4">
-              <span className="text-sm text-gray-600">Ordenar por:</span>
-              <select 
-                value={sortBy} 
-                onChange={(e) => setSortBy(e.target.value)}
-                className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                <option value="default">Recomendados</option>
-                <option value="price-low">Precio: Menor a Mayor</option>
-                <option value="price-high">Precio: Mayor a Menor</option>
-                <option value="name">Nombre A-Z</option>
-              </select>
-            </div>
-
-            {/* Wishlist */}
-            <button
-              onClick={() => setShowWishlistOnly(!showWishlistOnly)}
-              className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                showWishlistOnly 
-                  ? 'bg-red-600 text-white' 
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-              }`}
-            >
-              <span className="flex items-center gap-2">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                </svg>
-                Favoritos ({wishlist.length})
-              </span>
-            </button>
-          </div>
-
-          {/* Información de resultados */}
-          <div className="mt-4 text-sm text-gray-600">
-            Mostrando {productosMostrados.length} productos
-            {searchTerm && ` para "${searchTerm}"`}
-          </div>
-        </div>
-
-        {/* Productos */}
-        {productosMostrados.length > 0 ? (
-          <div className="flex overflow-x-auto pb-4 -mx-2">
-            {productosMostrados.map((producto, index) => (
-              <ProductCard 
-                key={index}
-                imgSrc={producto.imgSrc} 
-                description={producto.description} 
-                price={producto.price} 
-                action="Agregar al Carrito"
-                productId={producto.id}
-                onWishlistToggle={handleAddToWishlist}
-                isInWishlist={wishlist.includes(producto.id)}
-              />
-            ))}
-          </div>
-        ) : (
-          <div className="text-center py-12">
-            <div className="text-6xl mb-4">{currentCategory.icon}</div>
-            <h3 className="text-lg font-medium text-gray-900 mb-2">No se encontraron productos</h3>
-            <p className="text-gray-600 mb-4">Intenta con otros términos de búsqueda</p>
-            <button 
-              onClick={() => setSearchTerm('')}
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              Limpiar búsqueda
-            </button>
-          </div>
-        )}
-
-        {/* Navegación entre categorías */}
-        <div className="mt-12">
-          <h3 className="text-xl font-bold mb-6 text-gray-900">Otras categorías</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {Object.entries(categories).map(([slug, category]) => (
-              <Link
-                key={slug}
-                to={`/categoria/${slug}`}
-                className={`${category.bgColor} text-white p-4 rounded-lg text-center hover:shadow-lg transition-all duration-300 transform hover:scale-105 ${
-                  slug === categorySlug ? 'ring-4 ring-blue-300' : ''
-                }`}
-              >
-                <div className="text-2xl mb-2">{category.icon}</div>
-                <h4 className="font-medium text-sm">{category.name}</h4>
-                <p className="text-xs opacity-80 mt-1">{category.products.length} productos</p>
-              </Link>
-            ))}
           </div>
         </div>
       </div>

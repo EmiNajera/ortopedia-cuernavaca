@@ -495,11 +495,11 @@ export default function Login() {
                         />
                         <span className="ml-2 text-sm text-gray-600">
                           Acepto los{" "}
-                          <Link to="/terminos" className="text-blue-600 hover:text-blue-800">
+                          <Link href="/terminos" className="text-blue-600 hover:text-blue-800">
                             términos y condiciones
                           </Link>{" "}
                           y la{" "}
-                          <Link to="/privacidad" className="text-blue-600 hover:text-blue-800">
+                          <Link href="/privacidad" className="text-blue-600 hover:text-blue-800">
                             política de privacidad
                           </Link>
                         </span>
@@ -627,7 +627,7 @@ export default function Login() {
           <div className="text-center mt-6">
             <p className="text-gray-600">
               ¿Tienes problemas?{" "}
-              <Link to="/contacto" className="text-blue-600 hover:text-blue-800 font-medium">
+              <Link href="/contacto" className="text-blue-600 hover:text-blue-800 font-medium">
                 Contáctanos
               </Link>
             </p>
