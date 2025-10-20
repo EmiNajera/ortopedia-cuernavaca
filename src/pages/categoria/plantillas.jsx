@@ -38,3 +38,8 @@ export default function CategoriaPlantillasPage() {
     </>
   );
 }
+
+CategoriaPlantillasPage.getLayout = function getLayout(page) {
+  const StoreLayout = require('../../components/layout/StoreLayout').default;
+  return <StoreLayout>{page}</StoreLayout>;
+};

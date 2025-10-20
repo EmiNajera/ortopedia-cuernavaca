@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import Link from 'next/link';
-import Layout from '../../components/layout/Layout';
+import MarketingLayout from '../../components/layout/MarketingLayout';
 import CategoryTemplate from '../../components/ui/CategoryTemplate';
 import { categoriesConfig } from '../../data/categories.config';
 
@@ -26,7 +26,7 @@ export default function Categorias() {
   }, [query, segmento]);
 
   return (
-    <Layout>
+    <MarketingLayout>
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-blue-50 to-cyan-50 border-b border-gray-200">
         <div className="max-w-[1200px] mx-auto px-4 py-14">
@@ -116,6 +116,6 @@ export default function Categorias() {
           </div>
         </div>
       </div>
-    </Layout>
+    </MarketingLayout>
   );
 }

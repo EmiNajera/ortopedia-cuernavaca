@@ -394,3 +394,9 @@ export default function Carrito() {
     </div>
   );
 }
+
+// Apply StoreLayout at page-level so store pages keep the store header/footer
+Carrito.getLayout = function getLayout(page) {
+  const StoreLayout = require('../../components/layout/StoreLayout').default;
+  return <StoreLayout>{page}</StoreLayout>;
+};

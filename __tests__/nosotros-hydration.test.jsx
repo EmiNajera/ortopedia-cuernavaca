@@ -3,9 +3,9 @@ import { render } from '@testing-library/react';
 import Nosotros from '../src/pages/home/Nosotros';
 
 // Mock the Layout component
-jest.mock('../src/components/layout/Layout', () => {
-  return function MockLayout({ children }) {
-    return <div data-testid="layout">{children}</div>;
+jest.mock('../src/components/layout/MarketingLayout', () => {
+  return function MockMarketingLayout({ children }) {
+    return <div data-testid="marketing-layout">{children}</div>;
   };
 });
 

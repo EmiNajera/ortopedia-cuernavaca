@@ -2,7 +2,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Image from 'next/image';
-import Layout from '../../../components/layout/Layout';
+import MarketingLayout from '../../../components/layout/MarketingLayout';
 import { openWhatsApp } from '../../../utils/whatsapp';
 
 // Contenido por servicio (puedes enriquecer cada bloque con texto único)
@@ -164,7 +164,7 @@ export default function ServicioDetalle() {
   };
 
   return (
-    <Layout>
+    <MarketingLayout>
       <Head>
         <title>{meta.title} | Ortopedia Cuernavaca</title>
         <meta name="description" content={meta.description} />
@@ -334,6 +334,6 @@ export default function ServicioDetalle() {
           </div>
         </section>
       </main>
-    </Layout>
+    </MarketingLayout>
   );
 }

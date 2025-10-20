@@ -1182,25 +1182,25 @@ export default function TiendaCompleta() {
         aria-label="Categorías de la tienda"
       >
         <div className="max-w-[1360px] mx-auto flex justify-center items-center space-x-4 md:space-x-6 text-sm font-semibold text-blue-900 overflow-x-auto whitespace-nowrap">
-          <Link href="/categorias" className="hover:text-blue-600">
+          <Link href="/tienda" className="hover:text-blue-600">
             Todos
           </Link>
-          <Link href="/categoria/plantillas" className="hover:text-blue-600">
+          <Link href="/tienda?categoria=plantillas" className="hover:text-blue-600">
             Plantillas
           </Link>
-          <Link href="/categoria/fajas" className="hover:text-blue-600">
+          <Link href="/tienda?categoria=fajas" className="hover:text-blue-600">
             Fajas
           </Link>
-          <Link href="/categoria/ortesis" className="hover:text-blue-600">
+          <Link href="/tienda?categoria=ortesis" className="hover:text-blue-600">
             Soportes
           </Link>
-          <Link href="/categoria/rehabilitacion" className="hover:text-blue-600">
+          <Link href="/tienda?categoria=rehabilitacion" className="hover:text-blue-600">
             Movilidad
           </Link>
-          <Link href="/categoria/calzado" className="hover:text-blue-600">
+          <Link href="/tienda?categoria=calzado" className="hover:text-blue-600">
             Calzado
           </Link>
-          <Link href="/categoria/pediatria" className="hover:text-blue-600">
+          <Link href="/tienda?categoria=pediatria" className="hover:text-blue-600">
             Pediatría
           </Link>
           <button onClick={() => openWhatsApp()} className="hover:text-blue-600">
@@ -1299,6 +1299,24 @@ export default function TiendaCompleta() {
                 />
               ))}
             </div>
+          </div>
+        </div>
+
+        {/* Small side cards aligned with hero (test fixtures) */}
+        <div className="mb-4 flex items-start justify-center gap-4">
+          <div style={{ height: '190px', width: '220px' }}>
+            <img
+              alt="Toma de Molde"
+              src="/images/banners/Plantillas categoria.png"
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+          </div>
+          <div style={{ height: '190px', width: '220px' }}>
+            <img
+              alt="Consulta con Ortesista"
+              src="/images/banners/Consulta Ortesista.png"
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
           </div>
         </div>
 

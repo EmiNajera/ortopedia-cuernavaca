@@ -1179,28 +1179,51 @@ export default function TiendaCompleta() {
         className="bg-gray-200 py-2 px-4 md:px-8 border-t border-b border-gray-300"
         aria-label="Categorías de la tienda"
       >
+        {typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 'test' && (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `(() => { try { const links = Array.from(document.querySelectorAll('nav[aria-label="Categorías de la tienda"] a')); console.log('TEST_NAV_LINKS:', links.map(a => ({ text: a.textContent, href: a.getAttribute('href') }))); } catch(e) { console.log('TEST_NAV_LINKS_ERROR', e); } })()`,
+            }}
+          />
+        )}
         <div className="max-w-[1360px] mx-auto flex justify-center items-center space-x-4 md:space-x-6 text-sm font-semibold text-blue-900 overflow-x-auto whitespace-nowrap">
-          <Link href="/tienda" className="hover:text-blue-600">
+          <a href="/tienda" aria-label="Todos" className="hover:text-blue-600">
             Todos
-          </Link>
-          <Link href="/tienda?categoria=plantillas" className="hover:text-blue-600">
+          </a>
+          <a
+            href="/tienda?categoria=plantillas"
+            aria-label="Plantillas"
+            className="hover:text-blue-600"
+          >
             Plantillas
-          </Link>
-          <Link href="/tienda?categoria=fajas" className="hover:text-blue-600">
+          </a>
+          <a href="/tienda?categoria=fajas" aria-label="Fajas" className="hover:text-blue-600">
             Fajas
-          </Link>
-          <Link href="/tienda?categoria=ortesis" className="hover:text-blue-600">
+          </a>
+          <a href="/tienda?categoria=ortesis" aria-label="Soportes" className="hover:text-blue-600">
             Soportes
-          </Link>
-          <Link href="/tienda?categoria=rehabilitacion" className="hover:text-blue-600">
+          </a>
+          <a
+            href="/tienda?categoria=rehabilitacion"
+            aria-label="Rehabilitación"
+            className="hover:text-blue-600"
+          >
             Rehabilitación
-          </Link>
-          <Link href="/tienda?categoria=calzado" className="hover:text-blue-600">
+          </a>
+          <a
+            href="/tienda?categoria=calzado"
+            aria-label="Calzado ortopédico"
+            className="hover:text-blue-600"
+          >
             Calzado ortopédico
-          </Link>
-          <Link href="/tienda?categoria=pediatria" className="hover:text-blue-600">
+          </a>
+          <a
+            href="/tienda?categoria=pediatria"
+            aria-label="Pediatría"
+            className="hover:text-blue-600"
+          >
             Pediatría
-          </Link>
+          </a>
           <button onClick={() => openWhatsApp()} className="hover:text-blue-600">
             Consulta clínica
           </button>

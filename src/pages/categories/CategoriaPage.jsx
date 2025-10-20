@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import Layout from '../../components/layout/Layout';
+import MarketingLayout from '../../components/layout/MarketingLayout';
 import { openWhatsApp } from '../../utils/whatsapp';
 import Image from 'next/image';
 
@@ -372,7 +372,7 @@ export default function CategoriaPage() {
 
   if (!currentCategory) {
     return (
-      <Layout>
+      <MarketingLayout>
         <div className="container mx-auto py-8 px-4">
           <div className="text-center py-12">
             <h1 className="text-2xl font-bold text-gray-900 mb-4">Categoría no encontrada</h1>
@@ -385,12 +385,12 @@ export default function CategoriaPage() {
             </Link>
           </div>
         </div>
-      </Layout>
+      </MarketingLayout>
     );
   }
 
   return (
-    <Layout>
+    <MarketingLayout>
       <div className="bg-gray-50">
         {/* Encabezado de la Categoría */}
         <div
@@ -554,6 +554,6 @@ export default function CategoriaPage() {
           </div>
         </div>
       </div>
-    </Layout>
+    </MarketingLayout>
   );
 }

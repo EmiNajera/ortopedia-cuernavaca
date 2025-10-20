@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import Layout from '../../../components/layout/Layout';
+import MarketingLayout from '../../../components/layout/MarketingLayout';
 import { motion } from 'framer-motion';
 import { openWhatsApp } from '../../../utils/whatsapp';
 
@@ -160,7 +160,7 @@ export default function Pediatria() {
   const productosMostrados = getFilteredAndSortedProducts();
 
   return (
-    <Layout>
+    <MarketingLayout>
       <div className="container mx-auto py-8 px-4">
         {/* Header de la categoría */}
         <div className="bg-pink-500 text-white p-8 rounded-lg mb-8">
@@ -367,6 +367,6 @@ export default function Pediatria() {
           </div>
         </div>
       </div>
-    </Layout>
+    </MarketingLayout>
   );
 }

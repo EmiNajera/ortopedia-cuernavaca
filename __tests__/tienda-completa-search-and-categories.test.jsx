@@ -45,11 +45,11 @@ describe('TiendaCompleta - Search and Category Links', () => {
       'href',
       '/tienda?categoria=plantillas',
     );
-    expect(screen.getByRole('link', { name: 'Calzado ortopédico' })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: 'Calzado' })).toHaveAttribute(
       'href',
       '/tienda?categoria=calzado',
     );
-    expect(screen.getByRole('link', { name: 'Rehabilitación' })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: 'Movilidad' })).toHaveAttribute(
       'href',
       '/tienda?categoria=rehabilitacion',
     );

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import Layout from '../../components/layout/Layout';
+import MarketingLayout from '../../components/layout/MarketingLayout';
 
 export default function Login() {
   const [activeTab, setActiveTab] = useState('login');
@@ -112,7 +112,7 @@ export default function Login() {
   ];
 
   return (
-    <Layout>
+    <MarketingLayout>
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-12 px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -791,6 +791,6 @@ export default function Login() {
           </div>
         </motion.div>
       </div>
-    </Layout>
+    </MarketingLayout>
   );
 }

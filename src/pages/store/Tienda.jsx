@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Layout from '../../components/layout/Layout';
+import StoreLayout from '../../components/layout/StoreLayout';
 
 export default function Tienda() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -72,8 +72,12 @@ export default function Tienda() {
     setCurrentSlide(index);
   };
 
+  Tienda.getLayout = function getLayout(page) {
+    const StoreLayout = require('../../components/layout/StoreLayout').default;
+    return <StoreLayout>{page}</StoreLayout>;
+  };
   return (
-    <Layout>
+    <StoreLayout>
       {/* Hero Carrusel */}
       <section className="relative h-[70vh] overflow-hidden bg-gray-900">
         <div className="relative w-full h-full">
@@ -324,6 +328,6 @@ export default function Tienda() {
           </div>
         </div>
       </section>
-    </Layout>
+    </StoreLayout>
   );
 }

@@ -447,3 +447,8 @@ export default function Producto() {
     </div>
   );
 }
+
+Producto.getLayout = function getLayout(page) {
+  const StoreLayout = require('../../components/layout/StoreLayout').default;
+  return <StoreLayout>{page}</StoreLayout>;
+};

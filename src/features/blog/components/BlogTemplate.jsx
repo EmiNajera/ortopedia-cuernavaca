@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import Layout from '../../../components/layout/Layout';
+import MarketingLayout from '../../../components/layout/MarketingLayout';
 import ProfessionalArticleTemplate from './ProfessionalArticleTemplate';
 
 const BlogTemplate = ({
@@ -43,7 +43,7 @@ const BlogTemplate = ({
         />
       </Head>
 
-      <Layout>
+      <MarketingLayout>
         <ProfessionalArticleTemplate
           title={title}
           excerpt={excerpt}
@@ -57,7 +57,7 @@ const BlogTemplate = ({
           slug={slug}
           relatedPosts={relatedPosts}
         />
-      </Layout>
+      </MarketingLayout>
     </>
   );
 };

@@ -10,3 +10,8 @@ export async function getServerSideProps() {
     props: {},
   };
 }
+
+CategoriaSlugPage.getLayout = function getLayout(page) {
+  const StoreLayout = require('../../components/layout/StoreLayout').default;
+  return <StoreLayout>{page}</StoreLayout>;
+};

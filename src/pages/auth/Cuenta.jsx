@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import Layout from '../../components/layout/Layout';
+import MarketingLayout from '../../components/layout/MarketingLayout';
 
 export default function Cuenta() {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -123,7 +123,7 @@ export default function Cuenta() {
   };
 
   return (
-    <Layout>
+    <MarketingLayout>
       <div className="min-h-screen bg-gray-50 py-8">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
@@ -651,6 +651,6 @@ export default function Cuenta() {
           </div>
         </div>
       </div>
-    </Layout>
+    </MarketingLayout>
   );
 }
