@@ -12,7 +12,7 @@ export default function Citas() {
     telefono: '',
     edad: '',
     motivo: '',
-    antecedentes: ''
+    antecedentes: '',
   });
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -25,7 +25,7 @@ export default function Citas() {
       duration: '45 min',
       price: '$500',
       icon: '👨‍⚕️',
-      color: 'blue'
+      color: 'blue',
     },
     {
       id: 'plantillas-personalizadas',
@@ -34,7 +34,7 @@ export default function Citas() {
       duration: '60 min',
       price: '$800',
       icon: '🦶',
-      color: 'green'
+      color: 'green',
     },
     {
       id: 'ortesis-protesis',
@@ -43,7 +43,7 @@ export default function Citas() {
       duration: '90 min',
       price: '$1,200',
       icon: '🦿',
-      color: 'purple'
+      color: 'purple',
     },
     {
       id: 'rehabilitacion-fisica',
@@ -52,7 +52,7 @@ export default function Citas() {
       duration: '60 min',
       price: '$600',
       icon: '💪',
-      color: 'orange'
+      color: 'orange',
     },
     {
       id: 'estudio-postura',
@@ -61,7 +61,7 @@ export default function Citas() {
       duration: '75 min',
       price: '$700',
       icon: '📊',
-      color: 'red'
+      color: 'red',
     },
     {
       id: 'evaluacion-deportiva',
@@ -70,8 +70,8 @@ export default function Citas() {
       duration: '60 min',
       price: '$650',
       icon: '🏃‍♂️',
-      color: 'teal'
-    }
+      color: 'teal',
+    },
   ];
 
   const availableDates = [
@@ -84,19 +84,34 @@ export default function Citas() {
     { date: '2024-01-28', day: 'Dom', available: false },
     { date: '2024-01-29', day: 'Lun', available: true },
     { date: '2024-01-30', day: 'Mar', available: true },
-    { date: '2024-01-31', day: 'Mié', available: true }
+    { date: '2024-01-31', day: 'Mié', available: true },
   ];
 
   const availableTimes = [
-    '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30',
-    '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00'
+    '11:00',
+    '11:30',
+    '12:00',
+    '12:30',
+    '13:00',
+    '13:30',
+    '14:00',
+    '14:30',
+    '15:00',
+    '15:30',
+    '16:00',
+    '16:30',
+    '17:00',
+    '17:30',
+    '18:00',
+    '18:30',
+    '19:00',
   ];
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -118,10 +133,10 @@ export default function Citas() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simular envío de formulario
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
     alert('¡Cita agendada exitosamente! Te enviaremos una confirmación por email.');
     setIsSubmitting(false);
     setCurrentStep(1);
@@ -134,7 +149,7 @@ export default function Citas() {
       telefono: '',
       edad: '',
       motivo: '',
-      antecedentes: ''
+      antecedentes: '',
     });
   };
 
@@ -145,20 +160,20 @@ export default function Citas() {
       purple: 'bg-purple-100 text-purple-600 border-purple-200',
       orange: 'bg-orange-100 text-orange-600 border-orange-200',
       red: 'bg-red-100 text-red-600 border-red-200',
-      teal: 'bg-teal-100 text-teal-600 border-teal-200'
+      teal: 'bg-teal-100 text-teal-600 border-teal-200',
     };
     return colors[color] || colors.blue;
   };
 
   return (
-    <MarketingLayout>
+    <>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
           <div className="absolute inset-0 bg-black opacity-20"></div>
           <div className="container mx-auto px-6 relative z-10">
             <div className="text-center max-w-4xl mx-auto">
-              <motion.h1 
+              <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
@@ -166,7 +181,7 @@ export default function Citas() {
               >
                 Agenda tu <span className="text-blue-200">Cita</span>
               </motion.h1>
-              <motion.p 
+              <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
@@ -174,7 +189,7 @@ export default function Citas() {
               >
                 Tu camino hacia la recuperación comienza aquí
               </motion.p>
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
@@ -201,17 +216,19 @@ export default function Citas() {
               <div className="flex items-center justify-between mb-4">
                 {[1, 2, 3, 4].map((step) => (
                   <div key={step} className="flex items-center">
-                    <div className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold ${
-                      currentStep >= step 
-                        ? 'bg-blue-600 text-white' 
-                        : 'bg-gray-200 text-gray-500'
-                    }`}>
+                    <div
+                      className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold ${
+                        currentStep >= step ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-500'
+                      }`}
+                    >
                       {step}
                     </div>
                     {step < 4 && (
-                      <div className={`w-16 h-1 mx-2 ${
-                        currentStep > step ? 'bg-blue-600' : 'bg-gray-200'
-                      }`}></div>
+                      <div
+                        className={`w-16 h-1 mx-2 ${
+                          currentStep > step ? 'bg-blue-600' : 'bg-gray-200'
+                        }`}
+                      ></div>
                     )}
                   </div>
                 ))}
@@ -237,7 +254,9 @@ export default function Citas() {
                     className="bg-white rounded-2xl shadow-xl p-8"
                   >
                     <div className="text-center mb-8">
-                      <h2 className="text-3xl font-bold text-gray-800 mb-4">Selecciona tu Servicio</h2>
+                      <h2 className="text-3xl font-bold text-gray-800 mb-4">
+                        Selecciona tu Servicio
+                      </h2>
                       <p className="text-gray-600">Elige el tipo de consulta que necesitas</p>
                     </div>
                     <div className="grid md:grid-cols-2 gap-6">
@@ -257,10 +276,14 @@ export default function Citas() {
                               </h3>
                               <p className="text-gray-600 mb-3">{service.description}</p>
                               <div className="flex items-center justify-between">
-                                <span className={`px-3 py-1 rounded-full text-sm font-medium border ${getServiceColor(service.color)}`}>
+                                <span
+                                  className={`px-3 py-1 rounded-full text-sm font-medium border ${getServiceColor(service.color)}`}
+                                >
                                   {service.duration}
                                 </span>
-                                <span className="text-lg font-bold text-gray-800">{service.price}</span>
+                                <span className="text-lg font-bold text-gray-800">
+                                  {service.price}
+                                </span>
                               </div>
                             </div>
                           </div>
@@ -328,7 +351,15 @@ export default function Citas() {
                   >
                     <div className="text-center mb-8">
                       <h2 className="text-3xl font-bold text-gray-800 mb-4">Selecciona una Hora</h2>
-                      <p className="text-gray-600">Horarios disponibles para el {new Date(selectedDate).toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                      <p className="text-gray-600">
+                        Horarios disponibles para el{' '}
+                        {new Date(selectedDate).toLocaleDateString('es-ES', {
+                          weekday: 'long',
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric',
+                        })}
+                      </p>
                     </div>
                     <div className="grid grid-cols-4 gap-4">
                       {availableTimes.map((time) => (
@@ -365,21 +396,34 @@ export default function Citas() {
                     className="bg-white rounded-2xl shadow-xl p-8"
                   >
                     <div className="text-center mb-8">
-                      <h2 className="text-3xl font-bold text-gray-800 mb-4">Información Personal</h2>
+                      <h2 className="text-3xl font-bold text-gray-800 mb-4">
+                        Información Personal
+                      </h2>
                       <p className="text-gray-600">Completa tus datos para confirmar la cita</p>
                     </div>
 
                     {/* Appointment Summary */}
                     <div className="bg-blue-50 rounded-xl p-6 mb-8">
-                      <h3 className="text-lg font-semibold text-gray-800 mb-4">Resumen de tu Cita</h3>
+                      <h3 className="text-lg font-semibold text-gray-800 mb-4">
+                        Resumen de tu Cita
+                      </h3>
                       <div className="grid md:grid-cols-3 gap-4 text-sm">
                         <div>
                           <span className="font-medium text-gray-600">Servicio:</span>
-                          <p className="text-gray-800">{services.find(s => s.id === selectedService)?.name}</p>
+                          <p className="text-gray-800">
+                            {services.find((s) => s.id === selectedService)?.name}
+                          </p>
                         </div>
                         <div>
                           <span className="font-medium text-gray-600">Fecha:</span>
-                          <p className="text-gray-800">{new Date(selectedDate).toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                          <p className="text-gray-800">
+                            {new Date(selectedDate).toLocaleDateString('es-ES', {
+                              weekday: 'long',
+                              year: 'numeric',
+                              month: 'long',
+                              day: 'numeric',
+                            })}
+                          </p>
                         </div>
                         <div>
                           <span className="font-medium text-gray-600">Hora:</span>
@@ -515,8 +559,12 @@ export default function Citas() {
                 className="text-center"
               >
                 <div className="text-4xl mb-4">👨‍⚕️</div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">Especialistas Certificados</h3>
-                <p className="text-gray-600">Equipo de profesionales con formación en el Instituto Nacional de Rehabilitación</p>
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                  Especialistas Certificados
+                </h3>
+                <p className="text-gray-600">
+                  Equipo de profesionales con formación en el Instituto Nacional de Rehabilitación
+                </p>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -527,7 +575,9 @@ export default function Citas() {
               >
                 <div className="text-4xl mb-4">🔬</div>
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">Tecnología Avanzada</h3>
-                <p className="text-gray-600">Equipos de última generación para diagnósticos precisos y tratamientos efectivos</p>
+                <p className="text-gray-600">
+                  Equipos de última generación para diagnósticos precisos y tratamientos efectivos
+                </p>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -538,7 +588,9 @@ export default function Citas() {
               >
                 <div className="text-4xl mb-4">❤️</div>
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">Atención Personalizada</h3>
-                <p className="text-gray-600">Cada paciente es único y merece un tratamiento individualizado</p>
+                <p className="text-gray-600">
+                  Cada paciente es único y merece un tratamiento individualizado
+                </p>
               </motion.div>
             </div>
           </div>
@@ -554,12 +606,8 @@ export default function Citas() {
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  ¿Necesitas Ayuda?
-                </h2>
-                <p className="text-xl mb-8 text-blue-100">
-                  Nuestro equipo está aquí para ayudarte
-                </p>
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">¿Necesitas Ayuda?</h2>
+                <p className="text-xl mb-8 text-blue-100">Nuestro equipo está aquí para ayudarte</p>
                 <div className="grid md:grid-cols-2 gap-8">
                   <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
                     <div className="text-2xl mb-2">🏥</div>
@@ -579,6 +627,8 @@ export default function Citas() {
           </div>
         </section>
       </div>
-    </MarketingLayout>
+    </>
   );
-} 
+}
+
+Citas.getLayout = (page) => <MarketingLayout>{page}</MarketingLayout>;
