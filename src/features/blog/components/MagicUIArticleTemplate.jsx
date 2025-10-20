@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { 
+import {
   Calendar,
   Clock,
   User,
@@ -13,22 +13,22 @@ import {
   Moon,
   Sun,
   Eye,
-  TrendingUp
+  TrendingUp,
 } from 'lucide-react';
 import Link from 'next/link';
 
-const MagicUIArticleTemplate = ({ 
-  title, 
-  excerpt, 
-  content, 
-  author, 
-  date, 
-  readTime, 
-  image, 
-  tags, 
+const MagicUIArticleTemplate = ({
+  title,
+  excerpt,
+  content,
+  author,
+  date,
+  readTime,
+  image,
+  tags,
   category,
   slug,
-  relatedPosts = []
+  relatedPosts = [],
 }) => {
   const [darkMode, setDarkMode] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
@@ -61,7 +61,7 @@ const MagicUIArticleTemplate = ({
     return new Date(dateString).toLocaleDateString('es-ES', {
       year: 'numeric',
       month: 'long',
-      day: 'numeric'
+      day: 'numeric',
     });
   };
 
@@ -72,7 +72,7 @@ const MagicUIArticleTemplate = ({
       consejos: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200',
       'casos-exito': 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200',
       investigacion: 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200',
-      novedades: 'bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-200'
+      novedades: 'bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-200',
     };
     return colors[category] || 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200';
   };
@@ -111,11 +111,14 @@ const MagicUIArticleTemplate = ({
       <header className="sticky top-0 z-40 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <Link href="/blog" className="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+            <Link
+              href="/blog"
+              className="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+            >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Volver al Blog
             </Link>
-            
+
             <div className="flex items-center space-x-4">
               <button
                 onClick={() => setDarkMode(!darkMode)}
@@ -139,7 +142,9 @@ const MagicUIArticleTemplate = ({
             >
               {/* Category and Meta */}
               <div className="flex items-center space-x-4 mb-6">
-                <span className={`px-3 py-1 rounded-full text-sm font-medium ${getCategoryColor(category)}`}>
+                <span
+                  className={`px-3 py-1 rounded-full text-sm font-medium ${getCategoryColor(category)}`}
+                >
                   {category}
                 </span>
                 <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm">
@@ -170,11 +175,18 @@ const MagicUIArticleTemplate = ({
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-4">
                   <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold text-lg">
-                    {author ? author.split(' ').map(n => n[0]).join('') : 'OT'}
+                    {author
+                      ? author
+                          .split(' ')
+                          .map((n) => n[0])
+                          .join('')
+                      : 'OT'}
                   </div>
                   <div>
                     <p className="font-semibold text-gray-900 dark:text-white">{author}</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">Escrito el {formatDate(date)}</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                      Escrito el {formatDate(date)}
+                    </p>
                   </div>
                 </div>
 
@@ -182,8 +194,8 @@ const MagicUIArticleTemplate = ({
                   <button
                     onClick={() => setIsLiked(!isLiked)}
                     className={`p-3 rounded-lg transition-colors ${
-                      isLiked 
-                        ? 'text-red-500 bg-red-50 dark:bg-red-900/20' 
+                      isLiked
+                        ? 'text-red-500 bg-red-50 dark:bg-red-900/20'
                         : 'text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20'
                     }`}
                   >
@@ -192,8 +204,8 @@ const MagicUIArticleTemplate = ({
                   <button
                     onClick={() => setIsBookmarked(!isBookmarked)}
                     className={`p-3 rounded-lg transition-colors ${
-                      isBookmarked 
-                        ? 'text-yellow-500 bg-yellow-50 dark:bg-yellow-900/20' 
+                      isBookmarked
+                        ? 'text-yellow-500 bg-yellow-50 dark:bg-yellow-900/20'
                         : 'text-gray-400 hover:text-yellow-500 hover:bg-yellow-50 dark:hover:bg-yellow-900/20'
                     }`}
                   >
@@ -223,11 +235,7 @@ const MagicUIArticleTemplate = ({
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="relative rounded-2xl overflow-hidden shadow-2xl"
               >
-                <img
-                  src={image}
-                  alt={title}
-                  className="w-full h-96 object-cover"
-                />
+                <img src={image} alt={title} className="w-full h-96 object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
               </motion.div>
             </div>
@@ -258,7 +266,9 @@ const MagicUIArticleTemplate = ({
               >
                 <div className="flex items-center space-x-2 mb-4">
                   <Tag className="w-5 h-5 text-gray-500 dark:text-gray-400" />
-                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Etiquetas:</span>
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Etiquetas:
+                  </span>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {tags.map((tag, index) => (
@@ -314,7 +324,9 @@ const MagicUIArticleTemplate = ({
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                             <div className="absolute top-4 left-4">
-                              <span className={`px-3 py-1 rounded-full text-sm font-medium ${getCategoryColor(post.category)}`}>
+                              <span
+                                className={`px-3 py-1 rounded-full text-sm font-medium ${getCategoryColor(post.category)}`}
+                              >
                                 {post.category}
                               </span>
                             </div>
@@ -357,9 +369,7 @@ const MagicUIArticleTemplate = ({
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h3 className="text-3xl font-bold text-white mb-4">
-                ¿Te gustó este artículo?
-              </h3>
+              <h3 className="text-3xl font-bold text-white mb-4">¿Te gustó este artículo?</h3>
               <p className="text-xl text-blue-100 mb-8">
                 Suscríbete para recibir más contenido como este directamente en tu correo
               </p>

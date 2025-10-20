@@ -3,16 +3,7 @@ import Head from 'next/head';
 import { motion, AnimatePresence } from 'framer-motion';
 import ArticleManager from '../features/blog/components/ArticleManager';
 import ArticleCreator from '../features/blog/components/ArticleCreator';
-import { 
-  FileText, 
-  Settings, 
-  BarChart3, 
-  Users,
-  Eye,
-  Edit,
-  Save,
-  X
-} from 'lucide-react';
+import { FileText, Settings, BarChart3, Users, Eye, Edit, Save, X } from 'lucide-react';
 
 export default function BlogAdmin() {
   const [currentView, setCurrentView] = useState('manager'); // 'manager', 'creator', 'editor'
@@ -36,7 +27,7 @@ export default function BlogAdmin() {
         setArticles(data);
       } else {
         // Fallback: cargar desde el sistema actual
-  const { getAllPosts } = await import('../lib/utils/blogUtils');
+        const { getAllPosts } = await import('../lib/utils/blogUtils');
         const posts = getAllPosts();
         setArticles(posts);
       }
@@ -44,7 +35,7 @@ export default function BlogAdmin() {
       console.error('Error loading articles:', error);
       // Fallback: cargar desde el sistema actual
       try {
-  const { getAllPosts } = await import('../lib/utils/blogUtils');
+        const { getAllPosts } = await import('../lib/utils/blogUtils');
         const posts = getAllPosts();
         setArticles(posts);
       } catch (fallbackError) {
@@ -70,30 +61,29 @@ export default function BlogAdmin() {
     try {
       // En un entorno real, esto sería una llamada a la API
       console.log('Saving article:', { mdxContent, articleData });
-      
+
       // Simular guardado exitoso
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
       // Actualizar la lista de artículos
       if (editingArticle) {
         // Actualizar artículo existente
-        setArticles(prev => prev.map(article => 
-          article.slug === editingArticle.slug 
-            ? { ...article, ...articleData }
-            : article
-        ));
+        setArticles((prev) =>
+          prev.map((article) =>
+            article.slug === editingArticle.slug ? { ...article, ...articleData } : article,
+          ),
+        );
       } else {
         // Agregar nuevo artículo
-        setArticles(prev => [...prev, articleData]);
+        setArticles((prev) => [...prev, articleData]);
       }
-      
+
       // Volver al manager
       setCurrentView('manager');
       setEditingArticle(null);
-      
+
       // Mostrar notificación de éxito
       alert('Artículo guardado exitosamente');
-      
     } catch (error) {
       console.error('Error saving article:', error);
       alert('Error al guardar el artículo');
@@ -105,16 +95,15 @@ export default function BlogAdmin() {
       try {
         // En un entorno real, esto sería una llamada a la API
         console.log('Deleting article:', slug);
-        
+
         // Simular eliminación
-        await new Promise(resolve => setTimeout(resolve, 500));
-        
+        await new Promise((resolve) => setTimeout(resolve, 500));
+
         // Actualizar la lista de artículos
-        setArticles(prev => prev.filter(article => article.slug !== slug));
-        
+        setArticles((prev) => prev.filter((article) => article.slug !== slug));
+
         // Mostrar notificación de éxito
         alert('Artículo eliminado exitosamente');
-        
       } catch (error) {
         console.error('Error deleting article:', error);
         alert('Error al eliminar el artículo');
@@ -170,7 +159,10 @@ export default function BlogAdmin() {
     <>
       <Head>
         <title>Administración del Blog | OrtoTech</title>
-        <meta name="description" content="Panel de administración para gestionar artículos del blog de OrtoTech" />
+        <meta
+          name="description"
+          content="Panel de administración para gestionar artículos del blog de OrtoTech"
+        />
         <meta name="robots" content="noindex, nofollow" />
       </Head>
 
@@ -186,7 +178,7 @@ export default function BlogAdmin() {
                   </div>
                   <h1 className="text-xl font-bold text-gray-900">Blog Admin</h1>
                 </div>
-                
+
                 {/* Navegación */}
                 <nav className="hidden md:flex items-center space-x-1">
                   <button
@@ -221,7 +213,7 @@ export default function BlogAdmin() {
                   </div>
                   <div className="flex items-center">
                     <Eye className="w-4 h-4 mr-1" />
-                    {articles.filter(a => a.featured).length} destacados
+                    {articles.filter((a) => a.featured).length} destacados
                   </div>
                 </div>
 

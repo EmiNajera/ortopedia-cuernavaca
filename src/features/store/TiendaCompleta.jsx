@@ -4,32 +4,43 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { openWhatsApp } from '../../lib/utils/whatsapp';
-import {
-  FaSearch,
-  FaChevronRight,
-  FaChevronLeft,
-} from 'react-icons/fa';
+import { FaSearch, FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 
 // Card para productos optimizada para grid
-const ProductCard = ({ imgSrc, description, price, action = "Agregar al Carrito", productId = "1" }) => (
+const ProductCard = ({
+  imgSrc,
+  description,
+  price,
+  action = 'Agregar al Carrito',
+  productId = '1',
+}) => (
   <div className="group bg-white border border-gray-200 rounded-lg shadow-sm text-left transition-all duration-300 hover:shadow-md hover:-translate-y-1">
-    <div className="aspect-square w-full bg-gray-100 rounded-t-lg overflow-hidden cursor-pointer" onClick={() => window.location.href = `/producto/${productId}`}>
-      <Image src={imgSrc} alt={description} width={200} height={200} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
+    <div
+      className="aspect-square w-full bg-gray-100 rounded-t-lg overflow-hidden cursor-pointer"
+      onClick={() => (window.location.href = `/producto/${productId}`)}
+    >
+      <Image
+        src={imgSrc}
+        alt={description}
+        width={200}
+        height={200}
+        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+      />
     </div>
     <div className="p-3">
-      <p 
-        className="text-sm font-medium text-gray-800 h-12 cursor-pointer hover:text-blue-600 line-clamp-2" 
-        onClick={() => window.location.href = `/producto/${productId}`}
+      <p
+        className="text-sm font-medium text-gray-800 h-12 cursor-pointer hover:text-blue-600 line-clamp-2"
+        onClick={() => (window.location.href = `/producto/${productId}`)}
       >
         {description}
       </p>
       {price && <p className="text-lg font-bold text-blue-900 mb-2">{price}</p>}
-      <button 
+      <button
         className="w-full bg-blue-600 text-white py-2 rounded-md text-sm font-semibold hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
         onClick={() => {
-          if (action === "Agregar al Carrito") {
+          if (action === 'Agregar al Carrito') {
             alert(`Producto "${description}" agregado al carrito`);
-          } else if (action === "Agendar Cita") {
+          } else if (action === 'Agendar Cita') {
             openWhatsApp();
           } else {
             alert(`Función ${action} en desarrollo`);
@@ -59,197 +70,198 @@ const RehabilitationCenter = () => {
     { id: 'rehabilitacion', name: 'Rehabilitación', color: 'indigo' },
     { id: 'fisioterapia', name: 'Fisioterapia', color: 'orange' },
     { id: 'productos', name: 'Productos', color: 'teal' },
-    { id: 'servicios', name: 'Servicios', color: 'pink' }
+    { id: 'servicios', name: 'Servicios', color: 'pink' },
   ];
 
   const rehabilitationServices = [
     // EQUIPOS
     {
-      service: "Ultrasonido Terapéutico",
-      category: "equipos",
-      description: "Equipo de ultrasonido para terapia de tejidos profundos",
-      keywords: "ultrasonido, terapia, equipos, rehabilitación, tejidos"
+      service: 'Ultrasonido Terapéutico',
+      category: 'equipos',
+      description: 'Equipo de ultrasonido para terapia de tejidos profundos',
+      keywords: 'ultrasonido, terapia, equipos, rehabilitación, tejidos',
     },
     {
-      service: "Electroestimulación",
-      category: "equipos", 
-      description: "Equipos de electroestimulación para fortalecimiento muscular",
-      keywords: "electroestimulación, músculos, equipos, fortalecimiento"
+      service: 'Electroestimulación',
+      category: 'equipos',
+      description: 'Equipos de electroestimulación para fortalecimiento muscular',
+      keywords: 'electroestimulación, músculos, equipos, fortalecimiento',
     },
     {
-      service: "Plataforma de Equilibrio",
-      category: "equipos",
-      description: "Sistema de evaluación y entrenamiento del equilibrio",
-      keywords: "equilibrio, plataforma, evaluación, entrenamiento"
+      service: 'Plataforma de Equilibrio',
+      category: 'equipos',
+      description: 'Sistema de evaluación y entrenamiento del equilibrio',
+      keywords: 'equilibrio, plataforma, evaluación, entrenamiento',
     },
     {
-      service: "Mesa de Tracción",
-      category: "equipos",
-      description: "Mesa especializada para tracción cervical y lumbar",
-      keywords: "tracción, mesa, cervical, lumbar, columna"
+      service: 'Mesa de Tracción',
+      category: 'equipos',
+      description: 'Mesa especializada para tracción cervical y lumbar',
+      keywords: 'tracción, mesa, cervical, lumbar, columna',
     },
-    
+
     // TERAPIAS
     {
-      service: "Terapia Manual",
-      category: "terapias",
-      description: "Técnicas manuales especializadas para alivio del dolor",
-      keywords: "terapia manual, técnicas, dolor, alivio, especializada"
+      service: 'Terapia Manual',
+      category: 'terapias',
+      description: 'Técnicas manuales especializadas para alivio del dolor',
+      keywords: 'terapia manual, técnicas, dolor, alivio, especializada',
     },
     {
-      service: "Terapia de Calor y Frío",
-      category: "terapias",
-      description: "Aplicación terapéutica de calor y frío para inflamación",
-      keywords: "calor, frío, terapia, inflamación, aplicación"
+      service: 'Terapia de Calor y Frío',
+      category: 'terapias',
+      description: 'Aplicación terapéutica de calor y frío para inflamación',
+      keywords: 'calor, frío, terapia, inflamación, aplicación',
     },
     {
-      service: "Hidroterapia",
-      category: "terapias",
-      description: "Terapia acuática para rehabilitación y fortalecimiento",
-      keywords: "hidroterapia, agua, acuática, rehabilitación"
+      service: 'Hidroterapia',
+      category: 'terapias',
+      description: 'Terapia acuática para rehabilitación y fortalecimiento',
+      keywords: 'hidroterapia, agua, acuática, rehabilitación',
     },
     {
-      service: "Laserterapia",
-      category: "terapias",
-      description: "Terapia con láser de baja intensidad para cicatrización",
-      keywords: "láser, terapia, cicatrización, baja intensidad"
+      service: 'Laserterapia',
+      category: 'terapias',
+      description: 'Terapia con láser de baja intensidad para cicatrización',
+      keywords: 'láser, terapia, cicatrización, baja intensidad',
     },
-    
+
     // EVALUACIÓN
     {
-      service: "Evaluación Biomecánica",
-      category: "evaluacion",
-      description: "Análisis completo del movimiento y postura corporal",
-      keywords: "biomecánica, evaluación, movimiento, postura, análisis"
+      service: 'Evaluación Biomecánica',
+      category: 'evaluacion',
+      description: 'Análisis completo del movimiento y postura corporal',
+      keywords: 'biomecánica, evaluación, movimiento, postura, análisis',
     },
     {
-      service: "Evaluación de Marcha",
-      category: "evaluacion",
-      description: "Estudio detallado de la forma de caminar",
-      keywords: "marcha, caminar, evaluación, estudio, análisis"
+      service: 'Evaluación de Marcha',
+      category: 'evaluacion',
+      description: 'Estudio detallado de la forma de caminar',
+      keywords: 'marcha, caminar, evaluación, estudio, análisis',
     },
     {
-      service: "Evaluación Postural",
-      category: "evaluacion",
-      description: "Análisis de la postura corporal y alineación",
-      keywords: "postura, alineación, evaluación, corporal, análisis"
+      service: 'Evaluación Postural',
+      category: 'evaluacion',
+      description: 'Análisis de la postura corporal y alineación',
+      keywords: 'postura, alineación, evaluación, corporal, análisis',
     },
     {
-      service: "Evaluación de Fuerza",
-      category: "evaluacion",
-      description: "Medición de fuerza muscular y resistencia",
-      keywords: "fuerza, muscular, resistencia, medición, evaluación"
+      service: 'Evaluación de Fuerza',
+      category: 'evaluacion',
+      description: 'Medición de fuerza muscular y resistencia',
+      keywords: 'fuerza, muscular, resistencia, medición, evaluación',
     },
-    
+
     // REHABILITACIÓN
     {
-      service: "Rehabilitación Deportiva",
-      category: "rehabilitacion",
-      description: "Programa especializado para deportistas lesionados",
-      keywords: "deportiva, deportistas, lesiones, programa, especializado"
+      service: 'Rehabilitación Deportiva',
+      category: 'rehabilitacion',
+      description: 'Programa especializado para deportistas lesionados',
+      keywords: 'deportiva, deportistas, lesiones, programa, especializado',
     },
     {
-      service: "Rehabilitación Neurológica",
-      category: "rehabilitacion",
-      description: "Terapia para pacientes con afectaciones neurológicas",
-      keywords: "neurológica, sistema nervioso, terapia, pacientes"
+      service: 'Rehabilitación Neurológica',
+      category: 'rehabilitacion',
+      description: 'Terapia para pacientes con afectaciones neurológicas',
+      keywords: 'neurológica, sistema nervioso, terapia, pacientes',
     },
     {
-      service: "Rehabilitación Pediátrica",
-      category: "rehabilitacion",
-      description: "Terapia especializada para niños y adolescentes",
-      keywords: "pediátrica, niños, adolescentes, terapia, especializada"
+      service: 'Rehabilitación Pediátrica',
+      category: 'rehabilitacion',
+      description: 'Terapia especializada para niños y adolescentes',
+      keywords: 'pediátrica, niños, adolescentes, terapia, especializada',
     },
     {
-      service: "Rehabilitación Geriátrica",
-      category: "rehabilitacion",
-      description: "Programa de rehabilitación para adultos mayores",
-      keywords: "geriátrica, adultos mayores, programa, rehabilitación"
+      service: 'Rehabilitación Geriátrica',
+      category: 'rehabilitacion',
+      description: 'Programa de rehabilitación para adultos mayores',
+      keywords: 'geriátrica, adultos mayores, programa, rehabilitación',
     },
-    
+
     // FISIOTERAPIA
     {
-      service: "Fisioterapia Respiratoria",
-      category: "fisioterapia",
-      description: "Técnicas para mejorar la función respiratoria",
-      keywords: "respiratoria, pulmones, función, técnicas, mejorar"
+      service: 'Fisioterapia Respiratoria',
+      category: 'fisioterapia',
+      description: 'Técnicas para mejorar la función respiratoria',
+      keywords: 'respiratoria, pulmones, función, técnicas, mejorar',
     },
     {
-      service: "Fisioterapia Traumatológica",
-      category: "fisioterapia",
-      description: "Tratamiento de lesiones del sistema musculoesquelético",
-      keywords: "traumatológica, lesiones, musculoesquelético, tratamiento"
+      service: 'Fisioterapia Traumatológica',
+      category: 'fisioterapia',
+      description: 'Tratamiento de lesiones del sistema musculoesquelético',
+      keywords: 'traumatológica, lesiones, musculoesquelético, tratamiento',
     },
     {
-      service: "Fisioterapia Reumatológica",
-      category: "fisioterapia",
-      description: "Terapia para enfermedades reumáticas y artritis",
-      keywords: "reumatológica, artritis, enfermedades, terapia, reumáticas"
+      service: 'Fisioterapia Reumatológica',
+      category: 'fisioterapia',
+      description: 'Terapia para enfermedades reumáticas y artritis',
+      keywords: 'reumatológica, artritis, enfermedades, terapia, reumáticas',
     },
     {
-      service: "Fisioterapia Cardiovascular",
-      category: "fisioterapia",
-      description: "Rehabilitación para pacientes cardíacos",
-      keywords: "cardiovascular, cardíaco, rehabilitación, pacientes, corazón"
+      service: 'Fisioterapia Cardiovascular',
+      category: 'fisioterapia',
+      description: 'Rehabilitación para pacientes cardíacos',
+      keywords: 'cardiovascular, cardíaco, rehabilitación, pacientes, corazón',
     },
-    
+
     // PRODUCTOS
     {
-      service: "Productos de Apoyo",
-      category: "productos",
-      description: "Bastones, muletas y ayudas para la movilidad",
-      keywords: "apoyo, bastones, muletas, movilidad, ayudas"
+      service: 'Productos de Apoyo',
+      category: 'productos',
+      description: 'Bastones, muletas y ayudas para la movilidad',
+      keywords: 'apoyo, bastones, muletas, movilidad, ayudas',
     },
     {
-      service: "Órtesis Personalizadas",
-      category: "productos",
-      description: "Dispositivos ortopédicos fabricados a medida",
-      keywords: "órtesis, personalizadas, dispositivos, ortopédicos, medida"
+      service: 'Órtesis Personalizadas',
+      category: 'productos',
+      description: 'Dispositivos ortopédicos fabricados a medida',
+      keywords: 'órtesis, personalizadas, dispositivos, ortopédicos, medida',
     },
     {
-      service: "Plantillas Ortopédicas",
-      category: "productos",
-      description: "Plantillas personalizadas para corrección de pisada",
-      keywords: "plantillas, ortopédicas, pisada, corrección, personalizadas"
+      service: 'Plantillas Ortopédicas',
+      category: 'productos',
+      description: 'Plantillas personalizadas para corrección de pisada',
+      keywords: 'plantillas, ortopédicas, pisada, corrección, personalizadas',
     },
     {
-      service: "Calzado Terapéutico",
-      category: "productos",
-      description: "Zapatos especializados para diferentes patologías",
-      keywords: "calzado, terapéutico, zapatos, patologías, especializado"
+      service: 'Calzado Terapéutico',
+      category: 'productos',
+      description: 'Zapatos especializados para diferentes patologías',
+      keywords: 'calzado, terapéutico, zapatos, patologías, especializado',
     },
-    
+
     // SERVICIOS
     {
-      service: "Consultas Especializadas",
-      category: "servicios",
-      description: "Evaluación médica y terapéutica personalizada",
-      keywords: "consultas, especializadas, médica, terapéutica, personalizada"
+      service: 'Consultas Especializadas',
+      category: 'servicios',
+      description: 'Evaluación médica y terapéutica personalizada',
+      keywords: 'consultas, especializadas, médica, terapéutica, personalizada',
     },
     {
-      service: "Programas de Ejercicio",
-      category: "servicios",
-      description: "Rutinas de ejercicio terapéutico supervisado",
-      keywords: "ejercicio, rutinas, terapéutico, supervisado, programas"
+      service: 'Programas de Ejercicio',
+      category: 'servicios',
+      description: 'Rutinas de ejercicio terapéutico supervisado',
+      keywords: 'ejercicio, rutinas, terapéutico, supervisado, programas',
     },
     {
-      service: "Educación al Paciente",
-      category: "servicios",
-      description: "Orientación sobre cuidado y prevención",
-      keywords: "educación, paciente, orientación, cuidado, prevención"
+      service: 'Educación al Paciente',
+      category: 'servicios',
+      description: 'Orientación sobre cuidado y prevención',
+      keywords: 'educación, paciente, orientación, cuidado, prevención',
     },
     {
-      service: "Seguimiento Continuo",
-      category: "servicios",
-      description: "Monitoreo del progreso y ajustes del tratamiento",
-      keywords: "seguimiento, continuo, monitoreo, progreso, ajustes"
-    }
+      service: 'Seguimiento Continuo',
+      category: 'servicios',
+      description: 'Monitoreo del progreso y ajustes del tratamiento',
+      keywords: 'seguimiento, continuo, monitoreo, progreso, ajustes',
+    },
   ];
 
   // Filtrar servicios basado en categoría y término de búsqueda
-  const filteredServices = rehabilitationServices.filter(service => {
+  const filteredServices = rehabilitationServices.filter((service) => {
     const matchesCategory = selectedCategory === 'all' || service.category === selectedCategory;
-    const matchesSearch = searchTerm === '' || 
+    const matchesSearch =
+      searchTerm === '' ||
       service.service.toLowerCase().includes(searchTerm.toLowerCase()) ||
       service.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
       service.keywords.toLowerCase().includes(searchTerm.toLowerCase());
@@ -293,7 +305,7 @@ const RehabilitationCenter = () => {
       <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-blue-200 to-indigo-300 rounded-full opacity-10 blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-indigo-200 to-purple-300 rounded-full opacity-8 blur-3xl"></div>
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-blue-100 to-indigo-200 rounded-full opacity-5 blur-2xl"></div>
-      
+
       <div className="container mx-auto px-6 relative z-10">
         {/* Header mejorado */}
         <div className="text-center mb-8">
@@ -303,10 +315,13 @@ const RehabilitationCenter = () => {
             transition={{ duration: 0.6 }}
             className="inline-flex items-center px-6 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-sm font-semibold rounded-full mb-4 shadow-lg"
           >
-            <span className="w-2 h-2 bg-white rounded-full mr-3 animate-pulse" style={{ transform: 'translateY(1px)' }}></span>
+            <span
+              className="w-2 h-2 bg-white rounded-full mr-3 animate-pulse"
+              style={{ transform: 'translateY(1px)' }}
+            ></span>
             Centro Integral de Rehabilitación
           </motion.div>
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -314,22 +329,26 @@ const RehabilitationCenter = () => {
           >
             ¿Qué te está molestando?
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed mb-4"
           >
-            En nuestro <strong>Centro Integral de Rehabilitación</strong> te ayudamos a recuperar tu bienestar. Somos especialistas en ortopedia y rehabilitación física para niños y adultos.
+            En nuestro <strong>Centro Integral de Rehabilitación</strong> te ayudamos a recuperar tu
+            bienestar. Somos especialistas en ortopedia y rehabilitación física para niños y
+            adultos.
           </motion.p>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-base text-gray-500 max-w-2xl mx-auto"
           >
-            ¿Tienes dolor, lesión o molestia?<br/>
-            Explora tus síntomas o busca un servicio, y te guiaremos hacia el tratamiento más adecuado.
+            ¿Tienes dolor, lesión o molestia?
+            <br />
+            Explora tus síntomas o busca un servicio, y te guiaremos hacia el tratamiento más
+            adecuado.
           </motion.p>
         </div>
 
@@ -398,7 +417,7 @@ const RehabilitationCenter = () => {
               <FaChevronLeft className="text-gray-600 hover:text-blue-600 transition-colors" />
             </button>
           )}
-          
+
           {canScrollRight && (
             <button
               onClick={scrollRight}
@@ -439,10 +458,10 @@ const RehabilitationCenter = () => {
                 >
                   {/* Efecto de brillo animado en hover */}
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-blue-500/10 to-indigo-500/0 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
-                  
+
                   {/* Indicador de categoría */}
                   <div className="absolute top-3 right-3 w-3 h-3 rounded-full bg-gradient-to-r from-blue-400 to-indigo-500 opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  
+
                   <div className="relative space-y-3 w-full">
                     <h3 className="font-bold text-lg text-gray-900 group-hover:text-blue-700 transition-colors leading-tight">
                       {item.service}
@@ -452,11 +471,21 @@ const RehabilitationCenter = () => {
                     </p>
                     <div className="flex items-center justify-between pt-2">
                       <span className="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded-full group-hover:bg-blue-100 transition-colors">
-                        {categories.find(cat => cat.id === item.category)?.name}
+                        {categories.find((cat) => cat.id === item.category)?.name}
                       </span>
                       <div className="text-blue-500 group-hover:text-blue-600 transition-colors">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 5l7 7-7 7"
+                          />
                         </svg>
                       </div>
                     </div>
@@ -470,10 +499,10 @@ const RehabilitationCenter = () => {
           <div className="mt-6 flex justify-center">
             <div className="relative">
               <div className="w-64 h-2 bg-gray-200/50 rounded-full overflow-hidden backdrop-blur-sm border border-gray-100">
-                <motion.div 
+                <motion.div
                   className="h-full bg-gradient-to-r from-blue-500 via-indigo-500 to-teal-500 rounded-full relative"
                   style={{ width: `${scrollProgress}%` }}
-                  transition={{ duration: 0.1, ease: "easeOut" }}
+                  transition={{ duration: 0.1, ease: 'easeOut' }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse"></div>
                 </motion.div>
@@ -492,8 +521,12 @@ const RehabilitationCenter = () => {
           <p className="text-gray-600 text-sm mb-4">
             ¿No encuentras lo que necesitas? Nuestros especialistas pueden ayudarte.
           </p>
-          <motion.button 
-            onClick={() => openWhatsApp("Hola, me gustaría obtener más información sobre los servicios del Centro Integral de Rehabilitación.")}
+          <motion.button
+            onClick={() =>
+              openWhatsApp(
+                'Hola, me gustaría obtener más información sobre los servicios del Centro Integral de Rehabilitación.',
+              )
+            }
             className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-8 py-3 rounded-xl font-semibold hover:from-blue-600 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl text-sm transform hover:scale-105"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -524,60 +557,63 @@ export default function TiendaCompleta() {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [loadedImages, setLoadedImages] = useState(new Set());
 
-  const carouselSlides = React.useMemo(() => [
-    {
-      id: 1,
-      image: "/images/banners/Banner Tienda 1.png",
-      title: "Productos Ortopédicos de Calidad",
-      subtitle: "Encuentra la solución perfecta para tu movilidad",
-      cta: "Explorar Productos",
-      bgGradient: "from-blue-600/40 to-indigo-700/40",
-      fallbackColor: "bg-transparent"
-    },
-    {
-      id: 2,
-      image: "/images/banners/Banner Tienda 2.png",
-      title: "Plantillas Personalizadas",
-      subtitle: "Diseñadas específicamente para tus necesidades",
-      cta: "Solicitar Evaluación",
-      bgGradient: "from-green-600/40 to-emerald-700/40",
-      fallbackColor: "bg-transparent"
-    },
-    {
-      id: 3,
-      image: "/images/banners/Banner tienda 3.png",
-      title: "Calzado Ortopédico Especializado",
-      subtitle: "Comodidad y soporte para cada paso",
-      cta: "Ver Colección",
-      bgGradient: "from-purple-600/40 to-violet-700/40",
-      fallbackColor: "bg-transparent"
-    },
-    {
-      id: 4,
-      image: "/images/banners/Banner tienda 4.png",
-      title: "Fajas y Soportes Terapéuticos",
-      subtitle: "Alivio y estabilidad para tu bienestar",
-      cta: "Descubrir Más",
-      bgGradient: "from-orange-600/40 to-red-700/40",
-      fallbackColor: "bg-transparent"
-    },
-    {
-      id: 5,
-      image: "/images/banners/Banner tienda 5.png",
-      title: "Productos de Rehabilitación",
-      subtitle: "Equipos profesionales para tu recuperación",
-      cta: "Ver Equipos",
-      bgGradient: "from-teal-600/40 to-cyan-700/40",
-      fallbackColor: "bg-transparent"
-    }
-  ], []);
+  const carouselSlides = React.useMemo(
+    () => [
+      {
+        id: 1,
+        image: '/images/banners/Banner Tienda 1.png',
+        title: 'Productos Ortopédicos de Calidad',
+        subtitle: 'Encuentra la solución perfecta para tu movilidad',
+        cta: 'Explorar Productos',
+        bgGradient: 'from-blue-600/40 to-indigo-700/40',
+        fallbackColor: 'bg-transparent',
+      },
+      {
+        id: 2,
+        image: '/images/banners/Banner Tienda 2.png',
+        title: 'Plantillas Personalizadas',
+        subtitle: 'Diseñadas específicamente para tus necesidades',
+        cta: 'Solicitar Evaluación',
+        bgGradient: 'from-green-600/40 to-emerald-700/40',
+        fallbackColor: 'bg-transparent',
+      },
+      {
+        id: 3,
+        image: '/images/banners/Banner tienda 3.png',
+        title: 'Calzado Ortopédico Especializado',
+        subtitle: 'Comodidad y soporte para cada paso',
+        cta: 'Ver Colección',
+        bgGradient: 'from-purple-600/40 to-violet-700/40',
+        fallbackColor: 'bg-transparent',
+      },
+      {
+        id: 4,
+        image: '/images/banners/Banner tienda 4.png',
+        title: 'Fajas y Soportes Terapéuticos',
+        subtitle: 'Alivio y estabilidad para tu bienestar',
+        cta: 'Descubrir Más',
+        bgGradient: 'from-orange-600/40 to-red-700/40',
+        fallbackColor: 'bg-transparent',
+      },
+      {
+        id: 5,
+        image: '/images/banners/Banner tienda 5.png',
+        title: 'Productos de Rehabilitación',
+        subtitle: 'Equipos profesionales para tu recuperación',
+        cta: 'Ver Equipos',
+        bgGradient: 'from-teal-600/40 to-cyan-700/40',
+        fallbackColor: 'bg-transparent',
+      },
+    ],
+    [],
+  );
 
   // Preload images for better performance
   useEffect(() => {
     carouselSlides.forEach((slide, index) => {
       const imgElement = new window.Image();
       imgElement.onload = () => {
-        setLoadedImages(prev => new Set([...prev, index]));
+        setLoadedImages((prev) => new Set([...prev, index]));
       };
       imgElement.src = slide.image;
     });
@@ -623,92 +659,355 @@ export default function TiendaCompleta() {
   // Función para filtrar productos por categoría
   const productosPorCategoria = {
     todos: [
-      { id: "1", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Plantilla", description: "Plantilla para pie plano grado 1", price: "$550.00" },
-      { id: "2", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Zapato", description: "Calzado ortopédico infantil", price: "$890.00" },
-      { id: "3", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Faja", description: "Faja lumbar con soporte", price: "$750.00" },
-      { id: "4", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Muletas", description: "Muletas de aluminio", price: "$600.00" },
-      { id: "5", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Silla", description: "Silla de ruedas estándar", price: "$2,500.00" },
-      { id: "6", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Plantilla+2", description: "Plantilla para pie plano grado 2", price: "$650.00" },
-      { id: "7", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Zapato+2", description: "Calzado ortopédico adulto", price: "$1,200.00" },
-      { id: "8", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Faja+2", description: "Faja torácica con varillas", price: "$850.00" },
-      { id: "9", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Plantilla+3", description: "Plantilla deportiva personalizada", price: "$720.00" },
-      { id: "10", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Zapato+3", description: "Zapato ortopédico para diabéticos", price: "$1,350.00" },
-      { id: "11", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Faja+3", description: "Faja post-quirúrgica abdominal", price: "$680.00" },
-      { id: "12", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Muletas+2", description: "Muletas de madera ajustables", price: "$450.00" },
-      { id: "13", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Silla+2", description: "Silla de ruedas deportiva", price: "$3,200.00" },
-      { id: "14", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Plantilla+4", description: "Plantilla para arco alto", price: "$580.00" },
-      { id: "15", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Zapato+4", description: "Bota ortopédica de yeso", price: "$950.00" },
-      { id: "16", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Faja+4", description: "Faja cervical con soporte", price: "$420.00" },
-      { id: "17", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Muletas+3", description: "Muletas de antebrazo", price: "$380.00" },
-      { id: "18", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Silla+3", description: "Silla de ruedas eléctrica", price: "$8,500.00" },
-      { id: "19", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Plantilla+5", description: "Plantilla de gel refrigerante", price: "$320.00" },
-      { id: "20", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Zapato+5", description: "Sandalia ortopédica de verano", price: "$780.00" },
-      { id: "21", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Faja+5", description: "Faja para embarazo", price: "$520.00" },
-      { id: "22", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Muletas+4", description: "Muletas plegables de viaje", price: "$420.00" },
-      { id: "23", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Silla+4", description: "Silla de ruedas pediátrica", price: "$1,800.00" },
-      { id: "24", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Plantilla+6", description: "Plantilla para fascitis plantar", price: "$480.00" },
-      { id: "25", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Zapato+6", description: "Zapato ortopédico para niños", price: "$650.00" },
-      { id: "26", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Faja+6", description: "Faja lumbar deportiva", price: "$380.00" },
-      { id: "27", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Muletas+5", description: "Muletas de titanio ligeras", price: "$680.00" },
-      { id: "28", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Silla+5", description: "Silla de ruedas de traslado", price: "$1,200.00" },
-      { id: "29", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Plantilla+7", description: "Plantilla de carbón activado", price: "$350.00" },
-      { id: "30", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Zapato+7", description: "Zapato ortopédico para adultos", price: "$1,100.00" },
-      { id: "31", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Faja+7", description: "Faja para hernia inguinal", price: "$450.00" },
-      { id: "32", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Muletas+6", description: "Muletas de altura ajustable", price: "$520.00" },
-      { id: "33", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Silla+6", description: "Silla de ruedas bariátrica", price: "$4,200.00" },
-      { id: "34", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Plantilla+8", description: "Plantilla para juanetes", price: "$420.00" },
-      { id: "35", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Zapato+8", description: "Zapato ortopédico para mujeres", price: "$980.00" },
-      { id: "36", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Faja+8", description: "Faja post-parto", price: "$380.00" }
+      {
+        id: '1',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Plantilla',
+        description: 'Plantilla para pie plano grado 1',
+        price: '$550.00',
+      },
+      {
+        id: '2',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Zapato',
+        description: 'Calzado ortopédico infantil',
+        price: '$890.00',
+      },
+      {
+        id: '3',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Faja',
+        description: 'Faja lumbar con soporte',
+        price: '$750.00',
+      },
+      {
+        id: '4',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Muletas',
+        description: 'Muletas de aluminio',
+        price: '$600.00',
+      },
+      {
+        id: '5',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Silla',
+        description: 'Silla de ruedas estándar',
+        price: '$2,500.00',
+      },
+      {
+        id: '6',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Plantilla+2',
+        description: 'Plantilla para pie plano grado 2',
+        price: '$650.00',
+      },
+      {
+        id: '7',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Zapato+2',
+        description: 'Calzado ortopédico adulto',
+        price: '$1,200.00',
+      },
+      {
+        id: '8',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Faja+2',
+        description: 'Faja torácica con varillas',
+        price: '$850.00',
+      },
+      {
+        id: '9',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Plantilla+3',
+        description: 'Plantilla deportiva personalizada',
+        price: '$720.00',
+      },
+      {
+        id: '10',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Zapato+3',
+        description: 'Zapato ortopédico para diabéticos',
+        price: '$1,350.00',
+      },
+      {
+        id: '11',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Faja+3',
+        description: 'Faja post-quirúrgica abdominal',
+        price: '$680.00',
+      },
+      {
+        id: '12',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Muletas+2',
+        description: 'Muletas de madera ajustables',
+        price: '$450.00',
+      },
+      {
+        id: '13',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Silla+2',
+        description: 'Silla de ruedas deportiva',
+        price: '$3,200.00',
+      },
+      {
+        id: '14',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Plantilla+4',
+        description: 'Plantilla para arco alto',
+        price: '$580.00',
+      },
+      {
+        id: '15',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Zapato+4',
+        description: 'Bota ortopédica de yeso',
+        price: '$950.00',
+      },
+      {
+        id: '16',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Faja+4',
+        description: 'Faja cervical con soporte',
+        price: '$420.00',
+      },
+      {
+        id: '17',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Muletas+3',
+        description: 'Muletas de antebrazo',
+        price: '$380.00',
+      },
+      {
+        id: '18',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Silla+3',
+        description: 'Silla de ruedas eléctrica',
+        price: '$8,500.00',
+      },
+      {
+        id: '19',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Plantilla+5',
+        description: 'Plantilla de gel refrigerante',
+        price: '$320.00',
+      },
+      {
+        id: '20',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Zapato+5',
+        description: 'Sandalia ortopédica de verano',
+        price: '$780.00',
+      },
+      {
+        id: '21',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Faja+5',
+        description: 'Faja para embarazo',
+        price: '$520.00',
+      },
+      {
+        id: '22',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Muletas+4',
+        description: 'Muletas plegables de viaje',
+        price: '$420.00',
+      },
+      {
+        id: '23',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Silla+4',
+        description: 'Silla de ruedas pediátrica',
+        price: '$1,800.00',
+      },
+      {
+        id: '24',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Plantilla+6',
+        description: 'Plantilla para fascitis plantar',
+        price: '$480.00',
+      },
+      {
+        id: '25',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Zapato+6',
+        description: 'Zapato ortopédico para niños',
+        price: '$650.00',
+      },
+      {
+        id: '26',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Faja+6',
+        description: 'Faja lumbar deportiva',
+        price: '$380.00',
+      },
+      {
+        id: '27',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Muletas+5',
+        description: 'Muletas de titanio ligeras',
+        price: '$680.00',
+      },
+      {
+        id: '28',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Silla+5',
+        description: 'Silla de ruedas de traslado',
+        price: '$1,200.00',
+      },
+      {
+        id: '29',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Plantilla+7',
+        description: 'Plantilla de carbón activado',
+        price: '$350.00',
+      },
+      {
+        id: '30',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Zapato+7',
+        description: 'Zapato ortopédico para adultos',
+        price: '$1,100.00',
+      },
+      {
+        id: '31',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Faja+7',
+        description: 'Faja para hernia inguinal',
+        price: '$450.00',
+      },
+      {
+        id: '32',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Muletas+6',
+        description: 'Muletas de altura ajustable',
+        price: '$520.00',
+      },
+      {
+        id: '33',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Silla+6',
+        description: 'Silla de ruedas bariátrica',
+        price: '$4,200.00',
+      },
+      {
+        id: '34',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Plantilla+8',
+        description: 'Plantilla para juanetes',
+        price: '$420.00',
+      },
+      {
+        id: '35',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Zapato+8',
+        description: 'Zapato ortopédico para mujeres',
+        price: '$980.00',
+      },
+      {
+        id: '36',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Faja+8',
+        description: 'Faja post-parto',
+        price: '$380.00',
+      },
     ],
     plantillas: [
-      { id: "1", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Plantilla+1", description: "Plantilla para pie plano grado 1", price: "$550.00" },
-      { id: "6", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Plantilla+2", description: "Plantilla para pie cavo", price: "$650.00" },
-      { id: "7", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Plantilla+3", description: "Plantilla deportiva", price: "$450.00" }
+      {
+        id: '1',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Plantilla+1',
+        description: 'Plantilla para pie plano grado 1',
+        price: '$550.00',
+      },
+      {
+        id: '6',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Plantilla+2',
+        description: 'Plantilla para pie cavo',
+        price: '$650.00',
+      },
+      {
+        id: '7',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Plantilla+3',
+        description: 'Plantilla deportiva',
+        price: '$450.00',
+      },
     ],
     fajas: [
-      { id: "3", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Faja+1", description: "Faja lumbar con soporte", price: "$750.00" },
-      { id: "8", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Faja+2", description: "Faja abdominal postparto", price: "$850.00" },
-      { id: "9", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Faja+3", description: "Faja deportiva", price: "$650.00" }
+      {
+        id: '3',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Faja+1',
+        description: 'Faja lumbar con soporte',
+        price: '$750.00',
+      },
+      {
+        id: '8',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Faja+2',
+        description: 'Faja abdominal postparto',
+        price: '$850.00',
+      },
+      {
+        id: '9',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Faja+3',
+        description: 'Faja deportiva',
+        price: '$650.00',
+      },
     ],
     ortesis: [
-      { id: "10", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Rodillera+1", description: "Rodillera ortopédica", price: "$450.00" },
-      { id: "11", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Rodillera+2", description: "Rodillera deportiva", price: "$350.00" },
-      { id: "12", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Tobillera", description: "Tobillera elástica", price: "$250.00" }
+      {
+        id: '10',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Rodillera+1',
+        description: 'Rodillera ortopédica',
+        price: '$450.00',
+      },
+      {
+        id: '11',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Rodillera+2',
+        description: 'Rodillera deportiva',
+        price: '$350.00',
+      },
+      {
+        id: '12',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Tobillera',
+        description: 'Tobillera elástica',
+        price: '$250.00',
+      },
     ],
     calzado: [
-      { id: "2", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Zapato+1", description: "Calzado ortopédico infantil", price: "$890.00" },
-      { id: "13", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Zapato+2", description: "Calzado ortopédico adulto", price: "$1,200.00" },
-      { id: "14", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Zapato+3", description: "Calzado deportivo ortopédico", price: "$950.00" }
+      {
+        id: '2',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Zapato+1',
+        description: 'Calzado ortopédico infantil',
+        price: '$890.00',
+      },
+      {
+        id: '13',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Zapato+2',
+        description: 'Calzado ortopédico adulto',
+        price: '$1,200.00',
+      },
+      {
+        id: '14',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Zapato+3',
+        description: 'Calzado deportivo ortopédico',
+        price: '$950.00',
+      },
     ],
     rehabilitacion: [
-      { id: "15", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Masajeador", description: "Masajeador percutor", price: "$1,200.00" },
-      { id: "16", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Electroestimulador", description: "Electroestimulador TENS", price: "$950.00" },
-      { id: "17", imgSrc: "https://placehold.co/150x150/eeeeee/333333?text=Bandas", description: "Bandas de resistencia (kit)", price: "$450.00" }
-    ]
+      {
+        id: '15',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Masajeador',
+        description: 'Masajeador percutor',
+        price: '$1,200.00',
+      },
+      {
+        id: '16',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Electroestimulador',
+        description: 'Electroestimulador TENS',
+        price: '$950.00',
+      },
+      {
+        id: '17',
+        imgSrc: 'https://placehold.co/150x150/eeeeee/333333?text=Bandas',
+        description: 'Bandas de resistencia (kit)',
+        price: '$450.00',
+      },
+    ],
   };
 
   // Función para filtrar y ordenar productos
   const getFilteredAndSortedProducts = () => {
     let products = productosPorCategoria[categoriaActiva] || productosPorCategoria.todos;
-    
+
     // Filtrar por término de búsqueda
     if (searchTerm) {
-      products = products.filter(product => 
-        product.description.toLowerCase().includes(searchTerm.toLowerCase())
+      products = products.filter((product) =>
+        product.description.toLowerCase().includes(searchTerm.toLowerCase()),
       );
     }
-    
+
     // Filtrar solo wishlist si está activado
     if (showWishlistOnly) {
-      products = products.filter(product => wishlist.includes(product.id));
+      products = products.filter((product) => wishlist.includes(product.id));
     }
-    
+
     // Ordenar productos
     switch (sortBy) {
       case 'price-low':
-        return products.sort((a, b) => parseFloat(a.price.replace('$', '').replace(',', '')) - parseFloat(b.price.replace('$', '').replace(',', '')));
+        return products.sort(
+          (a, b) =>
+            parseFloat(a.price.replace('$', '').replace(',', '')) -
+            parseFloat(b.price.replace('$', '').replace(',', '')),
+        );
       case 'price-high':
-        return products.sort((a, b) => parseFloat(b.price.replace('$', '').replace(',', '')) - parseFloat(a.price.replace('$', '').replace(',', '')));
+        return products.sort(
+          (a, b) =>
+            parseFloat(b.price.replace('$', '').replace(',', '')) -
+            parseFloat(a.price.replace('$', '').replace(',', '')),
+        );
       case 'name':
         return products.sort((a, b) => a.description.localeCompare(b.description));
       default:
@@ -729,10 +1028,8 @@ export default function TiendaCompleta() {
   const totalPages = Math.ceil(productosPorCategoria.todos.length / 6);
 
   const handleAddToWishlist = (productId) => {
-    setWishlist(prev => 
-      prev.includes(productId) 
-        ? prev.filter(id => id !== productId)
-        : [...prev, productId]
+    setWishlist((prev) =>
+      prev.includes(productId) ? prev.filter((id) => id !== productId) : [...prev, productId],
     );
   };
 
@@ -740,14 +1037,28 @@ export default function TiendaCompleta() {
 
   return (
     <div className="bg-white font-sans">
-
       {/* Top Bar */}
       <div className="bg-blue-900 text-white text-xs py-2 px-4 md:px-8 flex justify-between items-center">
         <div className="flex items-center space-x-4">
-          <button onClick={() => openWhatsApp()} className="hover:underline text-white">Agendar consulta</button>
-          <button type="button" className="hover:underline" onClick={(e) => { e.preventDefault(); alert('Sistema de facturación en desarrollo'); }}>Facturación</button>
-                      <Link href="/nosotros" className="hover:underline">Ortopedia Cuernavaca</Link>
-                      <Link href="/contacto" className="hover:underline">Contáctanos</Link>
+          <button onClick={() => openWhatsApp()} className="hover:underline text-white">
+            Agendar consulta
+          </button>
+          <button
+            type="button"
+            className="hover:underline"
+            onClick={(e) => {
+              e.preventDefault();
+              alert('Sistema de facturación en desarrollo');
+            }}
+          >
+            Facturación
+          </button>
+          <Link href="/nosotros" className="hover:underline">
+            Ortopedia Cuernavaca
+          </Link>
+          <Link href="/contacto" className="hover:underline">
+            Contáctanos
+          </Link>
         </div>
         <div className="flex items-center space-x-4 font-semibold">
           <span>Ortopedia Cuernavaca: 777 311 2867</span>
@@ -760,24 +1071,35 @@ export default function TiendaCompleta() {
       <header className="bg-white shadow-md py-4 px-4 md:px-8 sticky top-0 z-50">
         <div className="max-w-[1360px] mx-auto flex justify-between items-center">
           <Link href="/tienda" className="flex items-center">
-            <img 
-              src="/images/banners/LogoOrtochavitos.svg" 
-              alt="Ortochavitos Logo" 
+            <img
+              src="/images/banners/LogoOrtochavitos.svg"
+              alt="Ortochavitos Logo"
               className="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20"
             />
           </Link>
           <div className="flex-1 max-w-2xl mx-8">
             <div className="relative" role="search">
-              <input 
-                type="text" 
-                placeholder="Buscar productos, servicios o especialidades..." 
+              <input
+                type="text"
+                placeholder="Buscar productos, servicios o especialidades..."
                 aria-label="Buscar productos, servicios o especialidades"
                 className="w-full border-2 border-gray-300 rounded-full py-2 pl-10 pr-10 focus:outline-none focus:ring-2 focus:ring-blue-600"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
-              <svg className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              <svg
+                className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
               </svg>
               {searchTerm && (
                 <button
@@ -786,8 +1108,19 @@ export default function TiendaCompleta() {
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
                   onClick={() => setSearchTerm('')}
                 >
-                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                  <svg
+                    className="w-5 h-5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
                   </svg>
                 </button>
               )}
@@ -796,18 +1129,40 @@ export default function TiendaCompleta() {
           <div className="flex items-center space-x-4">
             <Link href="/carrito" className="relative hover:text-blue-600 transition-colors">
               <div className="relative">
-                <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.35 2.7A1 1 0 007.53 17h10.94a1 1 0 00.88-.53L21 13M16 21a1 1 0 100-2 1 1 0 000 2zm-8 0a1 1 0 100-2 1 1 0 000 2z" />
+                <svg
+                  className="w-6 h-6 text-gray-700"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.35 2.7A1 1 0 007.53 17h10.94a1 1 0 00.88-.53L21 13M16 21a1 1 0 100-2 1 1 0 000 2zm-8 0a1 1 0 100-2 1 1 0 000 2z"
+                  />
                 </svg>
-                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  3
+                </span>
               </div>
             </Link>
-            <button 
+            <button
               className="relative hover:text-red-600 transition-colors"
               onClick={() => setShowWishlistOnly(!showWishlistOnly)}
             >
-              <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              <svg
+                className="w-6 h-6 text-gray-700"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                />
               </svg>
               {wishlist.length > 0 && (
                 <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
@@ -820,18 +1175,46 @@ export default function TiendaCompleta() {
       </header>
 
       {/* Navigation */}
-      <nav className="bg-gray-200 py-2 px-4 md:px-8 border-t border-b border-gray-300" aria-label="Categorías de la tienda">
+      <nav
+        className="bg-gray-200 py-2 px-4 md:px-8 border-t border-b border-gray-300"
+        aria-label="Categorías de la tienda"
+      >
         <div className="max-w-[1360px] mx-auto flex justify-center items-center space-x-4 md:space-x-6 text-sm font-semibold text-blue-900 overflow-x-auto whitespace-nowrap">
-          <Link href="/tienda" className="hover:text-blue-600">Todos</Link>
-          <Link href="/tienda?categoria=plantillas" className="hover:text-blue-600">Plantillas</Link>
-          <Link href="/tienda?categoria=fajas" className="hover:text-blue-600">Fajas</Link>
-          <Link href="/tienda?categoria=ortesis" className="hover:text-blue-600">Soportes</Link>
-          <Link href="/tienda?categoria=rehabilitacion" className="hover:text-blue-600">Rehabilitación</Link>
-          <Link href="/tienda?categoria=calzado" className="hover:text-blue-600">Calzado ortopédico</Link>
-          <Link href="/tienda?categoria=pediatria" className="hover:text-blue-600">Pediatría</Link>
-          <button onClick={() => openWhatsApp()} className="hover:text-blue-600">Consulta clínica</button>
+          <Link href="/tienda" className="hover:text-blue-600">
+            Todos
+          </Link>
+          <Link href="/tienda?categoria=plantillas" className="hover:text-blue-600">
+            Plantillas
+          </Link>
+          <Link href="/tienda?categoria=fajas" className="hover:text-blue-600">
+            Fajas
+          </Link>
+          <Link href="/tienda?categoria=ortesis" className="hover:text-blue-600">
+            Soportes
+          </Link>
+          <Link href="/tienda?categoria=rehabilitacion" className="hover:text-blue-600">
+            Rehabilitación
+          </Link>
+          <Link href="/tienda?categoria=calzado" className="hover:text-blue-600">
+            Calzado ortopédico
+          </Link>
+          <Link href="/tienda?categoria=pediatria" className="hover:text-blue-600">
+            Pediatría
+          </Link>
+          <button onClick={() => openWhatsApp()} className="hover:text-blue-600">
+            Consulta clínica
+          </button>
 
-          <button type="button" className="text-red-600 font-bold hover:text-red-700" onClick={(e) => { e.preventDefault(); alert('Sección de ofertas en desarrollo'); }}>Ofertas</button>
+          <button
+            type="button"
+            className="text-red-600 font-bold hover:text-red-700"
+            onClick={(e) => {
+              e.preventDefault();
+              alert('Sección de ofertas en desarrollo');
+            }}
+          >
+            Ofertas
+          </button>
         </div>
       </nav>
 
@@ -839,22 +1222,25 @@ export default function TiendaCompleta() {
       <main className="max-w-[1360px] mx-auto py-8 px-4 md:px-8">
         {/* Hero Carrusel */}
         <div className="w-full mb-8 flex justify-center">
-          <div className="relative overflow-hidden rounded-none w-full max-w-[1360px]" style={{ height: '765px' }}>
+          <div
+            className="relative overflow-hidden rounded-none w-full max-w-[1360px]"
+            style={{ height: '765px' }}
+          >
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentSlide}
                 initial={{ opacity: 0, x: 100 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -100 }}
-                transition={{ 
-                  duration: 0.8, 
-                  ease: [0.25, 0.46, 0.45, 0.94]
+                transition={{
+                  duration: 0.8,
+                  ease: [0.25, 0.46, 0.45, 0.94],
                 }}
                 className="relative"
               >
                 {/* Imagen centrada, tamaño proporcional a 2560x1440 */}
                 {loadedImages.has(currentSlide) ? (
-                  <img 
+                  <img
                     src={carouselSlides[currentSlide].image}
                     alt={carouselSlides[currentSlide].title}
                     className="block w-full h-auto object-contain mx-auto"
@@ -867,26 +1253,36 @@ export default function TiendaCompleta() {
                 )}
               </motion.div>
             </AnimatePresence>
-            
+
             {/* Navigation Arrows */}
             <button
               onClick={prevSlide}
               className="absolute left-2 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white p-2 rounded-full transition-all duration-300"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
               </svg>
             </button>
-            
+
             <button
               onClick={nextSlide}
               className="absolute right-2 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white p-2 rounded-full transition-all duration-300"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
               </svg>
             </button>
-            
+
             {/* Dots Indicator */}
             <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-50 flex space-x-4">
               {carouselSlides.map((_, index) => (
@@ -894,8 +1290,8 @@ export default function TiendaCompleta() {
                   key={index}
                   onClick={() => goToSlide(index)}
                   className={`w-4 h-4 rounded-full transition-all duration-300 border-2 ${
-                    index === currentSlide 
-                      ? 'bg-white border-white shadow-lg' 
+                    index === currentSlide
+                      ? 'bg-white border-white shadow-lg'
                       : 'bg-transparent border-white/70 hover:border-white hover:bg-white/30'
                   }`}
                 />
@@ -907,19 +1303,27 @@ export default function TiendaCompleta() {
         {/* Small side cards aligned with hero (test fixtures) */}
         <div className="mb-4 flex items-start justify-center gap-4">
           <div style={{ height: '190px', width: '220px' }}>
-            <img alt="Toma de Molde" src="/images/banners/Plantillas categoria.png" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <img
+              alt="Toma de Molde"
+              src="/images/banners/Plantillas categoria.png"
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
           </div>
           <div style={{ height: '190px', width: '220px' }}>
-            <img alt="Consulta con Ortesista" src="/images/banners/Consulta Ortesista.png" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <img
+              alt="Consulta con Ortesista"
+              src="/images/banners/Consulta Ortesista.png"
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
           </div>
         </div>
 
         {/* Banner Web Inferior */}
         <div className="mb-8">
           <div className="relative w-full rounded-none overflow-hidden">
-            <Image 
-              src="/images/banners/Banner Web inferior.png" 
-              alt="Banner Web Inferior" 
+            <Image
+              src="/images/banners/Banner Web inferior.png"
+              alt="Banner Web Inferior"
               width={1360}
               height={200}
               quality={95}
@@ -934,7 +1338,6 @@ export default function TiendaCompleta() {
           </div>
         </div>
 
-        
         {/* Servicios Destacados - Optimizado UI/UX */}
         <section className="mb-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -942,13 +1345,25 @@ export default function TiendaCompleta() {
             <div className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 p-6 border-l-4 border-blue-500 group">
               <div className="flex items-start space-x-4">
                 <div className="bg-blue-50 p-3 rounded-full group-hover:bg-blue-100 transition-colors">
-                  <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                  <svg
+                    className="w-6 h-6 text-blue-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
+                    />
                   </svg>
                 </div>
                 <div className="flex-1">
                   <h3 className="font-semibold text-gray-900 mb-1">Métodos de Pago</h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">Efectivo, tarjeta de crédito/débito y transferencia bancaria</p>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    Efectivo, tarjeta de crédito/débito y transferencia bancaria
+                  </p>
                 </div>
               </div>
             </div>
@@ -957,13 +1372,25 @@ export default function TiendaCompleta() {
             <div className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 p-6 border-l-4 border-green-500 group">
               <div className="flex items-start space-x-4">
                 <div className="bg-green-50 p-3 rounded-full group-hover:bg-green-100 transition-colors">
-                  <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                  <svg
+                    className="w-6 h-6 text-green-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+                    />
                   </svg>
                 </div>
                 <div className="flex-1">
                   <h3 className="font-semibold text-gray-900 mb-1">Entrega y Recolección</h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">Entrega local en Cuernavaca o recolección en sucursal</p>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    Entrega local en Cuernavaca o recolección en sucursal
+                  </p>
                 </div>
               </div>
             </div>
@@ -972,13 +1399,26 @@ export default function TiendaCompleta() {
             <div className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 p-6 border-l-4 border-purple-500 group">
               <div className="flex items-start space-x-4">
                 <div className="bg-purple-50 p-3 rounded-full group-hover:bg-purple-100 transition-colors">
-                  <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  <svg
+                    className="w-6 h-6 text-purple-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
                   </svg>
                 </div>
                 <div className="flex-1">
                   <h3 className="font-semibold text-gray-900 mb-1">Consulta + Plantillas</h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">Desde <span className="font-bold text-purple-600">$900</span> - Evaluación completa incluida</p>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    Desde <span className="font-bold text-purple-600">$900</span> - Evaluación
+                    completa incluida
+                  </p>
                 </div>
               </div>
             </div>
@@ -989,26 +1429,47 @@ export default function TiendaCompleta() {
         <section className="mb-8">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold text-blue-900">Explorar por Categorías</h2>
-            <Link 
-              href="/categorias" 
+            <Link
+              href="/categorias"
               className="text-blue-600 hover:text-blue-800 font-medium flex items-center space-x-2"
             >
               <span>Ver todas las categorías</span>
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
               </svg>
             </Link>
           </div>
-          
+
           {/* Grid de Categorías */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-6">
             {[
-              { name: "Plantillas", slug: "plantillas", image: "/images/banners/Plantillas categoria.png" },
-              { name: "Fajas", slug: "fajas", image: "/images/banners/Fajas Categoria.png" },
-              { name: "Soportes", slug: "ortesis", image: "/images/banners/Rodillera categorias.png" },
-              { name: "Calzado", slug: "calzado", image: "/images/banners/Calzado categoria.png" },
-              { name: "Movilidad", slug: "rehabilitacion", image: "/images/banners/Movilidad categoria.png" },
-              { name: "Pediatría", slug: "pediatria", image: "/images/banners/Pediatria categoria.png" }
+              {
+                name: 'Plantillas',
+                slug: 'plantillas',
+                image: '/images/banners/Plantillas categoria.png',
+              },
+              { name: 'Fajas', slug: 'fajas', image: '/images/banners/Fajas Categoria.png' },
+              {
+                name: 'Soportes',
+                slug: 'ortesis',
+                image: '/images/banners/Rodillera categorias.png',
+              },
+              { name: 'Calzado', slug: 'calzado', image: '/images/banners/Calzado categoria.png' },
+              {
+                name: 'Movilidad',
+                slug: 'rehabilitacion',
+                image: '/images/banners/Movilidad categoria.png',
+              },
+              {
+                name: 'Pediatría',
+                slug: 'pediatria',
+                image: '/images/banners/Pediatria categoria.png',
+              },
             ].map((category, index) => (
               <Link
                 key={index}
@@ -1018,8 +1479,8 @@ export default function TiendaCompleta() {
                 }`}
               >
                 <div className="w-full h-40 mb-3 rounded-lg overflow-hidden bg-gray-100 relative">
-                  <Image 
-                    src={category.image} 
+                  <Image
+                    src={category.image}
                     alt={category.name}
                     width={200}
                     height={200}
@@ -1035,26 +1496,27 @@ export default function TiendaCompleta() {
                       msImageRendering: 'auto',
                       filter: 'blur(0.2px) contrast(1.02) saturate(1.02)',
                       transform: 'translateZ(0)',
-                      backfaceVisibility: 'hidden'
+                      backfaceVisibility: 'hidden',
                     }}
                     sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 16vw"
                   />
                   {/* Overlay for better text readability */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
-                <h3 className="font-semibold text-sm text-gray-900 group-hover:text-blue-600 transition-colors">{category.name}</h3>
+                <h3 className="font-semibold text-sm text-gray-900 group-hover:text-blue-600 transition-colors">
+                  {category.name}
+                </h3>
               </Link>
             ))}
           </div>
-
         </section>
 
         {/* Banner Web Redes Sociales */}
         <div className="mb-8">
           <div className="relative w-full rounded-none overflow-hidden">
-            <Image 
-              src="/images/banners/Banner Web Redes Sociales.png" 
-              alt="Banner Web Redes Sociales" 
+            <Image
+              src="/images/banners/Banner Web Redes Sociales.png"
+              alt="Banner Web Redes Sociales"
               width={1360}
               height={192}
               quality={90}
@@ -1076,17 +1538,19 @@ export default function TiendaCompleta() {
             {/* Section Header */}
             <div className="text-left mb-8">
               <h2 className="text-4xl font-bold text-blue-600 mb-2">Productos Destacados</h2>
-              <p className="text-gray-600">Nuestra selección especial de productos para tu bienestar</p>
+              <p className="text-gray-600">
+                Nuestra selección especial de productos para tu bienestar
+              </p>
             </div>
 
             {/* Products Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 mb-8">
               {getFeaturedProducts().map((producto, index) => (
-                <ProductCard 
+                <ProductCard
                   key={producto.id}
-                  imgSrc={producto.imgSrc} 
-                  description={producto.description} 
-                  price={producto.price} 
+                  imgSrc={producto.imgSrc}
+                  description={producto.description}
+                  price={producto.price}
                   action="Agregar al Carrito"
                   productId={producto.id}
                 />
@@ -1108,13 +1572,12 @@ export default function TiendaCompleta() {
           </div>
         </section>
 
-
         {/* Banners Cuadrados */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
           <div className="relative w-full rounded-none overflow-hidden">
-            <Image 
-              src="/images/banners/Banner cuadrado Izquierdo.png" 
-              alt="Banner Cuadrado Izquierdo" 
+            <Image
+              src="/images/banners/Banner cuadrado Izquierdo.png"
+              alt="Banner Cuadrado Izquierdo"
               width={400}
               height={300}
               quality={95}
@@ -1127,11 +1590,11 @@ export default function TiendaCompleta() {
               }}
             />
           </div>
-          
+
           <div className="relative w-full rounded-none overflow-hidden">
-            <Image 
-              src="/images/banners/Banner cuadrado central.png" 
-              alt="Banner Cuadrado Central" 
+            <Image
+              src="/images/banners/Banner cuadrado central.png"
+              alt="Banner Cuadrado Central"
               width={400}
               height={300}
               quality={95}
@@ -1144,11 +1607,11 @@ export default function TiendaCompleta() {
               }}
             />
           </div>
-          
+
           <div className="relative w-full rounded-none overflow-hidden">
-            <Image 
-              src="/images/banners/Banner Cuadrado Derecho.png" 
-              alt="Banner Cuadrado Derecho" 
+            <Image
+              src="/images/banners/Banner Cuadrado Derecho.png"
+              alt="Banner Cuadrado Derecho"
               width={400}
               height={300}
               quality={95}
@@ -1163,76 +1626,79 @@ export default function TiendaCompleta() {
           </div>
         </div>
 
-
         {/* Fisioterapia y Rehabilitación */}
         <section className="mb-12 bg-gradient-to-r from-blue-50 to-blue-100 p-6 md:p-8 rounded-lg">
           <div className="text-center mb-6">
-            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-2">Fisioterapia y Rehabilitación</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-2">
+              Fisioterapia y Rehabilitación
+            </h2>
             <p className="text-gray-600 text-lg">Equipos profesionales para tu recuperación</p>
           </div>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <ProductCard 
-              imgSrc="https://placehold.co/150x150/eeeeee/333333?text=Masajeador" 
-              description="Masajeador percutor profesional" 
-              price="$1,200.00" 
+            <ProductCard
+              imgSrc="https://placehold.co/150x150/eeeeee/333333?text=Masajeador"
+              description="Masajeador percutor profesional"
+              price="$1,200.00"
               productId="15"
             />
-            <ProductCard 
-              imgSrc="https://placehold.co/150x150/eeeeee/333333?text=Electroestimulador" 
-              description="Electroestimulador TENS" 
-              price="$950.00" 
+            <ProductCard
+              imgSrc="https://placehold.co/150x150/eeeeee/333333?text=Electroestimulador"
+              description="Electroestimulador TENS"
+              price="$950.00"
               productId="16"
             />
-            <ProductCard 
-              imgSrc="https://placehold.co/150x150/eeeeee/333333?text=Bandas" 
-              description="Bandas de resistencia (kit completo)" 
-              price="$450.00" 
+            <ProductCard
+              imgSrc="https://placehold.co/150x150/eeeeee/333333?text=Bandas"
+              description="Bandas de resistencia (kit completo)"
+              price="$450.00"
               productId="17"
             />
-            <ProductCard 
-              imgSrc="https://placehold.co/150x150/eeeeee/333333?text=Aceite" 
-              description="Aceites terapéuticos ortopédicos" 
-              price="$300.00" 
+            <ProductCard
+              imgSrc="https://placehold.co/150x150/eeeeee/333333?text=Aceite"
+              description="Aceites terapéuticos ortopédicos"
+              price="$300.00"
               productId="18"
             />
           </div>
         </section>
-        
+
         {/* Ortopedia Pediátrica (Ortochavitos) */}
         <section className="mb-12 bg-gradient-to-r from-green-50 to-emerald-100 p-6 md:p-8 rounded-lg">
           <div className="text-center mb-6">
             <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-2">
-              Ortopedia Pediátrica 
-              <span className="block text-2xl md:text-3xl text-emerald-600 font-semibold">(Ortochavitos)</span>
+              Ortopedia Pediátrica
+              <span className="block text-2xl md:text-3xl text-emerald-600 font-semibold">
+                (Ortochavitos)
+              </span>
             </h2>
             <p className="text-gray-600 text-lg">Cuidado especializado para los más pequeños</p>
           </div>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <ProductCard 
-              imgSrc="https://placehold.co/150x150/eeeeee/333333?text=Zapato+Niño" 
-              description="Zapato ortopédico infantil especializado" 
-              price="$980.00" 
+            <ProductCard
+              imgSrc="https://placehold.co/150x150/eeeeee/333333?text=Zapato+Niño"
+              description="Zapato ortopédico infantil especializado"
+              price="$980.00"
               productId="19"
             />
-            <ProductCard 
-              imgSrc="https://placehold.co/150x150/eeeeee/333333?text=Plantilla+Niño" 
-              description="Plantilla pediátrica personalizada" 
-              price="Desde $700" 
-              action="Agendar Cita" 
+            <ProductCard
+              imgSrc="https://placehold.co/150x150/eeeeee/333333?text=Plantilla+Niño"
+              description="Plantilla pediátrica personalizada"
+              price="Desde $700"
+              action="Agendar Cita"
               productId="20"
             />
-            <ProductCard 
-              imgSrc="https://placehold.co/150x150/eeeeee/333333?text=Férula+Niño" 
-              description="Férula infantil para displasia de cadera" 
-              price="$1,500.00" 
+            <ProductCard
+              imgSrc="https://placehold.co/150x150/eeeeee/333333?text=Férula+Niño"
+              description="Férula infantil para displasia de cadera"
+              price="$1,500.00"
               productId="21"
             />
           </div>
-          
+
           <div className="text-center mt-8">
-            <button 
+            <button
               onClick={() => openWhatsApp()}
               className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors shadow-lg"
             >
@@ -1243,45 +1709,59 @@ export default function TiendaCompleta() {
 
         {/* Artículos de Salud y Bienestar */}
         <section className="mb-12">
-          <h2 className="text-2xl font-bold mb-6 text-blue-900">Artículos para tu Salud y Bienestar</h2>
+          <h2 className="text-2xl font-bold mb-6 text-blue-900">
+            Artículos para tu Salud y Bienestar
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { 
-                img: "/images/banners/Plantillas PersonalizadasFD.png", 
-                title: "Cómo elegir la plantilla correcta", 
-                description: "Guía completa para seleccionar la plantilla ortopédica ideal para tu tipo de pie y actividad.",
-                category: "Ortopedia",
-                blogSlug: "como-elegir-plantilla-correcta"
+              {
+                img: '/images/banners/Plantillas PersonalizadasFD.png',
+                title: 'Cómo elegir la plantilla correcta',
+                description:
+                  'Guía completa para seleccionar la plantilla ortopédica ideal para tu tipo de pie y actividad.',
+                category: 'Ortopedia',
+                blogSlug: 'como-elegir-plantilla-correcta',
               },
-              { 
-                img: "/images/banners/Rehabilitación en AmputadosFD.png", 
-                title: "Prevención de lesiones deportivas", 
-                description: "Consejos y técnicas para prevenir lesiones durante la práctica deportiva.",
-                category: "Deportes",
-                blogSlug: "prevencion-lesiones-deportivas"
+              {
+                img: '/images/banners/Rehabilitación en AmputadosFD.png',
+                title: 'Prevención de lesiones deportivas',
+                description:
+                  'Consejos y técnicas para prevenir lesiones durante la práctica deportiva.',
+                category: 'Deportes',
+                blogSlug: 'prevencion-lesiones-deportivas',
               },
-              { 
-                img: "/images/banners/EstudioHuellaFD.png", 
-                title: "Cuidado postural en el trabajo", 
-                description: "Recomendaciones para mantener una postura correcta durante las horas laborales.",
-                category: "Ergonomía",
-                blogSlug: "cuidado-postural-trabajo"
+              {
+                img: '/images/banners/EstudioHuellaFD.png',
+                title: 'Cuidado postural en el trabajo',
+                description:
+                  'Recomendaciones para mantener una postura correcta durante las horas laborales.',
+                category: 'Ergonomía',
+                blogSlug: 'cuidado-postural-trabajo',
               },
-              { 
-                img: "/images/banners/NiñoPiePlanoFlatDesign.png", 
-                title: "Rehabilitación en casa", 
-                description: "Ejercicios y técnicas de rehabilitación que puedes realizar en la comodidad de tu hogar.",
-                category: "Rehabilitación",
-                blogSlug: "rehabilitacion-en-casa"
-              }
+              {
+                img: '/images/banners/NiñoPiePlanoFlatDesign.png',
+                title: 'Rehabilitación en casa',
+                description:
+                  'Ejercicios y técnicas de rehabilitación que puedes realizar en la comodidad de tu hogar.',
+                category: 'Rehabilitación',
+                blogSlug: 'rehabilitacion-en-casa',
+              },
             ].map((articulo, index) => (
               <Link key={index} href={`/blog/${articulo.blogSlug}`}>
                 <div className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer hover:-translate-y-1 h-full flex flex-col">
-                  <img src={articulo.img} alt={articulo.title} className="w-full h-40 object-cover flex-shrink-0" />
+                  <img
+                    src={articulo.img}
+                    alt={articulo.title}
+                    className="w-full h-40 object-cover flex-shrink-0"
+                  />
                   <div className="p-4 flex flex-col flex-grow">
-                    <div className="text-xs text-blue-600 font-medium mb-2">{articulo.category}</div>
+                    <div className="text-xs text-blue-600 font-medium mb-2">
+                      {articulo.category}
+                    </div>
                     <h4 className="font-bold text-gray-800 mb-2 leading-tight">{articulo.title}</h4>
-                    <p className="text-gray-600 text-sm mb-3 line-clamp-3 flex-grow">{articulo.description}</p>
+                    <p className="text-gray-600 text-sm mb-3 line-clamp-3 flex-grow">
+                      {articulo.description}
+                    </p>
                     <button className="w-full bg-blue-600 text-white py-2 px-4 rounded-md font-medium hover:bg-blue-700 transition-colors text-sm mt-auto">
                       Leer el artículo
                     </button>
@@ -1301,109 +1781,226 @@ export default function TiendaCompleta() {
 
         {/* Nuestras Marcas */}
         <section className="mb-12">
-            <h2 className="text-3xl font-bold mb-8 text-center text-blue-900">Nuestras Marcas</h2>
-            <div className="bg-white p-8 rounded-lg shadow-lg">
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center justify-items-center">
-                    <div className="flex flex-col items-center">
-                        <img 
-                            src="/images/banners/Wilson-logo.svg" 
-                            alt="Wilson" 
-                            className="h-20 w-auto object-contain hover:scale-110 transition-transform duration-300"
-                        />
-                        <span className="text-sm font-medium text-gray-600 mt-2">Wilson</span>
-                    </div>
-                    <div className="flex flex-col items-center">
-                        <img 
-                            src="/images/banners/Sandy Logo.svg" 
-                            alt="Sandy" 
-                            className="h-20 w-auto object-contain hover:scale-110 transition-transform duration-300"
-                        />
-                        <span className="text-sm font-medium text-gray-600 mt-2">Sandy</span>
-                    </div>
-                    <div className="flex flex-col items-center">
-                        <img 
-                            src="/images/banners/Donjoy-logo_480x480.webp" 
-                            alt="DonJoy" 
-                            className="h-20 w-auto object-contain hover:scale-110 transition-transform duration-300"
-                        />
-                        <span className="text-sm font-medium text-gray-600 mt-2">DonJoy</span>
-                    </div>
-                    <div className="flex flex-col items-center">
-                        <img 
-                            src="/images/banners/SuperConfort Logo.png" 
-                            alt="SuperComfort" 
-                            className="h-20 w-auto object-contain hover:scale-110 transition-transform duration-300"
-                        />
-                        <span className="text-sm font-medium text-gray-600 mt-2">SuperComfort</span>
-                    </div>
-                    <div className="flex flex-col items-center">
-                        <img 
-                            src="/images/banners/Logo Ortochavitos.png" 
-                            alt="Ortochavitos" 
-                            className="h-20 w-auto object-contain hover:scale-110 transition-transform duration-300"
-                        />
-                        <span className="text-sm font-medium text-gray-600 mt-2">Ortochavitos</span>
-                    </div>
-                </div>
+          <h2 className="text-3xl font-bold mb-8 text-center text-blue-900">Nuestras Marcas</h2>
+          <div className="bg-white p-8 rounded-lg shadow-lg">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center justify-items-center">
+              <div className="flex flex-col items-center">
+                <img
+                  src="/images/banners/Wilson-logo.svg"
+                  alt="Wilson"
+                  className="h-20 w-auto object-contain hover:scale-110 transition-transform duration-300"
+                />
+                <span className="text-sm font-medium text-gray-600 mt-2">Wilson</span>
+              </div>
+              <div className="flex flex-col items-center">
+                <img
+                  src="/images/banners/Sandy Logo.svg"
+                  alt="Sandy"
+                  className="h-20 w-auto object-contain hover:scale-110 transition-transform duration-300"
+                />
+                <span className="text-sm font-medium text-gray-600 mt-2">Sandy</span>
+              </div>
+              <div className="flex flex-col items-center">
+                <img
+                  src="/images/banners/Donjoy-logo_480x480.webp"
+                  alt="DonJoy"
+                  className="h-20 w-auto object-contain hover:scale-110 transition-transform duration-300"
+                />
+                <span className="text-sm font-medium text-gray-600 mt-2">DonJoy</span>
+              </div>
+              <div className="flex flex-col items-center">
+                <img
+                  src="/images/banners/SuperConfort Logo.png"
+                  alt="SuperComfort"
+                  className="h-20 w-auto object-contain hover:scale-110 transition-transform duration-300"
+                />
+                <span className="text-sm font-medium text-gray-600 mt-2">SuperComfort</span>
+              </div>
+              <div className="flex flex-col items-center">
+                <img
+                  src="/images/banners/Logo Ortochavitos.png"
+                  alt="Ortochavitos"
+                  className="h-20 w-auto object-contain hover:scale-110 transition-transform duration-300"
+                />
+                <span className="text-sm font-medium text-gray-600 mt-2">Ortochavitos</span>
+              </div>
             </div>
+          </div>
         </section>
-
       </main>
 
-        {/* Centro Integral de Rehabilitación */}
-        <RehabilitationCenter />
+      {/* Centro Integral de Rehabilitación */}
+      <RehabilitationCenter />
 
       {/* Footer */}
       <footer className="bg-blue-900 text-white pt-10">
         <div className="max-w-[1360px] mx-auto px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-                <div>
-                    <h3 className="font-bold text-lg mb-2 text-blue-400">¡Suscríbete a nuestras mejores ofertas!</h3>
-                    <p className="text-sm mb-4">Recibe contenido sobre cuidado ortopédico y promociones exclusivas.</p>
-                    <div className="flex">
-                        <input type="email" placeholder="tu.correo@ejemplo.com" className="w-full rounded-l-md text-gray-800 px-3 py-2 focus:outline-none" />
-                        <button 
-                            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-r-md"
-                            onClick={() => alert('Sistema de suscripción en desarrollo')}
-                        >
-                            Suscribir
-                        </button>
-                    </div>
-                    <div className="mt-4 flex space-x-4">
-                        <img src="https://placehold.co/40x25/1a365d/ffffff?text=Visa" alt="Visa" className="h-6" />
-                        <img src="https://placehold.co/40x25/1a365d/ffffff?text=Mastercard" alt="Mastercard" className="h-6" />
-                        <img src="https://placehold.co/40x25/1a365d/ffffff?text=PayPal" alt="PayPal" className="h-6" />
-                    </div>
-                </div>
-                <div>
-                    <h3 className="font-bold text-lg mb-2 text-blue-400">Servicio al Cliente</h3>
-                    <ul className="text-sm space-y-2">
-                        <li><button type="button" className="hover:underline" onClick={(e) => { e.preventDefault(); alert('Preguntas frecuentes en desarrollo'); }}>Preguntas Frecuentes</button></li>
-                        <li><button type="button" className="hover:underline" onClick={(e) => { e.preventDefault(); alert('Sistema de facturación en desarrollo'); }}>Facturación</button></li>
-                        <li><Link href="/contacto" className="hover:underline">Contáctanos</Link></li>
-                        <li><button type="button" className="hover:underline" onClick={(e) => { e.preventDefault(); alert('WhatsApp en desarrollo'); }}>WhatsApp</button></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 className="font-bold text-lg mb-2 text-blue-400">Acerca de Nosotros</h3>
-                    <ul className="text-sm space-y-2">
-                        <li><Link href="/nosotros" className="hover:underline">Nuestra Historia</Link></li>
-                        <li><button type="button" className="hover:underline" onClick={(e) => { e.preventDefault(); alert('Información sobre nuestra filosofía de atención en desarrollo'); }}>Filosofía de Atención</button></li>
-                        <li><button type="button" className="hover:underline" onClick={(e) => { e.preventDefault(); alert('Trabaja con nosotros en desarrollo'); }}>Trabaja con Nosotros</button></li>
-                    </ul>
-                </div>
-                 <div>
-                    <h3 className="font-bold text-lg mb-2 text-blue-400">Legal</h3>
-                     <ul className="text-sm space-y-2">
-                        <li><button type="button" className="hover:underline" onClick={(e) => { e.preventDefault(); alert('Aviso de privacidad en desarrollo'); }}>Aviso de Privacidad</button></li>
-                        <li><button type="button" className="hover:underline" onClick={(e) => { e.preventDefault(); alert('Términos y condiciones en desarrollo'); }}>Términos y Condiciones</button></li>
-                        <li><button type="button" className="hover:underline" onClick={(e) => { e.preventDefault(); alert('Política de devoluciones en desarrollo'); }}>Política de Devoluciones</button></li>
-                    </ul>
-                </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+            <div>
+              <h3 className="font-bold text-lg mb-2 text-blue-400">
+                ¡Suscríbete a nuestras mejores ofertas!
+              </h3>
+              <p className="text-sm mb-4">
+                Recibe contenido sobre cuidado ortopédico y promociones exclusivas.
+              </p>
+              <div className="flex">
+                <input
+                  type="email"
+                  placeholder="tu.correo@ejemplo.com"
+                  className="w-full rounded-l-md text-gray-800 px-3 py-2 focus:outline-none"
+                />
+                <button
+                  className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-r-md"
+                  onClick={() => alert('Sistema de suscripción en desarrollo')}
+                >
+                  Suscribir
+                </button>
+              </div>
+              <div className="mt-4 flex space-x-4">
+                <img
+                  src="https://placehold.co/40x25/1a365d/ffffff?text=Visa"
+                  alt="Visa"
+                  className="h-6"
+                />
+                <img
+                  src="https://placehold.co/40x25/1a365d/ffffff?text=Mastercard"
+                  alt="Mastercard"
+                  className="h-6"
+                />
+                <img
+                  src="https://placehold.co/40x25/1a365d/ffffff?text=PayPal"
+                  alt="PayPal"
+                  className="h-6"
+                />
+              </div>
             </div>
-            <div className="text-center text-xs border-t border-blue-700 py-4 mt-4">
-                <p>&copy; {new Date().getFullYear()} Ortopedia Cuernavaca. Todos los derechos reservados.</p>
+            <div>
+              <h3 className="font-bold text-lg mb-2 text-blue-400">Servicio al Cliente</h3>
+              <ul className="text-sm space-y-2">
+                <li>
+                  <button
+                    type="button"
+                    className="hover:underline"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      alert('Preguntas frecuentes en desarrollo');
+                    }}
+                  >
+                    Preguntas Frecuentes
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    className="hover:underline"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      alert('Sistema de facturación en desarrollo');
+                    }}
+                  >
+                    Facturación
+                  </button>
+                </li>
+                <li>
+                  <Link href="/contacto" className="hover:underline">
+                    Contáctanos
+                  </Link>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    className="hover:underline"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      alert('WhatsApp en desarrollo');
+                    }}
+                  >
+                    WhatsApp
+                  </button>
+                </li>
+              </ul>
             </div>
+            <div>
+              <h3 className="font-bold text-lg mb-2 text-blue-400">Acerca de Nosotros</h3>
+              <ul className="text-sm space-y-2">
+                <li>
+                  <Link href="/nosotros" className="hover:underline">
+                    Nuestra Historia
+                  </Link>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    className="hover:underline"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      alert('Información sobre nuestra filosofía de atención en desarrollo');
+                    }}
+                  >
+                    Filosofía de Atención
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    className="hover:underline"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      alert('Trabaja con nosotros en desarrollo');
+                    }}
+                  >
+                    Trabaja con Nosotros
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-bold text-lg mb-2 text-blue-400">Legal</h3>
+              <ul className="text-sm space-y-2">
+                <li>
+                  <button
+                    type="button"
+                    className="hover:underline"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      alert('Aviso de privacidad en desarrollo');
+                    }}
+                  >
+                    Aviso de Privacidad
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    className="hover:underline"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      alert('Términos y condiciones en desarrollo');
+                    }}
+                  >
+                    Términos y Condiciones
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    className="hover:underline"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      alert('Política de devoluciones en desarrollo');
+                    }}
+                  >
+                    Política de Devoluciones
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="text-center text-xs border-t border-blue-700 py-4 mt-4">
+            <p>
+              &copy; {new Date().getFullYear()} Ortopedia Cuernavaca. Todos los derechos reservados.
+            </p>
+          </div>
         </div>
       </footer>
     </div>

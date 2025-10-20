@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-const ReadingProgress = ({ 
-  target = 'article', 
+const ReadingProgress = ({
+  target = 'article',
   height = 4,
   color = 'bg-blue-600',
   showPercentage = false,
-  className = ''
+  className = '',
 }) => {
   const [progress, setProgress] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
@@ -19,7 +19,7 @@ const ReadingProgress = ({
       const rect = targetElement.getBoundingClientRect();
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
-      
+
       // Calcular si el elemento está visible
       const isElementVisible = rect.top < windowHeight && rect.bottom > 0;
       setIsVisible(isElementVisible);
@@ -72,13 +72,13 @@ const ReadingProgress = ({
         style={{
           height: `${height}px`,
           width: `${progress}%`,
-          boxShadow: progress > 0 ? '0 2px 4px rgba(0,0,0,0.1)' : 'none'
+          boxShadow: progress > 0 ? '0 2px 4px rgba(0,0,0,0.1)' : 'none',
         }}
         initial={{ width: 0 }}
         animate={{ width: `${progress}%` }}
         transition={{ duration: 0.1, ease: 'easeOut' }}
       />
-      
+
       {showPercentage && progress > 0 && (
         <motion.div
           className="absolute top-0 right-0 bg-white border border-gray-200 rounded-full px-2 py-1 text-xs font-medium text-gray-700 shadow-sm"

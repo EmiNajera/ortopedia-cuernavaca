@@ -7,7 +7,7 @@ import { serialize } from 'next-mdx-remote/serialize';
 
 export default function BlogArticlePage({ post, mdxSource }) {
   const router = useRouter();
-  
+
   if (router.isFallback) {
     return <div>Cargando...</div>;
   }
@@ -26,10 +26,7 @@ export default function BlogArticlePage({ post, mdxSource }) {
         <meta property="og:image" content={post.image} />
         <meta property="og:type" content="article" />
       </Head>
-      <BlogTemplate 
-        {...post}
-        content={<MDXRemote {...mdxSource} />}
-      />
+      <BlogTemplate {...post} content={<MDXRemote {...mdxSource} />} />
     </>
   );
 }
@@ -52,7 +49,7 @@ export async function getStaticProps({ params }) {
   // Importar solo en el servidor
   const { getPostBySlug } = await import('../../lib/utils/blogUtils');
   const post = getPostBySlug(params.id);
-  
+
   if (!post) {
     return {
       notFound: true,
@@ -64,7 +61,7 @@ export async function getStaticProps({ params }) {
   // Convertir fecha a string para serialización JSON
   const serializedPost = {
     ...post,
-    date: post.date instanceof Date ? post.date.toISOString() : post.date
+    date: post.date instanceof Date ? post.date.toISOString() : post.date,
   };
 
   return {
@@ -74,5 +71,3 @@ export async function getStaticProps({ params }) {
     },
   };
 }
-
-

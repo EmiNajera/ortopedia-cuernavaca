@@ -6,12 +6,12 @@ import { useRouter } from 'next/router';
 export function Link({ to, href, children, replace, shallow, scroll, prefetch, locale, ...rest }) {
   const finalHref = to ?? href ?? '#';
   return (
-    <NextLink 
-      href={finalHref} 
-      replace={replace} 
-      shallow={shallow} 
-      scroll={scroll} 
-      prefetch={prefetch} 
+    <NextLink
+      href={finalHref}
+      replace={replace}
+      shallow={shallow}
+      scroll={scroll}
+      prefetch={prefetch}
       locale={locale}
       legacyBehavior
       passHref
@@ -81,7 +81,9 @@ export function useSearchParams() {
     }
     // Use Next router if available; otherwise use history API
     if (router && typeof router.push === 'function') {
-      router.push(url.pathname + (url.search ? `?${url.search}` : ''), undefined, { shallow: true });
+      router.push(url.pathname + (url.search ? `?${url.search}` : ''), undefined, {
+        shallow: true,
+      });
     } else {
       window.history.pushState({}, '', url.pathname + (url.search ? `?${url.search}` : ''));
       window.dispatchEvent(new PopStateEvent('popstate'));
@@ -102,5 +104,3 @@ export function useSearchParams() {
 export const BrowserRouter = () => null;
 export const Routes = () => null;
 export const Route = () => null;
-
-

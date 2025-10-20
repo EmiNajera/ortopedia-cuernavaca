@@ -9,5 +9,3 @@ Allow: /
 Sitemap: ${BASE_URL}/api/sitemap.xml
 `);
 }
-
-

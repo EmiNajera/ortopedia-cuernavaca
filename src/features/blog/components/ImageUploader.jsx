@@ -1,22 +1,15 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import NextImage from 'next/image';
-import { 
-  Upload, 
-  Image as ImageIcon, 
-  X, 
-  Check, 
-  AlertCircle,
-  Loader2
-} from 'lucide-react';
+import { Upload, Image as ImageIcon, X, Check, AlertCircle, Loader2 } from 'lucide-react';
 
-const ImageUploader = ({ 
-  onImageSelect, 
-  currentImage = '', 
+const ImageUploader = ({
+  onImageSelect,
+  currentImage = '',
   placeholder = 'Selecciona una imagen...',
   accept = 'image/*',
   maxSize = 5 * 1024 * 1024, // 5MB
-  className = ''
+  className = '',
 }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
@@ -37,7 +30,7 @@ const ImageUploader = ({
   const handleDrop = (e) => {
     e.preventDefault();
     setIsDragging(false);
-    
+
     const files = e.dataTransfer.files;
     if (files.length > 0) {
       handleFileSelect(files[0]);
@@ -53,7 +46,7 @@ const ImageUploader = ({
 
   const handleFileSelect = async (file) => {
     setError('');
-    
+
     // Validar tipo de archivo
     if (!file.type.startsWith('image/')) {
       setError('Por favor selecciona un archivo de imagen válido');
@@ -78,8 +71,8 @@ const ImageUploader = ({
 
       // En un entorno real, aquí subirías la imagen al servidor
       // Por ahora, simulamos la subida
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
       // Generar nombre de archivo único
       const timestamp = Date.now();
       const extension = file.name.split('.').pop();
@@ -88,7 +81,6 @@ const ImageUploader = ({
 
       // Llamar callback con la ruta de la imagen
       onImageSelect(imagePath);
-      
     } catch (error) {
       console.error('Error uploading image:', error);
       setError('Error al subir la imagen. Inténtalo de nuevo.');
@@ -118,8 +110,8 @@ const ImageUploader = ({
           isDragging
             ? 'border-blue-400 bg-blue-50'
             : preview
-            ? 'border-green-300 bg-green-50'
-            : 'border-gray-300 hover:border-gray-400'
+              ? 'border-green-300 bg-green-50'
+              : 'border-gray-300 hover:border-gray-400'
         }`}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
@@ -186,9 +178,7 @@ const ImageUploader = ({
               className="text-center"
             >
               <ImageIcon className="w-12 h-12 text-gray-400 mx-auto mb-3" />
-              <p className="text-sm text-gray-600 mb-1">
-                {placeholder}
-              </p>
+              <p className="text-sm text-gray-600 mb-1">{placeholder}</p>
               <p className="text-xs text-gray-500">
                 Arrastra una imagen aquí o haz clic para seleccionar
               </p>
@@ -225,9 +215,7 @@ const ImageUploader = ({
               height={48}
               unoptimized
             />
-            <span className="text-sm text-gray-700 flex-1 truncate">
-              {currentImage}
-            </span>
+            <span className="text-sm text-gray-700 flex-1 truncate">{currentImage}</span>
             <button
               onClick={handleRemoveImage}
               className="text-red-500 hover:text-red-700 transition-colors"
@@ -242,4 +230,3 @@ const ImageUploader = ({
 };
 
 export default ImageUploader;
-

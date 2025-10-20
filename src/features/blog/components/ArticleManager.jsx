@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Plus, 
-  Search, 
-  Filter, 
-  Edit, 
-  Trash2, 
-  Eye, 
+import {
+  Plus,
+  Search,
+  Filter,
+  Edit,
+  Trash2,
+  Eye,
   Calendar,
   User,
   Tag,
@@ -15,7 +15,7 @@ import {
   Download,
   Upload,
   RefreshCw,
-  Clock
+  Clock,
 } from 'lucide-react';
 
 const ArticleManager = ({ articles, onEdit, onDelete, onCreate, onRefresh }) => {
@@ -33,7 +33,7 @@ const ArticleManager = ({ articles, onEdit, onDelete, onCreate, onRefresh }) => 
     { id: 'casos-exito', name: 'Casos de Éxito', icon: '🏆' },
     { id: 'rehabilitacion', name: 'Rehabilitación', icon: '💪' },
     { id: 'investigacion', name: 'Investigación', icon: '📊' },
-    { id: 'novedades', name: 'Novedades', icon: '🆕' }
+    { id: 'novedades', name: 'Novedades', icon: '🆕' },
   ];
 
   const filteredAndSortedArticles = React.useMemo(() => {
@@ -41,24 +41,24 @@ const ArticleManager = ({ articles, onEdit, onDelete, onCreate, onRefresh }) => 
 
     // Filtrar por búsqueda
     if (searchTerm) {
-      filtered = filtered.filter(article => 
-        (article.title && article.title.toLowerCase().includes(searchTerm.toLowerCase())) ||
-        (article.excerpt && article.excerpt.toLowerCase().includes(searchTerm.toLowerCase())) ||
-        (article.tags && article.tags.some(tag => 
-          tag.toLowerCase().includes(searchTerm.toLowerCase())
-        ))
+      filtered = filtered.filter(
+        (article) =>
+          (article.title && article.title.toLowerCase().includes(searchTerm.toLowerCase())) ||
+          (article.excerpt && article.excerpt.toLowerCase().includes(searchTerm.toLowerCase())) ||
+          (article.tags &&
+            article.tags.some((tag) => tag.toLowerCase().includes(searchTerm.toLowerCase()))),
       );
     }
 
     // Filtrar por categoría
     if (selectedCategory !== 'todos') {
-      filtered = filtered.filter(article => article.category === selectedCategory);
+      filtered = filtered.filter((article) => article.category === selectedCategory);
     }
 
     // Ordenar
     filtered.sort((a, b) => {
       let aValue, bValue;
-      
+
       switch (sortBy) {
         case 'title':
           aValue = a.title.toLowerCase();
@@ -88,10 +88,8 @@ const ArticleManager = ({ articles, onEdit, onDelete, onCreate, onRefresh }) => 
   }, [articles, searchTerm, selectedCategory, sortBy, sortOrder]);
 
   const handleSelectArticle = (articleId) => {
-    setSelectedArticles(prev => 
-      prev.includes(articleId) 
-        ? prev.filter(id => id !== articleId)
-        : [...prev, articleId]
+    setSelectedArticles((prev) =>
+      prev.includes(articleId) ? prev.filter((id) => id !== articleId) : [...prev, articleId],
     );
   };
 
@@ -99,13 +97,13 @@ const ArticleManager = ({ articles, onEdit, onDelete, onCreate, onRefresh }) => 
     if (selectedArticles.length === filteredAndSortedArticles.length) {
       setSelectedArticles([]);
     } else {
-      setSelectedArticles(filteredAndSortedArticles.map(article => article.slug));
+      setSelectedArticles(filteredAndSortedArticles.map((article) => article.slug));
     }
   };
 
   const handleBulkDelete = () => {
     if (window.confirm(`¿Estás seguro de eliminar ${selectedArticles.length} artículos?`)) {
-      selectedArticles.forEach(slug => onDelete(slug));
+      selectedArticles.forEach((slug) => onDelete(slug));
       setSelectedArticles([]);
       setShowBulkActions(false);
     }
@@ -118,7 +116,7 @@ const ArticleManager = ({ articles, onEdit, onDelete, onCreate, onRefresh }) => 
       'casos-exito': 'bg-orange-100 text-orange-800 border-orange-200',
       rehabilitacion: 'bg-green-100 text-green-800 border-green-200',
       investigacion: 'bg-indigo-100 text-indigo-800 border-indigo-200',
-      novedades: 'bg-pink-100 text-pink-800 border-pink-200'
+      novedades: 'bg-pink-100 text-pink-800 border-pink-200',
     };
     return colorMap[categoryId] || 'bg-gray-100 text-gray-800 border-gray-200';
   };
@@ -127,7 +125,7 @@ const ArticleManager = ({ articles, onEdit, onDelete, onCreate, onRefresh }) => 
     return new Date(dateString).toLocaleDateString('es-ES', {
       year: 'numeric',
       month: 'short',
-      day: 'numeric'
+      day: 'numeric',
     });
   };
 
@@ -189,7 +187,7 @@ const ArticleManager = ({ articles, onEdit, onDelete, onCreate, onRefresh }) => 
                 onChange={(e) => setSelectedCategory(e.target.value)}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               >
-                {categories.map(category => (
+                {categories.map((category) => (
                   <option key={category.id} value={category.id}>
                     {category.icon} {category.name}
                   </option>
@@ -231,7 +229,8 @@ const ArticleManager = ({ articles, onEdit, onDelete, onCreate, onRefresh }) => 
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
                   <span className="text-blue-800 font-medium">
-                    {selectedArticles.length} artículo{selectedArticles.length !== 1 ? 's' : ''} seleccionado{selectedArticles.length !== 1 ? 's' : ''}
+                    {selectedArticles.length} artículo{selectedArticles.length !== 1 ? 's' : ''}{' '}
+                    seleccionado{selectedArticles.length !== 1 ? 's' : ''}
                   </span>
                 </div>
                 <div className="flex items-center space-x-2">
@@ -261,12 +260,16 @@ const ArticleManager = ({ articles, onEdit, onDelete, onCreate, onRefresh }) => 
             <div className="flex items-center">
               <input
                 type="checkbox"
-                checked={selectedArticles.length === filteredAndSortedArticles.length && filteredAndSortedArticles.length > 0}
+                checked={
+                  selectedArticles.length === filteredAndSortedArticles.length &&
+                  filteredAndSortedArticles.length > 0
+                }
                 onChange={handleSelectAll}
                 className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
               />
               <span className="ml-3 text-sm font-medium text-gray-700">
-                {filteredAndSortedArticles.length} artículo{filteredAndSortedArticles.length !== 1 ? 's' : ''}
+                {filteredAndSortedArticles.length} artículo
+                {filteredAndSortedArticles.length !== 1 ? 's' : ''}
               </span>
             </div>
           </div>
@@ -314,10 +317,8 @@ const ArticleManager = ({ articles, onEdit, onDelete, onCreate, onRefresh }) => 
                         <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
                           {article.title}
                         </h3>
-                        <p className="text-gray-600 mb-3 line-clamp-2">
-                          {article.excerpt}
-                        </p>
-                        
+                        <p className="text-gray-600 mb-3 line-clamp-2">{article.excerpt}</p>
+
                         {/* Metadatos */}
                         <div className="flex items-center space-x-4 text-sm text-gray-500">
                           <div className="flex items-center">
@@ -336,19 +337,26 @@ const ArticleManager = ({ articles, onEdit, onDelete, onCreate, onRefresh }) => 
 
                         {/* Tags y Categoría */}
                         <div className="flex items-center space-x-2 mt-3">
-                          <span className={`px-2 py-1 rounded-full text-xs font-medium border ${getCategoryColor(article.category)}`}>
-                            {categories.find(c => c.id === article.category)?.icon} {categories.find(c => c.id === article.category)?.name}
+                          <span
+                            className={`px-2 py-1 rounded-full text-xs font-medium border ${getCategoryColor(article.category)}`}
+                          >
+                            {categories.find((c) => c.id === article.category)?.icon}{' '}
+                            {categories.find((c) => c.id === article.category)?.name}
                           </span>
                           {article.featured && (
                             <span className="px-2 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs font-medium">
                               ⭐ Destacado
                             </span>
                           )}
-                          {article.tags && article.tags.slice(0, 3).map((tag, tagIndex) => (
-                            <span key={tagIndex} className="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">
-                              {tag}
-                            </span>
-                          ))}
+                          {article.tags &&
+                            article.tags.slice(0, 3).map((tag, tagIndex) => (
+                              <span
+                                key={tagIndex}
+                                className="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs"
+                              >
+                                {tag}
+                              </span>
+                            ))}
                         </div>
                       </div>
 
@@ -388,13 +396,14 @@ const ArticleManager = ({ articles, onEdit, onDelete, onCreate, onRefresh }) => 
             <div className="text-center py-12">
               <FileText className="w-12 h-12 text-gray-400 mx-auto mb-4" />
               <h3 className="text-lg font-medium text-gray-900 mb-2">
-                {searchTerm || selectedCategory !== 'todos' ? 'No se encontraron artículos' : 'No hay artículos'}
+                {searchTerm || selectedCategory !== 'todos'
+                  ? 'No se encontraron artículos'
+                  : 'No hay artículos'}
               </h3>
               <p className="text-gray-600 mb-4">
-                {searchTerm || selectedCategory !== 'todos' 
+                {searchTerm || selectedCategory !== 'todos'
                   ? 'Intenta ajustar los filtros de búsqueda'
-                  : 'Comienza creando tu primer artículo'
-                }
+                  : 'Comienza creando tu primer artículo'}
               </p>
               {!searchTerm && selectedCategory === 'todos' && (
                 <button
@@ -414,4 +423,3 @@ const ArticleManager = ({ articles, onEdit, onDelete, onCreate, onRefresh }) => 
 };
 
 export default ArticleManager;
-

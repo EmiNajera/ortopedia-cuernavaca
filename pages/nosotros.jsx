@@ -1,3 +1,1 @@
-import NosotrosPage from '../src/pages/nosotros.jsx';
-
-export default NosotrosPage;
+export { default } from '../src/pages/nosotros.jsx';

@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Contacto from './home/Contacto';
+import MarketingLayout from '../components/layout/MarketingLayout';
 
 export default function ContactoPage() {
   return (
@@ -14,4 +15,4 @@ export default function ContactoPage() {
   );
 }
 
-
+ContactoPage.getLayout = (page) => <MarketingLayout>{page}</MarketingLayout>;

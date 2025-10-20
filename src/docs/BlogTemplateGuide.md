@@ -49,7 +49,7 @@ export default function BlogArticleEjemplo() {
     readTime: '5 min',
     image: 'URL_de_la_imagen',
     featured: false,
-    tags: ['Tag1', 'Tag2', 'Tag3']
+    tags: ['Tag1', 'Tag2', 'Tag3'],
   };
 
   // Información del autor
@@ -58,16 +58,12 @@ export default function BlogArticleEjemplo() {
     bio: 'Biografía del autor...',
     social: {
       twitter: 'https://twitter.com/usuario',
-      linkedin: 'https://linkedin.com/in/usuario'
-    }
+      linkedin: 'https://linkedin.com/in/usuario',
+    },
   };
 
   // Contenido del artículo
-  const content = (
-    <div className="space-y-8">
-      {/* Tu contenido aquí */}
-    </div>
-  );
+  const content = <div className="space-y-8">{/* Tu contenido aquí */}</div>;
 
   // Artículos relacionados
   const relatedArticles = [
@@ -97,16 +93,16 @@ export default function BlogArticleEjemplo() {
 
 ```javascript
 const article = {
-  id: 1,                           // ID único del artículo
-  title: 'Título del Artículo',    // Título principal
+  id: 1, // ID único del artículo
+  title: 'Título del Artículo', // Título principal
   excerpt: 'Descripción breve...', // Resumen del artículo
-  category: 'categoria',           // Categoría (tecnologia, consejos, etc.)
-  author: 'Nombre del Autor',      // Nombre del autor
-  date: '2024-01-15',             // Fecha en formato YYYY-MM-DD
-  readTime: '5 min',              // Tiempo estimado de lectura
-  image: 'URL_de_la_imagen',      // URL de la imagen destacada
-  featured: false,                // Si es artículo destacado
-  tags: ['Tag1', 'Tag2']          // Array de etiquetas
+  category: 'categoria', // Categoría (tecnologia, consejos, etc.)
+  author: 'Nombre del Autor', // Nombre del autor
+  date: '2024-01-15', // Fecha en formato YYYY-MM-DD
+  readTime: '5 min', // Tiempo estimado de lectura
+  image: 'URL_de_la_imagen', // URL de la imagen destacada
+  featured: false, // Si es artículo destacado
+  tags: ['Tag1', 'Tag2'], // Array de etiquetas
 };
 ```
 
@@ -117,9 +113,9 @@ const author = {
   name: 'Nombre del Autor',
   bio: 'Biografía profesional del autor...',
   social: {
-    twitter: 'https://twitter.com/usuario',    // Opcional
-    linkedin: 'https://linkedin.com/in/usuario' // Opcional
-  }
+    twitter: 'https://twitter.com/usuario', // Opcional
+    linkedin: 'https://linkedin.com/in/usuario', // Opcional
+  },
 };
 ```
 
@@ -131,14 +127,10 @@ El contenido se define usando JSX para mejor estructura y estilos:
 const content = (
   <div className="space-y-8">
     {/* Párrafo introductorio */}
-    <p className="text-lg text-gray-700 leading-relaxed">
-      Contenido del párrafo...
-    </p>
+    <p className="text-lg text-gray-700 leading-relaxed">Contenido del párrafo...</p>
 
     {/* Títulos de sección */}
-    <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">
-      Título de Sección
-    </h2>
+    <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Título de Sección</h2>
 
     {/* Cajas destacadas */}
     <div className="bg-blue-50 border-l-4 border-blue-500 p-6 my-8">
@@ -162,7 +154,9 @@ const content = (
       <h3 className="text-2xl font-bold text-gray-900 mb-6">Pasos</h3>
       <div className="space-y-6">
         <div className="flex items-start space-x-4">
-          <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">1</div>
+          <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">
+            1
+          </div>
           <div>
             <h4 className="font-bold text-gray-900 mb-2">Paso 1</h4>
             <p className="text-gray-600">Descripción...</p>
@@ -183,7 +177,10 @@ const content = (
     <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 my-8">
       <h3 className="text-xl font-bold text-yellow-900 mb-3">📞 ¿Interesado?</h3>
       <p className="text-yellow-800 mb-4">Descripción...</p>
-      <a href="/contacto" className="inline-block bg-yellow-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-yellow-700 transition-colors">
+      <a
+        href="/contacto"
+        className="inline-block bg-yellow-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-yellow-700 transition-colors"
+      >
         Agendar Consulta
       </a>
     </div>
@@ -204,6 +201,7 @@ const content = (
 ### Cajas y Contenedores
 
 #### Caja de Información Azul
+
 ```jsx
 <div className="bg-blue-50 border-l-4 border-blue-500 p-6 my-8">
   <h3 className="text-xl font-bold text-blue-900 mb-3">💡 Punto Clave</h3>
@@ -212,6 +210,7 @@ const content = (
 ```
 
 #### Caja de Advertencia Amarilla
+
 ```jsx
 <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 my-8">
   <h3 className="text-xl font-bold text-yellow-900 mb-3">⚠️ Importante</h3>
@@ -220,6 +219,7 @@ const content = (
 ```
 
 #### Caja de Proceso Gris
+
 ```jsx
 <div className="bg-gray-50 rounded-xl p-8 my-8">
   <h3 className="text-2xl font-bold text-gray-900 mb-6">Proceso</h3>
@@ -228,6 +228,7 @@ const content = (
 ```
 
 #### Caja Gradiente
+
 ```jsx
 <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl p-8 my-8">
   <h3 className="text-2xl font-bold mb-4">🚀 Innovación</h3>
@@ -238,22 +239,21 @@ const content = (
 ### Grids y Layouts
 
 #### Grid de 2 Columnas
+
 ```jsx
-<div className="grid md:grid-cols-2 gap-6 my-8">
-  {/* Elementos */}
-</div>
+<div className="grid md:grid-cols-2 gap-6 my-8">{/* Elementos */}</div>
 ```
 
 #### Grid de 3 Columnas
+
 ```jsx
-<div className="grid md:grid-cols-3 gap-6 my-8">
-  {/* Elementos */}
-</div>
+<div className="grid md:grid-cols-3 gap-6 my-8">{/* Elementos */}</div>
 ```
 
 ### Iconos y Elementos Visuales
 
 #### Iconos con Fondo de Color
+
 ```jsx
 <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
   <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -263,6 +263,7 @@ const content = (
 ```
 
 #### Números Circulares
+
 ```jsx
 <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">
   1
@@ -294,7 +295,7 @@ Para integrar el artículo en las rutas, agrega en `MainRoutes.jsx`:
 import BlogArticleEjemplo from './pages/BlogArticleEjemplo';
 
 // En las rutas
-<Route path="/blog/:id" element={<BlogArticleEjemplo />} />
+<Route path="/blog/:id" element={<BlogArticleEjemplo />} />;
 ```
 
 ## 📊 SEO y Metadatos
@@ -310,6 +311,7 @@ La plantilla incluye automáticamente:
 ## 🎯 Mejores Prácticas
 
 ### Contenido
+
 1. **Usa títulos descriptivos** y atractivos
 2. **Incluye imágenes relevantes** de alta calidad
 3. **Estructura el contenido** con subtítulos claros
@@ -317,6 +319,7 @@ La plantilla incluye automáticamente:
 5. **Incluye llamadas a la acción** relevantes
 
 ### Técnico
+
 1. **Mantén consistencia** en el formato
 2. **Optimiza las imágenes** antes de subirlas
 3. **Usa tags relevantes** para mejor categorización
@@ -324,6 +327,7 @@ La plantilla incluye automáticamente:
 5. **Actualiza la navegación** entre artículos
 
 ### SEO
+
 1. **Usa palabras clave** en títulos y contenido
 2. **Optimiza las URLs** con slugs descriptivos
 3. **Incluye meta descripciones** atractivas
@@ -337,6 +341,7 @@ Revisa `BlogArticle.jsx` para ver un ejemplo completo de implementación con tod
 ## 📞 Soporte
 
 Para dudas sobre la implementación de la plantilla, consulta:
+
 - El archivo `BlogArticle.jsx` como referencia
 - Esta guía de documentación
-- Los comentarios en el código de la plantilla 
+- Los comentarios en el código de la plantilla

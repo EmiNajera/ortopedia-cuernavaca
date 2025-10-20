@@ -7,5 +7,3 @@ test('Nosotros page includes JSON-LD script', () => {
   const jsonLd = Array.from(document.head.querySelectorAll('script[type="application/ld+json"]'));
   expect(jsonLd.length).toBeGreaterThan(0);
 });
-
-

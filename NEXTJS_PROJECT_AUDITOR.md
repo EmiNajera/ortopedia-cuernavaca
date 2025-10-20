@@ -20,7 +20,7 @@ Producir una estructura objetivo recomendada para el proyecto.
 
 El proyecto actual presenta características mixtas:
 
-Usa Next.js con Pages Router (pages/_app.jsx, _document.jsx, _error.jsx).
+Usa Next.js con Pages Router (pages/\_app.jsx, \_document.jsx, \_error.jsx).
 
 Contiene también una segunda estructura en src/pages/.
 
@@ -52,9 +52,9 @@ public/ → archivos estáticos públicos
 
 styles/ → estilos globales
 
-tests/, __tests__, jest.* → pruebas
+tests/, **tests**, jest.\* → pruebas
 
-config.*, .swc/, dist/, vite.config.js → build y herramientas
+config.\*, .swc/, dist/, vite.config.js → build y herramientas
 
 Detecta conflictos estructurales:
 
@@ -88,25 +88,25 @@ Estructura final esperada del proyecto.
 
 🧱 Estructura recomendada (referencia)
 project-root/
-├─ public/                 # Archivos estáticos públicos
-│  ├─ images/
-│  └─ favicon.ico
+├─ public/ # Archivos estáticos públicos
+│ ├─ images/
+│ └─ favicon.ico
 ├─ src/
-│  ├─ app/                 # (si usas App Router)
-│  │   ├─ layout.tsx
-│  │   └─ page.tsx
-│  ├─ pages/               # (si mantienes Pages Router)
-│  │   ├─ index.jsx
-│  │   ├─ api/
-│  │   └─ [rutas].jsx
-│  ├─ components/          # UI compartida
-│  ├─ features/            # Módulos funcionales (catalog, cart, auth…)
-│  │   ├─ components/
-│  │   └─ lib/
-│  ├─ services/            # Llamadas API, lógica negocio
-│  ├─ store/               # Estado global (Zustand/Redux)
-│  ├─ styles/              # globals.css, tailwind.css
-│  └─ assets/              # SVG o imágenes importables
+│ ├─ app/ # (si usas App Router)
+│ │ ├─ layout.tsx
+│ │ └─ page.tsx
+│ ├─ pages/ # (si mantienes Pages Router)
+│ │ ├─ index.jsx
+│ │ ├─ api/
+│ │ └─ [rutas].jsx
+│ ├─ components/ # UI compartida
+│ ├─ features/ # Módulos funcionales (catalog, cart, auth…)
+│ │ ├─ components/
+│ │ └─ lib/
+│ ├─ services/ # Llamadas API, lógica negocio
+│ ├─ store/ # Estado global (Zustand/Redux)
+│ ├─ styles/ # globals.css, tailwind.css
+│ └─ assets/ # SVG o imágenes importables
 ├─ tests/
 ├─ .gitignore
 ├─ next.config.js
@@ -149,6 +149,6 @@ next build sin errores
 
 next lint limpio
 
-tailwind.config.js apuntando al nuevo src/**
+tailwind.config.js apuntando al nuevo src/\*\*
 
 npm run dev funcionando correctamente

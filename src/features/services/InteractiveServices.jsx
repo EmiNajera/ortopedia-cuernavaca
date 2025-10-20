@@ -6,20 +6,43 @@ import NextImage from 'next/image';
 
 // SVG Icons inline
 export const ChevronRightIcon = (props) => (
-  <svg {...props} className={`w-5 h-5 ${props.className || ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg
+    {...props}
+    className={`w-5 h-5 ${props.className || ''}`}
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
   </svg>
 );
 
 export const XIcon = (props) => (
-  <svg {...props} className={`w-5 h-5 ${props.className || ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg
+    {...props}
+    className={`w-5 h-5 ${props.className || ''}`}
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
   </svg>
 );
 
 export const MessageSquareIcon = (props) => (
-  <svg {...props} className={`w-5 h-5 ${props.className || ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+  <svg
+    {...props}
+    className={`w-5 h-5 ${props.className || ''}`}
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+    />
   </svg>
 );
 
@@ -73,34 +96,36 @@ export default function InteractiveServices() {
 
   const content = {
     ortesis: {
-      title: "Taller de Prótesis y Rehabilitación en Amputados",
-      description: "Especialistas en prótesis mioeléctricas y rehabilitación integral para amputados.",
+      title: 'Taller de Prótesis y Rehabilitación en Amputados',
+      description:
+        'Especialistas en prótesis mioeléctricas y rehabilitación integral para amputados.',
       features: [
         {
-          title: "Prótesis Mioeléctricas",
-          description: "Tecnología avanzada que permite movimientos naturales mediante señales musculares.",
-          image: "/images/banners/Prótesis MioeléctricaFD.png",
+          title: 'Prótesis Mioeléctricas',
+          description:
+            'Tecnología avanzada que permite movimientos naturales mediante señales musculares.',
+          image: '/images/banners/Prótesis MioeléctricaFD.png',
         },
         {
-          title: "Rehabilitación Integral",
-          description: "Programa completo de adaptación y recuperación funcional.",
-          image: "/images/banners/Rehabilitación PostoperatoriaFD.png",
+          title: 'Rehabilitación Integral',
+          description: 'Programa completo de adaptación y recuperación funcional.',
+          image: '/images/banners/Rehabilitación PostoperatoriaFD.png',
         },
       ],
     },
     plantillas: {
-      title: "Plantillas Ortopédicas Personalizadas",
-      description: "Diseño y fabricación de plantillas específicas para cada paciente.",
+      title: 'Plantillas Ortopédicas Personalizadas',
+      description: 'Diseño y fabricación de plantillas específicas para cada paciente.',
       features: [
         {
-          title: "Análisis Biomecánico",
-          description: "Evaluación completa de la pisada y postura para un diseño preciso.",
-          image: "/images/banners/Plantillas PersonalizadasFD.png",
+          title: 'Análisis Biomecánico',
+          description: 'Evaluación completa de la pisada y postura para un diseño preciso.',
+          image: '/images/banners/Plantillas PersonalizadasFD.png',
         },
         {
-          title: "Materiales de Alta Calidad",
-          description: "Fabricación con materiales duraderos y cómodos.",
-          image: "/images/banners/Plantillas PersonalizadasFD.png",
+          title: 'Materiales de Alta Calidad',
+          description: 'Fabricación con materiales duraderos y cómodos.',
+          image: '/images/banners/Plantillas PersonalizadasFD.png',
         },
       ],
     },
@@ -113,7 +138,9 @@ export default function InteractiveServices() {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-6">Servicios Especializados</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">Soluciones personalizadas para cada necesidad ortopédica</p>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Soluciones personalizadas para cada necesidad ortopédica
+          </p>
         </div>
 
         {/* Tabs */}
@@ -123,7 +150,9 @@ export default function InteractiveServices() {
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                activeTab === tab.id ? 'bg-blue-600 text-white shadow-lg' : 'bg-white text-gray-700 hover:bg-blue-50 border border-gray-200'
+                activeTab === tab.id
+                  ? 'bg-blue-600 text-white shadow-lg'
+                  : 'bg-white text-gray-700 hover:bg-blue-50 border border-gray-200'
               }`}
             >
               {tab.label}
@@ -145,7 +174,14 @@ export default function InteractiveServices() {
               >
                 <div className="relative h-48">
                   {feature.image && (
-                    <NextImage src={feature.image} alt={feature.title} className="w-full h-full object-cover" width={800} height={480} unoptimized />
+                    <NextImage
+                      src={feature.image}
+                      alt={feature.title}
+                      className="w-full h-full object-cover"
+                      width={800}
+                      height={480}
+                      unoptimized
+                    />
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 </div>
@@ -181,7 +217,14 @@ export default function InteractiveServices() {
               >
                 <div className="relative">
                   {selectedFeature.image && (
-                    <NextImage src={selectedFeature.image} alt={selectedFeature.title} className="w-full h-64 object-cover rounded-t-2xl" width={1200} height={640} unoptimized />
+                    <NextImage
+                      src={selectedFeature.image}
+                      alt={selectedFeature.title}
+                      className="w-full h-64 object-cover rounded-t-2xl"
+                      width={1200}
+                      height={640}
+                      unoptimized
+                    />
                   )}
                   <button
                     onClick={() => setSelectedFeature(null)}

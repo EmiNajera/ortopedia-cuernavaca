@@ -7,11 +7,13 @@ Este sistema de blog implementa las mejores prácticas de UI/UX de clase mundial
 ## 🏗️ Arquitectura del Sistema
 
 ### **Separación de Responsabilidades**
+
 - **MDX Files**: Solo contenido puro (texto, estructura)
 - **React Components**: Solo diseño, interacciones y presentación
 - **Template System**: Componentes modulares reutilizables
 
 ### **Estructura de Componentes**
+
 ```
 src/components/blog/
 ├── BlogTemplate.jsx          # Plantilla principal
@@ -24,21 +26,25 @@ src/components/blog/
 ## 🎨 Características de Diseño de Clase Mundial
 
 ### **1. Tipografía Profesional**
+
 - **Jerarquía clara**: H1-H6 con escalas tipográficas perfectas
 - **Legibilidad optimizada**: Contraste, espaciado y line-height
 - **Responsive**: Se adapta perfectamente a todos los dispositivos
 
 ### **2. Sistema de Colores**
+
 - **Paleta consistente**: Basada en principios de accesibilidad
 - **Categorías diferenciadas**: Cada categoría tiene su identidad visual
 - **Estados interactivos**: Hover, focus, active states
 
 ### **3. Micro-animaciones**
+
 - **Framer Motion**: Animaciones suaves y profesionales
 - **Staggered animations**: Entrada escalonada de elementos
 - **Hover effects**: Feedback visual inmediato
 
 ### **4. Layout Responsive**
+
 - **Mobile-first**: Diseño optimizado para móviles
 - **Grid system**: Layout flexible y adaptable
 - **Sticky elements**: Navegación y TOC fijos
@@ -46,6 +52,7 @@ src/components/blog/
 ## 📝 Guía de Uso del Template MDX
 
 ### **Ubicación de Archivos**
+
 ```
 ortotech-vite/
 ├── posts/                    # ← AQUÍ van todos los .mdx
@@ -54,6 +61,7 @@ ortotech-vite/
 ```
 
 ### **Template Completo**
+
 ```yaml
 ---
 title: 'Título de tu Artículo'
@@ -82,6 +90,7 @@ Y así sucesivamente...
 ```
 
 ### **Categorías Disponibles**
+
 - `'tecnologia'` - 🔬 Tecnología y innovación
 - `'consejos'` - 💡 Consejos y guías
 - `'casos-exito'` - 🏆 Historias de éxito
@@ -92,15 +101,18 @@ Y así sucesivamente...
 ## 🚀 Proceso de Creación de Artículos
 
 ### **Paso 1: Crear Archivo**
+
 ```bash
 # En la carpeta posts/
 nuevo-articulo.mdx
 ```
 
 ### **Paso 2: Copiar Template**
+
 Usa el contenido de `TEMPLATE-ARTICULO.mdx`
 
 ### **Paso 3: Personalizar Frontmatter**
+
 ```yaml
 ---
 title: 'Mi Nuevo Artículo'
@@ -117,9 +129,11 @@ slug: 'mi-nuevo-articulo'
 ```
 
 ### **Paso 4: Escribir Contenido**
+
 Solo Markdown puro, sin estilos ni HTML.
 
 ### **Paso 5: Guardar y Commit**
+
 ```bash
 git add posts/mi-articulo.mdx
 git commit -m "Agregar: Mi Nuevo Artículo"
@@ -128,21 +142,25 @@ git commit -m "Agregar: Mi Nuevo Artículo"
 ## 🎯 Características Avanzadas
 
 ### **1. Índice Automático**
+
 - Se genera automáticamente desde los H2, H3, H4
 - Navegación suave entre secciones
 - Indicador de sección activa
 
 ### **2. Sistema de Likes**
+
 - Botón de "Me gusta" interactivo
 - Contador de likes
 - Animaciones suaves
 
 ### **3. Compartir en Redes**
+
 - Twitter, Facebook, LinkedIn, WhatsApp
 - URLs automáticas con título y enlace
 - Ventanas emergentes optimizadas
 
 ### **4. SEO Avanzado**
+
 - Meta tags completos
 - Open Graph para redes sociales
 - Twitter Cards
@@ -150,6 +168,7 @@ git commit -m "Agregar: Mi Nuevo Artículo"
 - URLs canónicas
 
 ### **5. Accesibilidad (WCAG 2.1 AA)**
+
 - Contraste de colores optimizado
 - Navegación por teclado
 - Screen reader friendly
@@ -158,11 +177,13 @@ git commit -m "Agregar: Mi Nuevo Artículo"
 ## 📱 Responsive Design
 
 ### **Breakpoints**
+
 - **Mobile**: < 768px
 - **Tablet**: 768px - 1024px
 - **Desktop**: > 1024px
 
 ### **Adaptaciones**
+
 - **Mobile**: Layout de una columna, TOC colapsable
 - **Tablet**: Layout híbrido, elementos optimizados
 - **Desktop**: Layout de dos columnas, TOC fijo
@@ -170,21 +191,25 @@ git commit -m "Agregar: Mi Nuevo Artículo"
 ## 🔧 Personalización
 
 ### **Colores de Categorías**
+
 Edita `ArticleHeader.jsx` para cambiar los colores:
+
 ```javascript
 const configs = {
-  'tecnologia': { 
+  tecnologia: {
     color: 'from-purple-500 to-indigo-600',
     bgColor: 'bg-purple-50',
     textColor: 'text-purple-700',
-    icon: '🔬'
+    icon: '🔬',
   },
   // ... más categorías
 };
 ```
 
 ### **Tipografía**
+
 Edita `ArticleContent.jsx` para cambiar estilos:
+
 ```javascript
 className="prose prose-lg prose-slate max-w-none
   prose-headings:font-bold prose-headings:text-slate-900
@@ -196,6 +221,7 @@ className="prose prose-lg prose-slate max-w-none
 ## 📊 Métricas y Analytics
 
 ### **Eventos Trackeables**
+
 - Lectura de artículos
 - Clicks en enlaces
 - Compartir en redes
@@ -203,6 +229,7 @@ className="prose prose-lg prose-slate max-w-none
 - Tiempo de lectura
 
 ### **SEO Metrics**
+
 - Core Web Vitals optimizados
 - Meta tags completos
 - Estructura semántica
@@ -211,16 +238,19 @@ className="prose prose-lg prose-slate max-w-none
 ## 🎨 Elementos de Diseño
 
 ### **Gradientes**
+
 - Header: `from-slate-50 via-blue-50 to-indigo-50`
 - CTA: `from-blue-600 to-indigo-700`
 - Cards: `from-white to-slate-50`
 
 ### **Sombras**
+
 - Cards: `shadow-lg`
 - Images: `shadow-2xl`
 - Buttons: `shadow-lg hover:shadow-xl`
 
 ### **Bordes Redondeados**
+
 - Cards: `rounded-2xl`
 - Buttons: `rounded-xl`
 - Images: `rounded-3xl`
@@ -228,6 +258,7 @@ className="prose prose-lg prose-slate max-w-none
 ## 🚀 Rendimiento
 
 ### **Optimizaciones**
+
 - Generación estática (SSG)
 - Imágenes optimizadas
 - Lazy loading
@@ -235,6 +266,7 @@ className="prose prose-lg prose-slate max-w-none
 - Bundle optimization
 
 ### **Core Web Vitals**
+
 - **LCP**: < 2.5s
 - **FID**: < 100ms
 - **CLS**: < 0.1
@@ -242,12 +274,14 @@ className="prose prose-lg prose-slate max-w-none
 ## 📈 Escalabilidad
 
 ### **Para 100+ Artículos**
+
 - Sistema de paginación automática
 - Filtrado por categorías
 - Búsqueda full-text
 - Cache optimizado
 
 ### **Para Equipos**
+
 - Workflow de revisión
 - Preview de artículos
 - Versionado con Git
@@ -256,12 +290,14 @@ className="prose prose-lg prose-slate max-w-none
 ## 🎯 Próximas Mejoras
 
 ### **Fase 2**
+
 - [ ] Sistema de comentarios
 - [ ] Newsletter integration
 - [ ] Related articles
 - [ ] Reading progress bar
 
 ### **Fase 3**
+
 - [ ] Multi-author support
 - [ ] Content scheduling
 - [ ] Analytics dashboard
@@ -272,6 +308,7 @@ className="prose prose-lg prose-slate max-w-none
 ## 📞 Soporte
 
 Para dudas sobre el sistema de blog:
+
 - **Documentación**: Este archivo
 - **Template**: `posts/TEMPLATE-ARTICULO.mdx`
 - **Ejemplo**: `posts/ejemplo-articulo-completo.mdx`

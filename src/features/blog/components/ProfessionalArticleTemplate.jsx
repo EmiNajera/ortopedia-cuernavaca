@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion';
-import { 
+import {
   Calendar,
   Clock,
   User,
@@ -22,22 +22,22 @@ import {
   Check,
   Twitter,
   Facebook,
-  Linkedin
+  Linkedin,
 } from 'lucide-react';
 import Link from 'next/link';
 
-const ProfessionalArticleTemplate = ({ 
-  title, 
-  excerpt, 
-  content, 
-  author, 
-  date, 
-  readTime, 
-  image, 
-  tags, 
+const ProfessionalArticleTemplate = ({
+  title,
+  excerpt,
+  content,
+  author,
+  date,
+  readTime,
+  image,
+  tags,
   category,
   slug,
-  relatedPosts = []
+  relatedPosts = [],
 }) => {
   const [darkMode, setDarkMode] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
@@ -46,21 +46,21 @@ const ProfessionalArticleTemplate = ({
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [copied, setCopied] = useState(false);
   const [showShareMenu, setShowShareMenu] = useState(false);
-  
+
   const articleRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: articleRef,
-    offset: ["start end", "end start"]
+    offset: ['start end', 'end start'],
   });
-  
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8]);
-  
+
   const smoothProgress = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
-    restDelta: 0.001
+    restDelta: 0.001,
   });
 
   // Dark mode effect
@@ -90,7 +90,7 @@ const ProfessionalArticleTemplate = ({
     return new Date(dateString).toLocaleDateString('es-ES', {
       year: 'numeric',
       month: 'long',
-      day: 'numeric'
+      day: 'numeric',
     });
   };
 
@@ -99,33 +99,33 @@ const ProfessionalArticleTemplate = ({
       tecnologia: {
         bg: 'bg-gradient-to-r from-purple-500 to-indigo-600',
         text: 'text-white',
-        badge: 'bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300'
+        badge: 'bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300',
       },
       rehabilitacion: {
         bg: 'bg-gradient-to-r from-emerald-500 to-teal-600',
         text: 'text-white',
-        badge: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300'
+        badge: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300',
       },
       consejos: {
         bg: 'bg-gradient-to-r from-amber-500 to-orange-600',
         text: 'text-white',
-        badge: 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300'
+        badge: 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300',
       },
       'casos-exito': {
         bg: 'bg-gradient-to-r from-rose-500 to-pink-600',
         text: 'text-white',
-        badge: 'bg-rose-100 text-rose-800 dark:bg-rose-900/30 dark:text-rose-300'
+        badge: 'bg-rose-100 text-rose-800 dark:bg-rose-900/30 dark:text-rose-300',
       },
       investigacion: {
         bg: 'bg-gradient-to-r from-blue-500 to-cyan-600',
         text: 'text-white',
-        badge: 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300'
+        badge: 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300',
       },
       novedades: {
         bg: 'bg-gradient-to-r from-violet-500 to-purple-600',
         text: 'text-white',
-        badge: 'bg-violet-100 text-violet-800 dark:bg-violet-900/30 dark:text-violet-300'
-      }
+        badge: 'bg-violet-100 text-violet-800 dark:bg-violet-900/30 dark:text-violet-300',
+      },
     };
     return colors[category] || colors.tecnologia;
   };
@@ -133,16 +133,25 @@ const ProfessionalArticleTemplate = ({
   const handleShare = async (platform) => {
     const url = window.location.href;
     const text = `${title} - ${excerpt}`;
-    
+
     switch (platform) {
       case 'twitter':
-        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`, '_blank');
+        window.open(
+          `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`,
+          '_blank',
+        );
         break;
       case 'facebook':
-        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+        window.open(
+          `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+          '_blank',
+        );
         break;
       case 'linkedin':
-        window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
+        window.open(
+          `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
+          '_blank',
+        );
         break;
       case 'copy':
         await navigator.clipboard.writeText(url);
@@ -163,9 +172,9 @@ const ProfessionalArticleTemplate = ({
       opacity: 1,
       transition: {
         staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
+        delayChildren: 0.2,
+      },
+    },
   };
 
   const itemVariants = {
@@ -175,9 +184,9 @@ const ProfessionalArticleTemplate = ({
       y: 0,
       transition: {
         duration: 0.8,
-        ease: [0.25, 0.46, 0.45, 0.94]
-      }
-    }
+        ease: [0.25, 0.46, 0.45, 0.94],
+      },
+    },
   };
 
   return (
@@ -193,7 +202,7 @@ const ProfessionalArticleTemplate = ({
       </div>
 
       {/* Floating Navigation */}
-      <motion.header 
+      <motion.header
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -201,16 +210,16 @@ const ProfessionalArticleTemplate = ({
       >
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="flex items-center space-x-3"
-            >
-              <Link href="/blog" className="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+            <motion.div whileHover={{ scale: 1.05 }} className="flex items-center space-x-3">
+              <Link
+                href="/blog"
+                className="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              >
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 <span className="font-medium">Volver al Blog</span>
               </Link>
             </motion.div>
-            
+
             <div className="flex items-center space-x-4">
               <motion.button
                 whileHover={{ scale: 1.05, rotate: 15 }}
@@ -227,22 +236,22 @@ const ProfessionalArticleTemplate = ({
 
       {/* Hero Section with Parallax */}
       <section ref={articleRef} className="relative overflow-hidden pt-24 pb-16">
-        <motion.div 
+        <motion.div
           style={{ y, opacity, scale }}
           className="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
         />
-        
+
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
-            animate={{ 
+            animate={{
               rotate: 360,
-              scale: [1, 1.1, 1]
+              scale: [1, 1.1, 1],
             }}
-            transition={{ 
-              duration: 20, 
-              repeat: Infinity, 
-              ease: "linear" 
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: 'linear',
             }}
             className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full blur-3xl"
           />
@@ -257,7 +266,9 @@ const ProfessionalArticleTemplate = ({
           >
             {/* Category and Meta */}
             <motion.div variants={itemVariants} className="flex items-center space-x-4 mb-8">
-              <span className={`px-4 py-2 rounded-full text-sm font-semibold ${getCategoryColor(category).badge}`}>
+              <span
+                className={`px-4 py-2 rounded-full text-sm font-semibold ${getCategoryColor(category).badge}`}
+              >
                 {category}
               </span>
               <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm">
@@ -275,7 +286,7 @@ const ProfessionalArticleTemplate = ({
             </motion.div>
 
             {/* Title */}
-            <motion.h1 
+            <motion.h1
               variants={itemVariants}
               className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-8 leading-tight"
             >
@@ -283,7 +294,7 @@ const ProfessionalArticleTemplate = ({
             </motion.h1>
 
             {/* Excerpt */}
-            <motion.p 
+            <motion.p
               variants={itemVariants}
               className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12 leading-relaxed"
             >
@@ -291,17 +302,21 @@ const ProfessionalArticleTemplate = ({
             </motion.p>
 
             {/* Author and Actions */}
-            <motion.div 
-              variants={itemVariants}
-              className="flex items-center justify-between"
-            >
+            <motion.div variants={itemVariants} className="flex items-center justify-between">
               <div className="flex items-center space-x-6">
                 <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg">
-                  {author ? author.split(' ').map(n => n[0]).join('') : 'OT'}
+                  {author
+                    ? author
+                        .split(' ')
+                        .map((n) => n[0])
+                        .join('')
+                    : 'OT'}
                 </div>
                 <div>
                   <p className="font-semibold text-gray-900 dark:text-white text-lg">{author}</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Escrito el {formatDate(date)}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    Escrito el {formatDate(date)}
+                  </p>
                 </div>
               </div>
 
@@ -311,8 +326,8 @@ const ProfessionalArticleTemplate = ({
                   whileTap={{ scale: 0.9 }}
                   onClick={() => setIsLiked(!isLiked)}
                   className={`p-4 rounded-2xl transition-all duration-300 ${
-                    isLiked 
-                      ? 'text-red-500 bg-red-50 dark:bg-red-900/20 shadow-lg' 
+                    isLiked
+                      ? 'text-red-500 bg-red-50 dark:bg-red-900/20 shadow-lg'
                       : 'text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20'
                   }`}
                 >
@@ -323,8 +338,8 @@ const ProfessionalArticleTemplate = ({
                   whileTap={{ scale: 0.9 }}
                   onClick={() => setIsBookmarked(!isBookmarked)}
                   className={`p-4 rounded-2xl transition-all duration-300 ${
-                    isBookmarked 
-                      ? 'text-yellow-500 bg-yellow-50 dark:bg-yellow-900/20 shadow-lg' 
+                    isBookmarked
+                      ? 'text-yellow-500 bg-yellow-50 dark:bg-yellow-900/20 shadow-lg'
                       : 'text-gray-400 hover:text-yellow-500 hover:bg-yellow-50 dark:hover:bg-yellow-900/20'
                   }`}
                 >
@@ -339,7 +354,7 @@ const ProfessionalArticleTemplate = ({
                   >
                     <Share2 className="w-6 h-6" />
                   </motion.button>
-                  
+
                   {showShareMenu && (
                     <motion.div
                       initial={{ opacity: 0, scale: 0.8, y: 10 }}
@@ -402,11 +417,7 @@ const ProfessionalArticleTemplate = ({
                 whileHover={{ scale: 1.02 }}
                 className="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-200/50 dark:border-gray-700/50"
               >
-                <img
-                  src={image}
-                  alt={title}
-                  className="w-full h-96 object-cover"
-                />
+                <img src={image} alt={title} className="w-full h-96 object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
               </motion.div>
             </div>
@@ -437,7 +448,9 @@ const ProfessionalArticleTemplate = ({
               >
                 <div className="flex items-center space-x-3 mb-6">
                   <Tag className="w-6 h-6 text-gray-500 dark:text-gray-400" />
-                  <span className="text-lg font-semibold text-gray-700 dark:text-gray-300">Etiquetas:</span>
+                  <span className="text-lg font-semibold text-gray-700 dark:text-gray-300">
+                    Etiquetas:
+                  </span>
                 </div>
                 <div className="flex flex-wrap gap-3">
                   {tags.map((tag, index) => (
@@ -494,10 +507,7 @@ const ProfessionalArticleTemplate = ({
                       whileHover={{ y: -8, scale: 1.02 }}
                       className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200/50 dark:border-gray-700/50 overflow-hidden hover:shadow-2xl transition-all duration-500"
                     >
-                      <Link 
-                        href={`/blog/${post.slug}`}
-                        className="block"
-                      >
+                      <Link href={`/blog/${post.slug}`} className="block">
                         <div className="relative h-48">
                           <img
                             src={post.image}
@@ -506,7 +516,9 @@ const ProfessionalArticleTemplate = ({
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                           <div className="absolute top-4 left-4">
-                            <span className={`px-3 py-1 rounded-full text-sm font-semibold ${getCategoryColor(post.category).badge}`}>
+                            <span
+                              className={`px-3 py-1 rounded-full text-sm font-semibold ${getCategoryColor(post.category).badge}`}
+                            >
                               {post.category}
                             </span>
                           </div>
@@ -556,14 +568,12 @@ const ProfessionalArticleTemplate = ({
                 <Zap className="w-5 h-5 text-white mr-2" />
                 <span className="text-white font-semibold">¿Te gustó este artículo?</span>
               </motion.div>
-              
-              <h3 className="text-4xl font-bold text-white mb-6">
-                Únete a Nuestra Comunidad
-              </h3>
+
+              <h3 className="text-4xl font-bold text-white mb-6">Únete a Nuestra Comunidad</h3>
               <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto leading-relaxed">
                 Suscríbete para recibir más contenido como este directamente en tu correo
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
                 <input
                   type="email"

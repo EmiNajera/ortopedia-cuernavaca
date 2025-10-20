@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import MarketingLayout from '../../components/layout/MarketingLayout';
 import { openWhatsApp } from '../../utils/whatsapp';
 
 export default function Contacto() {
@@ -320,7 +319,7 @@ export default function Contacto() {
   );
 }
 
-Contacto.getLayout = (page) => <MarketingLayout>{page}</MarketingLayout>;
+// Note: layout is applied at the page level (`src/pages/contacto.jsx`) via getLayout
 
 // === Subcomponentes Optimizados ===
 

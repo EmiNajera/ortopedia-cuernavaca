@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import NextImage from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  FileText, 
-  Image, 
-  Tag, 
-  Calendar, 
-  User, 
-  Eye, 
-  Save, 
+import {
+  FileText,
+  Image,
+  Tag,
+  Calendar,
+  User,
+  Eye,
+  Save,
   X,
   Upload,
   Link as LinkIcon,
@@ -26,7 +26,7 @@ import {
   Undo,
   Redo,
   Check,
-  AlertCircle
+  AlertCircle,
 } from 'lucide-react';
 import ImageUploader from './ImageUploader';
 import MarkdownEditor from './MarkdownEditor';
@@ -46,7 +46,7 @@ export default function ArticleCreator({ onSave, onPreview, initialData = null }
     metaTitle: '',
     metaDescription: '',
     coverImage: '',
-    readingTime: 0
+    readingTime: 0,
   });
 
   const [isPreviewMode, setIsPreviewMode] = useState(false);
@@ -57,10 +57,12 @@ export default function ArticleCreator({ onSave, onPreview, initialData = null }
   // Cargar datos iniciales si se está editando
   useEffect(() => {
     if (initialData) {
-      setArticleData(prev => ({
+      setArticleData((prev) => ({
         ...prev,
         ...initialData,
-        date: initialData.date ? initialData.date.split('T')[0] : new Date().toISOString().split('T')[0]
+        date: initialData.date
+          ? initialData.date.split('T')[0]
+          : new Date().toISOString().split('T')[0],
       }));
     }
   }, [initialData]);
@@ -74,7 +76,7 @@ export default function ArticleCreator({ onSave, onPreview, initialData = null }
         .replace(/\s+/g, '-')
         .replace(/-+/g, '-')
         .trim();
-      setArticleData(prev => ({ ...prev, slug }));
+      setArticleData((prev) => ({ ...prev, slug }));
     }
   }, [articleData.title, initialData]);
 
@@ -84,7 +86,7 @@ export default function ArticleCreator({ onSave, onPreview, initialData = null }
       const wordsPerMinute = 200;
       const wordCount = articleData.content.split(/\s+/).length;
       const readingTime = Math.ceil(wordCount / wordsPerMinute);
-      setArticleData(prev => ({ ...prev, readingTime }));
+      setArticleData((prev) => ({ ...prev, readingTime }));
     }
   }, [articleData.content]);
 
@@ -142,18 +144,18 @@ export default function ArticleCreator({ onSave, onPreview, initialData = null }
 
   const handleAddTag = () => {
     if (newTag.trim() && !articleData.tags.includes(newTag.trim())) {
-      setArticleData(prev => ({
+      setArticleData((prev) => ({
         ...prev,
-        tags: [...prev.tags, newTag.trim()]
+        tags: [...prev.tags, newTag.trim()],
       }));
       setNewTag('');
     }
   };
 
   const handleRemoveTag = (tagToRemove) => {
-    setArticleData(prev => ({
+    setArticleData((prev) => ({
       ...prev,
-      tags: prev.tags.filter(tag => tag !== tagToRemove)
+      tags: prev.tags.filter((tag) => tag !== tagToRemove),
     }));
   };
 
@@ -174,7 +176,7 @@ export default function ArticleCreator({ onSave, onPreview, initialData = null }
     'Salud',
     'Bienestar',
     'Tecnología',
-    'Innovación'
+    'Innovación',
   ];
 
   if (isPreviewMode) {
@@ -192,17 +194,19 @@ export default function ArticleCreator({ onSave, onPreview, initialData = null }
                 Cerrar Vista Previa
               </button>
             </div>
-            
+
             <div className="prose prose-lg max-w-none">
               <h1 className="text-4xl font-bold text-gray-900 mb-4">{articleData.title}</h1>
               <div className="flex items-center text-sm text-gray-600 mb-6">
                 <User className="w-4 h-4 mr-1" />
                 <span className="mr-4">{articleData.author}</span>
                 <Calendar className="w-4 h-4 mr-1" />
-                <span className="mr-4">{new Date(articleData.date).toLocaleDateString('es-ES')}</span>
+                <span className="mr-4">
+                  {new Date(articleData.date).toLocaleDateString('es-ES')}
+                </span>
                 <span>{articleData.readingTime} min de lectura</span>
               </div>
-              
+
               {articleData.coverImage && (
                 <NextImage
                   src={articleData.coverImage}
@@ -213,14 +217,10 @@ export default function ArticleCreator({ onSave, onPreview, initialData = null }
                   className="w-full h-64 object-cover rounded-lg mb-6"
                 />
               )}
-              
-              <div className="text-lg text-gray-700 mb-6">
-                {articleData.excerpt}
-              </div>
-              
-              <div className="whitespace-pre-wrap">
-                {articleData.content}
-              </div>
+
+              <div className="text-lg text-gray-700 mb-6">{articleData.excerpt}</div>
+
+              <div className="whitespace-pre-wrap">{articleData.content}</div>
             </div>
           </div>
         </div>
@@ -240,10 +240,12 @@ export default function ArticleCreator({ onSave, onPreview, initialData = null }
                   {initialData ? 'Editar Artículo' : 'Crear Nuevo Artículo'}
                 </h1>
                 <p className="text-gray-600 mt-1">
-                  {initialData ? 'Modifica el contenido del artículo' : 'Crea un nuevo artículo para el blog'}
+                  {initialData
+                    ? 'Modifica el contenido del artículo'
+                    : 'Crea un nuevo artículo para el blog'}
                 </p>
               </div>
-              
+
               <div className="flex items-center space-x-3">
                 <button
                   onClick={() => setIsPreviewMode(true)}
@@ -252,7 +254,7 @@ export default function ArticleCreator({ onSave, onPreview, initialData = null }
                   <Eye className="w-4 h-4 mr-2" />
                   Vista Previa
                 </button>
-                
+
                 <button
                   onClick={handleSave}
                   disabled={isSaving}
@@ -287,7 +289,7 @@ export default function ArticleCreator({ onSave, onPreview, initialData = null }
                   <input
                     type="text"
                     value={articleData.title}
-                    onChange={(e) => setArticleData(prev => ({ ...prev, title: e.target.value }))}
+                    onChange={(e) => setArticleData((prev) => ({ ...prev, title: e.target.value }))}
                     className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
                       errors.title ? 'border-red-500' : 'border-gray-300'
                     }`}
@@ -309,7 +311,7 @@ export default function ArticleCreator({ onSave, onPreview, initialData = null }
                   <input
                     type="text"
                     value={articleData.slug}
-                    onChange={(e) => setArticleData(prev => ({ ...prev, slug: e.target.value }))}
+                    onChange={(e) => setArticleData((prev) => ({ ...prev, slug: e.target.value }))}
                     className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
                       errors.slug ? 'border-red-500' : 'border-gray-300'
                     }`}
@@ -325,12 +327,12 @@ export default function ArticleCreator({ onSave, onPreview, initialData = null }
 
                 {/* Excerpt */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Extracto *
-                  </label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Extracto *</label>
                   <textarea
                     value={articleData.excerpt}
-                    onChange={(e) => setArticleData(prev => ({ ...prev, excerpt: e.target.value }))}
+                    onChange={(e) =>
+                      setArticleData((prev) => ({ ...prev, excerpt: e.target.value }))
+                    }
                     rows={3}
                     className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
                       errors.excerpt ? 'border-red-500' : 'border-gray-300'
@@ -352,7 +354,7 @@ export default function ArticleCreator({ onSave, onPreview, initialData = null }
                   </label>
                   <MarkdownEditor
                     value={articleData.content}
-                    onChange={(content) => setArticleData(prev => ({ ...prev, content }))}
+                    onChange={(content) => setArticleData((prev) => ({ ...prev, content }))}
                     error={errors.content}
                   />
                 </div>
@@ -363,27 +365,31 @@ export default function ArticleCreator({ onSave, onPreview, initialData = null }
                 {/* Publish Settings */}
                 <div className="bg-gray-50 rounded-lg p-4">
                   <h3 className="text-lg font-semibold text-gray-900 mb-4">Configuración</h3>
-                  
+
                   <div className="space-y-4">
                     <div className="flex items-center">
                       <input
                         type="checkbox"
                         id="featured"
                         checked={articleData.featured}
-                        onChange={(e) => setArticleData(prev => ({ ...prev, featured: e.target.checked }))}
+                        onChange={(e) =>
+                          setArticleData((prev) => ({ ...prev, featured: e.target.checked }))
+                        }
                         className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                       />
                       <label htmlFor="featured" className="ml-2 text-sm text-gray-700">
                         Artículo destacado
                       </label>
                     </div>
-                    
+
                     <div className="flex items-center">
                       <input
                         type="checkbox"
                         id="published"
                         checked={articleData.published}
-                        onChange={(e) => setArticleData(prev => ({ ...prev, published: e.target.checked }))}
+                        onChange={(e) =>
+                          setArticleData((prev) => ({ ...prev, published: e.target.checked }))
+                        }
                         className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                       />
                       <label htmlFor="published" className="ml-2 text-sm text-gray-700">
@@ -395,13 +401,13 @@ export default function ArticleCreator({ onSave, onPreview, initialData = null }
 
                 {/* Author */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Autor *
-                  </label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Autor *</label>
                   <input
                     type="text"
                     value={articleData.author}
-                    onChange={(e) => setArticleData(prev => ({ ...prev, author: e.target.value }))}
+                    onChange={(e) =>
+                      setArticleData((prev) => ({ ...prev, author: e.target.value }))
+                    }
                     className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
                       errors.author ? 'border-red-500' : 'border-gray-300'
                     }`}
@@ -423,33 +429,33 @@ export default function ArticleCreator({ onSave, onPreview, initialData = null }
                   <input
                     type="date"
                     value={articleData.date}
-                    onChange={(e) => setArticleData(prev => ({ ...prev, date: e.target.value }))}
+                    onChange={(e) => setArticleData((prev) => ({ ...prev, date: e.target.value }))}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
 
                 {/* Category */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Categoría
-                  </label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Categoría</label>
                   <select
                     value={articleData.category}
-                    onChange={(e) => setArticleData(prev => ({ ...prev, category: e.target.value }))}
+                    onChange={(e) =>
+                      setArticleData((prev) => ({ ...prev, category: e.target.value }))
+                    }
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   >
                     <option value="">Seleccionar categoría</option>
-                    {categories.map(category => (
-                      <option key={category} value={category}>{category}</option>
+                    {categories.map((category) => (
+                      <option key={category} value={category}>
+                        {category}
+                      </option>
                     ))}
                   </select>
                 </div>
 
                 {/* Tags */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Etiquetas
-                  </label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Etiquetas</label>
                   <div className="flex space-x-2 mb-2">
                     <input
                       type="text"
@@ -467,7 +473,7 @@ export default function ArticleCreator({ onSave, onPreview, initialData = null }
                     </button>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    {articleData.tags.map(tag => (
+                    {articleData.tags.map((tag) => (
                       <span
                         key={tag}
                         className="inline-flex items-center px-2 py-1 bg-blue-100 text-blue-800 text-sm rounded-full"
@@ -490,7 +496,9 @@ export default function ArticleCreator({ onSave, onPreview, initialData = null }
                     Imagen de Portada
                   </label>
                   <ImageUploader
-                    onImageUpload={(url) => setArticleData(prev => ({ ...prev, coverImage: url }))}
+                    onImageUpload={(url) =>
+                      setArticleData((prev) => ({ ...prev, coverImage: url }))
+                    }
                     currentImage={articleData.coverImage}
                   />
                 </div>
@@ -498,7 +506,7 @@ export default function ArticleCreator({ onSave, onPreview, initialData = null }
                 {/* SEO */}
                 <div className="bg-gray-50 rounded-lg p-4">
                   <h3 className="text-lg font-semibold text-gray-900 mb-4">SEO</h3>
-                  
+
                   <div className="space-y-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -507,7 +515,9 @@ export default function ArticleCreator({ onSave, onPreview, initialData = null }
                       <input
                         type="text"
                         value={articleData.metaTitle}
-                        onChange={(e) => setArticleData(prev => ({ ...prev, metaTitle: e.target.value }))}
+                        onChange={(e) =>
+                          setArticleData((prev) => ({ ...prev, metaTitle: e.target.value }))
+                        }
                         className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
                           errors.metaTitle ? 'border-red-500' : 'border-gray-300'
                         }`}
@@ -520,14 +530,16 @@ export default function ArticleCreator({ onSave, onPreview, initialData = null }
                         </p>
                       )}
                     </div>
-                    
+
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         Descripción SEO *
                       </label>
                       <textarea
                         value={articleData.metaDescription}
-                        onChange={(e) => setArticleData(prev => ({ ...prev, metaDescription: e.target.value }))}
+                        onChange={(e) =>
+                          setArticleData((prev) => ({ ...prev, metaDescription: e.target.value }))
+                        }
                         rows={3}
                         className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
                           errors.metaDescription ? 'border-red-500' : 'border-gray-300'
@@ -551,4 +563,3 @@ export default function ArticleCreator({ onSave, onPreview, initialData = null }
     </div>
   );
 }
-

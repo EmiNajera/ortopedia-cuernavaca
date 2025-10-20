@@ -14,11 +14,6 @@ const withMDX = require('@next/mdx')({
 const nextConfig = {
   reactStrictMode: true,
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
-  // Evitar bloqueos de OneDrive: compilar en node_modules/.next
-  // NOTE: building into node_modules is an unstable workaround. Prefer the default `.next` directory.
-  // If you still need this workaround, uncomment the following line.
-  // distDir: 'node_modules/.next',
-  // swcMinify: true, // Enable SWC minification (managed by Next internally)
   compiler: {
     // Remove console.logs in production
     removeConsole: process.env.NODE_ENV === 'production',

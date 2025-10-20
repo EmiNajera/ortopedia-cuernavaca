@@ -21,5 +21,3 @@ test('useSearchParams returns URLSearchParams without Next router', () => {
   render(<Comp />);
   expect(true).toBe(true);
 });
-
-

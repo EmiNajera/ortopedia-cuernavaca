@@ -7,11 +7,12 @@ export default function CategoriasPage() {
     <>
       <Head>
         <title>Categorías | OrtoTech</title>
-        <meta name="description" content="Explora las categorías de productos ortopédicos en OrtoTech." />
+        <meta
+          name="description"
+          content="Explora las categorías de productos ortopédicos en OrtoTech."
+        />
       </Head>
       <Categorias />
     </>
   );
 }
-
-

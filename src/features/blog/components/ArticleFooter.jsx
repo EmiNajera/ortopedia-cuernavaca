@@ -8,21 +8,21 @@ const ArticleFooter = ({ author, date, tags, slug }) => {
 
   const handleLike = () => {
     setIsLiked(!isLiked);
-    setLikeCount(prev => isLiked ? prev - 1 : prev + 1);
+    setLikeCount((prev) => (isLiked ? prev - 1 : prev + 1));
   };
 
   const handleShare = (platform) => {
     if (typeof window !== 'undefined' && typeof document !== 'undefined') {
       const title = document.title || '';
       const url = window.location.href || '';
-      
+
       const shareLinks = {
         twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`,
         facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
         linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
-        whatsapp: `https://wa.me/?text=${encodeURIComponent(title + ' ' + url)}`
+        whatsapp: `https://wa.me/?text=${encodeURIComponent(title + ' ' + url)}`,
       };
-      
+
       window.open(shareLinks[platform], '_blank', 'width=600,height=400');
     }
   };
@@ -43,8 +43,8 @@ const ArticleFooter = ({ author, date, tags, slug }) => {
               <button
                 onClick={handleLike}
                 className={`flex items-center gap-3 px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
-                  isLiked 
-                    ? 'bg-red-50 text-red-600 border-2 border-red-200' 
+                  isLiked
+                    ? 'bg-red-50 text-red-600 border-2 border-red-200'
                     : 'bg-slate-50 text-slate-600 border-2 border-slate-200 hover:bg-slate-100'
                 }`}
               >
@@ -52,11 +52,16 @@ const ArticleFooter = ({ author, date, tags, slug }) => {
                   animate={{ scale: isLiked ? 1.2 : 1 }}
                   transition={{ duration: 0.2 }}
                   className="w-5 h-5"
-                  fill={isLiked ? "currentColor" : "none"}
+                  fill={isLiked ? 'currentColor' : 'none'}
                   stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                  />
                 </motion.svg>
                 {likeCount > 0 && <span>{likeCount}</span>}
                 <span>{isLiked ? 'Te gusta' : 'Me gusta'}</span>
@@ -70,7 +75,7 @@ const ArticleFooter = ({ author, date, tags, slug }) => {
                     { name: 'Twitter', icon: '🐦', action: () => handleShare('twitter') },
                     { name: 'Facebook', icon: '📘', action: () => handleShare('facebook') },
                     { name: 'LinkedIn', icon: '💼', action: () => handleShare('linkedin') },
-                    { name: 'WhatsApp', icon: '💬', action: () => handleShare('whatsapp') }
+                    { name: 'WhatsApp', icon: '💬', action: () => handleShare('whatsapp') },
                   ].map((social) => (
                     <button
                       key={social.name}
@@ -95,14 +100,18 @@ const ArticleFooter = ({ author, date, tags, slug }) => {
           >
             <div className="flex items-start gap-6">
               <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
-                {author.split(' ').map(n => n[0]).join('')}
+                {author
+                  .split(' ')
+                  .map((n) => n[0])
+                  .join('')}
               </div>
               <div className="flex-1">
                 <h3 className="text-xl font-bold text-slate-900 mb-2">Sobre el autor</h3>
                 <h4 className="text-lg font-semibold text-blue-600 mb-3">{author}</h4>
                 <p className="text-slate-600 leading-relaxed">
-                  Especialista en ortopedia y rehabilitación con más de 10 años de experiencia. 
-                  Comprometido con brindar soluciones personalizadas para mejorar la calidad de vida de nuestros pacientes.
+                  Especialista en ortopedia y rehabilitación con más de 10 años de experiencia.
+                  Comprometido con brindar soluciones personalizadas para mejorar la calidad de vida
+                  de nuestros pacientes.
                 </p>
               </div>
             </div>
@@ -139,17 +148,17 @@ const ArticleFooter = ({ author, date, tags, slug }) => {
           >
             <h3 className="text-2xl font-bold mb-4">¿Necesitas Ayuda Especializada?</h3>
             <p className="text-blue-100 mb-8 text-lg">
-              Nuestros especialistas están listos para ayudarte con tu caso específico. 
-              Agenda una consulta personalizada.
+              Nuestros especialistas están listos para ayudarte con tu caso específico. Agenda una
+              consulta personalizada.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
+              <Link
                 href="/contacto"
                 className="bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold hover:bg-blue-50 transition-colors duration-300 shadow-lg hover:shadow-xl"
               >
                 Contactar Especialista
               </Link>
-              <Link 
+              <Link
                 href="/blog"
                 className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-blue-600 transition-colors duration-300"
               >

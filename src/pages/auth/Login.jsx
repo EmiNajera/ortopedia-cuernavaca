@@ -1,20 +1,20 @@
-import React, { useState } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
-import Layout from "../../components/layout/Layout";
+import React, { useState } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import Layout from '../../components/layout/Layout';
 
 export default function Login() {
-  const [activeTab, setActiveTab] = useState("login");
+  const [activeTab, setActiveTab] = useState('login');
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-    confirmPassword: "",
-    firstName: "",
-    lastName: "",
-    phone: "",
+    email: '',
+    password: '',
+    confirmPassword: '',
+    firstName: '',
+    lastName: '',
+    phone: '',
     acceptTerms: false,
   });
   const [errors, setErrors] = useState({});
@@ -24,46 +24,46 @@ export default function Login() {
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: type === "checkbox" ? checked : value
+      [name]: type === 'checkbox' ? checked : value,
     }));
     // Clear error when user starts typing
     if (errors[name]) {
-      setErrors(prev => ({ ...prev, [name]: "" }));
+      setErrors((prev) => ({ ...prev, [name]: '' }));
     }
   };
 
   const validateForm = () => {
     const newErrors = {};
 
-    if (activeTab === "login") {
-      if (!formData.email) newErrors.email = "El email es requerido";
+    if (activeTab === 'login') {
+      if (!formData.email) newErrors.email = 'El email es requerido';
       else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-        newErrors.email = "El email no es válido";
+        newErrors.email = 'El email no es válido';
       }
-      if (!formData.password) newErrors.password = "La contraseña es requerida";
-    } else if (activeTab === "register") {
-      if (!formData.firstName) newErrors.firstName = "El nombre es requerido";
-      if (!formData.lastName) newErrors.lastName = "El apellido es requerido";
-      if (!formData.email) newErrors.email = "El email es requerido";
+      if (!formData.password) newErrors.password = 'La contraseña es requerida';
+    } else if (activeTab === 'register') {
+      if (!formData.firstName) newErrors.firstName = 'El nombre es requerido';
+      if (!formData.lastName) newErrors.lastName = 'El apellido es requerido';
+      if (!formData.email) newErrors.email = 'El email es requerido';
       else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-        newErrors.email = "El email no es válido";
+        newErrors.email = 'El email no es válido';
       }
-      if (!formData.phone) newErrors.phone = "El teléfono es requerido";
-      if (!formData.password) newErrors.password = "La contraseña es requerida";
+      if (!formData.phone) newErrors.phone = 'El teléfono es requerido';
+      if (!formData.password) newErrors.password = 'La contraseña es requerida';
       else if (formData.password.length < 8) {
-        newErrors.password = "La contraseña debe tener al menos 8 caracteres";
+        newErrors.password = 'La contraseña debe tener al menos 8 caracteres';
       }
-      if (!formData.confirmPassword) newErrors.confirmPassword = "Confirma tu contraseña";
+      if (!formData.confirmPassword) newErrors.confirmPassword = 'Confirma tu contraseña';
       else if (formData.password !== formData.confirmPassword) {
-        newErrors.confirmPassword = "Las contraseñas no coinciden";
+        newErrors.confirmPassword = 'Las contraseñas no coinciden';
       }
-      if (!formData.acceptTerms) newErrors.acceptTerms = "Debes aceptar los términos";
-    } else if (activeTab === "recover") {
-      if (!formData.email) newErrors.email = "El email es requerido";
+      if (!formData.acceptTerms) newErrors.acceptTerms = 'Debes aceptar los términos';
+    } else if (activeTab === 'recover') {
+      if (!formData.email) newErrors.email = 'El email es requerido';
       else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-        newErrors.email = "El email no es válido";
+        newErrors.email = 'El email no es válido';
       }
     }
 
@@ -73,34 +73,42 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
 
     setIsLoading(true);
-    
+
     // Simulate API call
     setTimeout(() => {
       setIsLoading(false);
-      if (activeTab === "login") {
+      if (activeTab === 'login') {
         // Redirect to intended page or dashboard
-        const from = location.state?.from?.pathname || "/cuenta";
+        const from = location.state?.from?.pathname || '/cuenta';
         navigate(from, { replace: true });
-      } else if (activeTab === "register") {
+      } else if (activeTab === 'register') {
         // Show success message and switch to login
-        setActiveTab("login");
-        setFormData({ email: "", password: "", confirmPassword: "", firstName: "", lastName: "", phone: "", acceptTerms: false });
-      } else if (activeTab === "recover") {
+        setActiveTab('login');
+        setFormData({
+          email: '',
+          password: '',
+          confirmPassword: '',
+          firstName: '',
+          lastName: '',
+          phone: '',
+          acceptTerms: false,
+        });
+      } else if (activeTab === 'recover') {
         // Show success message
-        alert("Se ha enviado un enlace de recuperación a tu email");
-        setActiveTab("login");
+        alert('Se ha enviado un enlace de recuperación a tu email');
+        setActiveTab('login');
       }
     }, 2000);
   };
 
   const tabs = [
-    { id: "login", label: "Iniciar Sesión", icon: "🔐" },
-    { id: "register", label: "Registrarse", icon: "👤" },
-    { id: "recover", label: "Recuperar", icon: "🔑" },
+    { id: 'login', label: 'Iniciar Sesión', icon: '🔐' },
+    { id: 'register', label: 'Registrarse', icon: '👤' },
+    { id: 'recover', label: 'Recuperar', icon: '🔑' },
   ];
 
   return (
@@ -117,14 +125,26 @@ export default function Login() {
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
-              transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+              transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
               className="mx-auto w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mb-4"
             >
-              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              <svg
+                className="w-8 h-8 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                />
               </svg>
             </motion.div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Bienvenido a Ortopedia Cuernavaca</h1>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+              Bienvenido a Ortopedia Cuernavaca
+            </h1>
             <p className="text-gray-600">Accede a tu cuenta o crea una nueva</p>
           </div>
 
@@ -137,8 +157,8 @@ export default function Login() {
                   onClick={() => setActiveTab(tab.id)}
                   className={`flex-1 py-3 px-4 rounded-lg text-sm font-medium transition-all duration-200 ${
                     activeTab === tab.id
-                      ? "bg-blue-600 text-white shadow-md"
-                      : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                      ? 'bg-blue-600 text-white shadow-md'
+                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                   }`}
                 >
                   <span className="mr-2">{tab.icon}</span>
@@ -159,7 +179,7 @@ export default function Login() {
           >
             <form onSubmit={handleSubmit} className="space-y-4">
               <AnimatePresence mode="wait">
-                {activeTab === "login" && (
+                {activeTab === 'login' && (
                   <motion.div
                     key="login"
                     initial={{ opacity: 0 }}
@@ -169,9 +189,7 @@ export default function Login() {
                   >
                     {/* Email */}
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Email
-                      </label>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
                       <div className="relative">
                         <input
                           type="email"
@@ -179,12 +197,22 @@ export default function Login() {
                           value={formData.email}
                           onChange={handleInputChange}
                           className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors ${
-                            errors.email ? "border-red-500" : "border-gray-300"
+                            errors.email ? 'border-red-500' : 'border-gray-300'
                           }`}
                           placeholder="tu@email.com"
                         />
-                        <svg className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+                        <svg
+                          className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
+                          />
                         </svg>
                       </div>
                       {errors.email && (
@@ -205,12 +233,12 @@ export default function Login() {
                       </label>
                       <div className="relative">
                         <input
-                          type={showPassword ? "text" : "password"}
+                          type={showPassword ? 'text' : 'password'}
                           name="password"
                           value={formData.password}
                           onChange={handleInputChange}
                           className={`w-full px-4 py-3 pr-12 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors ${
-                            errors.password ? "border-red-500" : "border-gray-300"
+                            errors.password ? 'border-red-500' : 'border-gray-300'
                           }`}
                           placeholder="••••••••"
                         />
@@ -220,13 +248,38 @@ export default function Login() {
                           className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
                         >
                           {showPassword ? (
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21" />
+                            <svg
+                              className="w-5 h-5"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21"
+                              />
                             </svg>
                           ) : (
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                            <svg
+                              className="w-5 h-5"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                              />
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                              />
                             </svg>
                           )}
                         </button>
@@ -253,7 +306,7 @@ export default function Login() {
                       </label>
                       <button
                         type="button"
-                        onClick={() => setActiveTab("recover")}
+                        onClick={() => setActiveTab('recover')}
                         className="text-sm text-blue-600 hover:text-blue-800 transition-colors"
                       >
                         ¿Olvidaste tu contraseña?
@@ -270,20 +323,36 @@ export default function Login() {
                     >
                       {isLoading ? (
                         <div className="flex items-center justify-center">
-                          <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                          <svg
+                            className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                          >
+                            <circle
+                              className="opacity-25"
+                              cx="12"
+                              cy="12"
+                              r="10"
+                              stroke="currentColor"
+                              strokeWidth="4"
+                            ></circle>
+                            <path
+                              className="opacity-75"
+                              fill="currentColor"
+                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                            ></path>
                           </svg>
                           Iniciando sesión...
                         </div>
                       ) : (
-                        "Iniciar Sesión"
+                        'Iniciar Sesión'
                       )}
                     </motion.button>
                   </motion.div>
                 )}
 
-                {activeTab === "register" && (
+                {activeTab === 'register' && (
                   <motion.div
                     key="register"
                     initial={{ opacity: 0 }}
@@ -303,7 +372,7 @@ export default function Login() {
                           value={formData.firstName}
                           onChange={handleInputChange}
                           className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors ${
-                            errors.firstName ? "border-red-500" : "border-gray-300"
+                            errors.firstName ? 'border-red-500' : 'border-gray-300'
                           }`}
                           placeholder="Tu nombre"
                         />
@@ -327,7 +396,7 @@ export default function Login() {
                           value={formData.lastName}
                           onChange={handleInputChange}
                           className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors ${
-                            errors.lastName ? "border-red-500" : "border-gray-300"
+                            errors.lastName ? 'border-red-500' : 'border-gray-300'
                           }`}
                           placeholder="Tu apellido"
                         />
@@ -345,16 +414,14 @@ export default function Login() {
 
                     {/* Email */}
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Email
-                      </label>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
                       <input
                         type="email"
                         name="email"
                         value={formData.email}
                         onChange={handleInputChange}
                         className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors ${
-                          errors.email ? "border-red-500" : "border-gray-300"
+                          errors.email ? 'border-red-500' : 'border-gray-300'
                         }`}
                         placeholder="tu@email.com"
                       />
@@ -380,7 +447,7 @@ export default function Login() {
                         value={formData.phone}
                         onChange={handleInputChange}
                         className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors ${
-                          errors.phone ? "border-red-500" : "border-gray-300"
+                          errors.phone ? 'border-red-500' : 'border-gray-300'
                         }`}
                         placeholder="(123) 456-7890"
                       />
@@ -402,12 +469,12 @@ export default function Login() {
                       </label>
                       <div className="relative">
                         <input
-                          type={showPassword ? "text" : "password"}
+                          type={showPassword ? 'text' : 'password'}
                           name="password"
                           value={formData.password}
                           onChange={handleInputChange}
                           className={`w-full px-4 py-3 pr-12 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors ${
-                            errors.password ? "border-red-500" : "border-gray-300"
+                            errors.password ? 'border-red-500' : 'border-gray-300'
                           }`}
                           placeholder="••••••••"
                         />
@@ -417,13 +484,38 @@ export default function Login() {
                           className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
                         >
                           {showPassword ? (
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21" />
+                            <svg
+                              className="w-5 h-5"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21"
+                              />
                             </svg>
                           ) : (
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                            <svg
+                              className="w-5 h-5"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                              />
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                              />
                             </svg>
                           )}
                         </button>
@@ -446,12 +538,12 @@ export default function Login() {
                       </label>
                       <div className="relative">
                         <input
-                          type={showConfirmPassword ? "text" : "password"}
+                          type={showConfirmPassword ? 'text' : 'password'}
                           name="confirmPassword"
                           value={formData.confirmPassword}
                           onChange={handleInputChange}
                           className={`w-full px-4 py-3 pr-12 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors ${
-                            errors.confirmPassword ? "border-red-500" : "border-gray-300"
+                            errors.confirmPassword ? 'border-red-500' : 'border-gray-300'
                           }`}
                           placeholder="••••••••"
                         />
@@ -461,13 +553,38 @@ export default function Login() {
                           className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
                         >
                           {showConfirmPassword ? (
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21" />
+                            <svg
+                              className="w-5 h-5"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21"
+                              />
                             </svg>
                           ) : (
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                            <svg
+                              className="w-5 h-5"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                              />
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                              />
                             </svg>
                           )}
                         </button>
@@ -494,11 +611,11 @@ export default function Login() {
                           className="mt-1 rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                         />
                         <span className="ml-2 text-sm text-gray-600">
-                          Acepto los{" "}
+                          Acepto los{' '}
                           <Link href="/terminos" className="text-blue-600 hover:text-blue-800">
                             términos y condiciones
-                          </Link>{" "}
-                          y la{" "}
+                          </Link>{' '}
+                          y la{' '}
                           <Link href="/privacidad" className="text-blue-600 hover:text-blue-800">
                             política de privacidad
                           </Link>
@@ -525,20 +642,36 @@ export default function Login() {
                     >
                       {isLoading ? (
                         <div className="flex items-center justify-center">
-                          <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                          <svg
+                            className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                          >
+                            <circle
+                              className="opacity-25"
+                              cx="12"
+                              cy="12"
+                              r="10"
+                              stroke="currentColor"
+                              strokeWidth="4"
+                            ></circle>
+                            <path
+                              className="opacity-75"
+                              fill="currentColor"
+                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                            ></path>
                           </svg>
                           Creando cuenta...
                         </div>
                       ) : (
-                        "Crear Cuenta"
+                        'Crear Cuenta'
                       )}
                     </motion.button>
                   </motion.div>
                 )}
 
-                {activeTab === "recover" && (
+                {activeTab === 'recover' && (
                   <motion.div
                     key="recover"
                     initial={{ opacity: 0 }}
@@ -548,8 +681,18 @@ export default function Login() {
                   >
                     <div className="text-center mb-6">
                       <div className="mx-auto w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mb-4">
-                        <svg className="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        <svg
+                          className="w-6 h-6 text-yellow-600"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                          />
                         </svg>
                       </div>
                       <h3 className="text-lg font-semibold text-gray-900 mb-2">
@@ -562,16 +705,14 @@ export default function Login() {
 
                     {/* Email */}
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Email
-                      </label>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
                       <input
                         type="email"
                         name="email"
                         value={formData.email}
                         onChange={handleInputChange}
                         className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors ${
-                          errors.email ? "border-red-500" : "border-gray-300"
+                          errors.email ? 'border-red-500' : 'border-gray-300'
                         }`}
                         placeholder="tu@email.com"
                       />
@@ -596,14 +737,30 @@ export default function Login() {
                     >
                       {isLoading ? (
                         <div className="flex items-center justify-center">
-                          <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                          <svg
+                            className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                          >
+                            <circle
+                              className="opacity-25"
+                              cx="12"
+                              cy="12"
+                              r="10"
+                              stroke="currentColor"
+                              strokeWidth="4"
+                            ></circle>
+                            <path
+                              className="opacity-75"
+                              fill="currentColor"
+                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                            ></path>
                           </svg>
                           Enviando...
                         </div>
                       ) : (
-                        "Enviar Enlace de Recuperación"
+                        'Enviar Enlace de Recuperación'
                       )}
                     </motion.button>
 
@@ -611,7 +768,7 @@ export default function Login() {
                     <div className="text-center">
                       <button
                         type="button"
-                        onClick={() => setActiveTab("login")}
+                        onClick={() => setActiveTab('login')}
                         className="text-sm text-blue-600 hover:text-blue-800 transition-colors"
                       >
                         ← Volver al inicio de sesión
@@ -626,7 +783,7 @@ export default function Login() {
           {/* Footer */}
           <div className="text-center mt-6">
             <p className="text-gray-600">
-              ¿Tienes problemas?{" "}
+              ¿Tienes problemas?{' '}
               <Link href="/contacto" className="text-blue-600 hover:text-blue-800 font-medium">
                 Contáctanos
               </Link>
@@ -636,4 +793,4 @@ export default function Login() {
       </div>
     </Layout>
   );
-} 
+}

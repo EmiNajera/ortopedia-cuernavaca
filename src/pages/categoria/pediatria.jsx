@@ -4,5 +4,3 @@ import Pediatria from '../categories/categorias/Pediatria';
 export default function CategoriaPediatriaPage() {
   return <Pediatria />;
 }
-
-

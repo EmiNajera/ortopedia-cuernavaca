@@ -7,6 +7,6 @@ export async function getServerSideProps({ res }) {
   return { props: {} };
 }
 
-export default function Robots() { return null; }
-
-
+export default function Robots() {
+  return null;
+}

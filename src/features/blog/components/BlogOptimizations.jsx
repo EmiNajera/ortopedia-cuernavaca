@@ -1,27 +1,27 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Search, 
-  Filter, 
-  SortAsc, 
-  SortDesc, 
-  Grid, 
+import {
+  Search,
+  Filter,
+  SortAsc,
+  SortDesc,
+  Grid,
   List,
   Bookmark,
   Share2,
   Heart,
   Clock,
   TrendingUp,
-  Star
+  Star,
 } from 'lucide-react';
 
-const BlogOptimizations = ({ 
-  posts, 
-  onFilterChange, 
-  onSortChange, 
+const BlogOptimizations = ({
+  posts,
+  onFilterChange,
+  onSortChange,
   onViewChange,
   currentView = 'grid',
-  showFilters = true 
+  showFilters = true,
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('todos');
@@ -33,12 +33,42 @@ const BlogOptimizations = ({
 
   const categories = [
     { id: 'todos', name: 'Todos', icon: '📰', count: posts.length },
-    { id: 'tecnologia', name: 'Tecnología', icon: '🔬', count: posts.filter(p => p.category === 'tecnologia').length },
-    { id: 'consejos', name: 'Consejos', icon: '💡', count: posts.filter(p => p.category === 'consejos').length },
-    { id: 'casos-exito', name: 'Casos de Éxito', icon: '🏆', count: posts.filter(p => p.category === 'casos-exito').length },
-    { id: 'rehabilitacion', name: 'Rehabilitación', icon: '💪', count: posts.filter(p => p.category === 'rehabilitacion').length },
-    { id: 'investigacion', name: 'Investigación', icon: '📊', count: posts.filter(p => p.category === 'investigacion').length },
-    { id: 'novedades', name: 'Novedades', icon: '🆕', count: posts.filter(p => p.category === 'novedades').length }
+    {
+      id: 'tecnologia',
+      name: 'Tecnología',
+      icon: '🔬',
+      count: posts.filter((p) => p.category === 'tecnologia').length,
+    },
+    {
+      id: 'consejos',
+      name: 'Consejos',
+      icon: '💡',
+      count: posts.filter((p) => p.category === 'consejos').length,
+    },
+    {
+      id: 'casos-exito',
+      name: 'Casos de Éxito',
+      icon: '🏆',
+      count: posts.filter((p) => p.category === 'casos-exito').length,
+    },
+    {
+      id: 'rehabilitacion',
+      name: 'Rehabilitación',
+      icon: '💪',
+      count: posts.filter((p) => p.category === 'rehabilitacion').length,
+    },
+    {
+      id: 'investigacion',
+      name: 'Investigación',
+      icon: '📊',
+      count: posts.filter((p) => p.category === 'investigacion').length,
+    },
+    {
+      id: 'novedades',
+      name: 'Novedades',
+      icon: '🆕',
+      count: posts.filter((p) => p.category === 'novedades').length,
+    },
   ];
 
   // Cargar favoritos desde localStorage
@@ -57,7 +87,10 @@ const BlogOptimizations = ({
   // Calcular posts trending (basado en featured y fecha reciente)
   useEffect(() => {
     const trending = posts
-      .filter(post => post.featured || new Date(post.date) > new Date(Date.now() - 7 * 24 * 60 * 60 * 1000))
+      .filter(
+        (post) =>
+          post.featured || new Date(post.date) > new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
+      )
       .sort((a, b) => new Date(b.date) - new Date(a.date))
       .slice(0, 5);
     setTrendingPosts(trending);
@@ -81,15 +114,15 @@ const BlogOptimizations = ({
 
   const toggleFavorite = (postSlug) => {
     const newFavorites = favoritePosts.includes(postSlug)
-      ? favoritePosts.filter(slug => slug !== postSlug)
+      ? favoritePosts.filter((slug) => slug !== postSlug)
       : [...favoritePosts, postSlug];
-    
+
     setFavoritePosts(newFavorites);
     localStorage.setItem('blog-favorites', JSON.stringify(newFavorites));
   };
 
   const addToRecent = (post) => {
-    const newRecent = [post, ...recentlyViewed.filter(p => p.slug !== post.slug)].slice(0, 5);
+    const newRecent = [post, ...recentlyViewed.filter((p) => p.slug !== post.slug)].slice(0, 5);
     setRecentlyViewed(newRecent);
     localStorage.setItem('blog-recent', JSON.stringify(newRecent));
   };
@@ -100,7 +133,7 @@ const BlogOptimizations = ({
         await navigator.share({
           title: post.title,
           text: post.excerpt,
-          url: `${window.location.origin}/blog/${post.slug}`
+          url: `${window.location.origin}/blog/${post.slug}`,
         });
       } catch (error) {
         console.log('Error sharing:', error);
@@ -119,7 +152,7 @@ const BlogOptimizations = ({
       'casos-exito': 'bg-orange-100 text-orange-800 border-orange-200',
       rehabilitacion: 'bg-green-100 text-green-800 border-green-200',
       investigacion: 'bg-indigo-100 text-indigo-800 border-indigo-200',
-      novedades: 'bg-pink-100 text-pink-800 border-pink-200'
+      novedades: 'bg-pink-100 text-pink-800 border-pink-200',
     };
     return colorMap[categoryId] || 'bg-gray-100 text-gray-800 border-gray-200';
   };
@@ -150,8 +183,8 @@ const BlogOptimizations = ({
               <button
                 onClick={() => onViewChange('grid')}
                 className={`p-2 rounded-md transition-colors ${
-                  currentView === 'grid' 
-                    ? 'bg-white text-blue-600 shadow-sm' 
+                  currentView === 'grid'
+                    ? 'bg-white text-blue-600 shadow-sm'
                     : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
@@ -160,8 +193,8 @@ const BlogOptimizations = ({
               <button
                 onClick={() => onViewChange('list')}
                 className={`p-2 rounded-md transition-colors ${
-                  currentView === 'list' 
-                    ? 'bg-white text-blue-600 shadow-sm' 
+                  currentView === 'list'
+                    ? 'bg-white text-blue-600 shadow-sm'
                     : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
@@ -194,7 +227,7 @@ const BlogOptimizations = ({
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Categorías</h3>
           <div className="flex flex-wrap gap-2">
-            {categories.map(category => (
+            {categories.map((category) => (
               <button
                 key={category.id}
                 onClick={() => handleCategoryChange(category.id)}
@@ -206,11 +239,13 @@ const BlogOptimizations = ({
               >
                 <span className="mr-2">{category.icon}</span>
                 <span className="font-medium">{category.name}</span>
-                <span className={`ml-2 px-2 py-1 rounded-full text-xs ${
-                  selectedCategory === category.id
-                    ? 'bg-blue-500 text-white'
-                    : 'bg-gray-100 text-gray-600'
-                }`}>
+                <span
+                  className={`ml-2 px-2 py-1 rounded-full text-xs ${
+                    selectedCategory === category.id
+                      ? 'bg-blue-500 text-white'
+                      : 'bg-gray-100 text-gray-600'
+                  }`}
+                >
                   {category.count}
                 </span>
               </button>
@@ -222,9 +257,7 @@ const BlogOptimizations = ({
       {/* Sidebar con contenido adicional */}
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
         {/* Contenido principal */}
-        <div className="lg:col-span-3">
-          {/* Aquí iría el contenido de los posts */}
-        </div>
+        <div className="lg:col-span-3">{/* Aquí iría el contenido de los posts */}</div>
 
         {/* Sidebar */}
         <div className="space-y-6">
@@ -263,7 +296,7 @@ const BlogOptimizations = ({
                 Vistos Recientemente
               </h3>
               <div className="space-y-3">
-                {recentlyViewed.map(post => (
+                {recentlyViewed.map((post) => (
                   <div key={post.slug} className="flex items-start space-x-3">
                     <div className="flex-shrink-0 w-12 h-12 bg-gray-200 rounded-lg overflow-hidden">
                       {post.image ? (
@@ -282,9 +315,7 @@ const BlogOptimizations = ({
                       <h4 className="text-sm font-medium text-gray-900 line-clamp-2">
                         {post.title}
                       </h4>
-                      <p className="text-xs text-gray-500 mt-1">
-                        {post.readTime}
-                      </p>
+                      <p className="text-xs text-gray-500 mt-1">{post.readTime}</p>
                     </div>
                   </div>
                 ))}
@@ -301,9 +332,9 @@ const BlogOptimizations = ({
               </h3>
               <div className="space-y-3">
                 {posts
-                  .filter(post => favoritePosts.includes(post.slug))
+                  .filter((post) => favoritePosts.includes(post.slug))
                   .slice(0, 5)
-                  .map(post => (
+                  .map((post) => (
                     <div key={post.slug} className="flex items-start space-x-3">
                       <div className="flex-shrink-0 w-12 h-12 bg-gray-200 rounded-lg overflow-hidden">
                         {post.image ? (
@@ -322,9 +353,7 @@ const BlogOptimizations = ({
                         <h4 className="text-sm font-medium text-gray-900 line-clamp-2">
                           {post.title}
                         </h4>
-                        <p className="text-xs text-gray-500 mt-1">
-                          {post.readTime}
-                        </p>
+                        <p className="text-xs text-gray-500 mt-1">{post.readTime}</p>
                       </div>
                     </div>
                   ))}

@@ -24,7 +24,10 @@ export default function handler(req, res) {
   res.status(200);
   res.setHeader('Content-Type', 'application/xml');
   const urls = staticPaths
-    .map((path) => `<url><loc>${BASE_URL}${path}</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>`) 
+    .map(
+      (path) =>
+        `<url><loc>${BASE_URL}${path}</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>`,
+    )
     .join('');
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -32,5 +35,3 @@ ${urls}
 </urlset>`;
   res.end(body);
 }
-
-

@@ -5,5 +5,3 @@ export async function getServerSideProps() {
     props: {},
   };
 }
-
-

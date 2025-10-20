@@ -23,9 +23,9 @@ const NotificationProvider = ({ children }) => {
       duration: 3000,
       ...notification,
     };
-    
-    setNotifications(prev => [...prev, newNotification]);
-    
+
+    setNotifications((prev) => [...prev, newNotification]);
+
     if (newNotification.duration > 0) {
       setTimeout(() => {
         removeNotification(id);
@@ -34,7 +34,7 @@ const NotificationProvider = ({ children }) => {
   };
 
   const removeNotification = (id) => {
-    setNotifications(prev => prev.filter(notification => notification.id !== id));
+    setNotifications((prev) => prev.filter((notification) => notification.id !== id));
   };
 
   const showSuccess = (message, options = {}) => {
@@ -123,11 +123,7 @@ const NotificationContainer = ({ notifications, onRemove }) => {
     <div className="fixed top-4 right-4 z-50 space-y-3">
       <AnimatePresence>
         {notifications.map((notification) => (
-          <NotificationItem
-            key={notification.id}
-            notification={notification}
-            onRemove={onRemove}
-          />
+          <NotificationItem key={notification.id} notification={notification} onRemove={onRemove} />
         ))}
       </AnimatePresence>
     </div>
@@ -189,7 +185,9 @@ const NotificationItem = ({ notification, onRemove }) => {
       className={`${styles.bg} ${styles.text} rounded-2xl shadow-xl border border-white/20 backdrop-blur-sm max-w-sm`}
     >
       <div className="flex items-center p-4">
-        <div className={`flex-shrink-0 w-8 h-8 rounded-full bg-white/20 flex items-center justify-center mr-3`}>
+        <div
+          className={`flex-shrink-0 w-8 h-8 rounded-full bg-white/20 flex items-center justify-center mr-3`}
+        >
           <IconComponent className={`w-4 h-4 ${styles.iconColor}`} />
         </div>
         <div className="flex-1">
@@ -202,7 +200,7 @@ const NotificationItem = ({ notification, onRemove }) => {
           <X className="w-4 h-4" />
         </button>
       </div>
-      
+
       {duration > 0 && (
         <motion.div
           className="h-1 bg-white/30 rounded-b-2xl"

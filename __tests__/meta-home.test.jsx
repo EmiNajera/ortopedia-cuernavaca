@@ -8,5 +8,3 @@ test('Home page sets meta description and title via Head', () => {
   expect(meta).toBeTruthy();
   expect(meta.getAttribute('content')).toMatch(/OrtoTech/i);
 });
-
-
