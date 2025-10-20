@@ -2,10 +2,6 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/servicios": "pages/servicios.js",
-  "/contacto": "pages/contacto.js",
-  "/nosotros": "pages/nosotros.js",
-  "/404": "pages/404.js",
-  "/": "pages/index.js",
-  "/tienda": "pages/tienda.js"
+  "/categoria/calzado": "pages/categoria/calzado.js",
+  "/categorias": "pages/categorias.js"
 }

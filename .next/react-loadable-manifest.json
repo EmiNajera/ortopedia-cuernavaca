@@ -10,11 +10,5 @@
     "files": [
       "static/chunks/_pages-dir-browser_node_modules_next_dist_pages__error_js.js"
     ]
-  },
-  "src\\features\\services\\Servicios.jsx -> ../../components/features/ProcessSectionAlt": {
-    "id": "src\\features\\services\\Servicios.jsx -> ../../components/features/ProcessSectionAlt",
-    "files": [
-      "static/chunks/_pages-dir-browser_src_components_features_ProcessSectionAlt_jsx.js"
-    ]
   }
 }
