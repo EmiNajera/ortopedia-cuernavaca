@@ -16,7 +16,9 @@ dist/
 .vscode/.tsbuildinfo
 .cache/
 
-# Testing
+# Testing (no se usan - mantener localmente pero no en Git)
+__tests__/
+e2e/
 coverage/
 *.lcov
 .nyc_output
@@ -60,12 +62,11 @@ lint-output.txt
 *.csv
 Inventario.*
 
-# Tools (ignore data inside tools but keep scripts)
-tools/database/*.xlsx
-tools/database/*.xls
-tools/database/*.csv
+# Carpetas de desarrollo/migración (mantener localmente pero no en Git)
+_trash/
+_archive/
+tools/database/
+tools/scripts/
 
-# Performance reports (generated files)
-localhost_3000-*.json
-perf-output.txt
-lint-output.txt
+# Documentación técnica (solo para uso local)
+docs/
