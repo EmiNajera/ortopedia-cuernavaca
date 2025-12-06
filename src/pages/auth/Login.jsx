@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from '@shared/lib/utils/routerCompat';
 import { motion, AnimatePresence } from 'framer-motion';
-import MarketingLayout from '../../components/layout/MarketingLayout';
+import MarketingLayout from '@layouts/MarketingLayout';
 
 export default function Login() {
   const [activeTab, setActiveTab] = useState('login');

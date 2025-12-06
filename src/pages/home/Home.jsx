@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import MarketingLayout from '../../components/layout/MarketingLayout';
-import { openWhatsApp } from '../../utils/whatsapp';
+import Image from 'next/image';
+import MarketingLayout from '@layouts/MarketingLayout';
+import { openWhatsApp } from '@shared/lib/utils/whatsapp';
 
 // --- Iconos SVG para una apariencia limpia y moderna ---
 
@@ -239,12 +240,12 @@ const TestimonialCard = ({ image, text, name, title, rating }) => (
   <div className="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 ease-in-out border border-gray-100">
     <div className="p-8">
       <div className="flex items-center mb-6">
-        <img
+        <Image
           src={image}
           alt={name}
-          loading="lazy"
-          decoding="async"
-          className="w-16 h-16 rounded-full object-cover mr-5 border-4 border-white shadow-md"
+          width={64}
+          height={64}
+          className="rounded-full object-cover mr-5 border-4 border-white shadow-md"
         />
         <div>
           <h4 className="text-xl font-bold text-gray-900">{name}</h4>
@@ -284,13 +285,12 @@ const ServiceCard = ({ title, description, link }) => (
 // Tarjeta para la sección de Tienda
 const ProductCard = ({ imgSrc, name }) => (
   <div className="bg-white rounded-lg shadow-sm overflow-hidden group cursor-pointer transform hover:scale-105 transition-all duration-300">
-    <div className="overflow-hidden">
-      <img
+    <div className="overflow-hidden relative w-full h-48">
+      <Image
         src={imgSrc}
         alt={name}
-        loading="lazy"
-        decoding="async"
-        className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+        fill
+        className="object-cover transition-transform duration-500 group-hover:scale-110"
       />
     </div>
     <div className="p-4">
@@ -498,31 +498,38 @@ const Home = () => {
           {/* Overlay sutil para mejorar contraste */}
           <div className="absolute inset-0 bg-black/25 z-0"></div>
 
-          {/* Logo superpuesto con estilo minimalista */}
-          <div className="absolute top-6 left-1/2 transform -translate-x-1/2 z-20 flex justify-center items-center">
-            <img
-              src="/images/banners/Ortopedia Cuernavaca Logo.svg"
-              alt="Ortopedia Cuernavaca logo, marca de la clínica"
-              decoding="async"
-              className="h-96 md:h-[32rem] lg:h-[40rem] w-auto"
-              style={{
-                filter: 'drop-shadow(0 8px 24px rgba(0,0,0,0.2))',
-                transform: 'translateZ(0)',
-              }}
-            />
-          </div>
-
-          <div className="relative z-10 p-6 max-w-6xl mx-auto">
+          {/* Contenido centrado con logo y texto juntos */}
+          <div
+            className="relative z-10 p-6 max-w-6xl mx-auto flex flex-col items-center justify-center text-center"
+            style={{ paddingTop: '60px' }}
+          >
+            {/* Logo centrado - dimensiones exactas para evitar contorno de Next/Image */}
+            <div className="flex justify-center items-center mb-2">
+              <Image
+                src="/images/banners/Ortopedia Cuernavaca Logo.svg"
+                alt="Ortopedia Cuernavaca logo, marca de la clínica"
+                width={600}
+                height={200}
+                quality={100}
+                className="w-auto h-32 sm:h-40 md:h-48 lg:h-56 xl:h-64"
+                style={{
+                  filter: 'drop-shadow(0 8px 24px rgba(0,0,0,0.3))',
+                  transform: 'translateZ(0)',
+                }}
+              />
+            </div>
             <h1
-              className="text-6xl md:text-8xl font-bold text-white fade-in"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white fade-in"
               style={{
                 fontFamily: "'Poppins', sans-serif",
-                textShadow: '0 4px 12px rgba(0,0,0,0.3)',
+                textShadow: '0 4px 12px rgba(0,0,0,0.5)',
                 animationDelay: '0.6s',
                 letterSpacing: '-0.02em',
+                lineHeight: '1.1',
+                marginTop: '0.25rem',
               }}
             >
-              Rehabilitación física y ortopedia
+              Ortopedia y rehabilitación física
             </h1>
             <p
               className="text-2xl md:text-3xl mt-6 max-w-4xl mx-auto text-white fade-in"
@@ -617,19 +624,16 @@ const Home = () => {
               >
                 {/* Imagen de fondo que abarca toda la sección */}
                 <div className="absolute inset-0 w-full h-full">
-                  <img
+                  <Image
                     src="/images/banners/principal.png"
                     alt="Ortopedia Cuernavaca - Servicios integrales con fondo ilustrativo"
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
                     style={{
                       objectPosition: 'center',
                       transform: 'scale(1.02)',
                       transition: 'transform 2s cubic-bezier(0.65, 0, 0.35, 1)',
                     }}
-                    onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
-                    onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1.02)')}
                   />
                 </div>
 
@@ -770,12 +774,11 @@ const Home = () => {
                 {/* Card que se expande solo hacia arriba */}
                 <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out transform group-hover:-translate-y-8 group-hover:z-20 absolute top-0 left-0 w-full h-full group-hover:h-[360px]">
                   <div className="relative w-full h-48 overflow-hidden">
-                    <img
+                    <Image
                       src={item.image}
                       alt={item.title}
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
                   <div className="p-5">
@@ -891,12 +894,11 @@ const Home = () => {
             {/* Añadimos un overlay decorativo */}
             <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 pointer-events-none"></div>
 
-            <img
+            <Image
               src={activo.imagen}
               alt={activo.nombre}
-              loading="lazy"
-              decoding="async"
-              className={`w-full h-96 object-cover transition-transform duration-700 hover:scale-105 ${activo.position || 'object-center'}`}
+              fill
+              className={`object-cover transition-transform duration-700 hover:scale-105 ${activo.position || 'object-center'}`}
             />
 
             <div className="absolute bottom-0 left-0 p-8 bg-white/95 backdrop-blur-sm rounded-tr-2xl w-full md:w-1/2 shadow-lg transform transition-all duration-500 hover:shadow-xl">

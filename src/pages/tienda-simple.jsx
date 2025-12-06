@@ -1,5 +1,5 @@
 import React from 'react';
-import Tienda from './store/Tienda';
+import Tienda from './tienda';
 
 export default function TiendaSimplePage() {
   return <Tienda />;

@@ -1,7 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
-import MarketingLayout from '../../components/layout/MarketingLayout';
-import ProfessionalBlogLayout from '../../features/blog/components/ProfessionalBlogLayout';
+import { getSiteUrl, getFullUrl } from '@shared/lib/utils/siteUrl';
+import MarketingLayout from '@layouts/MarketingLayout';
+import ProfessionalBlogLayout from '@domains/blog/components/ProfessionalBlogLayout';
 
 export default function BlogIndexPage({ posts = [] }) {
   const categories = [
@@ -13,51 +14,126 @@ export default function BlogIndexPage({ posts = [] }) {
     { id: 'novedades', name: 'Novedades', icon: '🆕', color: 'pink' },
   ];
 
+  const baseUrl = getSiteUrl();
+  const pageUrl = `${baseUrl}/blog`;
+  const pageTitle = 'Blog de Ortopedia y Rehabilitación | Ortopedia Cuernavaca';
+  const pageDescription =
+    'Artículos especializados sobre ortopedia, rehabilitación física, plantillas personalizadas, ortesis, prótesis y consejos de salud. Información actualizada por profesionales de Ortopedia Cuernavaca con más de 30 años de experiencia.';
+  const ogImage = `${baseUrl}/images/banners/Ortopedia Cuernavaca Logo.png`;
+
+  // JSON-LD Structured Data para Blog
+  const blogSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    name: 'Blog de Ortopedia Cuernavaca',
+    description: pageDescription,
+    url: pageUrl,
+    publisher: {
+      '@type': 'MedicalBusiness',
+      name: 'Ortopedia Cuernavaca',
+      url: baseUrl,
+      logo: {
+        '@type': 'ImageObject',
+        url: ogImage,
+      },
+    },
+    blogPost: posts.slice(0, 10).map((post) => ({
+      '@type': 'BlogPosting',
+      headline: post.title,
+      description: post.excerpt,
+      image: post.image ? `${baseUrl}${post.image}` : ogImage,
+      datePublished: post.date,
+      author: {
+        '@type': 'Organization',
+        name: 'Ortopedia Cuernavaca',
+      },
+      url: `${baseUrl}/blog/${post.slug}`,
+    })),
+  };
+
+  // Breadcrumb Schema
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Inicio',
+        item: baseUrl,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Blog',
+        item: pageUrl,
+      },
+    ],
+  };
+
   return (
     <>
       <Head>
-        <title>Blog de Ortopedia y Rehabilitación | Ortopedia Cuernavaca</title>
-        <meta
-          name="description"
-          content="Artículos especializados sobre ortopedia, rehabilitación, plantillas personalizadas, ortesis y consejos de salud. Información actualizada por profesionales."
-        />
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
         <meta
           name="keywords"
-          content="blog ortopedia, artículos rehabilitación, consejos salud, plantillas ortopédicas, ortesis, fisioterapia"
+          content="blog ortopedia, artículos rehabilitación, consejos salud, plantillas ortopédicas, ortesis, fisioterapia, prótesis, rehabilitación física, ortopedia cuernavaca, consejos médicos, salud ortopédica"
         />
+        <meta name="author" content="Ortopedia Cuernavaca" />
         <meta
-          property="og:title"
-          content="Blog de Ortopedia y Rehabilitación | Ortopedia Cuernavaca"
+          name="robots"
+          content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
         />
-        <meta
-          property="og:description"
-          content="Artículos especializados sobre ortopedia y rehabilitación por profesionales"
+        <link rel="canonical" href={pageUrl} />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="Blog de Ortopedia Cuernavaca"
+          href={`${baseUrl}/api/blog/feed.xml`}
         />
+
+        {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://ortopedia-cuernavaca.com/blog" />
-        <meta property="og:image" content="/images/banners/Ortopedia Cuernavaca Logo.png" />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:locale" content="es_MX" />
+        <meta property="og:site_name" content="Ortopedia Cuernavaca" />
+
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Blog de Ortopedia y Rehabilitación" />
-        <meta
-          name="twitter:description"
-          content="Artículos especializados sobre ortopedia y rehabilitación por profesionales"
+        <meta name="twitter:url" content={pageUrl} />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content={ogImage} />
+
+        {/* Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
         />
-        <meta name="twitter:image" content="/images/banners/Ortopedia Cuernavaca Logo.png" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        />
       </Head>
 
-      <>
-        <ProfessionalBlogLayout posts={posts} categories={categories} />
-      </>
+      <ProfessionalBlogLayout posts={posts} categories={categories} />
     </>
   );
 }
 
-BlogIndexPage.getLayout = (page) => <MarketingLayout>{page}</MarketingLayout>;
+// El layout se aplica automáticamente desde _app.jsx
+// No definimos getLayout para evitar doble layout
 
 export async function getStaticProps() {
   try {
     // Importar solo en el servidor
-    const { getAllPosts } = await import('../../lib/utils/blogUtils');
+    const { getAllPosts } = await import('@domains/blog/utils/blogUtils');
     const posts = getAllPosts();
 
     // Convertir fechas a string para serialización JSON

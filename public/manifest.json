@@ -4,18 +4,52 @@
   "description": "Soluciones integrales en rehabilitación física y ortopedia. Te acompañamos desde el diagnóstico hasta la recuperación.",
   "start_url": "/",
   "display": "standalone",
+  "orientation": "portrait-primary",
   "background_color": "#ffffff",
   "theme_color": "#2563eb",
+  "scope": "/",
+  "lang": "es-MX",
+  "dir": "ltr",
+  "categories": ["medical", "health"],
   "icons": [
     {
       "src": "/images/banners/Ortopedia Cuernavaca Logo.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "/images/banners/Ortopedia Cuernavaca Logo.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Agendar Cita",
+      "short_name": "Citas",
+      "description": "Agenda una cita con nuestros especialistas",
+      "url": "/citas",
+      "icons": [
+        {
+          "src": "/images/banners/Ortopedia Cuernavaca Logo.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Contacto",
+      "short_name": "Contacto",
+      "description": "Contáctanos",
+      "url": "/contacto",
+      "icons": [
+        {
+          "src": "/images/banners/Ortopedia Cuernavaca Logo.png",
+          "sizes": "96x96"
+        }
+      ]
     }
   ]
 }

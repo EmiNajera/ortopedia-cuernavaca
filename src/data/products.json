@@ -1,0 +1,110 @@
+[
+  {
+    "id": "1",
+    "title": "Plantillas Ortopédicas Personalizadas",
+    "brand": "Ortopedia Cuernavaca",
+    "price": 1200,
+    "originalPrice": 1500,
+    "discount": 20,
+    "rating": 4.8,
+    "reviews": 156,
+    "inStock": true,
+    "stock": 15,
+    "category": "plantillas",
+    "slug": "plantillas-ortopedicas-personalizadas",
+    "images": [
+      "/images/products/plantilla.svg",
+      "/images/products/plantilla-2.jpg",
+      "/images/products/plantilla-3.jpg"
+    ],
+    "description": "Plantillas ortopédicas personalizadas para corregir problemas de pisada y mejorar la postura.",
+    "shortDescription": "Plantilla ortopédica de alta calidad, fabricada con materiales premium para máximo confort y soporte.",
+    "features": [
+      "Material de alta calidad",
+      "Diseño personalizado",
+      "Corrección de pisada",
+      "Comodidad garantizada"
+    ],
+    "specifications": {
+      "material": "EVA de alta densidad",
+      "duracion": "6-12 meses",
+      "tallas": "22-30 cm",
+      "garantia": "3 meses",
+      "grosor": "3-5mm",
+      "color": "Beige/Negro"
+    },
+    "tags": ["plantillas", "ortopedico", "personalizado", "pisada"],
+    "createdAt": "2024-01-15T00:00:00.000Z",
+    "updatedAt": "2024-11-20T00:00:00.000Z"
+  },
+  {
+    "id": "2",
+    "title": "Faja Lumbar Ortopédica",
+    "brand": "Ortopedia Cuernavaca",
+    "price": 800,
+    "originalPrice": 1000,
+    "discount": 20,
+    "rating": 4.6,
+    "reviews": 89,
+    "inStock": true,
+    "stock": 25,
+    "category": "fajas",
+    "slug": "faja-lumbar-ortopedica",
+    "images": [
+      "/images/products/faja.svg",
+      "/images/products/faja-2.jpg"
+    ],
+    "description": "Faja lumbar ortopédica para aliviar dolores de espalda y mejorar la postura.",
+    "shortDescription": "Soporte lumbar ajustable con material transpirable para máximo confort.",
+    "features": [
+      "Soporte lumbar ajustable",
+      "Material transpirable",
+      "Fácil de usar",
+      "Alivio inmediato"
+    ],
+    "specifications": {
+      "material": "Neopreno médico",
+      "tallas": "S, M, L, XL",
+      "garantia": "6 meses"
+    },
+    "tags": ["faja", "lumbar", "espalda", "soporte"],
+    "createdAt": "2024-02-10T00:00:00.000Z",
+    "updatedAt": "2024-11-20T00:00:00.000Z"
+  },
+  {
+    "id": "3",
+    "title": "Muletas Ajustables",
+    "brand": "Ortopedia Cuernavaca",
+    "price": 600,
+    "originalPrice": 750,
+    "discount": 20,
+    "rating": 4.7,
+    "reviews": 45,
+    "inStock": true,
+    "stock": 30,
+    "category": "rehabilitacion",
+    "slug": "muletas-ajustables",
+    "images": [
+      "/images/products/muletas.svg",
+      "/images/products/muletas-2.jpg"
+    ],
+    "description": "Muletas ajustables de aluminio para rehabilitación y movilidad.",
+    "shortDescription": "Muletas ligeras y ajustables para máxima comodidad durante la rehabilitación.",
+    "features": [
+      "Altura ajustable",
+      "Material ligero",
+      "Empuñaduras cómodas",
+      "Puntas antideslizantes"
+    ],
+    "specifications": {
+      "material": "Aluminio anodizado",
+      "altura": "Ajustable 100-140 cm",
+      "peso": "1.2 kg",
+      "garantia": "1 año"
+    },
+    "tags": ["muletas", "rehabilitacion", "movilidad", "ajustable"],
+    "createdAt": "2024-03-05T00:00:00.000Z",
+    "updatedAt": "2024-11-20T00:00:00.000Z"
+  }
+]
+

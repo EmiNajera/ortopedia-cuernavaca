@@ -1,15 +1,22 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "src",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@features/*": ["src/features/*"],
-      "@lib/*": ["src/lib/*"],
-      "@utils/*": ["src/utils/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@contexts/*": ["src/contexts/*"],
-      "@data/*": ["src/data/*"],
-      "@styles/*": ["src/styles/*"]
+      "@store/*": ["store/*"],
+      "@shared/*": ["shared/*"],
+      "@marketing/*": ["marketing/*"],
+      "@domains/*": ["domains/*"],
+      "@layouts/*": ["layouts/*"],
+      "@/*": ["*"],
+      "@components/*": ["components/*"],
+      "@features/*": ["features/*"],
+      "@lib/*": ["lib/*"],
+      "@utils/*": ["utils/*"],
+      "@hooks/*": ["hooks/*"],
+      "@contexts/*": ["contexts/*"],
+      "@data/*": ["data/*"],
+      "@styles/*": ["styles/*"],
+      "@registry/*": ["registry/*"]
     }
   },
   "include": ["src", "pages", "__tests__"],

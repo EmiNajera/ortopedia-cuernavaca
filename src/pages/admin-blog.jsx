@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { motion, AnimatePresence } from 'framer-motion';
-import ArticleManager from '../features/blog/components/ArticleManager';
-import ArticleCreator from '../features/blog/components/ArticleCreator';
+import ArticleManager from '@domains/blog/components/ArticleManager';
+import ArticleCreator from '@domains/blog/components/ArticleCreator';
 import { FileText, Settings, BarChart3, Users, Eye, Edit, Save, X } from 'lucide-react';
 
 export default function BlogAdmin() {
@@ -19,29 +19,17 @@ export default function BlogAdmin() {
   const loadArticles = async () => {
     try {
       setIsLoading(true);
-      // En un entorno real, esto sería una llamada a la API
-      // Por ahora, simulamos la carga de artículos
+      // Cargar artículos desde la API
       const response = await fetch('/api/blog/articles');
       if (response.ok) {
         const data = await response.json();
         setArticles(data);
       } else {
-        // Fallback: cargar desde el sistema actual
-        const { getAllPosts } = await import('../lib/utils/blogUtils');
-        const posts = getAllPosts();
-        setArticles(posts);
+        setArticles([]);
       }
     } catch (error) {
       console.error('Error loading articles:', error);
-      // Fallback: cargar desde el sistema actual
-      try {
-        const { getAllPosts } = await import('../lib/utils/blogUtils');
-        const posts = getAllPosts();
-        setArticles(posts);
-      } catch (fallbackError) {
-        console.error('Fallback error:', fallbackError);
-        setArticles([]);
-      }
+      setArticles([]);
     } finally {
       setIsLoading(false);
     }
@@ -60,7 +48,7 @@ export default function BlogAdmin() {
   const handleSaveArticle = async (mdxContent, articleData) => {
     try {
       // En un entorno real, esto sería una llamada a la API
-      console.log('Saving article:', { mdxContent, articleData });
+      // Saving article: { mdxContent, articleData }
 
       // Simular guardado exitoso
       await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -94,7 +82,7 @@ export default function BlogAdmin() {
     if (window.confirm('¿Estás seguro de eliminar este artículo?')) {
       try {
         // En un entorno real, esto sería una llamada a la API
-        console.log('Deleting article:', slug);
+        // Deleting article: slug
 
         // Simular eliminación
         await new Promise((resolve) => setTimeout(resolve, 500));

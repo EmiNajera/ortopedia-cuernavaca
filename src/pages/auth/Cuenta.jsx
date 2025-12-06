@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from '@shared/lib/utils/routerCompat';
 import { motion, AnimatePresence } from 'framer-motion';
-import MarketingLayout from '../../components/layout/MarketingLayout';
+import MarketingLayout from '@layouts/MarketingLayout';
 
 export default function Cuenta() {
   const [activeTab, setActiveTab] = useState('dashboard');

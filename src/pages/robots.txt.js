@@ -1,8 +1,21 @@
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3005';
+import { getSiteUrl } from '@shared/lib/utils/siteUrl';
+
+const BASE_URL = getSiteUrl();
 
 export async function getServerSideProps({ res }) {
   res.setHeader('Content-Type', 'text/plain');
-  res.write(`User-agent: *\nAllow: /\n\nSitemap: ${BASE_URL}/sitemap.xml\n`);
+  res.write(`User-agent: *
+Allow: /
+Disallow: /auth/
+Disallow: /login
+Disallow: /cuenta
+Disallow: /tienda
+Disallow: /carrito
+Disallow: /admin/
+Disallow: /dev-sandbox
+
+Sitemap: ${BASE_URL}/sitemap.xml
+`);
   res.end();
   return { props: {} };
 }

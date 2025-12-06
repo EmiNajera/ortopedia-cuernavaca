@@ -1,0 +1,159 @@
+/* Mobile Optimizations for Ortopedia Cuernavaca */
+
+/* Safe Area Variables for iPhone X+ (Dynamic Island support) */
+:root {
+  --sat: env(safe-area-inset-top);
+  --sab: env(safe-area-inset-bottom);
+  --sal: env(safe-area-inset-left);
+  --sar: env(safe-area-inset-right);
+}
+
+/* Scroll horizontal optimizado para móviles */
+.mobile-scroll {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.mobile-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Touch targets más grandes para móviles */
+@media (max-width: 768px) {
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Espaciado optimizado para móviles */
+  .mobile-spacing {
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+  }
+  
+  /* Texto más legible en móviles */
+  .mobile-text {
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+  
+  /* Botones más grandes para móviles */
+  .mobile-button {
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    min-height: 44px;
+  }
+  
+  /* Grid responsivo para móviles */
+  .mobile-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+  
+  /* Carrusel optimizado para móviles */
+  .mobile-carousel {
+    height: 300px;
+    overflow: hidden;
+  }
+  
+  /* Categorías con scroll horizontal */
+  .mobile-categories {
+    display: flex;
+    overflow-x: auto;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .mobile-category-item {
+    flex-shrink: 0;
+    width: 120px;
+    text-align: center;
+  }
+  
+  /* Indicadores de scroll */
+  .scroll-indicator {
+    position: relative;
+  }
+  
+  .scroll-indicator::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    background: linear-gradient(to left, rgba(255,255,255,1), rgba(255,255,255,0));
+    pointer-events: none;
+  }
+}
+
+/* Optimizaciones para tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .tablet-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  
+  .tablet-carousel {
+    height: 400px;
+  }
+}
+
+/* Optimizaciones para pantallas grandes */
+@media (min-width: 1024px) {
+  .desktop-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .desktop-carousel {
+    height: 500px;
+  }
+}
+
+/* Mejoras de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  .mobile-scroll {
+    scroll-behavior: auto;
+  }
+}
+
+/* Modo oscuro para móviles */
+@media (prefers-color-scheme: dark) {
+  .mobile-dark {
+    background-color: #1f2937;
+    color: #f9fafb;
+  }
+}
+
+/* Optimizaciones de rendimiento */
+.mobile-optimized {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Animaciones suaves para móviles */
+.mobile-animation {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Estados de carga optimizados */
+.mobile-loading {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

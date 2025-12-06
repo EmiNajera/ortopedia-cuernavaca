@@ -4,11 +4,6 @@ export default function Document() {
   return (
     <Html lang="es">
       <Head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Poppins:wght@400;700&display=swap"
-          rel="stylesheet"
-        />
-
         {/* Favicon and Icons */}
         <link rel="icon" href="/favicon.ico" />
         <link
@@ -32,6 +27,30 @@ export default function Document() {
         <meta name="msapplication-config" content="/browserconfig.xml" />
       </Head>
       <body className="font-sans bg-gray-50">
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              // Cleanup any lingering Lenis instances immediately
+              (function() {
+                if (typeof window !== 'undefined') {
+                  if (window.__lenisInstance) {
+                    try {
+                      window.__lenisInstance.destroy();
+                    } catch(e) {}
+                    window.__lenisInstance = null;
+                  }
+                  // Cancel any pending animation frames
+                  if (window.__lenisRafIds) {
+                    window.__lenisRafIds.forEach(function(id) {
+                      if (id) cancelAnimationFrame(id);
+                    });
+                    window.__lenisRafIds = [];
+                  }
+                }
+              })();
+            `,
+          }}
+        />
         <Main />
         <NextScript />
       </body>

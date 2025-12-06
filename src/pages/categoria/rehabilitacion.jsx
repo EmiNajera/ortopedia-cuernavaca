@@ -1,11 +1,7 @@
-import React from 'react';
-import Rehabilitacion from '../categories/categorias/Rehabilitacion';
+import Page, { getServerSideProps as _getServerSideProps } from './[slug]';
 
-export default function CategoriaRehabilitacionPage() {
-  return <Rehabilitacion />;
+export default Page;
+
+export async function getServerSideProps(context) {
+  return await _getServerSideProps({ ...context, params: { slug: 'rehabilitacion' } });
 }
-
-CategoriaRehabilitacionPage.getLayout = function getLayout(page) {
-  const StoreLayout = require('../../components/layout/StoreLayout').default;
-  return <StoreLayout>{page}</StoreLayout>;
-};

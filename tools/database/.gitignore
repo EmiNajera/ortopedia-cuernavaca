@@ -1,0 +1,16 @@
+# Configuración de base de datos (no versionar credenciales)
+config.py
+
+# Bases de datos locales
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+*.log
+
+# Archivos temporales
+*.tmp
+*.bak
+
+

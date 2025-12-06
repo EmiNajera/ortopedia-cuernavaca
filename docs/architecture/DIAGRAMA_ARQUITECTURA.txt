@@ -1,0 +1,371 @@
+# 📊 DIAGRAMA DE ARQUITECTURA - Ortopedia Cuernavaca
+
+```
+═══════════════════════════════════════════════════════════════════════════════
+                    ARQUITECTURA GENERAL DEL PROYECTO
+═══════════════════════════════════════════════════════════════════════════════
+
+                             🌐 USUARIO
+                             
+                              ↓ (navega)
+                              
+                         🛣️  NEXT.js Router
+                         
+                    (match route → load page)
+                         
+                    ┌─────────────────────────────┐
+                    │    PAGE (src/pages/*.jsx)   │
+                    └─────────────────────────────┘
+                             ↓
+                    ¿Tiene getLayout?
+                    /        ↓        \
+                 SÍ         NO         (default: no layout)
+                 ↓           ↓
+        ┌─────────────────────────────┐
+        │   LAYOUT WRAPPER            │
+        │ (StoreLayout o              │
+        │  MarketingLayout)           │
+        └─────────────────────────────┘
+                    ↓
+        ┌───────────────────────────────────────┐
+        │           HEADER                      │
+        │ (StoreHeader o MarketingHeader)       │
+        └───────────────────────────────────────┘
+                    ↓
+        ┌───────────────────────────────────────┐
+        │          MAIN CONTENT                 │
+        │   (Page-specific components)          │
+        │   (Receives data from sources)        │
+        └───────────────────────────────────────┘
+                    ↓
+        ┌───────────────────────────────────────┐
+        │           FOOTER                      │
+        │     (Shared across all pages)         │
+        └───────────────────────────────────────┘
+                    ↓
+                📱 RENDERED HTML
+                    ↓
+              👁️  USER SEES PAGE
+
+
+═══════════════════════════════════════════════════════════════════════════════
+                          LAYOUT HIERARCHY
+═══════════════════════════════════════════════════════════════════════════════
+
+                        StoreLayout 🟢
+                    (Para páginas de tienda)
+                            │
+        ┌───────────────────┼───────────────────┐
+        │                   │                   │
+        ↓                   ↓                   ↓
+    StoreHeader         Main Content         Footer
+    (Logo              (page children)       (Shared)
+     Search            
+     Cart
+     Wishlist)
+
+    Usado por:
+    • /tienda
+    • /categorias
+    • /categoria/[slug]
+    • /producto/[id]
+    • /carrito
+
+
+                    MarketingLayout 🟢
+                (Para páginas de marketing)
+                            │
+        ┌───────────────────┼───────────────────┐
+        │                   │                   │
+        ↓                   ↓                   ↓
+    MarketingHeader     Main Content         Footer
+    (Full Nav           (page children)       (Shared)
+     Dropdowns)
+
+    Usado por:
+    • /
+    • /servicios
+    • /blog
+    • /citas
+    • /contacto
+    • /nosotros
+
+
+═══════════════════════════════════════════════════════════════════════════════
+                     FLUJO DE DATOS (Data Sources)
+═══════════════════════════════════════════════════════════════════════════════
+
+    Page Component
+            │
+            ├─────────────────┬──────────────────┬────────────────┐
+            │                 │                  │                │
+            ↓                 ↓                  ↓                ↓
+         Products         Categories          Posts             Config
+      (products.config)  (categories.full)   (/posts/*.mdx)    (next.config)
+            │                 │                  │                │
+            └─────────────────┴──────────────────┴────────────────┘
+                              │
+                    ↓ (props o state)
+                    
+            Component renders with data
+
+
+═══════════════════════════════════════════════════════════════════════════════
+                     PÁGINAS Y SUS LAYOUTS
+═══════════════════════════════════════════════════════════════════════════════
+
+🏠 HOME (/)
+├─ getLayout: MarketingLayout
+├─ Header: MarketingHeader
+├─ Content: Home sections
+└─ Footer: Shared
+
+🛍️ TIENDA (/tienda)
+├─ getLayout: StoreLayout
+├─ Header: StoreHeader
+├─ Content: TiendaCompleta
+└─ Footer: Shared
+
+📂 CATEGORÍAS (/categorias)
+├─ getLayout: StoreLayout
+├─ Header: StoreHeader
+├─ Content: Category grid
+└─ Footer: Shared
+
+👣 CATEGORÍA ESPECÍFICA (/categoria/plantillas)
+├─ Dynamic: [slug].jsx
+├─ getLayout: StoreLayout
+├─ Header: StoreHeader
+├─ Content: Productos de categoría
+└─ Footer: Shared
+
+📋 PRODUCTO (/producto/1)
+├─ Dynamic: [productId].jsx
+├─ getLayout: StoreLayout
+├─ Header: StoreHeader
+├─ Content: Detalle + galería
+└─ Footer: Shared
+
+🛒 CARRITO (/carrito)
+├─ getLayout: StoreLayout
+├─ Header: StoreHeader
+├─ Content: Items + checkout
+└─ Footer: Shared
+
+💼 SERVICIOS (/servicios)
+├─ getLayout: MarketingLayout
+├─ Header: MarketingHeader
+├─ Content: Servicios + síntomas
+└─ Footer: Shared
+
+📚 BLOG (/blog)
+├─ getLayout: MarketingLayout
+├─ Header: MarketingHeader
+├─ Content: Posts listing
+└─ Footer: Shared
+
+📖 POST (/blog/[id])
+├─ Dynamic: [id].jsx
+├─ getLayout: MarketingLayout
+├─ Header: MarketingHeader
+├─ Content: Post content (MDX)
+└─ Footer: Shared
+
+📅 CITAS (/citas)
+├─ getLayout: MarketingLayout
+├─ Header: MarketingHeader
+├─ Content: Appointment form
+└─ Footer: Shared
+
+📧 CONTACTO (/contacto)
+├─ getLayout: MarketingLayout
+├─ Header: MarketingHeader
+├─ Content: Contact form
+└─ Footer: Shared
+
+👥 NOSOTROS (/nosotros)
+├─ getLayout: MarketingLayout
+├─ Header: MarketingHeader
+├─ Content: About content
+└─ Footer: Shared
+
+
+═══════════════════════════════════════════════════════════════════════════════
+                    STATE MANAGEMENT FLOW
+═══════════════════════════════════════════════════════════════════════════════
+
+StoreLayout (CENTRAL STATE)
+        │
+        ├─ searchTerm ──────→ Used by TiendaCompleta
+        │
+        ├─ showWishlistOnly ─→ Used by TiendaCompleta
+        │
+        └─ wishlist ────────→ Used by TiendaCompleta
+
+
+TiendaCompleta (LOCAL STATE)
+        ├─ categoriaActiva
+        ├─ searchTerm (sync with StoreLayout?)
+        ├─ wishlist (duplicate!)
+        ├─ sortBy
+        ├─ showWishlistOnly (duplicate!)
+        └─ currentPage
+
+
+Carrito (LOCAL STATE)
+        └─ cart items
+
+
+🔴 PROBLEMA: Estado duplicado en múltiples componentes
+✅ SOLUCIÓN: Centralizar en Context API
+
+
+═══════════════════════════════════════════════════════════════════════════════
+                    PROBLEMAS ACTUALES
+═══════════════════════════════════════════════════════════════════════════════
+
+┌─────────────────────────────────────────────────────────────────┐
+│ 🔴 PROBLEMA 1: Headers Duplicados                              │
+│ ─────────────────────────────────────────────────────────────────│
+│ Ubicaciones:                                                    │
+│ • TiendaCompleta.jsx (incrustado)                              │
+│ • Carrito.jsx (hardcoded)                                      │
+│ • Producto.jsx (hardcoded)                                     │
+│                                                                 │
+│ Impacto: Cambios en 3+ lugares                                 │
+│ Solución: Usar getLayout consistently                          │
+└─────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────┐
+│ 🔴 PROBLEMA 2: Estructura Duplicada                            │
+│ ─────────────────────────────────────────────────────────────────│
+│ Ubicaciones:                                                    │
+│ /pages/tienda.jsx           ↔ src/pages/tienda.jsx            │
+│ /pages/categorias.jsx       ↔ src/pages/categorias.jsx        │
+│ /pages/[productId].jsx      ↔ src/pages/producto/[id].jsx    │
+│                                                                 │
+│ Impacto: Confusión sobre cuál se usa                          │
+│ Solución: Unificar en /src/pages/                             │
+└─────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────┐
+│ 🟡 PROBLEMA 3: Estado Fragmentado                              │
+│ ─────────────────────────────────────────────────────────────────│
+│ searchTerm:        StoreLayout, TiendaCompleta, Carrito       │
+│ wishlist:          StoreLayout, TiendaCompleta                │
+│ cart:              Carrito, Producto                           │
+│                                                                 │
+│ Impacto: Difícil sincronizar                                  │
+│ Solución: Centralizar en Context API                          │
+└─────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────┐
+│ 🟡 PROBLEMA 4: TiendaCompleta Monolítico                       │
+│ ─────────────────────────────────────────────────────────────────│
+│ Tamaño: 2033 líneas 😱                                         │
+│ Contenido: Hero + categorías + servicios + productos + UI     │
+│                                                                 │
+│ Impacto: Difícil mantener y testear                           │
+│ Solución: Dividir en componentes más pequeños                 │
+└─────────────────────────────────────────────────────────────────┘
+
+
+═══════════════════════════════════════════════════════════════════════════════
+                    SOLUCIONES PROPUESTAS
+═══════════════════════════════════════════════════════════════════════════════
+
+ANTES (Caótico):
+─────────────────
+
+/tienda               → TiendaCompleta (con header adentro)
+/categorias          → Categorias (con getLayout ✓)
+/carrito             → Carrito (con header adentro)
+/producto/[id]       → Producto (con header adentro)
+
+
+DESPUÉS (Limpio):
+─────────────────
+
+/tienda               → pages/tienda.jsx + getLayout → StoreLayout
+                                    ↓
+                           TiendaCompleta (sin header)
+
+/categorias          → pages/categorias.jsx + getLayout → StoreLayout
+                                    ↓
+                           Categorias component
+
+/carrito             → pages/carrito.jsx + getLayout → StoreLayout
+                                    ↓
+                           Carrito component
+
+/producto/[id]       → pages/producto/[id].jsx + getLayout → StoreLayout
+                                    ↓
+                           Producto component
+
+
+═══════════════════════════════════════════════════════════════════════════════
+                    COMPONENTES REUTILIZABLES
+═══════════════════════════════════════════════════════════════════════════════
+
+LAYOUTS:
+├─ StoreLayout 🟢 (NEW - completo)
+├─ MarketingLayout 🟢 (completo)
+└─ Layout ⚠️ (deprecated)
+
+HEADERS:
+├─ StoreHeader 🟢 (NEW - para tienda)
+├─ MarketingHeader 🟢 (para marketing)
+└─ Header ❌ (no usar)
+
+FOOTER:
+└─ Footer 🟢 (compartido)
+
+COMPONENTES:
+├─ TiendaCompleta 🟡 (2033 líneas - muy grande)
+├─ Tienda ⚠️ (antiguo)
+├─ Carrito 🟡 (hardcoded nav)
+├─ Producto 🟡 (hardcoded nav)
+└─ Categorias ✅ (limpio)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+                    ROADMAP IMPLEMENTACIÓN
+═══════════════════════════════════════════════════════════════════════════════
+
+FASE 1: INMEDIATO (1-2 días)
+───────────────────────────
+☐ Aplicar getLayout a /tienda
+☐ Aplicar getLayout a /carrito
+☐ Aplicar getLayout a /producto/[id]
+☐ Remover headers hardcoded
+☐ Verificar que no hay doble navbar
+
+FASE 2: CORTO PLAZO (1 semana)
+──────────────────────────────
+☐ Unificar en /src/pages como source único
+☐ Remover duplicados de /pages
+☐ Centralizar estado en Context API
+
+FASE 3: MEDIANO PLAZO (2-4 semanas)
+───────────────────────────────────
+☐ Refactorizar TiendaCompleta (dividir en componentes)
+☐ Agregar tests automatizados
+☐ Optimizar performance
+
+RESULTADO FINAL:
+────────────────
+✅ Código consistente
+✅ Fácil de mantener
+✅ Sin duplicación
+✅ Estado centralizado
+✅ Componentes reutilizables
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+Documentación generada: Octubre 21, 2025
+Estado: COMPLETO ✅
+Próximo paso: Implementar Phase 1 (getLayout pattern)
+
+═══════════════════════════════════════════════════════════════════════════════
+```

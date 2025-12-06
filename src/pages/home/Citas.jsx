@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import MarketingLayout from '../../components/layout/MarketingLayout';
+import MarketingLayout from '@layouts/MarketingLayout';
 
 export default function Citas() {
   const [selectedService, setSelectedService] = useState('');

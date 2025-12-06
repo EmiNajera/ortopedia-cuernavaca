@@ -1,10 +1,7 @@
-import React from 'react';
-import Calzado from '../../pages/categories/categorias/Calzado';
+import Page, { getServerSideProps as _getServerSideProps } from './[slug]';
 
-export default function CategoriaCalzadoPage() {
-  return <Calzado />;
+export default Page;
+
+export async function getServerSideProps(context) {
+  return await _getServerSideProps({ ...context, params: { slug: 'calzado' } });
 }
-CategoriaCalzadoPage.getLayout = function getLayout(page) {
-  const StoreLayout = require('../../components/layout/StoreLayout').default;
-  return <StoreLayout>{page}</StoreLayout>;
-};

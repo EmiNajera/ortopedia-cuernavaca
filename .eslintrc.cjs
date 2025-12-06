@@ -41,5 +41,17 @@ module.exports = {
     react: {
       version: 'detect',
     },
+    'import/resolver': {
+      alias: {
+        map: [
+          ['@shared', './src/shared'],
+          ['@domains', './src/domains'],
+          ['@store', './src/store'],
+          ['@layouts', './src/layouts'],
+          ['@marketing', './src/marketing'],
+        ],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
   },
 };

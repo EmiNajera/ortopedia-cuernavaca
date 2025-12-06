@@ -1,7 +1,5 @@
 // API endpoint para gestionar artículos del blog
-// En un entorno de producción, esto se conectaría con una base de datos
-
-import { getAllPosts, getPostBySlug } from '../../../lib/utils/blogUtils';
+import { getAllPosts, getPostBySlug } from '@domains/blog/utils/blogUtils';
 
 export default async function handler(req, res) {
   const { method } = req;
@@ -11,7 +9,12 @@ export default async function handler(req, res) {
       case 'GET':
         // Obtener todos los artículos
         const articles = getAllPosts();
-        res.status(200).json(articles);
+        // Serializar fechas para JSON
+        const serializedArticles = articles.map((article) => ({
+          ...article,
+          date: article.date instanceof Date ? article.date.toISOString() : article.date,
+        }));
+        res.status(200).json(serializedArticles);
         break;
 
       case 'POST':
@@ -79,6 +82,6 @@ export default async function handler(req, res) {
     }
   } catch (error) {
     console.error('Error en API de artículos:', error);
-    res.status(500).json({ error: 'Error interno del servidor' });
+    res.status(500).json({ error: 'Error interno del servidor', details: error.message });
   }
 }
