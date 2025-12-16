@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import SEO from '@shared/components/SEO';
 import TiendaCompleta from '@domains/store/components/TiendaCompleta';
 import StoreLayout from '@layouts/StoreLayout';
 import { getCategories } from '@shared/lib/db';
@@ -7,17 +7,11 @@ import { getCategories } from '@shared/lib/db';
 export default function TiendaPage({ categories = [] }) {
   return (
     <>
-      <Head>
-        <title>Tienda Ortopédica | Ortopedia Cuernavaca</title>
-        <meta
-          name="description"
-          content="Encuentra productos ortopédicos de calidad en Ortopedia Cuernavaca. Plantillas personalizadas, calzado ortopédico, fajas, soportes y más."
-        />
-        <meta
-          name="keywords"
-          content="ortopedia, productos ortopédicos, plantillas, calzado ortopédico, fajas, soportes, Cuernavaca"
-        />
-      </Head>
+      <SEO
+        title="Tienda Ortopédica"
+        description="Encuentra productos ortopédicos de calidad en Ortopedia Cuernavaca. Plantillas personalizadas, calzado ortopédico, fajas, soportes y más."
+        url="/tienda"
+      />
       <TiendaCompleta categories={categories} />
     </>
   );

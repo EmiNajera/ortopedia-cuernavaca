@@ -1,820 +1,121 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import MarketingLayout from '@layouts/MarketingLayout';
 
-// Componente principal
-export default function Nosotros() {
-  const [active, setActive] = useState({
-    key: 'resiliencia',
-    label: 'Resiliencia',
-    image: '/images/banners/Rehabilitación PostoperatoriaFD.png',
-    title: 'Resiliencia (Valor Central)',
-    description: `Creemos en la capacidad de superar cualquier desafío. Cada día vemos cómo nuestros pacientes transforman el dolor en esperanza, y cómo nuestra propia historia como empresa se ha construido resistiendo crisis, aprendiendo y evolucionando. La resiliencia es el motor que nos permite seguir adelante, adaptarnos a los cambios y acompañar a cada persona hasta recuperar su movilidad y confianza.`,
-  });
+// --- Sub-components (Restored & Improved) ---
 
-  const [activeVision, setActiveVision] = useState({
-    key: 'mision',
-    label: 'Misión',
-    image: '/images/banners/Atleta cruzando la meta con alegría FD.png',
-    title: 'Atención integral y humana',
-    description:
-      'Devolver confianza, independencia y movilidad a nuestros pacientes con soluciones ortopédicas y de rehabilitación de alta calidad, un trato profundamente humano y un acompañamiento integral que atiende lo físico y lo emocional.',
-    items: [
-      {
-        title: 'Atención Personalizada',
-        image: '/images/banners/consulta-ortesista.svg',
-      },
-      {
-        title: 'Compromiso Humano',
-        image: '/images/banners/Seguimiento ContinuoFD.png',
-      },
-      {
-        title: 'Acompañamiento Integral',
-        image: '/images/banners/Rehabilitación PostoperatoriaFD.png',
-      },
-      {
-        title: 'Bienestar Completo',
-        image: '/images/banners/Rehabilitación del Dolor CrónicoFD.png',
-      },
-    ],
-  });
-
-  return (
-    <main id="contenido-principal" className="bg-white font-sans">
-      {/* Hero Section Compacto (sin Framer Motion en primer fold) */}
-      <section
-        id="hero-nosotros"
-        aria-labelledby="hero-nosotros-heading"
-        className="relative py-20 bg-gradient-to-br from-blue-50 to-indigo-50 overflow-hidden"
-      >
-        <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Contenido de texto */}
-            <div className="space-y-6 opacity-0 translate-y-2 animate-[fadeIn_.8s_ease-out_.2s_forwards]">
-              <h1
-                id="hero-nosotros-heading"
-                className="text-4xl lg:text-5xl font-extrabold leading-tight text-gray-800 opacity-0 translate-y-2 animate-[fadeIn_.8s_ease-out_.4s_forwards]"
-              >
-                30 AÑOS
-                <br />
-                <span className="text-blue-600">TRANSFORMANDO VIDAS</span>
-              </h1>
-              <p className="text-lg text-gray-600 leading-relaxed opacity-0 translate-y-2 animate-[fadeIn_.8s_ease-out_.6s_forwards]">
-                De la experiencia clínica a la tecnología de vanguardia para tu movilidad, bienestar
-                y calidad de vida.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 opacity-0 translate-y-2 animate-[fadeIn_.8s_ease-out_.8s_forwards]">
-                <Link href="/citas">
-                  <div className="bg-blue-600 text-white px-8 py-4 rounded-lg uppercase text-sm font-medium transition-colors shadow-lg hover:shadow-xl inline-block cursor-pointer hover:bg-blue-700">
-                    Agendar Consulta
-                  </div>
-                </Link>
-                <Link href="/tienda">
-                  <div className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg uppercase text-sm font-medium transition-colors shadow-lg hover:shadow-xl inline-block cursor-pointer hover:bg-blue-600 hover:text-white">
-                    Ver Productos
-                  </div>
-                </Link>
-              </div>
-            </div>
-
-            {/* Imagen */}
-            <div className="relative opacity-0 translate-y-2 animate-[fadeIn_.8s_ease-out_.4s_forwards]">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                <Image
-                  src="/images/banners/OrtopediaCuernavacaFachada.png"
-                  alt="Fachada de Ortopedia Cuernavaca, centro de rehabilitación física con más de 30 años de experiencia en Cuernavaca, Morelos"
-                  width={1600}
-                  height={900}
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="w-full h-auto object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ¿Quiénes Somos? - Información Exacta */}
-      <section
-        id="quienes-somos"
-        aria-labelledby="quienes-somos-heading"
-        className="py-20 bg-gradient-to-br from-white to-blue-50"
-      >
-        <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="max-w-7xl mx-auto"
-          >
-            {/* Título con mejor presentación */}
-            <div className="text-center mb-16">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true }}
-                className="inline-flex items-center px-6 py-3 bg-blue-100 text-blue-800 text-sm font-semibold rounded-full mb-6 shadow-sm"
-              >
-                <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
-                ¿Quiénes somos?
-              </motion.div>
-              <h2
-                id="quienes-somos-heading"
-                className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
-              >
-                ¿Quiénes <span className="text-blue-600">Somos?</span>
-              </h2>
-              <div className="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
-            </div>
-
-            {/* Layout con imagen y texto subrayado en caja */}
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              {/* Columna de imagen - solo imagen */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                viewport={{ once: true }}
-                className="relative"
-              >
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                  <Image
-                    src="/images/banners/Competencia.png"
-                    alt="Equipo multidisciplinario de especialistas en ortopedia, fisioterapia y rehabilitación de Ortopedia Cuernavaca"
-                    width={600}
-                    height={400}
-                    className="w-full h-auto object-cover"
-                    loading="lazy"
-                  />
-                </div>
-              </motion.div>
-
-              {/* Columna de texto subrayado en caja */}
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                viewport={{ once: true }}
-                className="space-y-6"
-              >
-                {/* Caja con texto subrayado */}
-                <div className="bg-white p-8 rounded-xl shadow-lg border-l-4 border-blue-600">
-                  <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                    En <strong className="text-blue-600 font-semibold">Ortopedia Cuernavaca</strong>{' '}
-                    somos un{' '}
-                    <strong className="text-gray-800">
-                      Centro Integral de Rehabilitación Física
-                    </strong>{' '}
-                    con más de <strong className="text-blue-600">30 años de experiencia</strong>{' '}
-                    ayudando a las personas a recuperar su movilidad, mejorar su postura y alcanzar
-                    una mejor calidad de vida.
-                  </p>
-
-                  <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                    Durante estas tres décadas hemos atendido a{' '}
-                    <strong className="text-blue-600">miles de familias</strong>, consolidando un
-                    modelo único que une la tradición clínica con la innovación tecnológica. Creemos
-                    que la rehabilitación no es solo un tratamiento, sino un{' '}
-                    <strong className="text-gray-800">camino de acompañamiento</strong> donde cada
-                    detalle importa.
-                  </p>
-
-                  <p className="text-lg text-gray-700 leading-relaxed">
-                    En nuestras instalaciones reunimos a un{' '}
-                    <strong className="text-blue-600">equipo multidisciplinario</strong> de
-                    especialistas en ortopedia, fisioterapia y rehabilitación que trabajan de manera
-                    coordinada para ofrecer un servicio integral.
-                  </p>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Nuestra Historia */}
-      <section
-        id="nuestra-historia"
-        aria-labelledby="nuestra-historia-heading"
-        className="py-20 bg-gradient-to-br from-white to-slate-50"
-      >
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="inline-flex items-center px-6 py-2 bg-blue-100 text-blue-800 text-sm font-semibold rounded-full mb-4 shadow-sm"
-            >
-              <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
-              Nuestra Historia
-            </motion.div>
-          </div>
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 id="nuestra-historia-heading" className="text-4xl font-bold text-gray-800 mb-6">
-                Nuestra Historia
-              </h2>
-              <h3 className="text-2xl font-semibold text-blue-600 mb-4">Legado y raíces</h3>
-              <div className="space-y-4 text-gray-700">
-                <p>
-                  Después de atender a cientos de pacientes en el Instituto Nacional de
-                  Rehabilitación y conocer de cerca la magnitud de la ortopedia —desde órtesis y
-                  prótesis hasta plantillas personalizadas y soluciones posturales—, Carmen Nájera
-                  decidió dar un paso audaz: llevar esa experiencia a Cuernavaca y crear el primer
-                  espacio especializado en soluciones ortopédicas de la ciudad.
-                </p>
-                <p>
-                  Así, en 1995, nació Ortopedia Cuernavaca, un pequeño taller con una visión clara:
-                  ofrecer atención profesional y humana a quienes enfrentaban limitaciones físicas,
-                  dolor crónico o amputaciones. En esos primeros años, se fabricaban plantillas, se
-                  adaptaban prótesis y se atendían casos de todo tipo con recursos modestos pero con
-                  un compromiso total con cada persona que llegaba en busca de ayuda.
-                </p>
-                <p>
-                  El impacto fue inmediato: pacientes de todas las edades encontraron soluciones
-                  reales y un equipo dispuesto a acompañarlos en todo el proceso de recuperación.
-                  Con el tiempo, el taller creció, se integraron nuevas tecnologías, se amplió el
-                  catálogo de servicios y se conformó un equipo cada vez más especializado.
-                </p>
-                <p>
-                  Ese crecimiento nos llevó a abrir una segunda sucursal: Ortochavitos, enfocada en
-                  el área pediátrica y la comercialización de productos ortopédicos. Hoy, tras tres
-                  décadas de trabajo continuo, somos un referente regional en ortopedia y
-                  rehabilitación física, con un legado construido sobre valores sólidos, tecnología
-                  innovadora y una convicción firme: cambiar vidas devolviendo movilidad, confianza
-                  y bienestar a nuestros pacientes.
-                </p>
-              </div>
-            </div>
-            <div>
-              <Image
-                src="/images/banners/Logo Antiguo Ortochavitos.JPEG"
-                alt="Logo histórico de Ortochavitos, sucursal pediátrica de Ortopedia Cuernavaca fundada en los años 2000"
-                width={400}
-                height={300}
-                className="rounded-lg shadow-xl w-full"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Nuestros Ejes de Futuro */}
-      <section
-        id="mision-vision"
-        aria-labelledby="mision-vision-heading"
-        className="py-20 bg-gradient-to-br from-white to-slate-50"
-      >
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                viewport={{ once: true }}
-                className="inline-flex items-center px-6 py-2 bg-blue-100 text-blue-800 text-sm font-semibold rounded-full mb-4 shadow-sm"
-              >
-                <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
-                Nuestra Filosofía
-              </motion.div>
-              <h2
-                id="mision-vision-heading"
-                className="text-4xl md:text-5xl font-bold text-gray-800 mb-6"
-              >
-                Nuestra <span className="text-blue-600">Filosofía</span>
-              </h2>
-              <h3 className="text-2xl font-semibold text-blue-600 mb-4">
-                Misión, Visión y Valores
-              </h3>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                Una presentación fluida de nuestros principios fundamentales que guían cada decisión
-                y cada tratamiento que realizamos.
-              </p>
-            </motion.div>
-          </div>
-
-          {/* Vision Tabs */}
-          <div className="max-w-6xl mx-auto">
-            <div className="flex flex-wrap justify-center gap-2 mb-12">
-              {[
-                { key: 'mision', label: 'Misión' },
-                { key: 'vision', label: 'Visión' },
-              ].map((item) => (
-                <button
-                  key={item.key}
-                  onClick={() =>
-                    setActiveVision({
-                      ...activeVision,
-                      key: item.key,
-                      label: item.label,
-                      title:
-                        item.key === 'mision'
-                          ? 'Atención integral y humana'
-                          : 'Liderazgo nacional y tecnología accesible',
-                      description:
-                        item.key === 'mision'
-                          ? 'Devolver confianza, independencia y movilidad a nuestros pacientes con soluciones ortopédicas y de rehabilitación de alta calidad, un trato profundamente humano y un acompañamiento integral que atiende lo físico y lo emocional.'
-                          : 'Ser líderes nacionales en ortopedia y rehabilitación integral, desarrollando tecnología propia de alta calidad y bajo costo. En 5 años, consolidar el liderazgo regional con clínicas de alta capacidad. En 10 años, presencia nacional con una red de sucursales y un laboratorio de investigación. Que cualquier persona, sin importar su condición o recursos, acceda a soluciones inclusivas, accesibles y efectivas.',
-                    })
-                  }
-                  className={`px-6 py-3 rounded-full text-sm font-medium transition-colors ${
-                    activeVision.key === item.key
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-
-            <motion.div
-              key={activeVision.key}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="grid lg:grid-cols-2 gap-12 items-center"
-            >
-              <div className="rounded-2xl overflow-hidden shadow-lg bg-gray-50 flex items-center justify-center w-full">
-                <Image
-                  src={
-                    activeVision.key === 'mision'
-                      ? '/images/banners/Misión.png'
-                      : '/images/banners/Viisón.png'
-                  }
-                  alt={`${activeVision.title} - ${activeVision.key === 'mision' ? 'Misión de Ortopedia Cuernavaca: atención integral y humana' : 'Visión de Ortopedia Cuernavaca: liderazgo nacional y tecnología accesible'}`}
-                  width={800}
-                  height={600}
-                  className="object-contain w-full h-auto"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-              <div>
-                <h3 className="text-3xl font-semibold mb-4 text-gray-800">{activeVision.title}</h3>
-                <p className="text-lg text-gray-700 mb-6">{activeVision.description}</p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Nuestra Filosofía - Valores */}
-      <ValoresFilosofiaAnimado />
-
-      {/* Nuestros Logros */}
-      <section
-        id="nuestros-logros"
-        aria-labelledby="nuestros-logros-heading"
-        className="py-20 bg-gradient-to-br from-white to-slate-50"
-      >
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                viewport={{ once: true }}
-                className="inline-flex items-center px-6 py-2 bg-blue-100 text-blue-800 text-sm font-semibold rounded-full mb-4 shadow-sm"
-              >
-                <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
-                Logros y Resultados
-              </motion.div>
-              <h2
-                id="nuestros-logros-heading"
-                className="text-4xl md:text-5xl font-bold text-gray-800 mb-6"
-              >
-                Nuestros <span className="text-blue-600">Logros</span>
-              </h2>
-              <h3 className="text-2xl font-semibold text-blue-600 mb-4">
-                Tres décadas de transformación y mejora continua
-              </h3>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                Resultados que cuentan historias de vida y reflejan nuestro compromiso constante
-                desde 1995.
-              </p>
-            </motion.div>
-          </div>
-
-          {/* Logros Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="text-center p-6 bg-blue-50 rounded-xl"
-            >
-              <div className="text-4xl font-bold text-blue-600 mb-2">30+</div>
-              <div className="text-gray-700 font-semibold">Años de Experiencia</div>
-              <div className="text-sm text-gray-600 mt-2">Compromiso constante desde 1995</div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="text-center p-6 bg-blue-50 rounded-xl"
-            >
-              <div className="text-4xl font-bold text-blue-600 mb-2">5000+</div>
-              <div className="text-gray-700 font-semibold">Pacientes Atendidos</div>
-              <div className="text-sm text-gray-600 mt-2">Soluciones personalizadas y humanas</div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="text-center p-6 bg-blue-50 rounded-xl"
-            >
-              <div className="text-4xl font-bold text-blue-600 mb-2">98%</div>
-              <div className="text-gray-700 font-semibold">Mejora en Movilidad</div>
-              <div className="text-sm text-gray-600 mt-2">
-                Resultados medibles en calidad de vida
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="text-center p-6 bg-blue-50 rounded-xl"
-            >
-              <div className="text-4xl font-bold text-blue-600 mb-2">100%</div>
-              <div className="text-gray-700 font-semibold">Atención Personalizada</div>
-              <div className="text-sm text-gray-600 mt-2">Acompañamiento cercano y humano</div>
-            </motion.div>
-          </div>
-
-          {/* Hitos Históricos - Timeline */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            viewport={{ once: true }}
-            className="bg-gray-50 rounded-xl p-8"
-          >
-            <h3 className="text-2xl font-bold text-gray-800 mb-8 text-center">Hitos Históricos</h3>
-            <div className="relative">
-              {/* Línea central del timeline */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-blue-600 h-full"></div>
-
-              {/* Timeline items */}
-              <div className="space-y-8">
-                {/* 1995 */}
-                <motion.div
-                  initial={{ opacity: 0, x: -50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.1 }}
-                  viewport={{ once: true }}
-                  className="flex items-center"
-                >
-                  <div className="w-1/2 pr-8 text-right">
-                    <div className="bg-white p-4 rounded-lg shadow-md">
-                      <div className="text-2xl mb-2">🏥</div>
-                      <div className="font-bold text-blue-600 text-lg">1995</div>
-                      <div className="font-semibold text-gray-800">
-                        Fundación de Ortopedia Cuernavaca
-                      </div>
-                      <div className="text-sm text-gray-600 mt-1">
-                        Nace el primer espacio especializado en soluciones ortopédicas de la ciudad
-                      </div>
-                    </div>
-                  </div>
-                  <div className="w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-lg z-10"></div>
-                  <div className="w-1/2 pl-8"></div>
-                </motion.div>
-
-                {/* Finales de los 90 */}
-                <motion.div
-                  initial={{ opacity: 0, x: 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  viewport={{ once: true }}
-                  className="flex items-center"
-                >
-                  <div className="w-1/2 pr-8"></div>
-                  <div className="w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-lg z-10"></div>
-                  <div className="w-1/2 pl-8">
-                    <div className="bg-white p-4 rounded-lg shadow-md">
-                      <div className="text-2xl mb-2">🧍‍♀️</div>
-                      <div className="font-bold text-blue-600 text-lg">Finales de los 90</div>
-                      <div className="font-semibold text-gray-800">Integración de Fisioterapia</div>
-                      <div className="text-sm text-gray-600 mt-1">
-                        Ampliación de servicios con rehabilitación física integral
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-
-                {/* 2000s - Expansión */}
-                <motion.div
-                  initial={{ opacity: 0, x: -50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
-                  viewport={{ once: true }}
-                  className="flex items-center"
-                >
-                  <div className="w-1/2 pr-8 text-right">
-                    <div className="bg-white p-4 rounded-lg shadow-md">
-                      <div className="text-2xl mb-2">🏗️</div>
-                      <div className="font-bold text-blue-600 text-lg">2000s</div>
-                      <div className="font-semibold text-gray-800">Expansión Clínica</div>
-                      <div className="text-sm text-gray-600 mt-1">
-                        Crecimiento operativo y nuevas tecnologías
-                      </div>
-                    </div>
-                  </div>
-                  <div className="w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-lg z-10"></div>
-                  <div className="w-1/2 pl-8"></div>
-                </motion.div>
-
-                {/* 2000s - Ortochavitos */}
-                <motion.div
-                  initial={{ opacity: 0, x: 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                  viewport={{ once: true }}
-                  className="flex items-center"
-                >
-                  <div className="w-1/2 pr-8"></div>
-                  <div className="w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-lg z-10"></div>
-                  <div className="w-1/2 pl-8">
-                    <div className="bg-white p-4 rounded-lg shadow-md">
-                      <div className="text-2xl mb-2">🏪</div>
-                      <div className="font-bold text-blue-600 text-lg">2000s</div>
-                      <div className="font-semibold text-gray-800">Nace Ortochavitos</div>
-                      <div className="text-sm text-gray-600 mt-1">
-                        Segunda sucursal enfocada en pediatría y productos ortopédicos
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-
-                {/* 2010 */}
-                <motion.div
-                  initial={{ opacity: 0, x: -50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.5 }}
-                  viewport={{ once: true }}
-                  className="flex items-center"
-                >
-                  <div className="w-1/2 pr-8 text-right">
-                    <div className="bg-white p-4 rounded-lg shadow-md">
-                      <div className="text-2xl mb-2">🚚</div>
-                      <div className="font-bold text-blue-600 text-lg">Circa 2010</div>
-                      <div className="font-semibold text-gray-800">Reubicación Estratégica</div>
-                      <div className="text-sm text-gray-600 mt-1">
-                        Ortochavitos se reubica para mejor accesibilidad
-                      </div>
-                    </div>
-                  </div>
-                  <div className="w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-lg z-10"></div>
-                  <div className="w-1/2 pl-8"></div>
-                </motion.div>
-
-                {/* 2020s */}
-                <motion.div
-                  initial={{ opacity: 0, x: 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.6 }}
-                  viewport={{ once: true }}
-                  className="flex items-center"
-                >
-                  <div className="w-1/2 pr-8"></div>
-                  <div className="w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-lg z-10"></div>
-                  <div className="w-1/2 pl-8">
-                    <div className="bg-white p-4 rounded-lg shadow-md">
-                      <div className="text-2xl mb-2">🔄</div>
-                      <div className="font-bold text-blue-600 text-lg">2020s</div>
-                      <div className="font-semibold text-gray-800">Transformación Digital</div>
-                      <div className="text-sm text-gray-600 mt-1">
-                        Modernización operativa y nuevas tecnologías de vanguardia
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Instalaciones */}
-      <section
-        id="instalaciones"
-        aria-labelledby="instalaciones-heading"
-        className="py-20 bg-gradient-to-br from-blue-50 to-indigo-50"
-      >
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                viewport={{ once: true }}
-                className="inline-flex items-center px-6 py-2 bg-blue-100 text-blue-800 text-sm font-semibold rounded-full mb-4 shadow-sm"
-              >
-                <span className="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
-                Instalaciones
-              </motion.div>
-              <h2
-                id="instalaciones-heading"
-                className="text-4xl md:text-5xl font-bold text-gray-800 mb-6"
-              >
-                Nuestras <span className="text-blue-600">Instalaciones</span>
-              </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                Espacios diseñados para brindar la mejor atención y comodidad a nuestros pacientes.
-              </p>
-            </motion.div>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <h3 className="text-3xl font-bold text-gray-800 mb-6">Tecnología de Vanguardia</h3>
-              <div className="space-y-4 text-gray-700">
-                <p>
-                  Contamos con equipos de última generación para diagnóstico, fabricación y
-                  rehabilitación. Nuestras instalaciones incluyen talleres de fabricación
-                  personalizada, áreas de evaluación biomecánica y espacios de rehabilitación
-                  física.
-                </p>
-                <p>
-                  Cada área está diseñada pensando en la comodidad y privacidad del paciente, con
-                  tecnología que nos permite ofrecer soluciones más precisas y efectivas.
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="grid grid-cols-2 gap-4"
-            >
-              <div className="relative h-48 rounded-lg shadow-lg overflow-hidden">
-                <Image
-                  src="/images/banners/TallerOrt.JPG"
-                  alt="Taller de fabricación ortopédica de Ortopedia Cuernavaca con equipos de última generación para crear soluciones personalizadas"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="relative h-48 rounded-lg shadow-lg overflow-hidden">
-                <Image
-                  src="/images/banners/Protesis Taller.JPG"
-                  alt="Taller especializado en fabricación y adaptación de prótesis personalizadas en Ortopedia Cuernavaca"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="relative h-48 rounded-lg shadow-lg overflow-hidden">
-                <Image
-                  src="/images/banners/Fisioterapia 2.png"
-                  alt="Área de fisioterapia y rehabilitación física en Ortopedia Cuernavaca con equipos especializados"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="relative h-48 rounded-lg shadow-lg overflow-hidden">
-                <Image
-                  src="/images/banners/Plantillas Ortopedicas A.PNG"
-                  alt="Fabricación de plantillas ortopédicas personalizadas en el taller de Ortopedia Cuernavaca"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Mensaje Final */}
-      <section
-        id="mensaje-final"
-        aria-labelledby="mensaje-final-heading"
-        className="py-20 bg-gradient-to-br from-blue-50 via-white to-gray-50 text-gray-900"
-      >
-        <div className="container mx-auto px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 id="mensaje-final-heading" className="text-4xl md:text-5xl font-bold mb-6">
-              Cambiamos <span className="text-blue-200">Vidas</span>
-            </h2>
-            <p className="text-xl mb-8 max-w-3xl mx-auto leading-relaxed">
-              En Ortopedia Cuernavaca no solo fabricamos plantillas, órtesis o prótesis: cambiamos
-              vidas. Nos mueve la pasión de ver a un niño caminar correctamente, a un adulto mayor
-              recuperar su independencia, o a una persona con amputación sonreír al dar sus primeros
-              pasos con una prótesis personalizada.
-            </p>
-            <p className="text-lg mb-8 max-w-3xl mx-auto leading-relaxed">
-              Tu movilidad, tu bienestar y tu calidad de vida son nuestra pasión. Desde 1995 y hacia
-              el futuro, estamos aquí para caminar contigo.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/citas">
-                <motion.div
-                  className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl inline-block cursor-pointer"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Agendar Consulta
-                </motion.div>
-              </Link>
-              <Link href="/servicios">
-                <motion.div
-                  className="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-colors shadow-lg hover:shadow-xl inline-block cursor-pointer"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Conocer Servicios
-                </motion.div>
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-    </main>
-  );
-}
-
-Nosotros.getLayout = (page) => <MarketingLayout>{page}</MarketingLayout>;
-
-// Componente de estadísticas para el Hero
-function Stat({ number, label, delay = 0 }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: delay + 1.0 }}
-      whileHover={{ scale: 1.1 }}
-      className="text-center"
+const Stat = ({ number, label, delay = 0 }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay: delay }}
+    viewport={{ once: true }}
+    whileHover={{ scale: 1.05 }}
+    className="text-center p-6 bg-white/50 backdrop-blur-sm rounded-xl border border-blue-100 shadow-sm hover:shadow-md transition-all"
+  >
+    <motion.p
+      className="text-3xl lg:text-4xl font-extrabold text-blue-600 mb-2"
+      initial={{ scale: 0.5, opacity: 0 }}
+      whileInView={{ scale: 1, opacity: 1 }}
+      transition={{ duration: 0.5, delay: delay + 0.2, type: 'spring' }}
+      viewport={{ once: true }}
     >
-      <motion.p
-        className="text-3xl lg:text-4xl font-bold text-white drop-shadow-lg"
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 0.5, delay: delay + 1.2, type: 'spring' }}
-      >
-        {number}
-      </motion.p>
-      <p className="text-sm uppercase text-gray-200 font-medium drop-shadow-md">{label}</p>
-    </motion.div>
-  );
-}
+      {number}
+    </motion.p>
+    <p className="text-sm font-semibold text-gray-600 uppercase tracking-wide">{label}</p>
+  </motion.div>
+);
 
-function ValoresFilosofiaAnimado() {
+const TimelineItem = ({ year, title, description, icon, side, index }) => {
+  const isLeft = side === 'left';
+  return (
+    <div
+      className={`flex items-center justify-between w-full mb-8 relative ${isLeft ? 'flex-row-reverse' : ''}`}
+    >
+      {/* Spacer for the other side */}
+      <div className="w-5/12 hidden md:block"></div>
+
+      {/* Center Line Dot */}
+      <motion.div
+        initial={{ scale: 0 }}
+        whileInView={{ scale: 1 }}
+        transition={{ duration: 0.4, delay: 0.2 }}
+        viewport={{ once: true }}
+        className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 flex items-center justify-center bg-blue-600 rounded-full border-4 border-white shadow-xl z-10"
+      >
+        <div className="w-2 h-2 bg-white rounded-full"></div>
+      </motion.div>
+
+      {/* Content Card */}
+      <motion.div
+        initial={{ opacity: 0, x: isLeft ? 50 : -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, delay: index * 0.1 }}
+        viewport={{ once: true }}
+        className="w-full md:w-5/12 pl-12 md:pl-0"
+      >
+        <div
+          className={`bg-white p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow relative ${isLeft ? 'md:mr-8' : 'md:ml-8'}`}
+        >
+          {/* Arrow for Desktop */}
+          <div
+            className={`hidden md:block absolute top-1/2 transform -translate-y-1/2 w-0 h-0 border-8 ${isLeft ? 'left-full border-l-white border-t-transparent border-b-transparent border-r-transparent' : 'right-full border-r-white border-t-transparent border-b-transparent border-l-transparent'}`}
+          ></div>
+
+          <div className="flex items-center gap-4 mb-3">
+            <div className="text-3xl">{icon}</div>
+            <div>
+              <span className="block text-2xl font-bold text-blue-600">{year}</span>
+              <h4 className="font-bold text-gray-800 text-lg leading-tight">{title}</h4>
+            </div>
+          </div>
+          <p className="text-gray-600 text-sm leading-relaxed">{description}</p>
+        </div>
+      </motion.div>
+    </div>
+  );
+};
+
+const ValueCard = ({ value, isActive, onClick }) => (
+  <button
+    onClick={onClick}
+    className={`relative px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 w-full sm:w-auto ${
+      isActive
+        ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30 scale-105'
+        : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
+    }`}
+  >
+    {value.label}
+    {isActive && (
+      <motion.div
+        layoutId="activeValueIndicator"
+        className="absolute inset-0 rounded-full border-2 border-white/20"
+        transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+      />
+    )}
+  </button>
+);
+
+// --- Main Page Component ---
+
+export default function NosotrosView() {
+  const [activeValue, setActiveValue] = useState('resiliencia');
+  // ... (rest of the component internal logic is fine)
+
   const valores = [
     {
       key: 'resiliencia',
       label: 'Resiliencia',
-      image: '/images/banners/Rehabilitación PostoperatoriaFD.png',
+      image: '/images/banners/rehabilitacion-postoperatoria-fd.png',
       title: 'Resiliencia (Valor Central)',
       description: `Creemos en la capacidad de superar cualquier desafío. Cada día vemos cómo nuestros pacientes transforman el dolor en esperanza, y cómo nuestra propia historia como empresa se ha construido resistiendo crisis, aprendiendo y evolucionando. La resiliencia es el motor que nos permite seguir adelante, adaptarnos a los cambios y acompañar a cada persona hasta recuperar su movilidad y confianza.`,
     },
     {
       key: 'compromiso',
       label: 'Compromiso',
-      image: '/images/banners/Seguimiento ContinuoFD.png',
+      image: '/images/banners/seguimiento-continuo-fd.png',
       title: 'Compromiso',
       description: `Nos comprometemos con cada paciente como si fuera parte de nuestra familia. Cumplimos lo que prometemos, seguimos cada proceso hasta el final y ponemos nuestro máximo esfuerzo en ofrecer soluciones seguras, efectivas y personalizadas. El compromiso es la base de la confianza que nos han brindado durante más de 30 años.`,
     },
@@ -841,61 +142,464 @@ function ValoresFilosofiaAnimado() {
     },
   ];
 
-  const [active, setActive] = useState(valores[0]);
+  const activeValueData = valores.find((v) => v.key === activeValue) || valores[0];
+
+  const timelineData = [
+    {
+      year: '1995',
+      title: 'Nace Ortopedia Cuernavaca',
+      description:
+        'Abrimos nuestras puertas como el primer taller especializado en la ciudad, con la visión de ofrecer soluciones reales a problemas de movilidad.',
+      icon: '🏥',
+    },
+    {
+      year: 'Late 90s',
+      title: 'Rehabilitación Integral',
+      description:
+        'Integramos terapia física a nuestros servicios, entendiendo que la ortesis necesita acompañamiento para ser efectiva.',
+      icon: '🧘',
+    },
+    {
+      year: '2000s',
+      title: 'Fundación de Ortochavitos',
+      description:
+        'Nace nuestra división pediátrica especializada, creando un espacio amigable y experto para los más pequeños.',
+      icon: '🧸',
+    },
+    {
+      year: '2010s',
+      title: 'Innovación Tecnológica',
+      description:
+        'Incorporamos sistemas CAD/CAM y análisis biomecánico digital para elevar la precisión de nuestros tratamientos.',
+      icon: '💻',
+    },
+    {
+      year: '2020s',
+      title: 'Liderazgo Regional',
+      description:
+        'Consolidación como el centro de rehabilitación referente en Morelos, con un equipo multidisciplinario en constante crecimiento.',
+      icon: '🚀',
+    },
+  ];
+
+  // Helper for Section Bubble Title
+  const SectionBadge = ({ text }) => (
+    <span className="inline-flex items-center px-4 py-1 bg-blue-100 text-blue-800 text-sm font-semibold rounded-full mb-4">
+      <span
+        className="w-2 h-2 bg-blue-600 rounded-full mr-2 animate-pulse"
+        style={{ transform: 'translateY(1px)' }}
+      ></span>
+      {text}
+    </span>
+  );
+
+  // Helper for Aurora Text Effect
+  const AuroraText = ({ children, className = '' }) => (
+    <motion.span
+      className={`bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-500 to-blue-600 ${className}`}
+      style={{ backgroundSize: '200% auto' }}
+      animate={{ backgroundPosition: ['0% center', '200% center'] }}
+      transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
+    >
+      {children}
+    </motion.span>
+  );
 
   return (
-    <section
-      id="valores-filosofia"
-      aria-labelledby="valores-filosofia-heading"
-      className="bg-gradient-to-br from-white to-slate-50 text-gray-900 py-16"
-    >
-      {/* Título + Tabs */}
-      <div className="container mx-auto px-6 text-center">
-        <h2 id="valores-filosofia-heading" className="text-4xl md:text-5xl font-bold mb-6">
-          Nuestros <span className="text-gray-500">Valores</span>
-        </h2>
-        <nav className="inline-flex flex-wrap items-center border border-gray-300 rounded-full px-2 py-1 mb-12">
-          {valores.map((v) => (
-            <button
-              key={v.key}
-              onClick={() => setActive(v)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition ${active.key === v.key ? 'bg-blue-100 text-blue-600' : 'text-gray-600 hover:bg-gray-100'}`}
+    <main className="bg-white font-sans overflow-hidden">
+      {/* 1. Hero Section - Static Text + Animated Image */}
+      <section
+        id="hero-nosotros"
+        aria-labelledby="hero-nosotros-heading"
+        className="relative py-20 bg-gradient-to-br from-blue-50 to-indigo-50 overflow-hidden"
+      >
+        <div className="container mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Contenido de texto - Static / Simple Fade */}
+            <div className="space-y-6">
+              <h1
+                id="hero-nosotros-heading"
+                className="text-4xl lg:text-5xl font-extrabold leading-tight text-gray-800"
+              >
+                30 AÑOS
+                <br />
+                <AuroraText className="font-extrabold">TRANSFORMANDO VIDAS</AuroraText>
+              </h1>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                De la experiencia clínica a la tecnología de vanguardia para tu movilidad, bienestar
+                y calidad de vida.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="/citas">
+                  <div className="bg-blue-600 text-white px-8 py-4 rounded-lg uppercase text-sm font-medium transition-colors shadow-lg hover:shadow-xl inline-block cursor-pointer hover:bg-blue-700">
+                    Agendar Consulta
+                  </div>
+                </Link>
+                <Link href="/tienda">
+                  <div className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg uppercase text-sm font-medium transition-colors shadow-lg hover:shadow-xl inline-block cursor-pointer hover:bg-blue-600 hover:text-white">
+                    Ver Productos
+                  </div>
+                </Link>
+              </div>
+            </div>
+
+            {/* Imagen - ONLY component with Motion */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1.0, ease: 'easeOut' }}
+              className="relative"
             >
-              {v.label}
-            </button>
-          ))}
-        </nav>
-      </div>
-      {/* Imagen + Texto con animación */}
-      <div className="container mx-auto px-6">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={active.key}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.5 }}
-            className="grid md:grid-cols-2 gap-12 items-center"
-          >
-            {/* Imagen */}
-            <div className="rounded-2xl overflow-hidden shadow-lg bg-gradient-to-br from-gray-50 to-white flex items-center justify-center w-full">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/images/banners/OrtopediaCuernavacaFachada.png"
+                  alt="Fachada de Ortopedia Cuernavaca"
+                  width={1600}
+                  height={900}
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="w-full h-auto object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. Quienes Somos - Balanced Grid (More space for Image) */}
+      <section className="py-24 bg-white relative">
+        <div className="container mx-auto px-6">
+          {/* Changed grid to 12 columns to give image more weight (7/12 vs 5/12) */}
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
+            <div className="relative lg:col-span-7">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="relative rounded-3xl overflow-hidden shadow-2xl h-full"
+              >
+                <Image
+                  src="/images/banners/Competencia.png"
+                  alt="Equipo Ortopedia Cuernavaca"
+                  width={1000}
+                  height={750}
+                  className="object-cover w-full h-full"
+                />
+                {/* Decoration Float */}
+                <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-blue-100 rounded-full mix-blend-multiply filter blur-2xl opacity-70"></div>
+              </motion.div>
+            </div>
+
+            <div className="lg:col-span-5">
+              <SectionBadge text="¿Quiénes Somos?" />
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-8 leading-tight">
+                Mucho más que una <br /> clínica de ortopedia
+              </h2>
+              <div className="space-y-6 text-lg text-gray-600 leading-relaxed text-justify">
+                <p>
+                  En <strong>Ortopedia Cuernavaca</strong> somos un Centro Integral de
+                  Rehabilitación Física, que integra atención ortopédica y fisioterapia con más de{' '}
+                  <strong className="text-blue-600">30 años de experiencia</strong> ayudando a las
+                  personas a recuperar su movilidad, mejorar su postura y alcanzar una mejor calidad
+                  de vida.
+                </p>
+                <p>
+                  Durante estas tres décadas hemos atendido a miles de familias, consolidando un
+                  modelo único que une la tradición clínica con la innovación tecnológica. Creemos
+                  que la rehabilitación no es solo un tratamiento, sino un camino de acompañamiento
+                  donde cada detalle importa.
+                </p>
+                <p>
+                  En nuestras instalaciones reunimos a un equipo multidisciplinario de especialistas
+                  en ortopedia, fisioterapia y rehabilitación que trabajan de manera coordinada para
+                  ofrecer un servicio integral.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 2.5 Misión y Visión Section (restored design with images) */}
+      <section className="py-24 bg-white relative overflow-hidden">
+        <div className="container mx-auto px-6 relative z-10 space-y-24">
+          {/* Misión - Image Left (or matching screenshot style) */}
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="flex justify-center"
+            >
               <Image
-                src={active.image}
-                alt={`${active.title} - Valor fundamental de Ortopedia Cuernavaca: ${active.description.substring(0, 100)}...`}
-                width={800}
-                height={600}
-                className="object-contain w-full h-auto"
-                sizes="(max-width: 768px) 100vw, 50vw"
+                src="/images/banners/mision.png"
+                alt="Nuestra Misión"
+                width={600}
+                height={400}
+                className="rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 w-full max-w-md"
               />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <SectionBadge text="Nuestra Misión" />
+              <h3 className="text-3xl font-bold text-gray-900 mb-6">
+                Restaurar Movimiento, <br /> Renovar Vidas.
+              </h3>
+              <p className="text-lg text-gray-600 leading-relaxed text-justify">
+                Brindar soluciones ortopédicas y de rehabilitación física que devuelvan la
+                confianza, la independencia y la movilidad de nuestros pacientes, mediante un trato
+                humano, experiencia clínica comprobada y un acompañamiento integral que abarque
+                tanto lo físico como lo emocional.
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Visión - Alternating */}
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="order-2 md:order-1"
+            >
+              <SectionBadge text="Nuestra Visión" />
+              <h3 className="text-3xl font-bold text-gray-900 mb-6">
+                Liderazgo e Innovación <br /> con Sentido Humano.
+              </h3>
+              <p className="text-lg text-gray-600 leading-relaxed text-justify">
+                Ser líderes nacionales en soluciones ortopédicas y rehabilitación integral,
+                desarrollando tecnología propia de alta calidad y bajo costo. En los próximos cinco
+                años consolidaremos nuestro liderazgo regional con clínicas de rehabilitación de
+                alta capacidad y, en diez años, presencia en todo el país con una red de sucursales
+                y un laboratorio de investigación propio. Nuestra meta es que cualquier persona, sin
+                importar su condición o recursos, encuentre soluciones accesibles, inclusivas y que
+                devuelvan confianza, movilidad y esperanza.
+              </p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="flex justify-center order-1 md:order-2"
+            >
+              <Image
+                src="/images/banners/vision.png"
+                alt="Nuestra Visión"
+                width={600}
+                height={400}
+                className="rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 w-full max-w-md"
+              />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. History Timeline - With Narrative Intro and Logo */}
+      <section id="nuestra-historia" className="py-24 bg-gray-50 relative overflow-hidden">
+        {/* Background Patterns */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none">
+          <div className="absolute top-10 left-10 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="text-center mb-16">
+            <SectionBadge text="Nuestra Trayectoria" />
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-3 mb-8">
+              Un Legado de Experiencia y Pasión
+            </h2>
+          </div>
+
+          {/* Narrative Intro Split Layout */}
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-20 max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-lg text-gray-600 leading-relaxed space-y-6 text-justify"
+            >
+              <p>
+                Todo comienza con la <strong>Lic. Ma. del Carmen Nájera</strong>, egresada de la
+                Licenciatura en Órtesis y Prótesis del Instituto Nacional de Rehabilitación (INR,
+                1981-1985). Tras adquirir conocimientos integrales y dedicar 10 años al INR
+                atendiendo cientos de casos complejos, en 1995 decide regresar a su ciudad natal,
+                Cuernavaca, para fundar <strong>Ortopedia Cuernavaca</strong>. Inició como una
+                pionera en la comercialización de equipo de rehabilitación y fabricación de
+                plantillas y prótesis personalizadas, atendiendo desde problemas posturales hasta
+                pérdidas de extremidades.
+              </p>
+              <p>
+                Con una visión clara de las necesidades del mercado, fundó posteriormente{' '}
+                <strong>Ortochavitos</strong>, una sucursal especializada frente al Hospital del
+                Niño Morelense, enfocada en la atención pediátrica y el zapato ortopédico.
+              </p>
+              <p>
+                A este esfuerzo se sumó su hermana, la <strong>Lic. Guadalupe Nájera</strong>,
+                terapeuta física también formada en el INR y con vasta experiencia en el DIF
+                Morelos. Juntas, en un mismo establecimiento pero manteniendo identidades
+                especializadas, expandieron la visión hacia una rehabilitación integral. Hoy,
+                Ortopedia Cuernavaca y la clínica de rehabilitación continúan operando con la misma
+                sinergia, y Ortochavitos ha evolucionado mudándose cerca del Hospital General
+                Parres, consolidando un legado familiar de salud y bienestar.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="flex justify-center"
+            >
+              <div className="bg-white p-8 rounded-full shadow-2xl border-4 border-blue-100 w-80 h-80 flex items-center justify-center relative overflow-hidden">
+                <Image
+                  src="/images/banners/logo-antiguo-ortochavitos.jpeg"
+                  alt="Logo Antiguo Ortochavitos"
+                  width={250}
+                  height={250}
+                  className="object-contain"
+                />
+              </div>
+            </motion.div>
+          </div>
+
+          <div className="relative max-w-5xl mx-auto mt-20">
+            {/* Vertical Line */}
+            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 bg-gray-200 transform md:-translate-x-1/2"></div>
+
+            <div className="space-y-4 md:space-y-0">
+              {timelineData.map((item, idx) => (
+                <TimelineItem
+                  key={idx}
+                  {...item}
+                  side={idx % 2 === 0 ? 'right' : 'left'}
+                  index={idx}
+                />
+              ))}
             </div>
-            {/* Texto */}
-            <div>
-              <h3 className="text-3xl font-semibold mb-4">{active.title}</h3>
-              <p className="text-lg text-gray-700">{active.description}</p>
-            </div>
-          </motion.div>
-        </AnimatePresence>
-      </div>
-    </section>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Values & Philosophy - With Bubble Title */}
+      <section className="py-24 bg-gradient-to-b from-white to-blue-50">
+        <div className="container mx-auto px-6">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <SectionBadge text="Nuestra Esencia" />
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">Valores que nos definen</h2>
+            <p className="text-lg text-gray-600 text-center">
+              Más allá de la técnica, nos define lo que llevamos dentro. Estos son los pilares que
+              sostienen cada tratamiento y cada sonrisa recuperada.
+            </p>
+          </div>
+
+          {/* Tabs */}
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            {valores.map((valor) => (
+              <ValueCard
+                key={valor.key}
+                value={valor}
+                isActive={activeValue === valor.key}
+                onClick={() => setActiveValue(valor.key)}
+              />
+            ))}
+          </div>
+
+          {/* Display Area */}
+          <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 max-w-6xl mx-auto">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeValue}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+                className="grid md:grid-cols-2"
+              >
+                <div className="relative h-64 md:h-auto min-h-[400px] bg-gray-100">
+                  <Image
+                    src={activeValueData.image}
+                    alt={activeValueData.title}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 to-transparent"></div>
+                </div>
+                <div className="p-10 md:p-16 flex flex-col justify-center">
+                  <h3 className="text-3xl font-bold text-gray-900 mb-6">{activeValueData.title}</h3>
+                  <p className="text-lg text-gray-700 leading-relaxed mb-8">
+                    {activeValueData.description}
+                  </p>
+                  <div className="flex items-center gap-2 text-blue-600 font-semibold cursor-pointer group">
+                    <span>Saber más sobre este pilar</span>
+                    <svg
+                      className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. CTA Final - Same */}
+      <section className="py-24 bg-blue-600 text-white relative overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/banners/banner-tienda-4.png"
+            alt="Background"
+            fill
+            className="object-cover opacity-20 mix-blend-overlay"
+          />
+        </div>
+        <div className="container mx-auto px-6 relative z-10 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-8">
+            Tu historia de recuperación comienza hoy
+          </h2>
+          <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
+            Déjanos ser parte de tu camino hacia una vida sin dolor y con plena libertad de
+            movimiento.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Link href="/citas">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-white text-blue-600 px-10 py-4 rounded-full font-bold text-lg shadow-xl hover:shadow-2xl transition-all cursor-pointer"
+              >
+                Agendar mi Valoración
+              </motion.div>
+            </Link>
+            <Link href="/servicios">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-10 py-4 rounded-full border-2 border-white text-white font-bold text-lg hover:bg-white/10 transition-all cursor-pointer"
+              >
+                Explorar Servicios
+              </motion.div>
+            </Link>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }

@@ -31,12 +31,12 @@ export function middleware(request) {
   // Ajustar según las necesidades del proyecto
   const csp = [
     "default-src 'self'",
-    "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://fonts.googleapis.com https://www.googletagmanager.com",
+    "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://fonts.googleapis.com https://www.googletagmanager.com https://static.cloudflareinsights.com",
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "font-src 'self' https://fonts.gstatic.com data:",
     "img-src 'self' data: https: blob:",
     "connect-src 'self' https://api.whatsapp.com https://www.google-analytics.com",
-    "frame-src 'none'",
+    "frame-src 'self' https://www.google.com https://www.google.com.mx https://maps.google.com https://www.google.com/maps",
     "object-src 'none'",
     "base-uri 'self'",
     "form-action 'self'",

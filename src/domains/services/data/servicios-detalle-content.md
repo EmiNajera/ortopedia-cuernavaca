@@ -266,7 +266,7 @@ El costo varía según la complejidad de tu caso, los materiales que necesites, 
 ### Información General
 - **Título:** Órtesis y Dispositivos Ortopédicos en Cuernavaca | Rodilleras, Férulas y Soportes
 - **Slug:** `ortesis` o `amputados`
-- **Imagen:** `/images/banners/Órtesis de RodillaFD.png`
+- **Imagen:** `/images/banners/ortesis-rodilla-fd.png`
 - **Meta Description:** "Órtesis personalizadas en Cuernavaca: rodilleras, férulas, soportes de columna y dispositivos ortopédicos. Estabilización, prevención de lesiones y mejora funcional. Especialistas certificados."
 
 ### Descripción Principal (Hero Section)
@@ -512,7 +512,7 @@ Depende del tipo y material. Algunas son resistentes al agua, otras no. Te damos
 ### Información General
 - **Título:** Prótesis Personalizadas y Rehabilitación en Amputados | Cuernavaca
 - **Slug:** `protesis` o `ortesis` (para prótesis)
-- **Imagen:** `/images/banners/Técnico ajustando prótesis en tallerFD.png`
+- **Imagen:** `/images/banners/tecnico-ajustando-protesis-fd.png`
 - **Meta Description:** "Prótesis personalizadas en Cuernavaca. Fabricación a medida, ajuste preciso y rehabilitación integral para amputados. Tecnología avanzada y seguimiento continuo. Especialistas certificados."
 
 ### Descripción Principal (Hero Section)
@@ -1383,7 +1383,7 @@ Sí, absolutamente. De hecho, es crucial. Te damos ejercicios específicos para 
 ### Información General
 - **Título:** Rehabilitación del Dolor Crónico en Cuernavaca | Manejo Integral
 - **Slug:** `dolor`
-- **Imagen:** `/images/banners/Rehabilitación del Dolor CrónicoFD.png`
+- **Imagen:** `/images/banners/rehabilitacion-dolor-cronico-fd.png`
 - **Meta Description:** "Rehabilitación del dolor crónico en Cuernavaca. Manejo integral de dolor persistente, mejora funcional y calidad de vida. Enfoque multidisciplinario y tratamiento personalizado."
 
 ### Descripción Principal (Hero Section)
@@ -1684,7 +1684,7 @@ Sí, pero de manera adaptada. Te guiamos sobre qué ejercicios son apropiados y 
 ### Información General
 - **Título:** Productos Ortopédicos en Cuernavaca | Bastones, Muletas, Sillas de Ruedas
 - **Slug:** `productos`
-- **Imagen:** `/images/banners/Área de Productos OrtopédicosFD.png`
+- **Imagen:** `/images/banners/area-productos-ortopedicos-fd.png`
 - **Meta Description:** "Productos ortopédicos en Cuernavaca. Bastones, muletas, sillas de ruedas, calzado terapéutico y más. Asesoría experta, ajuste personalizado y servicio de calidad."
 
 ### Descripción Principal (Hero Section)

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+﻿import React, { useState, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
@@ -92,16 +92,15 @@ const MessageSquareIcon = () => (
 export default function Servicios() {
   return (
     <main id="contenido-principal" className="font-sans text-gray-900">
-      {/* Fondo continuo usando el mismo degradado base que el Hero para toda la página */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-blue-100 via-blue-50 to-white">
+      {/* Fondo continuo usando el mismo degradado base que el Hero para toda la página, extendido */}
+      <div className="relative overflow-hidden bg-gradient-to-br from-blue-100 via-blue-50 to-blue-50/80">
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-blue-600/5 to-cyan-600/5" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/85" />
         <div className="relative z-10 space-y-0">
           <Hero />
           <SymptomsSection />
           <InteractiveServicesLazy />
           <ProcessSectionAlt />
-          <FeaturedServices />
+          {/* FeaturedServices removed and moved to Home page */}
           <Webinars />
           <ContactBanner />
         </div>
@@ -1203,7 +1202,7 @@ function InteractiveServices() {
             'Diseño personalizado para cada pie con tecnología avanzada y materiales de alta calidad.',
           longDescription:
             'Cada plantilla se fabrica completamente a medida, considerando la forma única de tus pies, tu tipo de pisada, actividades diarias y objetivos de tratamiento. No usamos plantillas genéricas.',
-          img: '/images/banners/Plantillas PersonalizadasFD.png',
+          img: '/images/banners/plantillas-personalizadas-fd.png',
         },
         {
           title: 'Estudio de Huella',
@@ -1273,7 +1272,7 @@ function InteractiveServices() {
       title: 'Taller de Prótesis y Rehabilitación en Amputados',
       description:
         'Fabricación, ajuste y personalización de dispositivos ortopédicos con tecnología digital y materiales de alta calidad.',
-      image: '/images/banners/Atleta cruzando la meta con alegría FD.png',
+      image: '/images/banners/atleta-cruzando-meta-fd.png',
       features: [
         {
           title: 'Prótesis',
@@ -1281,14 +1280,14 @@ function InteractiveServices() {
             'Fabricación y adaptación de prótesis personalizadas con tecnología avanzada.',
           longDescription:
             'Nuestras prótesis están diseñadas para restaurar la funcionalidad y mejorar la calidad de vida de pacientes con amputaciones. Utilizamos tecnología de vanguardia y materiales de alta calidad para crear dispositivos que se adapten perfectamente a cada paciente.\n\nCada prótesis se fabrica completamente a medida, considerando la anatomía única del paciente, su nivel de amputación, actividades diarias y objetivos de rehabilitación. Los materiales utilizados garantizan durabilidad, ligereza y confort durante el uso prolongado.\n\nEl proceso incluye una evaluación exhaustiva, diseño personalizado, fabricación en nuestro taller especializado, pruebas de ajuste y un programa de rehabilitación integral. Acompañamos al paciente durante todo el proceso de adaptación, realizando ajustes periódicos para optimizar la funcionalidad.',
-          img: '/images/banners/Técnico ajustando prótesis en tallerFD.png',
+          img: '/images/banners/tecnico-ajustando-protesis-fd.png',
         },
         {
           title: 'Rehabilitación en Amputados',
           description: 'Programa integral de rehabilitación para pacientes con amputaciones.',
           longDescription:
             'Nuestro programa de rehabilitación para amputados está diseñado para maximizar la independencia y calidad de vida de cada paciente. Comenzamos con una evaluación completa que incluye el estado físico, psicológico y social del paciente.\n\nEl programa incluye ejercicios de fortalecimiento muscular, entrenamiento de equilibrio, práctica de actividades de la vida diaria y adaptación psicológica. Utilizamos equipos especializados y técnicas de rehabilitación avanzadas para acelerar la recuperación.\n\nAcompañamos al paciente durante todo el proceso, desde la fase preprotésica hasta la adaptación completa a su nueva prótesis. Realizamos evaluaciones periódicas para medir el progreso y ajustar el programa según las necesidades cambiantes.',
-          img: '/images/banners/Rehabilitación en AmputadosFD.png',
+          img: '/images/banners/rehabilitacion-amputados-fd.png',
         },
         {
           title: 'Entrenamiento Funcional con Prótesis',
@@ -1296,7 +1295,7 @@ function InteractiveServices() {
             'Programa especializado de entrenamiento para maximizar el uso funcional de la prótesis.',
           longDescription:
             'Nuestro programa de entrenamiento funcional está diseñado para ayudar a los pacientes a desarrollar las habilidades necesarias para utilizar su prótesis de manera efectiva en actividades de la vida diaria. Incluye ejercicios específicos para mejorar la coordinación, equilibrio, fuerza y resistencia.\n\nEl entrenamiento se adapta a las necesidades individuales de cada paciente, considerando su nivel de amputación, tipo de prótesis y objetivos personales. Utilizamos equipos especializados y técnicas de rehabilitación avanzadas para acelerar el proceso de adaptación.\n\nRealizamos sesiones progresivas que van desde ejercicios básicos de control hasta actividades complejas como subir escaleras, caminar en terrenos irregulares y realizar tareas específicas. Nuestro objetivo es que cada paciente logre la máxima independencia y confianza en el uso de su prótesis.',
-          img: '/images/banners/Entrenamiento Funcional con PrótesisFD.png',
+          img: '/images/banners/entrenamiento-funcional-protesis-fd.png',
         },
         {
           title: 'Ajuste y Calibración Especializada',
@@ -1318,14 +1317,14 @@ function InteractiveServices() {
             'Recuperación específica para deportistas de alto rendimiento con técnicas avanzadas.',
           longDescription:
             'Nuestro programa de rehabilitación deportiva está diseñado específicamente para atletas y deportistas que buscan recuperar su rendimiento óptimo después de una lesión. Utilizamos técnicas de fisioterapia avanzada combinadas con tecnología de vanguardia para acelerar la recuperación.\n\nEl tratamiento incluye evaluación biomecánica completa, análisis del gesto deportivo específico, programa de rehabilitación personalizado y prevención de recidivas. Trabajamos con equipos de última generación como ultrasonido terapéutico, electroestimulación y plataformas de equilibrio.\n\nNuestro equipo de fisioterapeutas especializados en deporte desarrolla protocolos específicos para cada tipo de lesión y deporte, garantizando una recuperación segura y efectiva. Realizamos seguimiento continuo del progreso y ajustamos el tratamiento según la evolución del paciente.',
-          img: '/images/banners/Lesiones DeportivasFD.png',
+          img: '/images/banners/lesiones-deportivas-fd.png',
         },
         {
           title: 'Rehabilitación Postoperatoria Integral',
           description: 'Recuperación completa después de cirugías con protocolos especializados.',
           longDescription:
             'La rehabilitación postoperatoria es fundamental para el éxito de cualquier intervención quirúrgica. Nuestro programa integral incluye evaluación preoperatoria, planificación del tratamiento postoperatorio y seguimiento continuo durante todo el proceso de recuperación.\n\nUtilizamos técnicas de fisioterapia especializadas como movilización precoz, ejercicios de fortalecimiento progresivo, control del dolor y prevención de complicaciones. Cada protocolo se adapta a la cirugía específica, la condición del paciente y sus objetivos de recuperación.\n\nNuestro equipo trabaja en coordinación con los cirujanos para garantizar que el tratamiento de rehabilitación complemente perfectamente la intervención quirúrgica. Realizamos evaluaciones periódicas para medir el progreso y ajustar el tratamiento según sea necesario.',
-          img: '/images/banners/Rehabilitación PostoperatoriaFD.png',
+          img: '/images/banners/rehabilitacion-postoperatoria-fd.png',
         },
         {
           title: 'Terapia Manual Especializada',
@@ -1349,35 +1348,35 @@ function InteractiveServices() {
       title: 'Órtesis',
       description:
         'Fabricación, ajuste y personalización de dispositivos ortopédicos con tecnología digital y materiales de alta calidad.',
-      image: '/images/banners/Ortesis cafeteria.png',
+      image: '/images/banners/ortesis-cafeteria.png',
       features: [
         {
           title: 'Órtesis de rodilla (Rodilleras)',
           description: 'Dispositivos para estabilización y protección articular.',
           longDescription:
             'Nuestras órtesis de rodilla están diseñadas específicamente para cada paciente, considerando su patología, nivel de actividad y objetivos de tratamiento. Utilizamos materiales de última generación que combinan ligereza, durabilidad y confort.\n\nEl proceso incluye evaluación biomecánica completa, análisis de la marcha, diseño personalizado y fabricación en nuestro taller especializado. Cada órtesis se ajusta perfectamente a la anatomía del paciente, proporcionando el soporte necesario sin limitar la movilidad.\n\nRealizamos seguimiento continuo del paciente, ajustando la órtesis según su evolución y necesidades cambiantes. Nuestro objetivo es proporcionar estabilidad y protección articular mientras mantenemos la máxima funcionalidad posible.',
-          img: '/images/banners/Órtesis de RodillaFD.png',
+          img: '/images/banners/ortesis-rodilla-fd.png',
         },
         {
           title: 'Férulas y Soportes',
           description: 'Inmovilización y soporte terapéutico adaptado a cada necesidad específica.',
           longDescription:
             'Nuestras férulas y soportes personalizados están diseñados para proporcionar inmovilización terapéutica y soporte específico según la patología del paciente. Utilizamos termoplásticos de alta calidad que se moldean perfectamente a la anatomía del paciente.\n\nEl proceso de fabricación incluye evaluación clínica, diseño personalizado, moldeado a medida y pruebas de ajuste. Cada dispositivo se fabrica considerando factores como la duración del tratamiento, nivel de actividad y comodidad del paciente.\n\nRealizamos revisiones periódicas para evaluar la efectividad del tratamiento y realizar ajustes cuando sea necesario. Nuestro equipo de técnicos especializados garantiza que cada dispositivo cumpla con los más altos estándares de calidad y funcionalidad.',
-          img: '/images/banners/Férulas y SoportesFD.png',
+          img: '/images/banners/ferulas-soportes-fd.png',
         },
         {
           title: 'Órtesis de Columna',
           description: 'Sistemas de soporte especializados para problemas de columna y postura.',
           longDescription:
             'Nuestras órtesis de columna están diseñadas para proporcionar soporte y corrección postural específica según la patología del paciente. Utilizamos sistemas modulares que permiten ajustes precisos y personalización completa.\n\nEl proceso incluye evaluación postural completa, análisis de la marcha, diseño personalizado y fabricación en nuestro taller especializado. Cada órtesis se ajusta perfectamente al paciente, proporcionando el soporte necesario sin comprometer la movilidad.\n\nRealizamos seguimiento continuo del paciente, ajustando la órtesis según su evolución y respuesta al tratamiento. Nuestro objetivo es mejorar la postura, reducir el dolor y prevenir futuras complicaciones.',
-          img: '/images/banners/Órtesis de ColumnaFD.png',
+          img: '/images/banners/ortesis-columna-fd.png',
         },
         {
           title: 'Mangas y equipo deportivo',
           description: 'Compresión, soporte y accesorios para actividad física y deporte.',
           longDescription:
             'Nuestras órtesis deportivas están diseñadas específicamente para deportistas y personas activas que requieren soporte articular durante actividades físicas. Utilizamos materiales ligeros y resistentes que permiten libertad de movimiento sin comprometer la protección.\n\nEl proceso incluye evaluación biomecánica deportiva, análisis del gesto deportivo específico, diseño personalizado y fabricación en nuestro taller especializado. Cada órtesis se adapta perfectamente al deporte y nivel de actividad del paciente.\n\nRealizamos pruebas de funcionalidad deportiva y seguimiento continuo del paciente para garantizar que la órtesis cumpla con sus necesidades específicas. Nuestro objetivo es permitir que el deportista mantenga su rendimiento mientras protege sus articulaciones.',
-          img: '/images/banners/Mangas y equipo deportivoFD.png',
+          img: '/images/banners/mangas-equipo-deportivo-fd.png',
         },
       ],
     },
@@ -1385,7 +1384,7 @@ function InteractiveServices() {
       title: 'Rehabilitación del Dolor Crónico',
       description:
         'Manejo integral de dolor persistente, artritis y fibromialgia con técnicas especializadas.',
-      image: '/images/banners/Rehabilitación del Dolor CrónicoFD.png',
+      image: '/images/banners/rehabilitacion-dolor-cronico-fd.png',
       features: [
         {
           title: 'Manejo Integral del Dolor de Espalda',
@@ -1393,7 +1392,7 @@ function InteractiveServices() {
             'Terapias especializadas para aliviar el dolor crónico de espalda con enfoque multidisciplinario.',
           longDescription:
             'Nuestro programa de manejo del dolor de espalda crónico combina técnicas de fisioterapia avanzada con enfoques multidisciplinarios para abordar las causas raíz del dolor. Utilizamos evaluación biomecánica completa, análisis postural y diagnóstico funcional para desarrollar un plan de tratamiento personalizado.\n\nEl tratamiento incluye terapia manual especializada, ejercicios de estabilización lumbar, técnicas de relajación muscular y educación del paciente sobre ergonomía y prevención. Trabajamos con equipos de última generación como ultrasonido terapéutico, electroestimulación y sistemas de tracción.\n\nRealizamos seguimiento continuo del paciente, ajustando el tratamiento según su evolución y respuesta. Nuestro objetivo es no solo aliviar el dolor, sino también mejorar la funcionalidad y prevenir futuras recidivas.',
-          img: '/images/banners/Manejo Integral del Dolor de EspaldaFD.png',
+          img: '/images/banners/manejo-integral-dolor-espalda-fd.png',
         },
         {
           title: 'Tratamiento de Artritis y Fibromialgia',
@@ -1401,7 +1400,7 @@ function InteractiveServices() {
             'Manejo integral de la inflamación y dolor con técnicas especializadas y tecnología avanzada.',
           longDescription:
             'Nuestro programa para artritis y fibromialgia está diseñado para mejorar la calidad de vida de pacientes con estas condiciones crónicas. Utilizamos un enfoque integral que combina fisioterapia especializada, ejercicio terapéutico y técnicas de manejo del dolor.\n\nEl tratamiento incluye evaluación funcional completa, programa de ejercicio adaptado, técnicas de relajación muscular, educación sobre manejo del dolor y asesoría sobre modificaciones del estilo de vida. Trabajamos con equipos especializados como baños de parafina, ultrasonido terapéutico y sistemas de estimulación eléctrica.\n\nRealizamos seguimiento continuo del paciente, ajustando el tratamiento según la evolución de la enfermedad y las necesidades cambiantes. Nuestro objetivo es mejorar la movilidad, reducir el dolor y mantener la independencia funcional.',
-          img: '/images/banners/Tratamiento de ArtritisFD.png',
+          img: '/images/banners/tratamiento-artritis-fd.png',
         },
         {
           title: 'Terapia con equipo especializado',
@@ -1409,7 +1408,7 @@ function InteractiveServices() {
             'Rehabilitación con dispositivos y tecnología específica para cada fase del tratamiento.',
           longDescription:
             'Contamos con equipo especializado para rehabilitación que nos permite adaptar la terapia a tus necesidades: electroestimulación, ultrasonido terapéutico, plataformas de equilibrio, bandas elásticas, poleas y sistemas de resistencia progresiva.\n\nIniciamos con una evaluación funcional para definir objetivos claros y asignar el equipo adecuado a cada etapa (control del dolor, movilidad, fuerza y estabilidad). Las sesiones son guiadas y progresivas, priorizando seguridad y eficacia.\n\nMedimos resultados periódicamente y ajustamos parámetros e intensidad según tu respuesta clínica, asegurando avances sostenidos y una recuperación más rápida y segura.',
-          img: '/images/banners/Ejercicio TerapéuticoFD.png',
+          img: '/images/banners/ejercicio-terapeutico-fd.png',
         },
         {
           title: 'Seguimiento Continuo',
@@ -1417,15 +1416,15 @@ function InteractiveServices() {
             'Revisiones periódicas, ajustes y acompañamiento para un control duradero del dolor.',
           longDescription:
             'El seguimiento continuo es clave en el manejo del dolor crónico. Programamos revisiones periódicas para evaluar tu evolución, ajustar el plan terapéutico y reforzar estrategias de autocuidado.\n\nIntegramos medición de progreso, ajuste de ejercicios, educación postural, hábitos saludables y, cuando corresponde, coordinación con otros especialistas. Este enfoque iterativo permite prevenir recaídas, mantener logros y mejorar tu calidad de vida a largo plazo.\n\nNos enfocamos en objetivos realistas y medibles, optimizando la frecuencia de sesiones y la combinación de terapias según tu respuesta clínica.',
-          img: '/images/banners/Seguimiento ContinuoFD.png',
+          img: '/images/banners/seguimiento-continuo-fd.png',
         },
       ],
     },
     productos: {
-      title: 'Área de Productos Ortopédicos',
+      title: 'Ãrea de Productos Ortopédicos',
       description:
         'Asesoría especializada y venta de productos ortopédicos de alta calidad: bastones, muletas, sillas de ruedas y más.',
-      image: '/images/banners/Área de Productos OrtopédicosFD.png',
+      image: '/images/banners/area-productos-ortopedicos-fd.png',
       features: [
         {
           title: 'Bastones y Muletas',
@@ -1433,21 +1432,21 @@ function InteractiveServices() {
             'Soporte especializado para mejorar la movilidad con productos de alta calidad.',
           longDescription:
             'Nuestro catálogo de bastones y muletas incluye productos de la más alta calidad, diseñados para proporcionar soporte y estabilidad según las necesidades específicas de cada paciente. Ofrecemos asesoría especializada para seleccionar el producto más adecuado.\n\nNuestros productos incluyen bastones ajustables, muletas de axila y antebrazo, bastones con base amplia para mayor estabilidad y productos especializados para diferentes condiciones. Cada producto se selecciona considerando factores como el nivel de movilidad del paciente, su condición física y estilo de vida.\n\nRealizamos evaluación funcional para determinar el producto más adecuado, asesoría sobre uso correcto y seguimiento para garantizar que el producto cumpla con las necesidades del paciente. Nuestro objetivo es mejorar la movilidad y seguridad del paciente.',
-          img: '/images/banners/Bastones y Muletas.png',
+          img: '/images/banners/bastones-muletas.png',
         },
         {
           title: 'Sillas de Ruedas',
           description: 'Modelos manuales y eléctricos de alta calidad con tecnología avanzada.',
           longDescription:
             'Nuestras sillas de ruedas representan la vanguardia en tecnología de movilidad, ofreciendo comodidad, funcionalidad y seguridad. Incluimos modelos manuales ligeros, sillas eléctricas de alta tecnología y productos especializados para diferentes necesidades.\n\nCada silla se selecciona considerando factores como el nivel de movilidad del usuario, su entorno de uso, necesidades de transporte y estilo de vida. Nuestros productos incluyen sillas con sistemas de propulsión asistida, asientos especializados para prevención de úlceras por presión y sistemas de posicionamiento avanzados.\n\nRealizamos evaluación funcional completa, asesoría sobre selección del producto, entrenamiento en uso y seguimiento continuo. Nuestro objetivo es proporcionar independencia y calidad de vida a nuestros usuarios.',
-          img: '/images/banners/Sillas de RuedasFD.png',
+          img: '/images/banners/sillas-ruedas-fd.png',
         },
         {
           title: 'Calzado Ortopédico',
           description: 'Zapatos especializados diseñados para diferentes necesidades ortopédicas.',
           longDescription:
             'Nuestro calzado ortopédico está diseñado específicamente para personas con necesidades especiales, combinando funcionalidad terapéutica con comodidad y estilo. Ofrecemos zapatos con características especiales como suelas antideslizantes, plantillas removibles y ajustes personalizados.\n\nNuestros productos incluyen calzado para pie diabético, zapatos con soporte para arco alto o bajo, calzado postoperatorio y zapatos especializados para diferentes actividades. Cada producto se selecciona considerando la condición específica del paciente, su nivel de actividad y preferencias de estilo.\n\nRealizamos evaluación del pie, asesoría sobre selección del calzado, pruebas de ajuste y seguimiento para garantizar que el producto cumpla con las necesidades del paciente. Nuestro objetivo es proporcionar comodidad y soporte mientras mantenemos la movilidad.',
-          img: '/images/banners/Calzado OrtopédicoFD.png',
+          img: '/images/banners/calzado-ortopedico-fd.png',
         },
         {
           title: 'Fajas y Soportes',
@@ -1455,7 +1454,7 @@ function InteractiveServices() {
             'Apoyo especializado para la columna y articulaciones con productos de alta calidad.',
           longDescription:
             'Nuestras fajas y soportes están diseñados para proporcionar soporte terapéutico específico según las necesidades de cada paciente. Utilizamos materiales de alta calidad que combinan soporte efectivo con comodidad y durabilidad.\n\nNuestros productos incluyen fajas lumbares, soportes para rodilla, tobilleras, muñequeras y productos especializados para diferentes condiciones. Cada producto se selecciona considerando la patología específica, nivel de actividad y objetivos de tratamiento del paciente.\n\nRealizamos evaluación funcional, asesoría sobre selección del producto, instrucciones de uso y seguimiento para garantizar efectividad. Nuestro objetivo es proporcionar soporte terapéutico efectivo mientras mantenemos la movilidad y comodidad del paciente.',
-          img: '/images/banners/Fajas y SoportesFD.png',
+          img: '/images/banners/fajas-soportes-fd.png',
         },
       ],
     },
@@ -1762,7 +1761,9 @@ function InteractiveServices() {
           </div>
         </div>
 
-        {/* Carrusel móvil unificado: Card principal + Grid en un solo bloque */}
+        {/* ============================================ */}
+        {/* VERSIÓN MÓVIL - Separada completamente */}
+        {/* ============================================ */}
         <div className="md:hidden mb-8">
           <div
             ref={carouselRef}
@@ -1822,7 +1823,7 @@ function InteractiveServices() {
                           onClick={() => router.push(`/servicios/detalle/${tab.id}`)}
                           className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-lg"
                         >
-                          MÁS INFORMACIÓN
+                          MÃS INFORMACIÓN
                         </button>
                         <button className="border border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-blue-600 hover:text-white transition-colors">
                           AGENDAR CONSULTA
@@ -1962,8 +1963,11 @@ function InteractiveServices() {
           </div>
         </div>
 
-        {/* Contenido Desktop (mantener diseño original) */}
+        {/* ============================================ */}
+        {/* VERSIÓN DESKTOP - Separada completamente */}
+        {/* ============================================ */}
         <div className="hidden md:block relative">
+          {/* Contenedor principal Desktop con imagen y contenido */}
           <motion.div
             key={activeTab}
             initial={{ opacity: 0, x: 50 }}
@@ -1994,24 +1998,27 @@ function InteractiveServices() {
                   onClick={() => router.push(`/servicios/detalle/${activeTab}`)}
                   className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl"
                 >
-                  MÁS INFORMACIÓN
+                  MÃS INFORMACIÓN
                 </button>
-                <button className="border border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-blue-600 hover:text-white transition-colors shadow-lg hover:shadow-xl">
+                <button
+                  onClick={() => openWhatsApp()}
+                  className="border border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-blue-600 hover:text-white transition-colors shadow-lg hover:shadow-xl"
+                >
                   AGENDAR CONSULTA
                 </button>
               </div>
             </div>
           </motion.div>
 
-          {/* Flecha izquierda */}
+          {/* Flecha izquierda - Desktop */}
           <button
             onClick={() => paginate(-1)}
-            className="hidden md:flex items-center justify-center absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/70 hover:bg-white/90 backdrop-blur-sm rounded-full p-3 cursor-pointer z-20 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-110"
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-12 bg-white/90 hover:bg-white backdrop-blur-sm rounded-full p-3 cursor-pointer z-20 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-110"
             aria-label="Pestaña anterior"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 text-gray-700"
+              className="h-6 w-6 text-gray-700"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -2025,15 +2032,15 @@ function InteractiveServices() {
             </svg>
           </button>
 
-          {/* Flecha derecha */}
+          {/* Flecha derecha - Desktop */}
           <button
             onClick={() => paginate(1)}
-            className="hidden md:flex items-center justify-center absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/70 hover:bg-white/90 backdrop-blur-sm rounded-full p-3 cursor-pointer z-20 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-110"
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-12 bg-white/90 hover:bg-white backdrop-blur-sm rounded-full p-3 cursor-pointer z-20 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-110"
             aria-label="Pestaña siguiente"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 text-gray-700"
+              className="h-6 w-6 text-gray-700"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -2046,119 +2053,120 @@ function InteractiveServices() {
               />
             </svg>
           </button>
-        </div>
 
-        {/* Feature Cards con BentoGrid */}
-        <motion.div
-          key={`${activeTab}-features`}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.2 }}
-        >
-          <BentoGrid className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {content[activeTab].features.map((feature, index) => {
-              // Crear elementos para el Marquee (imágenes de otras features)
-              const otherFeatures = content[activeTab].features.filter((f, i) => i !== index);
-              const marqueeItems = otherFeatures.slice(0, 3);
+          {/* Feature Cards con BentoGrid - Desktop ONLY */}
+          <motion.div
+            key={`${activeTab}-features-desktop`}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+            className="mt-8"
+          >
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 w-full">
+              {content[activeTab].features.map((feature, index) => {
+                // Crear elementos para el Marquee (imágenes de otras features)
+                const otherFeatures = content[activeTab].features.filter((f, i) => i !== index);
+                const marqueeItems = otherFeatures.slice(0, 3);
 
-              return (
-                <BentoCard
-                  key={feature.title}
-                  className="bg-white text-gray-900 rounded-xl overflow-hidden hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:scale-105 hover:border-blue-200 shadow-lg flex flex-col h-full group"
-                  rowSpan={1}
-                  colSpan={1}
-                >
-                  {/* Background con imagen y Marquee */}
-                  <div className="absolute inset-0 z-0">
-                    {/* Imagen principal */}
-                    <div className="relative w-full aspect-[3/2]">
-                      <Image
-                        src={feature.img}
-                        alt={feature.title}
-                        fill
-                        className="object-cover"
-                        quality={95}
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                        priority={index < 2}
-                      />
-                    </div>
-                    {/* Marquee animado - visible en hover */}
-                    <div className="absolute bottom-0 left-0 right-0 h-[120px] overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                      <Marquee
-                        pauseOnHover
-                        className="absolute top-0 w-full [mask-image:linear-gradient(to_top,transparent_30%,#000_70%,#000_100%)] [--duration:25s]"
-                      >
-                        {marqueeItems.map((f, idx) => (
-                          <figure
-                            key={idx}
-                            className="relative w-28 cursor-pointer overflow-hidden rounded-lg border p-2 border-gray-200 bg-white/90 hover:bg-white transform-gpu blur-[0.5px] transition-all duration-300 ease-out hover:blur-none mx-2 shadow-sm"
-                          >
-                            <div className="relative w-full h-20 mb-1.5">
-                              <Image
-                                src={f.img}
-                                alt={f.title}
-                                fill
-                                className="object-cover rounded"
-                                quality={75}
-                              />
-                            </div>
-                            <figcaption className="text-xs font-medium text-gray-700 truncate px-1">
-                              {f.title}
-                            </figcaption>
-                          </figure>
-                        ))}
-                      </Marquee>
-                    </div>
-                  </div>
-
-                  {/* Contenido principal */}
-                  <div className="relative z-10 flex flex-col h-full">
-                    {/* Imagen visible siempre */}
-                    <div className="relative w-full aspect-[3/2] flex-shrink-0">
-                      <Image
-                        src={feature.img}
-                        alt={feature.title}
-                        fill
-                        className="object-cover"
-                        quality={95}
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                        priority={index < 2}
-                      />
-                    </div>
-                    {/* Contenido de texto */}
-                    <div className="p-5 flex flex-col flex-grow bg-white">
-                      <h4 className="font-bold text-gray-900 mb-3 text-lg leading-tight">
-                        {feature.title}
-                      </h4>
-                      <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-grow">
-                        {feature.description}
-                      </p>
-                      <button
-                        onClick={() => setSelectedFeature(feature)}
-                        className="text-blue-600 hover:text-blue-800 font-medium text-sm transition-colors flex items-center mt-auto"
-                      >
-                        Ver más
-                        <svg
-                          className="w-4 h-4 ml-1"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
+                return (
+                  <div
+                    key={feature.title}
+                    className="bg-white text-gray-900 rounded-xl overflow-hidden hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:scale-105 hover:border-blue-200 shadow-lg flex flex-col h-full group relative"
+                    style={{ gridColumn: 'span 1', gridRow: 'span 1' }}
+                  >
+                    {/* Background con imagen y Marquee */}
+                    <div className="absolute inset-0 z-0">
+                      {/* Imagen principal */}
+                      <div className="relative w-full aspect-[3/2]">
+                        <Image
+                          src={feature.img}
+                          alt={feature.title}
+                          fill
+                          className="object-cover"
+                          quality={95}
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                          priority={index < 2}
+                        />
+                      </div>
+                      {/* Marquee animado - visible en hover */}
+                      <div className="absolute bottom-0 left-0 right-0 h-[120px] overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <Marquee
+                          pauseOnHover
+                          className="absolute top-0 w-full [mask-image:linear-gradient(to_top,transparent_30%,#000_70%,#000_100%)] [--duration:25s]"
                         >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M9 5l7 7-7 7"
-                          />
-                        </svg>
-                      </button>
+                          {marqueeItems.map((f, idx) => (
+                            <figure
+                              key={idx}
+                              className="relative w-28 cursor-pointer overflow-hidden rounded-lg border p-2 border-gray-200 bg-white/90 hover:bg-white transform-gpu blur-[0.5px] transition-all duration-300 ease-out hover:blur-none mx-2 shadow-sm"
+                            >
+                              <div className="relative w-full h-20 mb-1.5">
+                                <Image
+                                  src={f.img}
+                                  alt={f.title}
+                                  fill
+                                  className="object-cover rounded"
+                                  quality={75}
+                                />
+                              </div>
+                              <figcaption className="text-xs font-medium text-gray-700 truncate px-1">
+                                {f.title}
+                              </figcaption>
+                            </figure>
+                          ))}
+                        </Marquee>
+                      </div>
+                    </div>
+
+                    {/* Contenido principal */}
+                    <div className="relative z-10 flex flex-col h-full">
+                      {/* Imagen visible siempre */}
+                      <div className="relative w-full aspect-[3/2] flex-shrink-0">
+                        <Image
+                          src={feature.img}
+                          alt={feature.title}
+                          fill
+                          className="object-cover"
+                          quality={95}
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                          priority={index < 2}
+                        />
+                      </div>
+                      {/* Contenido de texto */}
+                      <div className="p-5 flex flex-col flex-grow bg-white">
+                        <h4 className="font-bold text-gray-900 mb-3 text-lg leading-tight">
+                          {feature.title}
+                        </h4>
+                        <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-grow">
+                          {feature.description}
+                        </p>
+                        <button
+                          onClick={() => setSelectedFeature(feature)}
+                          className="text-blue-600 hover:text-blue-800 font-medium text-sm transition-colors flex items-center mt-auto"
+                        >
+                          Ver más
+                          <svg
+                            className="w-4 h-4 ml-1"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M9 5l7 7-7 7"
+                            />
+                          </svg>
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </BentoCard>
-              );
-            })}
-          </BentoGrid>
-        </motion.div>
+                );
+              })}
+            </div>
+          </motion.div>
+        </div>
+        {/* Fin VERSIÓN DESKTOP */}
 
         {/* Enhanced Modal/Slide-over Panel - Usando Portal para evitar stacking context */}
         {typeof window !== 'undefined' &&
@@ -2404,9 +2412,9 @@ function InteractiveServices() {
                           </h3>
                           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                             {[
-                              { icon: '📞', title: 'Teléfono', info: '+52 777 215 0982' },
-                              { icon: '📍', title: 'Ubicación', info: 'Cuernavaca, Morelos' },
-                              { icon: '🕒', title: 'Horarios', info: 'Lun-Vie: 9:00 - 18:00' },
+                              { icon: 'ðŸ“ž', title: 'Teléfono', info: '+52 777 215 0982' },
+                              { icon: 'ðŸ“', title: 'Ubicación', info: 'Cuernavaca, Morelos' },
+                              { icon: 'ðŸ•’', title: 'Horarios', info: 'Lun-Vie: 9:00 - 18:00' },
                             ].map((contact, index) => (
                               <motion.div
                                 key={index}
@@ -2460,286 +2468,6 @@ function InteractiveServices() {
             </AnimatePresence>,
             document.body,
           )}
-      </div>
-    </section>
-  );
-}
-
-// Featured Services
-function FeaturedServices() {
-  const scrollContainerRef = React.useRef(null);
-  const [scrollPosition, setScrollPosition] = React.useState(0);
-  const [maxScroll, setMaxScroll] = React.useState(0);
-
-  const services = [
-    {
-      title: 'Plantillas Ortopédicas Personalizadas',
-      image: '/images/banners/Plantillas PersonalizadasFD.png',
-      description:
-        'Diseño personalizado para cada pie con tecnología avanzada y materiales de alta calidad',
-      category: 'Plantillas',
-    },
-    {
-      title: 'Órtesis de Rodilla',
-      image: '/images/banners/Órtesis de RodillaFD.png',
-      description:
-        'Dispositivos para estabilización y protección articular con materiales de última generación',
-      category: 'Ortesis',
-    },
-    {
-      title: 'Prótesis Personalizadas',
-      image: '/images/banners/Técnico ajustando prótesis en tallerFD.png',
-      description: 'Fabricación y adaptación de prótesis personalizadas con tecnología avanzada',
-      category: 'Prótesis',
-    },
-    {
-      title: 'Rehabilitación de Lesiones Deportivas',
-      image: '/images/banners/Lesiones DeportivasFD.png',
-      description:
-        'Recuperación específica para deportistas de alto rendimiento con técnicas avanzadas',
-      category: 'Fisioterapia',
-    },
-    {
-      title: 'Manejo del Dolor de Espalda',
-      image: '/images/banners/Manejo Integral del Dolor de EspaldaFD.png',
-      description:
-        'Terapias especializadas para aliviar el dolor crónico de espalda con enfoque multidisciplinario',
-      category: 'Dolor Crónico',
-    },
-    {
-      title: 'Rehabilitación Pediátrica',
-      image: '/images/banners/NiñoPiePlanoFlatDesign.png',
-      description: 'Corrige a tiempo problemas de marcha, postura o pie plano en niñas y niños',
-      category: 'Pediatría',
-    },
-    {
-      title: 'Calzado Ortopédico',
-      image: '/images/banners/Calzado OrtopédicoFD.png',
-      description: 'Zapatos especializados diseñados para diferentes necesidades ortopédicas',
-      category: 'Calzado',
-    },
-    {
-      title: 'Férulas y Soportes',
-      image: '/images/banners/Férulas y SoportesFD.png',
-      description: 'Inmovilización y soporte terapéutico adaptado a cada necesidad específica',
-      category: 'Ortesis',
-    },
-  ];
-
-  const scroll = (direction) => {
-    if (scrollContainerRef.current) {
-      const scrollAmount = direction === 'left' ? -340 : 340;
-      scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    }
-  };
-
-  const handleScroll = () => {
-    if (scrollContainerRef.current) {
-      setScrollPosition(scrollContainerRef.current.scrollLeft);
-      setMaxScroll(scrollContainerRef.current.scrollWidth - scrollContainerRef.current.clientWidth);
-    }
-  };
-
-  React.useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    const updateScroll = () => {
-      if (scrollContainerRef.current) {
-        const max = scrollContainerRef.current.scrollWidth - scrollContainerRef.current.clientWidth;
-        setMaxScroll(max);
-        setScrollPosition(scrollContainerRef.current.scrollLeft);
-      }
-    };
-
-    updateScroll();
-    window.addEventListener('resize', updateScroll);
-    return () => window.removeEventListener('resize', updateScroll);
-  }, []);
-
-  // Soporte mejorado para gestos táctiles (swipe)
-  React.useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    const container = scrollContainerRef.current;
-    if (!container) return;
-
-    let startX = 0;
-    let scrollLeft = 0;
-    let isDown = false;
-
-    const handleTouchStart = (e) => {
-      isDown = true;
-      startX = e.touches[0].pageX - container.offsetLeft;
-      scrollLeft = container.scrollLeft;
-    };
-
-    const handleTouchMove = (e) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.touches[0].pageX - container.offsetLeft;
-      const walk = (x - startX) * 1.5; // Velocidad del scroll
-      container.scrollLeft = scrollLeft - walk;
-    };
-
-    const handleTouchEnd = () => {
-      isDown = false;
-    };
-
-    container.addEventListener('touchstart', handleTouchStart, { passive: false });
-    container.addEventListener('touchmove', handleTouchMove, { passive: false });
-    container.addEventListener('touchend', handleTouchEnd);
-
-    return () => {
-      container.removeEventListener('touchstart', handleTouchStart);
-      container.removeEventListener('touchmove', handleTouchMove);
-      container.removeEventListener('touchend', handleTouchEnd);
-    };
-  }, []);
-
-  return (
-    <section
-      id="servicios-destacados"
-      aria-labelledby="servicios-destacados-heading"
-      className="py-20 relative overflow-hidden"
-    >
-      {/* Elementos decorativos */}
-      <div className="absolute top-0 right-0 w-72 h-72 bg-blue-100 rounded-full opacity-20 blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-cyan-100 rounded-full opacity-15 blur-3xl"></div>
-
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        <div className="text-center mb-12">
-          <span className="inline-flex items-center px-4 py-1 bg-blue-100 text-blue-800 text-sm font-semibold rounded-full mb-3">
-            <span
-              className="w-2 h-2 bg-blue-600 rounded-full mr-2 animate-pulse"
-              style={{ transform: 'translateY(1px)' }}
-            ></span>
-            Servicios Destacados
-          </span>
-          <h2
-            id="servicios-destacados-heading"
-            className="text-4xl md:text-5xl font-bold text-gray-900 mb-4"
-          >
-            Nuestros Servicios Destacados
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Descubre nuestra gama completa de servicios especializados diseñados para mejorar tu
-            movilidad y calidad de vida.
-          </p>
-        </div>
-        <div className="relative">
-          {/* Contenedor principal con gradientes de fade */}
-          <div className="relative">
-            {/* Gradiente izquierdo */}
-            <div
-              className={`absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none transition-opacity duration-300 ${
-                scrollPosition > 0 ? 'opacity-100' : 'opacity-0'
-              }`}
-              style={{
-                background: 'linear-gradient(to right, rgba(255,255,255,0.95), transparent)',
-              }}
-            />
-
-            {/* Gradiente derecho */}
-            <div
-              className={`absolute right-0 top-0 bottom-0 w-20 z-10 pointer-events-none transition-opacity duration-300 ${
-                scrollPosition < maxScroll ? 'opacity-100' : 'opacity-0'
-              }`}
-              style={{
-                background: 'linear-gradient(to left, rgba(255,255,255,0.95), transparent)',
-              }}
-            />
-
-            {/* Flecha Izquierda */}
-            <button
-              onClick={() => scroll('left')}
-              className={`absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-white rounded-full p-3 sm:p-4 shadow-lg hover:shadow-xl active:scale-95 transition-all duration-300 transform hover:scale-110 border border-gray-200 touch-manipulation ${
-                scrollPosition > 0 ? 'opacity-100' : 'opacity-0 pointer-events-none'
-              }`}
-              aria-label="Scroll Left"
-              style={{ minWidth: '44px', minHeight: '44px' }}
-            >
-              <ChevronRightIcon className="w-6 h-6 text-gray-700 transform rotate-180" />
-            </button>
-
-            {/* Contenedor del Scroll */}
-            <div
-              ref={scrollContainerRef}
-              onScroll={handleScroll}
-              className="flex gap-6 overflow-x-auto px-4 pb-6 snap-x snap-mandatory scroll-smooth touch-pan-x"
-              style={{
-                scrollbarWidth: 'none',
-                msOverflowStyle: 'none',
-                WebkitOverflowScrolling: 'touch',
-                touchAction: 'pan-x',
-                overscrollBehaviorX: 'contain',
-              }}
-            >
-              <style jsx>{`
-                div::-webkit-scrollbar {
-                  display: none;
-                }
-              `}</style>
-              {services.map((service, index) => (
-                <motion.div
-                  key={service.title}
-                  className="bg-white/95 backdrop-blur-sm border border-gray-200/80 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 flex-shrink-0 w-80 snap-center"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="h-40 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center overflow-hidden relative">
-                    <Image
-                      src={service.image}
-                      alt={`${service.title} - ${service.description}`}
-                      fill
-                      quality={95}
-                      sizes="(max-width: 768px) 100vw, 320px"
-                      className="object-cover image-smooth"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="font-bold text-lg mb-2 text-gray-800">{service.title}</h3>
-                    <p className="text-sm text-gray-600 mb-4">{service.description}</p>
-                    <button className="text-sm font-semibold flex items-center text-blue-600 hover:text-blue-700 transition-colors group">
-                      Más Información{' '}
-                      <ChevronRightIcon className="ml-2 transition-transform group-hover:translate-x-1" />
-                    </button>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Flecha Derecha */}
-            <button
-              onClick={() => scroll('right')}
-              className={`absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white rounded-full p-3 sm:p-4 shadow-lg hover:shadow-xl active:scale-95 transition-all duration-300 transform hover:scale-110 border border-gray-200 touch-manipulation ${
-                scrollPosition < maxScroll ? 'opacity-100' : 'opacity-0 pointer-events-none'
-              }`}
-              aria-label="Scroll Right"
-              style={{ minWidth: '44px', minHeight: '44px' }}
-            >
-              <ChevronRightIcon className="w-6 h-6 text-gray-700" />
-            </button>
-          </div>
-
-          {/* Indicador de Scroll Elegante */}
-          <div className="mt-8 flex justify-center">
-            <div className="relative">
-              {/* Barra de progreso de fondo */}
-              <div className="w-48 h-1.5 bg-gray-200/30 rounded-full overflow-hidden backdrop-blur-sm">
-                <motion.div
-                  className="h-full bg-gradient-to-r from-blue-400/40 to-indigo-500/40 rounded-full"
-                  initial={{ width: 0 }}
-                  animate={{
-                    width: maxScroll > 0 ? `${(scrollPosition / maxScroll) * 100}%` : 0,
-                  }}
-                  transition={{ duration: 0.3, ease: 'easeOut' }}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
@@ -2840,7 +2568,7 @@ function Webinars() {
                     />
                   ) : (
                     <div className="h-full bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
-                      <span className="text-4xl">📄</span>
+                      <span className="text-4xl">ðŸ“„</span>
                     </div>
                   )}
                 </div>

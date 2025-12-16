@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "next dev --turbo",
+    "dev:standard": "next dev",
     "build": "next build",
     "start": "next start",
     "test": "node scripts/test.js",

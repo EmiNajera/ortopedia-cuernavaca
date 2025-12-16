@@ -72,7 +72,7 @@ export default function Contacto() {
       name: 'TikTok',
       icon: (
         <Image
-          src="/images/banners/TikTok Icon.png"
+          src="/images/banners/tiktok-icon.png"
           alt="Síguenos en TikTok - Ortopedia Cuernavaca"
           width={32}
           height={32}

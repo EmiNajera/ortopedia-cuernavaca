@@ -487,14 +487,19 @@ const Home = () => {
       {/* Contenedor principal */}
       <div className="relative">
         {/* Sección 1 – Hero Principal */}
-        <section
-          className="relative h-screen flex items-center justify-center text-center bg-cover bg-center overflow-hidden fade-in"
-          style={{
-            backgroundImage: "url('/images/banners/Protesis TiE.jpg')",
-            backgroundPosition: 'center',
-            backgroundSize: 'cover',
-          }}
-        >
+        <section className="relative h-screen flex items-center justify-center text-center overflow-hidden fade-in">
+          {/* Imagen de fondo */}
+          <div className="absolute inset-0 w-full h-full">
+            <Image
+              src="/images/banners/protesis-tie.jpg"
+              alt="Hero background - Ortopedia Cuernavaca"
+              fill
+              className="object-cover"
+              priority
+              quality={90}
+              sizes="100vw"
+            />
+          </div>
           {/* Overlay sutil para mejorar contraste */}
           <div className="absolute inset-0 bg-black/25 z-0"></div>
 

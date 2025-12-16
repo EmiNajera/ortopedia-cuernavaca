@@ -23,7 +23,8 @@ const ProductCard = ({ product, imgSrc, description, price, productId, action })
   };
 
   // Compatibilidad: si viene product, usar product; si no, usar props individuales
-  const mainImage = product?.images?.[0] || imgSrc || '/images/products/placeholder.svg';
+  const mainImage =
+    product?.images?.[0] || imgSrc || '/images/products/Ortopedia Cuernavaca Logo.svg';
   const productTitle = product?.title || description || 'Producto';
   const productBrand = product?.brand || 'Sin marca';
   const finalProductId = product?.id || product?.slug || productId || '1';
@@ -594,27 +595,27 @@ export default function TiendaCompleta({ categories: dbCategories = [] }) {
         image:
           '/images/banners/' +
           (cat.slug.includes('plantilla')
-            ? 'Plantillas categoria.png'
+            ? 'plantillas-categoria.png'
             : cat.slug.includes('faja')
-              ? 'Fajas Categoria.png'
+              ? 'fajas-categoria.png'
               : cat.slug.includes('rodillera') ||
                   cat.slug.includes('tobillera') ||
                   cat.slug.includes('muniquera') ||
                   cat.slug.includes('codera')
-                ? 'Rodillera categorias.png'
+                ? 'rodillera-categorias.png'
                 : cat.slug.includes('calzado') ||
                     cat.slug.includes('zapato') ||
                     cat.slug.includes('tenis')
-                  ? 'Calzado categoria.png'
+                  ? 'calzado-categoria.png'
                   : cat.slug.includes('movilidad') ||
                       cat.slug.includes('baston') ||
                       cat.slug.includes('muleta') ||
                       cat.slug.includes('silla') ||
                       cat.slug.includes('andador')
-                    ? 'Movilidad categoria.png'
+                    ? 'movilidad-categoria.png'
                     : cat.slug.includes('pediatri')
-                      ? 'Pediatria categoria.png'
-                      : 'Plantillas categoria.png'),
+                      ? 'pediatria-categoria.png'
+                      : 'plantillas-categoria.png'),
       }));
     }
     // Fallback a categorías estáticas
@@ -622,24 +623,24 @@ export default function TiendaCompleta({ categories: dbCategories = [] }) {
       {
         name: 'Plantillas',
         slug: 'plantillas-ortopedicas',
-        image: '/images/banners/Plantillas categoria.png',
+        image: '/images/banners/plantillas-categoria.png',
       },
-      { name: 'Fajas', slug: 'fajas', image: '/images/banners/Fajas Categoria.png' },
+      { name: 'Fajas', slug: 'fajas', image: '/images/banners/fajas-categoria.png' },
       {
         name: 'Soportes y Ortesis',
         slug: 'rodilleras',
-        image: '/images/banners/Rodillera categorias.png',
+        image: '/images/banners/rodillera-categorias.png',
       },
       {
         name: 'Calzado',
         slug: 'zapatos-ortopedicos',
-        image: '/images/banners/Calzado categoria.png',
+        image: '/images/banners/calzado-categoria.png',
       },
-      { name: 'Movilidad', slug: 'bastones', image: '/images/banners/Movilidad categoria.png' },
+      { name: 'Movilidad', slug: 'bastones', image: '/images/banners/movilidad-categoria.png' },
       {
         name: 'Pediatría',
         slug: 'productos-pediatricos',
-        image: '/images/banners/Pediatria categoria.png',
+        image: '/images/banners/pediatria-categoria.png',
       },
     ];
   }, [dbCategories]);
@@ -677,7 +678,7 @@ export default function TiendaCompleta({ categories: dbCategories = [] }) {
     () => [
       {
         id: 1,
-        image: '/images/banners/Banner Tienda 1.png',
+        image: '/images/banners/banner-tienda-1.png',
         title: 'Productos Ortopédicos de Calidad',
         subtitle: 'Encuentra la solución perfecta para tu movilidad',
         cta: 'Explorar Productos',
@@ -686,7 +687,7 @@ export default function TiendaCompleta({ categories: dbCategories = [] }) {
       },
       {
         id: 2,
-        image: '/images/banners/Banner Tienda 2.png',
+        image: '/images/banners/banner-tienda-2.png',
         title: 'Plantillas Personalizadas',
         subtitle: 'Diseñadas específicamente para tus necesidades',
         cta: 'Solicitar Evaluación',
@@ -695,7 +696,7 @@ export default function TiendaCompleta({ categories: dbCategories = [] }) {
       },
       {
         id: 3,
-        image: '/images/banners/Banner tienda 3.png',
+        image: '/images/banners/banner-tienda-3.png',
         title: 'Calzado Ortopédico Especializado',
         subtitle: 'Comodidad y soporte para cada paso',
         cta: 'Ver Colección',
@@ -704,7 +705,7 @@ export default function TiendaCompleta({ categories: dbCategories = [] }) {
       },
       {
         id: 4,
-        image: '/images/banners/Banner tienda 4.png',
+        image: '/images/banners/banner-tienda-4.png',
         title: 'Fajas y Soportes Terapéuticos',
         subtitle: 'Alivio y estabilidad para tu bienestar',
         cta: 'Descubrir Más',
@@ -713,7 +714,7 @@ export default function TiendaCompleta({ categories: dbCategories = [] }) {
       },
       {
         id: 5,
-        image: '/images/banners/Banner tienda 5.png',
+        image: '/images/banners/banner-tienda-5.png',
         title: 'Productos de Rehabilitación',
         subtitle: 'Equipos profesionales para tu recuperación',
         cta: 'Ver Equipos',
@@ -1237,7 +1238,7 @@ export default function TiendaCompleta({ categories: dbCategories = [] }) {
         <div className="mb-8">
           <div className="relative w-full rounded-none overflow-hidden">
             <Image
-              src="/images/banners/Banner Web inferior.png"
+              src="/images/banners/banner-web-inferior.png"
               alt="Banner Web Inferior"
               width={1360}
               height={200}
@@ -1407,7 +1408,7 @@ export default function TiendaCompleta({ categories: dbCategories = [] }) {
         <div className="mb-8">
           <div className="relative w-full rounded-none overflow-hidden">
             <Image
-              src="/images/banners/Banner Web Redes Sociales.png"
+              src="/images/banners/banner-web-redes-sociales.png"
               alt="Banner Web Redes Sociales"
               width={1360}
               height={192}
@@ -1492,7 +1493,7 @@ export default function TiendaCompleta({ categories: dbCategories = [] }) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 lg:mb-16">
           <div className="relative w-full rounded-none overflow-hidden">
             <Image
-              src="/images/banners/Banner cuadrado Izquierdo.png"
+              src="/images/banners/banner-cuadrado-izquierdo.png"
               alt="Banner Cuadrado Izquierdo"
               width={400}
               height={300}
@@ -1509,7 +1510,7 @@ export default function TiendaCompleta({ categories: dbCategories = [] }) {
 
           <div className="relative w-full rounded-none overflow-hidden">
             <Image
-              src="/images/banners/Banner cuadrado central.png"
+              src="/images/banners/banner-cuadrado-central.png"
               alt="Banner Cuadrado Central"
               width={400}
               height={300}
@@ -1677,7 +1678,7 @@ export default function TiendaCompleta({ categories: dbCategories = [] }) {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {[
               {
-                img: '/images/banners/Plantillas PersonalizadasFD.png',
+                img: '/images/banners/plantillas-personalizadas-fd.png',
                 title: 'Cómo elegir la plantilla correcta',
                 description:
                   'Guía completa para seleccionar la plantilla ortopédica ideal para tu tipo de pie y actividad.',
@@ -1685,7 +1686,7 @@ export default function TiendaCompleta({ categories: dbCategories = [] }) {
                 blogSlug: 'como-elegir-plantilla-correcta',
               },
               {
-                img: '/images/banners/Rehabilitación en AmputadosFD.png',
+                img: '/images/banners/rehabilitacion-amputados-fd.png',
                 title: 'Prevención de lesiones deportivas',
                 description:
                   'Consejos y técnicas para prevenir lesiones durante la práctica deportiva.',
@@ -1791,7 +1792,7 @@ export default function TiendaCompleta({ categories: dbCategories = [] }) {
               </div>
               <div className="flex flex-col items-center">
                 <Image
-                  src="/images/banners/SuperConfort Logo.png"
+                  src="/images/banners/superconfort-logo.png"
                   alt="SuperComfort"
                   width={80}
                   height={80}
@@ -1801,7 +1802,7 @@ export default function TiendaCompleta({ categories: dbCategories = [] }) {
               </div>
               <div className="flex flex-col items-center">
                 <Image
-                  src="/images/banners/Logo Ortochavitos.png"
+                  src="/images/banners/logo-ortochavitos.png"
                   alt="Ortochavitos"
                   width={80}
                   height={80}

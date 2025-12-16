@@ -155,77 +155,96 @@ export default function ProcessSectionAlt() {
           </motion.p>
         </motion.div>
 
-        {/* TABS */}
-        <motion.div
-          className="mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
-            {STEPS.map(({ key, title, icon: Icon }, idx) => {
-              const selected = active === key;
-              return (
-                <motion.button
-                  key={key}
-                  onClick={() => setActive(key)}
-                  className={
-                    'group relative flex items-center gap-3 rounded-2xl border px-4 py-3 text-left transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 ' +
-                    (selected
-                      ? 'border-blue-600 bg-white shadow-lg'
-                      : 'border-gray-200 bg-white/80 hover:bg-white hover:border-blue-300')
-                  }
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.5 + idx * 0.1 }}
+        {/* VISTA MÓVIL: ACORDEÓN VERTICAL */}
+        <div className="lg:hidden space-y-4">
+          {STEPS.map((step, idx) => {
+            const isActive = active === step.key;
+            const StepIcon = step.icon;
+
+            return (
+              <motion.div
+                key={step.key}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.4 + idx * 0.1 }}
+                className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
+                  isActive
+                    ? 'border-blue-600 bg-white shadow-lg ring-1 ring-blue-100'
+                    : 'border-gray-200 bg-white/80'
+                }`}
+              >
+                <button
+                  onClick={() => setActive(isActive ? null : step.key)}
+                  className="w-full flex items-center gap-4 p-4 text-left focus:outline-none"
                 >
-                  <span
-                    className={
-                      'inline-flex h-9 w-9 items-center justify-center rounded-xl transition-colors ' +
-                      (selected ? 'bg-blue-100' : 'bg-gray-50 group-hover:bg-blue-50')
-                    }
+                  <div
+                    className={`flex-shrink-0 flex h-10 w-10 items-center justify-center rounded-xl transition-colors ${
+                      isActive ? 'bg-blue-100 text-blue-700' : 'bg-gray-100 text-gray-500'
+                    }`}
                   >
-                    <Icon
-                      className={
-                        'h-5 w-5 transition-colors ' +
-                        (selected ? 'text-blue-700' : 'text-gray-500 group-hover:text-blue-600')
-                      }
-                    />
-                  </span>
-                  <div className="flex flex-col">
-                    <span className="text-xs font-semibold text-gray-500">Paso {idx + 1}</span>
+                    <StepIcon className="h-5 w-5" />
+                  </div>
+                  <div className="flex-grow">
+                    <span className="text-xs font-bold text-blue-600 uppercase tracking-wider block mb-0.5">
+                      Paso {idx + 1}
+                    </span>
                     <span
-                      className={
-                        'font-medium transition-colors ' +
-                        (selected ? 'text-gray-900' : 'text-gray-700 group-hover:text-gray-900')
-                      }
+                      className={`font-semibold ${isActive ? 'text-gray-900' : 'text-gray-700'}`}
                     >
-                      {title}
+                      {step.title}
                     </span>
                   </div>
                   <ChevronRight
-                    className={
-                      'ml-auto h-5 w-5 transition-all ' +
-                      (selected ? 'text-blue-600' : 'text-gray-300 group-hover:text-gray-400')
-                    }
+                    className={`h-5 w-5 text-gray-400 transition-transform duration-300 ${
+                      isActive ? 'rotate-90 text-blue-600' : ''
+                    }`}
                   />
-                </motion.button>
-              );
-            })}
-          </div>
-        </motion.div>
+                </button>
 
-        {/* CONTENIDO */}
+                <AnimatePresence>
+                  {isActive && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <div className="px-4 pb-6 pt-0 border-t border-gray-100/50">
+                        <p className="text-gray-600 mt-4 mb-4 leading-relaxed">{step.blurb}</p>
+                        <ul className="space-y-3 mb-6">
+                          {step.points.map((point, i) => (
+                            <li key={i} className="flex items-start gap-3 text-sm text-gray-700">
+                              <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-blue-500 flex-shrink-0" />
+                              <span>{point}</span>
+                            </li>
+                          ))}
+                        </ul>
+                        <div className="flex flex-wrap gap-3">
+                          <button className="flex-1 bg-blue-600 text-white px-4 py-2.5 rounded-lg text-sm font-medium shadow-md hover:bg-blue-700 transition-colors">
+                            {step.ctaPrimary}
+                          </button>
+                          <button className="flex-1 border border-blue-200 text-blue-700 px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-blue-50 transition-colors">
+                            {step.ctaSecondary}
+                          </button>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* VISTA DESKTOP: TIMELINE + PANEL (Igual que antes, pero sin los tabs de arriba) */}
         <motion.div
-          className="grid grid-cols-1 lg:grid-cols-12 gap-8"
+          className="hidden lg:grid grid-cols-12 gap-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
-          {/* TIMELINE LATERAL (desktop) */}
-          <ol className="hidden lg:block lg:col-span-4 space-y-4">
+          {/* TIMELINE LATERAL */}
+          <ol className="col-span-4 space-y-4">
             {STEPS.map(({ key, title }, idx) => {
               const selected = active === key;
               return (
@@ -240,7 +259,7 @@ export default function ProcessSectionAlt() {
                     className={
                       'w-full rounded-xl border p-4 text-left transition-all duration-300 ' +
                       (selected
-                        ? 'border-blue-600 bg-white shadow-lg'
+                        ? 'border-blue-600 bg-white shadow-lg ring-1 ring-blue-100'
                         : 'border-gray-200 bg-white/80 hover:bg-white hover:border-blue-300')
                     }
                     whileHover={{ scale: 1.02 }}
@@ -265,6 +284,7 @@ export default function ProcessSectionAlt() {
                       >
                         {title}
                       </span>
+                      {selected && <ChevronRight className="ml-auto h-5 w-5 text-blue-600" />}
                     </div>
                   </motion.button>
                 </motion.li>
@@ -273,81 +293,53 @@ export default function ProcessSectionAlt() {
           </ol>
 
           {/* PANEL DE DETALLE */}
-          <div className="lg:col-span-8">
-            <motion.div
-              className="relative overflow-hidden rounded-3xl border border-gray-200 bg-white p-6 sm:p-8 shadow-xl"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.8 }}
-            >
-              {/* Elementos decorativos */}
-              <div className="absolute -top-24 -right-24 h-48 w-48 rounded-full bg-blue-50 opacity-50" />
-              <div className="absolute -bottom-24 -left-24 h-48 w-48 rounded-full bg-gray-50 opacity-50" />
+          <div className="col-span-8">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active}
+                className="relative overflow-hidden rounded-3xl border border-gray-200 bg-white p-8 shadow-xl"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.4 }}
+              >
+                {/* Elementos decorativos */}
+                <div className="absolute -top-24 -right-24 h-48 w-48 rounded-full bg-blue-50 opacity-50" />
+                <div className="absolute -bottom-24 -left-24 h-48 w-48 rounded-full bg-gray-50 opacity-50" />
 
-              <div className="relative z-10 flex items-start gap-4">
-                <motion.span
-                  className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-100"
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ duration: 0.5, delay: 0.9, type: 'spring' }}
-                >
-                  <ActiveIcon className="h-6 w-6 text-blue-700" />
-                </motion.span>
-                <div>
-                  <motion.h3
-                    className="text-xl sm:text-2xl font-bold text-gray-900 mb-3"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 1.0 }}
-                  >
-                    {current.title}
-                  </motion.h3>
-                  <motion.p
-                    className="mt-2 max-w-2xl text-gray-600 mb-4"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 1.1 }}
-                  >
-                    {current.blurb}
-                  </motion.p>
+                <div className="relative z-10 flex items-start gap-6">
+                  <div className="flex-shrink-0">
+                    <span className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-100 text-blue-700">
+                      <ActiveIcon className="h-8 w-8" />
+                    </span>
+                  </div>
+                  <div className="flex-grow">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-3">{current.title}</h3>
+                    <p className="text-lg text-gray-600 mb-6 leading-relaxed">{current.blurb}</p>
 
-                  <motion.ul
-                    className="space-y-2 text-gray-700 mb-6"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.5, delay: 1.2 }}
-                  >
-                    {current.points.map((p, i) => (
-                      <motion.li
-                        key={i}
-                        className="flex items-center gap-3"
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.4, delay: 1.3 + i * 0.1 }}
-                      >
-                        <span className="inline-block h-2 w-2 rounded-full bg-blue-500 flex-shrink-0" />
-                        <span className="leading-relaxed">{p}</span>
-                      </motion.li>
-                    ))}
-                  </motion.ul>
+                    <div className="bg-gray-50 rounded-xl p-6 mb-8 border border-gray-100">
+                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {current.points.map((p, i) => (
+                          <li key={i} className="flex items-start gap-3 text-gray-700">
+                            <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-blue-500 flex-shrink-0" />
+                            <span>{p}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
 
-                  <motion.div
-                    className="flex flex-wrap gap-3"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 1.4 }}
-                  >
-                    <motion.button
-                      className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-6 py-3 text-white shadow-lg transition-all duration-300 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 font-medium"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <Calendar className="h-4 w-4" /> {current.ctaPrimary}
-                    </motion.button>
-                  </motion.div>
+                    <div className="flex flex-wrap gap-4">
+                      <button className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-6 py-3 text-white shadow-lg transition-all duration-300 hover:bg-blue-700 hover:shadow-xl font-medium">
+                        <Calendar className="h-5 w-5" /> {current.ctaPrimary}
+                      </button>
+                      <button className="inline-flex items-center gap-2 rounded-xl border border-blue-200 text-blue-700 px-6 py-3 hover:bg-blue-50 transition-colors font-medium">
+                        {current.ctaSecondary}
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </AnimatePresence>
           </div>
         </motion.div>
       </div>

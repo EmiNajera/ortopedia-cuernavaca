@@ -12,7 +12,7 @@ export const categoriesFullConfig = {
     lead: 'Fajas ortopédicas diseñadas para brindar soporte, estabilización y alivio del dolor en diferentes zonas del cuerpo.',
     description:
       'Descubre nuestra completa línea de fajas ortopédicas: desde fajas lumbares para dolor de espalda, hasta fajas abdominal postparto, torácicas, pélvicas y de compresión. Cada una diseñada con materiales médicos de alta calidad para máximo soporte y confort.',
-    heroImage: '/images/banners/Fajas Categoria.png',
+    heroImage: '/images/banners/fajas-categoria.png',
     heroHighlights: [
       'Materiales médicos transpirables y resistentes',
       'Diseño ergonómico para máximo soporte',
@@ -198,7 +198,7 @@ export const categoriesFullConfig = {
       description:
         'Descubre fajas ortopédicas de calidad médica: lumbares, postparto, torácicas, pélvicas y de compresión. Asesoría personalizada de ortesistas certificados en Cuernavaca.',
       canonical: 'https://ortopediacuernavaca.com/categoria/fajas',
-      image: '/images/banners/Fajas Categoria.png',
+      image: '/images/banners/fajas-categoria.png',
     },
   },
   plantillas: {
@@ -209,7 +209,7 @@ export const categoriesFullConfig = {
     lead: 'Plantillas personalizadas que corrigen problemas de pisada y mejoran la postura.',
     description:
       'Nuestras plantillas ortopédicas personalizadas están diseñadas por ortopedistas para corregir problemas de pisada, aliviar el dolor de pies y mejorar tu postura general.',
-    heroImage: '/images/banners/Plantillas categoria.png',
+    heroImage: '/images/banners/plantillas-categoria.png',
     heroHighlights: [
       'Personalizadas según tu huella',
       'Materiales de alta densidad',
@@ -389,7 +389,7 @@ export const categoriesFullConfig = {
       description:
         'Plantillas ortopédicas personalizadas para corregir problemas de pisada, aliviar dolor de pies y mejorar postura. Asesoría gratuita de ortopedistas.',
       canonical: 'https://ortopediacuernavaca.com/categoria/plantillas',
-      image: '/images/banners/Plantillas categoria.png',
+      image: '/images/banners/plantillas-categoria.png',
     },
   },
   ortesis: {
@@ -400,7 +400,7 @@ export const categoriesFullConfig = {
     lead: 'Ortesis diseñadas para estabilizar y proteger articulaciones y extremidades.',
     description:
       'Amplio catálogo de ortesis para rodilla, tobillo, muñeca, codo y hombro. Desde modelos simples hasta ortesis personalizadas de alta complejidad.',
-    heroImage: '/images/banners/Rodillera categorias.png',
+    heroImage: '/images/banners/rodillera-categorias.png',
     heroHighlights: [
       'Modelos simples a personalizados',
       'Materiales biomecánicos avanzados',
@@ -581,7 +581,7 @@ export const categoriesFullConfig = {
       description:
         'Amplio catálogo de ortesis para rodilla, tobillo, muñeca, codo y hombro. Desde modelos simples hasta personalizados. Asesoría de ortopedistas.',
       canonical: 'https://ortopediacuernavaca.com/categoria/ortesis',
-      image: '/images/banners/Rodillera categorias.png',
+      image: '/images/banners/rodillera-categorias.png',
     },
   },
   calzado: {
@@ -592,7 +592,7 @@ export const categoriesFullConfig = {
     lead: 'Zapatos y calzado ortopédico diseñado para comodidad máxima y corrección de pisada.',
     description:
       'Catálogo completo de calzado ortopédico: zapatos de trabajo, deportivos, casuales y terapéuticos. Todos con soporte biomecánico certificado.',
-    heroImage: '/images/banners/Calzado categoria.png',
+    heroImage: '/images/banners/calzado-categoria.png',
     heroHighlights: [
       'Diseño ergonómico certificado',
       'Variedad de estilos y colores',
@@ -772,7 +772,7 @@ export const categoriesFullConfig = {
       description:
         'Amplio catálogo de zapatos y calzado ortopédico: de trabajo, deportivos, casuales y terapéuticos. Confort y corrección garantizados.',
       canonical: 'https://ortopediacuernavaca.com/categoria/calzado',
-      image: '/images/banners/Calzado categoria.png',
+      image: '/images/banners/calzado-categoria.png',
     },
   },
   rehabilitacion: {
@@ -783,7 +783,7 @@ export const categoriesFullConfig = {
     lead: 'Equipos especializados para terapia física, rehabilitación y fortalecimiento muscular.',
     description:
       'Amplio catálogo de equipos para rehabilitación y terapia física: desde muletas y bastones hasta equipos avanzados de ejercicio.',
-    heroImage: '/images/banners/Movilidad categoria.png',
+    heroImage: '/images/banners/movilidad-categoria.png',
     heroHighlights: [
       'Equipos de marcas certificadas',
       'Para profesionales y uso casero',
@@ -963,7 +963,7 @@ export const categoriesFullConfig = {
       description:
         'Amplio catálogo de equipos para rehabilitación, terapia física y fortalecimiento. Muletas, bastones, caminadores y más. Asesoría profesional.',
       canonical: 'https://ortopediacuernavaca.com/categoria/rehabilitacion',
-      image: '/images/banners/Movilidad categoria.png',
+      image: '/images/banners/movilidad-categoria.png',
     },
   },
   pediatria: {
@@ -974,7 +974,7 @@ export const categoriesFullConfig = {
     lead: 'Productos ortopédicos diseñados específicamente para el desarrollo saludable de los niños.',
     description:
       'Categoría especializada en ortopedia infantil: desde plantillas para desarrollo del pie, hasta ortesis correctivas pediátricas.',
-    heroImage: '/images/banners/Pediatria categoria.png',
+    heroImage: '/images/banners/pediatria-categoria.png',
     heroHighlights: [
       'Diseños seguros y divertidos',
       'Materiales hipoalergénicos',
@@ -1154,7 +1154,7 @@ export const categoriesFullConfig = {
       description:
         'Soluciones ortopédicas para niños: plantillas, zapatos, ortesis y correctores. Desarrollo saludable y seguro de los pies infantiles.',
       canonical: 'https://ortopediacuernavaca.com/categoria/pediatria',
-      image: '/images/banners/Pediatria categoria.png',
+      image: '/images/banners/pediatria-categoria.png',
     },
   },
 };

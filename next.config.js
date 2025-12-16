@@ -19,6 +19,33 @@ const nextConfig = {
     // Remove console.logs in production
     removeConsole: process.env.NODE_ENV === 'production',
   },
+  // Content Security Policy headers
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://fonts.googleapis.com https://www.googletagmanager.com https://static.cloudflareinsights.com",
+              "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+              "font-src 'self' https://fonts.gstatic.com data:",
+              "img-src 'self' data: https: blob:",
+              "connect-src 'self' https://api.whatsapp.com https://www.google-analytics.com",
+              "frame-src 'self' https://www.google.com https://www.google.com.mx https://maps.google.com https://www.google.com/maps",
+              "object-src 'none'",
+              "base-uri 'self'",
+              "form-action 'self'",
+              "frame-ancestors 'none'",
+              'upgrade-insecure-requests',
+            ].join('; '),
+          },
+        ],
+      },
+    ];
+  },
   // Note: swcMinify is enabled by default in Next.js 16, no need to specify
   // Note: optimizeCss requires 'critters' package, removing for now to avoid errors
   // experimental: {
@@ -31,7 +58,7 @@ const nextConfig = {
       { protocol: 'https', hostname: 'images.unsplash.com' },
       { protocol: 'https', hostname: 'randomuser.me' },
     ],
-    qualities: [100, 95, 85, 75], // Incluir 85 que se está usando en el código
+    qualities: [100, 95, 90, 85, 75], // Incluir 90 y 85 que se usan en el código
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],

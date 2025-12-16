@@ -9,6 +9,12 @@ import { getSiteUrl, getFullUrl } from '@shared/lib/utils/siteUrl';
 import { cn } from '@/lib/utils';
 import Marquee from '@/registry/magicui/marquee';
 import Carousel from '@shared/components/Carousel';
+import SEO from '@shared/components/SEO';
+// Lazy load FeaturedServices solo en cliente para evitar problemas de hidratación
+const FeaturedServices = dynamic(() => import('@domains/services/components/FeaturedServices'), {
+  ssr: false,
+  loading: () => <div className="h-96 w-full bg-gray-50 animate-pulse" />, // Placeholder opcional
+});
 
 // Lazy load OptimizedVideo solo en cliente para evitar problemas de SSR
 const OptimizedVideo = dynamic(() => import('@shared/components/ui/OptimizedVideo'), {
@@ -438,29 +444,14 @@ export default function IndexPage() {
 
   return (
     <>
-      <Head>
-        <title>Ortopedia Cuernavaca | Rehabilitación física y ortopedia</title>
-        <meta
-          name="description"
-          content="OrtoTech | Ortopedia Cuernavaca: Soluciones integrales en rehabilitación física y ortopedia. Te acompañamos desde el diagnóstico hasta la recuperación."
-        />
-        <meta property="og:title" content="Ortopedia Cuernavaca" />
-        <meta
-          property="og:description"
-          content="Soluciones integrales en rehabilitación física y ortopedia en Cuernavaca."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={getSiteUrl()} />
-        <meta property="og:image" content="/images/banners/Ortopedia Cuernavaca Logo.png" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Ortopedia Cuernavaca" />
-        <meta
-          name="twitter:description"
-          content="Soluciones integrales en rehabilitación física y ortopedia en Cuernavaca."
-        />
-        <meta name="twitter:image" content="/images/banners/Ortopedia Cuernavaca Logo.png" />
+      <SEO
+        title="Rehabilitación física y ortopedia"
+        description="OrtoTech | Ortopedia Cuernavaca: Soluciones integrales en rehabilitación física y ortopedia. Te acompañamos desde el diagnóstico hasta la recuperación."
+        image="/images/banners/Ortopedia Cuernavaca Logo.png"
+      />
 
-        {/* JSON-LD Structured Data */}
+      <Head>
+        {/* JSON-LD Structured Data - Se mantiene en Head ya que es específico */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -498,115 +489,11 @@ export default function IndexPage() {
 
       <>
         {/* Estilos CSS premium para transiciones fluidas */}
-        <style jsx>{`
-          @keyframes fadeIn {
-            0% {
-              opacity: 0;
-              transform: translateY(30px);
-            }
-            100% {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-
-          @keyframes subtleFloat {
-            0%,
-            100% {
-              transform: translateY(0);
-            }
-            50% {
-              transform: translateY(-5px);
-            }
-          }
-
-          @keyframes subtlePulse {
-            0%,
-            100% {
-              opacity: 0.8;
-            }
-            50% {
-              opacity: 1;
-            }
-          }
-
-          .fade-in {
-            animation: fadeIn 1s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
-          }
-
-          .float {
-            animation: subtleFloat 4s ease-in-out infinite;
-          }
-
-          .pulse {
-            animation: subtlePulse 3s ease-in-out infinite;
-          }
-
-          .scroll-indicator {
-            transition:
-              opacity 0.3s ease,
-              transform 0.3s ease;
-          }
-
-          .scroll-indicator:hover {
-            opacity: 1;
-            transform: translateY(3px);
-          }
-
-          .premium-transition {
-            transition: all 0.7s cubic-bezier(0.65, 0, 0.35, 1);
-          }
-
-          .premium-shadow {
-            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
-          }
-
-          .premium-hover {
-            transition:
-              transform 0.5s cubic-bezier(0.65, 0, 0.35, 1),
-              box-shadow 0.5s cubic-bezier(0.65, 0, 0.35, 1);
-          }
-
-          .premium-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.2);
-          }
-
-          /* Responsive adjustments */
-          @media (max-width: 768px) {
-            .fade-in {
-              animation-duration: 0.8s;
-            }
-
-            .premium-transition {
-              transition-duration: 0.5s;
-            }
-          }
-
-          @keyframes bounceDown {
-            0%,
-            100% {
-              transform: translateY(0);
-            }
-            50% {
-              transform: translateY(10px);
-            }
-          }
-
-          .animate-bounce-down {
-            animation: bounceDown 2s infinite;
-          }
-
-          /* Reduced motion preferences */
-          @media (prefers-reduced-motion: reduce) {
-            .fade-in,
-            .float,
-            .pulse,
-            .premium-transition,
-            .animate-bounce-down {
-              animation: none !important;
-              transition: none !important;
-            }
+        {/* Global Styles for non-Framer elements */}
+        <style jsx global>{`
+          .touch-target {
+            min-height: 44px;
+            min-width: 44px;
           }
         `}</style>
 
@@ -617,133 +504,188 @@ export default function IndexPage() {
             <section
               id="hero"
               aria-labelledby="hero-heading"
-              className="relative min-h-[100vh] sm:min-h-screen flex items-start justify-center text-center bg-cover bg-center overflow-hidden fade-in"
-              style={{
-                backgroundImage: "url('/images/banners/Protesis TiE.jpg')",
-                backgroundPosition: 'center',
-                backgroundSize: 'cover',
-              }}
+              className="relative min-h-[100vh] sm:min-h-screen flex items-start justify-center text-center overflow-hidden"
             >
-              {/* Overlay sutil para mejorar contraste */}
-              <div className="absolute inset-0 bg-black/25 z-0"></div>
+              {/* Background with Ken Burns effect */}
+              <motion.div
+                className="absolute inset-0 w-full h-full z-0"
+                initial={{ scale: 1.1 }}
+                animate={{ scale: 1.0 }}
+                transition={{ duration: 10, ease: 'easeOut' }}
+              >
+                <Image
+                  src="/images/banners/protesis-tie.jpg"
+                  alt="Hero background - Ortopedia Cuernavaca"
+                  fill
+                  className="object-cover"
+                  priority
+                  quality={90}
+                  sizes="100vw"
+                />
+                {/* Overlay sutil para mejorar contraste */}
+                <div className="absolute inset-0 bg-black/30"></div>
+              </motion.div>
 
               {/* Contenido centrado horizontalmente, alineado arriba */}
               <div
                 className="relative z-10 px-4 sm:px-6 max-w-6xl mx-auto flex flex-col items-center justify-center text-center"
                 style={{ marginTop: '40px', paddingTop: '0', paddingBottom: '0' }}
               >
-                {/* Logo superpuesto - dimensiones exactas para evitar contorno de Next/Image */}
-                <div
-                  className="flex justify-center items-center"
-                  style={{ marginBottom: '0.25rem' }}
+                <motion.div
+                  initial="hidden"
+                  animate="visible"
+                  variants={{
+                    hidden: { opacity: 0 },
+                    visible: {
+                      opacity: 1,
+                      transition: {
+                        staggerChildren: 0.2,
+                        delayChildren: 0.3,
+                      },
+                    },
+                  }}
+                  className="flex flex-col items-center"
                 >
-                  <Image
-                    src="/images/banners/Ortopedia Cuernavaca Logo.svg"
-                    alt="Ortopedia Cuernavaca logo, marca de la clínica"
-                    width={600}
-                    height={200}
-                    quality={100}
-                    className="w-auto h-32 sm:h-40 md:h-48 lg:h-56 xl:h-64"
-                    style={{
-                      filter: 'drop-shadow(0 8px 24px rgba(0,0,0,0.3))',
-                      transform: 'translateZ(0)',
+                  {/* Logo Animation */}
+                  <motion.div
+                    variants={{
+                      hidden: { opacity: 0, scale: 0.8, y: 20 },
+                      visible: {
+                        opacity: 1,
+                        scale: 1,
+                        y: 0,
+                        transition: {
+                          type: 'spring',
+                          stiffness: 100,
+                          damping: 15,
+                        },
+                      },
                     }}
-                    priority
-                  />
-                </div>
-                <h1
-                  id="hero-heading"
-                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white fade-in max-w-4xl"
-                  style={{
-                    marginTop: '0.25rem',
-                    marginBottom: '0',
-                    paddingTop: '0',
-                    paddingBottom: '0',
-                    fontFamily: "'Poppins', sans-serif",
-                    textShadow: '0 4px 12px rgba(0,0,0,0.5)',
-                    animationDelay: '0.6s',
-                    letterSpacing: '-0.02em',
-                    lineHeight: '1.1',
-                    position: 'relative',
-                  }}
-                >
-                  Ortopedia y rehabilitación física
-                </h1>
-                <p
-                  className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mt-1 sm:mt-2 md:mt-2 max-w-3xl mx-auto text-white/95 fade-in leading-relaxed font-medium"
-                  style={{
-                    textShadow: '0 2px 8px rgba(0,0,0,0.4)',
-                    animationDelay: '0.8s',
-                  }}
-                >
-                  Te acompañamos con tratamientos personalizados desde el diagnóstico hasta la
-                  recuperación.
-                </p>
-                <div
-                  className="mt-2 sm:mt-2 md:mt-3 flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 fade-in"
-                  style={{ animationDelay: '1s' }}
-                >
-                  <button
-                    onClick={() => openWhatsApp()}
-                    className="premium-hover bg-blue-600 text-white font-medium py-3 px-6 sm:py-4 sm:px-8 md:py-4 md:px-10 rounded-md text-base sm:text-lg premium-shadow min-h-[44px] touch-target"
+                    className="flex justify-center items-center mb-1"
                   >
-                    Agenda tu cita
-                  </button>
-                  <Link
-                    href="/servicios"
-                    className="premium-hover bg-white/95 backdrop-blur text-blue-600 font-medium py-3 px-6 sm:py-4 sm:px-8 md:py-4 md:px-10 rounded-md text-base sm:text-lg premium-shadow min-h-[44px] touch-target text-center"
+                    <Image
+                      src="/images/banners/Ortopedia Cuernavaca Logo.svg"
+                      alt="Ortopedia Cuernavaca logo, marca de la clínica"
+                      width={600}
+                      height={200}
+                      quality={100}
+                      className="w-auto h-32 sm:h-40 md:h-48 lg:h-56 xl:h-64"
+                      style={{
+                        filter: 'drop-shadow(0 8px 24px rgba(0,0,0,0.3))',
+                      }}
+                      priority
+                    />
+                  </motion.div>
+
+                  {/* Heading Animation */}
+                  <motion.h1
+                    id="hero-heading"
+                    variants={{
+                      hidden: { opacity: 0, y: 30 },
+                      visible: {
+                        opacity: 1,
+                        y: 0,
+                        transition: { duration: 0.8, ease: [0.2, 0.65, 0.3, 0.9] },
+                      },
+                    }}
+                    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white max-w-5xl tracking-tight leading-none drop-shadow-xl"
+                    style={{
+                      fontFamily: "'Poppins', sans-serif",
+                    }}
                   >
-                    Explora nuestros servicios
-                  </Link>
-                </div>
+                    Ortopedia y rehabilitación física
+                  </motion.h1>
+
+                  {/* Subtitle Animation */}
+                  <motion.p
+                    variants={{
+                      hidden: { opacity: 0, y: 20 },
+                      visible: {
+                        opacity: 1,
+                        y: 0,
+                        transition: { duration: 0.8, ease: 'easeOut' },
+                      },
+                    }}
+                    className="text-base sm:text-lg md:text-xl lg:text-2xl mt-4 max-w-3xl mx-auto text-white/90 font-medium leading-relaxed drop-shadow-md"
+                  >
+                    Te acompañamos con tratamientos personalizados desde el diagnóstico hasta la
+                    recuperación.
+                  </motion.p>
+
+                  {/* Buttons Animation */}
+                  <motion.div
+                    variants={{
+                      hidden: { opacity: 0, y: 20 },
+                      visible: {
+                        opacity: 1,
+                        y: 0,
+                        transition: { duration: 0.6, ease: 'easeOut' },
+                      },
+                    }}
+                    className="mt-8 flex flex-col sm:flex-row justify-center gap-4 sm:gap-6"
+                  >
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={() => openWhatsApp()}
+                      className="bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg text-lg shadow-lg shadow-blue-600/30 hover:bg-blue-700 transition-colors"
+                    >
+                      Agenda tu cita
+                    </motion.button>
+                    <Link href="/servicios" passHref legacyBehavior>
+                      <motion.a
+                        whileHover={{ scale: 1.05, backgroundColor: 'rgba(255, 255, 255, 1)' }}
+                        whileTap={{ scale: 0.95 }}
+                        className="bg-white/90 backdrop-blur-sm text-blue-700 font-semibold py-3 px-8 rounded-lg text-lg shadow-lg hover:text-blue-800 transition-all cursor-pointer inline-block"
+                      >
+                        Explora nuestros servicios
+                      </motion.a>
+                    </Link>
+                  </motion.div>
+                </motion.div>
               </div>
 
               {/* Transición elegante hacia la siguiente sección */}
               <div
-                className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-white to-transparent z-20"
+                className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent z-20"
                 style={{
-                  clipPath: 'polygon(0 30%, 100% 0, 100% 100%, 0% 100%)',
-                  transition: 'all 0.5s ease',
+                  clipPath: 'polygon(0 40%, 100% 0, 100% 100%, 0% 100%)',
                 }}
               ></div>
 
-              {/* Indicador de desplazamiento minimalista - Oculto en móvil muy pequeño */}
-              <button
+              {/* Indicador de desplazamiento */}
+              <motion.button
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 2, duration: 1 }}
                 type="button"
-                className="hidden sm:flex absolute bottom-20 sm:bottom-32 left-1/2 transform -translate-x-1/2 z-30 cursor-pointer scroll-indicator focus-visible:ring-2 focus-visible:ring-white/70 rounded-md px-3 py-2 bg-transparent min-h-[44px] touch-target"
+                className="hidden sm:flex absolute bottom-12 left-1/2 transform -translate-x-1/2 z-30 cursor-pointer flex-col items-center"
                 onClick={() =>
                   document.getElementById('servicios')?.scrollIntoView({ behavior: 'smooth' })
                 }
-                aria-label="Desplázate a la sección de servicios"
               >
-                <div className="flex flex-col items-center opacity-90 hover:opacity-100 transition-opacity">
-                  <span
-                    className="text-white text-xs sm:text-sm uppercase tracking-widest mb-2 font-medium"
-                    style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}
-                  >
-                    Descubre más
-                  </span>
+                <span className="text-white/80 text-xs tracking-widest uppercase mb-2 font-semibold shadow-black/20 text-shadow">
+                  Descubre más
+                </span>
+                <motion.div
+                  animate={{ y: [0, 8, 0] }}
+                  transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
+                >
                   <svg
-                    width="30"
-                    height="15"
-                    viewBox="0 0 30 15"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
                     fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="animate-bounce-down"
-                    style={{ animation: 'bounceDown 2s infinite' }}
-                    role="img"
-                    aria-label="Desplázate para descubrir"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="text-white"
                   >
-                    <path
-                      d="M1 1L15 13L29 1"
-                      stroke="white"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
+                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
                   </svg>
-                </div>
-              </button>
+                </motion.div>
+              </motion.button>
             </section>
 
             {/* Sección 2 – Áreas Fundamentales con transición premium */}
@@ -1198,6 +1140,9 @@ export default function IndexPage() {
                 </div>
               </div>
             </section>
+
+            {/* Sección Extra - Servicios Destacados */}
+            <FeaturedServices />
 
             {/* Sección 5 – Historias de Pacientes (Rediseñada) */}
             <section

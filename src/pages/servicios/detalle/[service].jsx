@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -225,7 +225,7 @@ const SERVICE_CONTENT = {
     title: 'Órtesis y Dispositivos Ortopédicos en Cuernavaca',
     metaDescription:
       'Órtesis personalizadas en Cuernavaca: rodilleras, férulas, soportes de columna y dispositivos ortopédicos. Estabilización, prevención de lesiones y mejora funcional. Especialistas certificados.',
-    image: '/images/banners/Órtesis de RodillaFD.png',
+    image: '/images/banners/ortesis-rodilla-fd.png',
     heroDescription:
       '¿Te lastimaste la rodilla jugando fútbol? ¿Tienes dolor de espalda que no te deja en paz? ¿Necesitas protección después de una cirugía? Las órtesis - rodilleras, férulas, soportes de columna y otros dispositivos ortopédicos - pueden ser exactamente lo que necesitas para recuperarte, prevenir lesiones, o simplemente sentirte más seguro al moverte. En Ortopedia Cuernavaca, no creemos en soluciones de talla única. Cada lesión es diferente, cada cuerpo es único, y cada persona tiene necesidades específicas.',
     highlights: [
@@ -414,7 +414,7 @@ const SERVICE_CONTENT = {
     title: 'Prótesis Personalizadas y Rehabilitación en Amputados',
     metaDescription:
       'Prótesis personalizadas en Cuernavaca. Fabricación a medida, ajuste preciso y rehabilitación integral para amputados. Tecnología avanzada y seguimiento continuo. Especialistas certificados.',
-    image: '/images/banners/Técnico ajustando prótesis en tallerFD.png',
+    image: '/images/banners/tecnico-ajustando-protesis-fd.png',
     heroDescription:
       'Si has tenido una amputación, ya sea por accidente, enfermedad, o condición médica, sabemos que estás enfrentando uno de los desafíos más grandes de tu vida. Pero también sabemos que con el apoyo adecuado, la tecnología correcta, y un equipo que realmente se preocupa por ti, puedes recuperar tu independencia y calidad de vida. En Ortopedia Cuernavaca, nuestro taller especializado no es solo un lugar donde fabricamos prótesis. Es un lugar donde trabajamos contigo, paso a paso, para crear una solución que realmente funcione para tu vida.',
     highlights: [
@@ -981,7 +981,7 @@ const SERVICE_CONTENT = {
     title: 'Rehabilitación del Dolor Crónico en Cuernavaca',
     metaDescription:
       'Rehabilitación del dolor crónico en Cuernavaca. Manejo integral de dolor persistente, mejora funcional y calidad de vida. Enfoque multidisciplinario y tratamiento personalizado.',
-    image: '/images/banners/Rehabilitación del Dolor CrónicoFD.png',
+    image: '/images/banners/rehabilitacion-dolor-cronico-fd.png',
     heroDescription:
       'Si vives con dolor crónico, sabes lo que es despertar cada día con dolor, tener que planear tu vida alrededor del dolor, y sentir que el dolor controla tu vida en lugar de tú controlarlo. Entendemos que el dolor crónico no es solo físico - afecta tu trabajo, tus relaciones, tu capacidad de disfrutar la vida. En Ortopedia Cuernavaca, la rehabilitación del dolor crónico no es solo sobre "aguantar" el dolor o tomar más medicamentos. Es sobre un enfoque integral que combina terapia física, educación sobre el dolor, estrategias de manejo, y mejora funcional para ayudarte a recuperar tu calidad de vida.',
     highlights: [
@@ -1174,7 +1174,7 @@ const SERVICE_CONTENT = {
     title: 'Productos Ortopédicos en Cuernavaca',
     metaDescription:
       'Productos ortopédicos en Cuernavaca. Bastones, muletas, sillas de ruedas, calzado terapéutico y más. Asesoría experta, ajuste personalizado y servicio de calidad.',
-    image: '/images/banners/Área de Productos OrtopédicosFD.png',
+    image: '/images/banners/area-productos-ortopedicos-fd.png',
     heroDescription:
       'A veces, lo que necesitas no es un tratamiento complejo - es el producto ortopédico correcto que te ayude a moverte mejor, sentirte más seguro, o simplemente hacer las cosas más fáciles. Ya sea que necesites un bastón después de una cirugía, una silla de ruedas para mayor movilidad, o calzado especializado para una condición, nuestro área de productos ortopédicos está aquí para ayudarte. En Ortopedia Cuernavaca, no solo vendemos productos - te asesoramos para encontrar exactamente lo que necesitas.',
     highlights: [
@@ -1361,26 +1361,38 @@ export default function ServicioDetalle() {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 400);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+    }
   }, []);
 
-  const meta = SERVICE_CONTENT[service] || {
-    title: 'Servicio',
-    metaDescription: 'Información detallada del servicio.',
-    heroDescription: 'Información detallada del servicio.',
-    image: '/images/banners/Collage.png',
-    highlights: [],
-    equipment: [],
-    faq: [],
-  };
+  // Validar que service existe y está en SERVICE_CONTENT
+  const serviceId = service && typeof service === 'string' ? service : '';
+  const meta =
+    serviceId && SERVICE_CONTENT[serviceId]
+      ? SERVICE_CONTENT[serviceId]
+      : {
+          title: 'Servicio',
+          metaDescription: 'Información detallada del servicio.',
+          heroDescription: 'Información detallada del servicio.',
+          image: '/images/banners/Collage.png',
+          highlights: [],
+          equipment: [],
+          faq: [],
+          whatItIs: '',
+          whatItDoes: [],
+          useCases: [],
+          benefits: [],
+          howWeHelp: null,
+        };
 
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'MedicalBusiness',
-    name: `Ortopedia Cuernavaca - ${meta.title}`,
-    description: meta.metaDescription || meta.heroDescription,
-    image: meta.image,
+    name: `Ortopedia Cuernavaca - ${meta?.title || 'Servicio'}`,
+    description: meta?.metaDescription || meta?.heroDescription || '',
+    image: meta?.image || '/images/banners/Collage.png',
     areaServed: 'Cuernavaca, Morelos',
     url: 'https://ortopediacuernavaca.mx',
     medicalSpecialty: 'Orthopedics',
@@ -1557,29 +1569,31 @@ export default function ServicioDetalle() {
                     {/* Título Limpio */}
                     <div>
                       <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight tracking-tight">
-                        {service === 'plantillas' &&
+                        {serviceId === 'plantillas' &&
                           '¿Qué son las plantillas ortopédicas personalizadas y para qué sirven?'}
-                        {service === 'amputados' &&
+                        {serviceId === 'amputados' &&
                           '¿Qué son las órtesis y para qué sirven realmente?'}
-                        {service === 'ortesis' &&
+                        {serviceId === 'ortesis' &&
                           '¿Qué son las prótesis y para qué sirven realmente?'}
-                        {service === 'pediatrica' &&
+                        {serviceId === 'pediatrica' &&
                           '¿Qué es la rehabilitación pediátrica y para qué sirve?'}
-                        {service === 'musculoesqueletica' &&
+                        {serviceId === 'musculoesqueletica' &&
                           '¿Qué es la fisioterapia y para qué sirve realmente?'}
-                        {service === 'dolor' &&
+                        {serviceId === 'dolor' &&
                           '¿Qué es la rehabilitación del dolor crónico y para qué sirve?'}
-                        {service === 'productos' &&
+                        {serviceId === 'productos' &&
                           '¿Qué son los productos ortopédicos y para qué sirven?'}
-                        {![
-                          'plantillas',
-                          'amputados',
-                          'ortesis',
-                          'pediatrica',
-                          'musculoesqueletica',
-                          'dolor',
-                          'productos',
-                        ].includes(service) && '¿Qué es este servicio y para qué sirve?'}
+                        {serviceId &&
+                          ![
+                            'plantillas',
+                            'amputados',
+                            'ortesis',
+                            'pediatrica',
+                            'musculoesqueletica',
+                            'dolor',
+                            'productos',
+                          ].includes(serviceId) &&
+                          '¿Qué es este servicio y para qué sirve?'}
                       </h2>
                     </div>
 

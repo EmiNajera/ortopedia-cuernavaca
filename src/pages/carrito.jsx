@@ -1,53 +1,41 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { openWhatsApp } from '@shared/lib/utils/whatsapp';
+import { openWhatsAppCart } from '@shared/lib/utils/whatsapp';
+import { useCart } from '@store/domain/cart/useCart';
 import StoreLayout from '@layouts/StoreLayout';
-
-const initialCart = [
-  {
-    id: 1,
-    name: 'Plantillas Ortopédicas Personalizadas',
-    price: 800,
-    image: 'https://placehold.co/100x100/1E40AF/FFFFFF?text=Plantilla',
-    quantity: 1,
-  },
-  {
-    id: 2,
-    name: 'Órtesis de Rodilla Deportiva',
-    price: 1200,
-    image: 'https://placehold.co/100x100/059669/FFFFFF?text=Órtesis',
-    quantity: 2,
-  },
-];
+import SEO from '@shared/components/SEO';
 
 export default function Carrito() {
-  const [cart, setCart] = useState(initialCart);
+  const {
+    items: cart,
+    updateQuantity,
+    removeItem: handleRemove,
+    total,
+    subtotal,
+    shipping,
+    isEmpty,
+  } = useCart();
 
   const handleQuantity = (id, delta) => {
-    setCart((cart) =>
-      cart.map((item) =>
-        item.id === id ? { ...item, quantity: Math.max(1, item.quantity + delta) } : item,
-      ),
-    );
+    const item = cart.find((i) => i.id === id);
+    if (item) {
+      updateQuantity(id, Math.max(1, item.quantity + delta));
+    }
   };
 
-  const handleRemove = (id) => {
-    setCart((cart) => cart.filter((item) => item.id !== id));
+  const handleCheckout = () => {
+    openWhatsAppCart(cart, total + shipping);
   };
-
-  const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  const shipping = cart.length > 0 ? 120 : 0;
-  const total = subtotal + shipping;
 
   return (
     <div className="bg-white font-sans">
-      {/* Headers removed - now handled by StoreLayout */}
-
-      {/* Navigation removed - now handled by StoreLayout */}
-
-      {/* Main Content */}
+      <SEO
+        title="Carrito de Compras"
+        description="Revisa los productos en tu carrito de compras de Ortopedia Cuernavaca."
+        url="/carrito"
+      />
       <main className="container mx-auto py-8 px-4 md:px-8">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
@@ -58,7 +46,7 @@ export default function Carrito() {
           Carrito de Compras
         </motion.h1>
 
-        {cart.length === 0 ? (
+        {isEmpty ? (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -90,7 +78,11 @@ export default function Carrito() {
                   >
                     <div className="w-24 h-24 relative">
                       <Image
-                        src={item.image}
+                        src={
+                          item.image ||
+                          item.images?.[0] ||
+                          'https://placehold.co/100x100?text=Producto'
+                        }
                         alt={item.name}
                         fill
                         style={{ objectFit: 'cover', borderRadius: '0.5rem' }}
@@ -146,23 +138,21 @@ export default function Carrito() {
               <div className="border-t border-gray-200 my-4"></div>
               <div className="flex justify-between text-xl font-bold text-blue-900 mb-6">
                 <span>Total</span>
-                <span>${total} MXN</span>
+                <span>${total + shipping} MXN</span>
               </div>
               <button
-                className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-lg"
-                onClick={() => alert('¡Gracias por tu compra! (Checkout simulado)')}
+                className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors text-lg flex items-center justify-center gap-2"
+                onClick={handleCheckout}
               >
-                Finalizar Compra
+                <span>Completar pedido por WhatsApp</span>
               </button>
               <p className="text-xs text-gray-400 mt-4 text-center">
-                * El proceso de pago es solo demostrativo.
+                * Al hacer clic, se abrirá WhatsApp con los detalles de tu pedido.
               </p>
             </div>
           </div>
         )}
       </main>
-
-      {/* Footer removed - now handled by StoreLayout */}
     </div>
   );
 }

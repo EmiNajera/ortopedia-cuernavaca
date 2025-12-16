@@ -55,7 +55,7 @@ export default function MarketingHeader() {
           <div className="flex-shrink-0 transform hover:scale-105 transition-transform duration-300">
             <Link href="/" className="flex items-center">
               <Image
-                src="/images/banners/Ortopedia Cuernavaca Logo.png"
+                src="/images/banners/Ortopedia Cuernavaca Logo.svg"
                 alt="Ortopedia Cuernavaca Logo"
                 width={600}
                 height={200}
