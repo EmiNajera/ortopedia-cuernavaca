@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import MarketingLayout from '@layouts/MarketingLayout';
+import { openWhatsApp } from '@shared/lib/utils/whatsapp';
 
 // --- Sub-components (Restored & Improved) ---
 
@@ -230,11 +231,12 @@ export default function NosotrosView() {
                 y calidad de vida.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/citas">
-                  <div className="bg-blue-600 text-white px-8 py-4 rounded-lg uppercase text-sm font-medium transition-colors shadow-lg hover:shadow-xl inline-block cursor-pointer hover:bg-blue-700">
-                    Agendar Consulta
-                  </div>
-                </Link>
+                <div
+                  onClick={() => openWhatsApp()}
+                  className="bg-blue-600 text-white px-8 py-4 rounded-lg uppercase text-sm font-medium transition-colors shadow-lg hover:shadow-xl inline-block cursor-pointer hover:bg-blue-700"
+                >
+                  Agendar Consulta
+                </div>
                 <Link href="/tienda">
                   <div className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg uppercase text-sm font-medium transition-colors shadow-lg hover:shadow-xl inline-block cursor-pointer hover:bg-blue-600 hover:text-white">
                     Ver Productos
@@ -299,7 +301,7 @@ export default function NosotrosView() {
               </h2>
               <div className="space-y-6 text-lg text-gray-600 leading-relaxed text-justify">
                 <p>
-                  En <strong>Ortopedia Cuernavaca</strong> somos un Centro Integral de
+                  En <strong>Ortopedia Cuernavaca</strong> somos un Centro de Ortopedia y
                   Rehabilitación Física, que integra atención ortopédica y fisioterapia con más de{' '}
                   <strong className="text-blue-600">30 años de experiencia</strong> ayudando a las
                   personas a recuperar su movilidad, mejorar su postura y alcanzar una mejor calidad
@@ -579,15 +581,14 @@ export default function NosotrosView() {
             movimiento.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Link href="/citas">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white text-blue-600 px-10 py-4 rounded-full font-bold text-lg shadow-xl hover:shadow-2xl transition-all cursor-pointer"
-              >
-                Agendar mi Valoración
-              </motion.div>
-            </Link>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => openWhatsApp()}
+              className="bg-white text-blue-600 px-10 py-4 rounded-full font-bold text-lg shadow-xl hover:shadow-2xl transition-all cursor-pointer"
+            >
+              Agendar mi Valoración
+            </motion.div>
             <Link href="/servicios">
               <motion.div
                 whileHover={{ scale: 1.05 }}

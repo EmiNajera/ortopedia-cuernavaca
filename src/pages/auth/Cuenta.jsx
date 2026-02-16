@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from '@shared/lib/utils/routerCompat';
 import { motion, AnimatePresence } from 'framer-motion';
 import MarketingLayout from '@layouts/MarketingLayout';
+import { openWhatsApp } from '@shared/lib/utils/whatsapp';
 
 export default function Cuenta() {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -485,12 +486,12 @@ export default function Cuenta() {
                   >
                     <div className="flex items-center justify-between">
                       <h3 className="text-lg font-semibold text-gray-900">Mis Citas</h3>
-                      <Link
-                        to="/citas"
+                      <button
+                        onClick={() => openWhatsApp()}
                         className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
                       >
                         Agendar Nueva Cita
-                      </Link>
+                      </button>
                     </div>
 
                     {appointments.map((appointment, index) => (

@@ -9,7 +9,7 @@ export default function NosotrosPage() {
   const pageUrl = `${baseUrl}/nosotros`;
   const pageTitle = 'Nosotros | Ortopedia Cuernavaca - 30 Años Transformando Vidas';
   const pageDescription =
-    'Conoce la historia de Ortopedia Cuernavaca: más de 30 años de experiencia en ortopedia y rehabilitación física. Centro Integral de Rehabilitación con equipo multidisciplinario especializado en Cuernavaca, Morelos.';
+    'Conoce la historia de Ortopedia Cuernavaca: más de 30 años de experiencia en ortopedia y rehabilitación física. Centro de Ortopedia y Rehabilitación Física con equipo multidisciplinario especializado en Cuernavaca, Morelos.';
   const ogImage = `${baseUrl}/images/banners/Ortopedia Cuernavaca Logo.png`;
 
   // JSON-LD Structured Data para organización médica
@@ -19,7 +19,7 @@ export default function NosotrosPage() {
     name: 'Ortopedia Cuernavaca',
     alternateName: 'Ortochavitos',
     description:
-      'Centro Integral de Rehabilitación Física con más de 30 años de experiencia en ortopedia, rehabilitación física, plantillas personalizadas, órtesis y prótesis en Cuernavaca, Morelos.',
+      'Centro de Ortopedia y Rehabilitación Física con más de 30 años de experiencia en ortopedia, rehabilitación física, plantillas personalizadas, órtesis y prótesis en Cuernavaca, Morelos.',
     url: baseUrl,
     logo: `${baseUrl}/images/banners/Ortopedia Cuernavaca Logo.png`,
     image: ogImage,

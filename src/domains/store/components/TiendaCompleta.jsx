@@ -94,7 +94,7 @@ const ProductCard = ({ product, imgSrc, description, price, productId, action })
   );
 };
 
-// Centro Integral de Rehabilitación
+// Centro de Ortopedia y Rehabilitación Física
 const RehabilitationCenter = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
@@ -360,7 +360,7 @@ const RehabilitationCenter = () => {
               className="w-2 h-2 bg-white rounded-full mr-2 sm:mr-3 animate-pulse"
               style={{ transform: 'translateY(1px)' }}
             ></span>
-            Centro Integral de Rehabilitación
+            Centro de Ortopedia y Rehabilitación Física
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -376,9 +376,9 @@ const RehabilitationCenter = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-4 sm:mb-6"
           >
-            En nuestro <strong>Centro Integral de Rehabilitación</strong> te ayudamos a recuperar tu
-            bienestar. Somos especialistas en ortopedia y rehabilitación física para niños y
-            adultos.
+            En nuestro <strong>Centro de Ortopedia y Rehabilitación Física</strong> te ayudamos a
+            recuperar tu bienestar. Somos especialistas en ortopedia y rehabilitación física para
+            niños y adultos.
           </motion.p>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -565,7 +565,8 @@ const RehabilitationCenter = () => {
           <motion.button
             onClick={() =>
               openWhatsApp(
-                'Hola, me gustaría obtener más información sobre los servicios del Centro Integral de Rehabilitación.',
+                '7772150982',
+                'Hola, me gustaría obtener más información sobre los servicios del Centro de Ortopedia y Rehabilitación Física.',
               )
             }
             className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:from-blue-600 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base transform hover:scale-105 min-h-[44px]"
@@ -1815,7 +1816,7 @@ export default function TiendaCompleta({ categories: dbCategories = [] }) {
         </section>
       </main>
 
-      {/* Centro Integral de Rehabilitación */}
+      {/* Centro de Ortopedia y Rehabilitación Física */}
       <RehabilitationCenter />
 
       {/* Footer removed - now handled by StoreLayout */}

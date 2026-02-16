@@ -18,7 +18,6 @@ export default function ResponsiveFooter() {
     // { href: '/tienda', label: 'Tienda' }, // Oculto temporalmente - en desarrollo
     { href: '/categorias', label: 'Categorías' },
     { href: '/contacto', label: 'Contacto' },
-    { href: '/citas', label: 'Agendar Cita' },
   ];
 
   const services = [

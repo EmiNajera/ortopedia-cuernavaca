@@ -667,7 +667,7 @@ const Home = () => {
                         fontWeight: '700',
                       }}
                     >
-                      Centro de rehabilitación integral
+                      Centro de Ortopedia y Rehabilitación Física
                     </h2>
 
                     <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-10 font-light leading-relaxed">
@@ -721,7 +721,7 @@ const Home = () => {
           <div className="text-center mb-16">
             <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 text-sm font-semibold rounded-full mb-6">
               <span className="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>
-              Centro Integral de Rehabilitación
+              Centro de Ortopedia y Rehabilitación Física
             </div>
             <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 mb-6">
               Todo lo que tu rehabilitación necesita,
@@ -731,9 +731,9 @@ const Home = () => {
               </span>
             </h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              Beneficios de un centro integral para tu recuperación. Nuestro enfoque
-              multidisciplinario combina diagnóstico avanzado, tratamientos personalizados y
-              seguimiento continuo para garantizar tu recuperación óptima.
+              Beneficios de un centro de ortopedia y rehabilitación física para tu recuperación.
+              Nuestro enfoque multidisciplinario combina diagnóstico avanzado, tratamientos
+              personalizados y seguimiento continuo para garantizar tu recuperación óptima.
             </p>
           </div>
 

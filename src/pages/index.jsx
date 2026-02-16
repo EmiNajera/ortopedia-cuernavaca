@@ -310,7 +310,7 @@ const TestimonialsMarquee = () => (
   </div>
 );
 
-// Items para el carrusel móvil de "Centro de rehabilitación integral"
+// Items para el carrusel móvil de "Centro de Ortopedia y Rehabilitación Física"
 const rehabCarouselItems = [
   {
     image: '/images/banners/DedosEsqueleto2.JPG',
@@ -696,20 +696,23 @@ export default function IndexPage() {
             >
               <div className="relative min-h-[100vh] sm:min-h-screen w-full overflow-hidden">
                 {/* Imagen de fondo estática como fallback y LCP - Siempre visible (WebP optimizado) */}
-                <div className="absolute inset-0 w-full h-full">
+                <div className="absolute inset-0 w-full h-full z-0">
                   <Image
                     src="/images/banners/hero-ortopedia-desktop.webp"
-                    alt="Centro de rehabilitación integral Ortopedia Cuernavaca"
+                    alt="Centro de Ortopedia y Rehabilitación Física Ortopedia Cuernavaca"
                     fill
                     className="object-cover"
                     priority
                     quality={85}
                     sizes="100vw"
+                    onError={(e) => {
+                      console.error('Error loading hero background image:', e);
+                    }}
                   />
                 </div>
 
                 {/* Video de fondo: versión desktop/tablet horizontal y versión mobile - Lazy loaded con Intersection Observer */}
-                <div className="absolute inset-0 w-full h-full">
+                <div className="absolute inset-0 w-full h-full z-10">
                   {/* Desktop / tablet horizontal */}
                   <OptimizedVideo
                     src="/videos/Hero-Ortopedia-Desktop.mp4"
@@ -732,22 +735,19 @@ export default function IndexPage() {
                   />
                 </div>
 
-                {/* Overlay sutil (se mantiene igual que con la imagen) */}
-                <div
-                  className="absolute inset-0 bg-gradient-to-b from-black/30 via-blue-900/40 to-black/60 z-0"
-                  style={{ mixBlendMode: 'multiply' }}
-                ></div>
+                {/* Overlay mejorado para mejor contraste */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/40 z-20"></div>
 
                 {/* Contenido centrado con tipografía premium */}
-                <div className="relative z-10 flex flex-col items-center justify-center min-h-[100vh] sm:min-h-screen p-4 sm:p-8">
+                <div className="relative z-30 flex flex-col items-center justify-center min-h-[100vh] sm:min-h-screen p-4 sm:p-8">
                   <div className="text-center max-w-5xl mx-auto">
                     {/* Línea decorativa superior */}
                     <div className="flex items-center justify-center mb-6 sm:mb-8">
-                      <div className="h-px w-12 bg-white/30"></div>
-                      <div className="mx-4 text-white/80 text-xs sm:text-sm uppercase tracking-widest font-light">
+                      <div className="h-px w-12 bg-white/50"></div>
+                      <div className="mx-4 text-white text-xs sm:text-sm uppercase tracking-widest font-light drop-shadow-lg">
                         Experiencia Integral
                       </div>
-                      <div className="h-px w-12 bg-white/30"></div>
+                      <div className="h-px w-12 bg-white/50"></div>
                     </div>
 
                     <h2
@@ -756,15 +756,17 @@ export default function IndexPage() {
                       style={{
                         letterSpacing: '-0.02em',
                         fontWeight: '700',
-                        textShadow: '0 4px 12px rgba(0,0,0,0.3)',
+                        textShadow: '0 4px 20px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.4)',
                       }}
                     >
-                      Centro de rehabilitación integral
+                      Centro de Ortopedia y Rehabilitación Física
                     </h2>
 
                     <p
-                      className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 max-w-3xl mx-auto mb-6 sm:mb-8 md:mb-10 font-light leading-relaxed px-4"
-                      style={{ textShadow: '0 2px 8px rgba(0,0,0,0.2)' }}
+                      className="text-base sm:text-lg md:text-xl lg:text-2xl text-white max-w-3xl mx-auto mb-6 sm:mb-8 md:mb-10 font-light leading-relaxed px-4"
+                      style={{
+                        textShadow: '0 2px 12px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.3)',
+                      }}
                     >
                       Órtesis, prótesis, plantillas personalizadas y fisioterapia. Todo lo que
                       necesitas para tu recuperación en un solo lugar.
@@ -824,7 +826,7 @@ export default function IndexPage() {
                 <div className="text-center mb-16">
                   <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 text-sm font-semibold rounded-full mb-6">
                     <span className="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>
-                    Centro Integral de Rehabilitación
+                    Centro de Ortopedia y Rehabilitación Física
                   </div>
                   <h2
                     id="centro-integral-heading"
@@ -837,9 +839,10 @@ export default function IndexPage() {
                     </span>
                   </h2>
                   <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed px-4">
-                    Beneficios de un centro integral para tu recuperación. Nuestro enfoque
-                    multidisciplinario combina diagnóstico avanzado, tratamientos personalizados y
-                    seguimiento continuo para garantizar tu recuperación óptima.
+                    Beneficios de un centro de ortopedia y rehabilitación física para tu
+                    recuperación. Nuestro enfoque multidisciplinario combina diagnóstico avanzado,
+                    tratamientos personalizados y seguimiento continuo para garantizar tu
+                    recuperación óptima.
                   </p>
                 </div>
 
@@ -1208,7 +1211,7 @@ export default function IndexPage() {
                     {
                       question: '¿Son una clínica de ortopedia?',
                       answer:
-                        'Somos un Centro Integral de Rehabilitación. Contamos con servicios de ortopedia clínica, órtesis y prótesis, y un área especializada de fisioterapia y rehabilitación física.',
+                        'Somos un Centro de Ortopedia y Rehabilitación Física. Contamos con servicios de ortopedia clínica, órtesis y prótesis, y un área especializada de fisioterapia y rehabilitación física.',
                     },
                     {
                       question: '¿Ofrecen consulta médica?',

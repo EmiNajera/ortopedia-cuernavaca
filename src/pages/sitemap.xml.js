@@ -9,7 +9,7 @@ const staticPaths = [
   { path: '/servicios', priority: '0.9', changefreq: 'weekly' },
   { path: '/blog', priority: '0.9', changefreq: 'daily' },
   { path: '/contacto', priority: '0.8', changefreq: 'monthly' },
-  { path: '/citas', priority: '0.8', changefreq: 'weekly' },
+  { path: '/redes', priority: '0.7', changefreq: 'monthly' },
   { path: '/categorias', priority: '0.7', changefreq: 'weekly' },
   { path: '/categoria/plantillas', priority: '0.8', changefreq: 'weekly' },
   { path: '/categoria/fajas', priority: '0.8', changefreq: 'weekly' },

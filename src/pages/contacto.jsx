@@ -19,7 +19,7 @@ export default function ContactoPage() {
     name: 'Ortopedia Cuernavaca',
     alternateName: 'Ortochavitos',
     description:
-      'Centro Integral de Rehabilitación Física con más de 30 años de experiencia en ortopedia, rehabilitación física, plantillas personalizadas, órtesis y prótesis en Cuernavaca, Morelos.',
+      'Centro de Ortopedia y Rehabilitación Física con más de 30 años de experiencia en ortopedia, rehabilitación física, plantillas personalizadas, órtesis y prótesis en Cuernavaca, Morelos.',
     url: baseUrl,
     logo: ogImage,
     image: ogImage,

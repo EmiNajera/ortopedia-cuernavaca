@@ -153,7 +153,9 @@ export default function Contacto() {
               <ActionButton
                 icon="💬"
                 text="Enviar WhatsApp"
-                onClick={() => openWhatsApp('Hola, me gustaría obtener más información.')}
+                onClick={() =>
+                  openWhatsApp('7772150982', 'Hola, me gustaría obtener más información.')
+                }
                 className="bg-green-500 hover:bg-green-600 text-white shadow-lg min-h-[48px]"
               />
             </motion.div>

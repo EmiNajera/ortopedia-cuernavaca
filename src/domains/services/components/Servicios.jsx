@@ -1,4 +1,4 @@
-﻿import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
@@ -2448,6 +2448,7 @@ function InteractiveServices() {
                               onClick={() => {
                                 setSelectedFeature(null);
                                 openWhatsApp(
+                                  '7772150982',
                                   `Hola, me gustaría obtener más información sobre el servicio: \"${selectedFeature.title}\".`,
                                 );
                               }}

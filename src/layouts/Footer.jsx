@@ -200,14 +200,6 @@ export default function Footer() {
                   Contacto
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/citas"
-                  className="text-gray-300 hover:text-white text-sm transition-colors"
-                >
-                  Agendar Cita
-                </Link>
-              </li>
             </ul>
           </div>
 

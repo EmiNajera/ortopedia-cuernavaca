@@ -33,6 +33,7 @@ const nextConfig = {
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "font-src 'self' https://fonts.gstatic.com data:",
               "img-src 'self' data: https: blob:",
+              "media-src 'self' blob: data:",
               "connect-src 'self' https://api.whatsapp.com https://www.google-analytics.com",
               "frame-src 'self' https://www.google.com https://www.google.com.mx https://maps.google.com https://www.google.com/maps",
               "object-src 'none'",
